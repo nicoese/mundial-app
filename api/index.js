@@ -19,10 +19,12 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 
 
 const {MONGO_URL, MONGO_USER, MONGO_PASS} = process.env
+
 
 const mongooseOptions = {
     user: MONGO_USER,
@@ -37,6 +39,5 @@ mongoose.connect(MONGO_URL,
         server.listen(3001, () => {
             console.log('%s listening at 3001'); // eslint-disable-line no-console
         });
-
     })
     .catch(err => console.log(err))
