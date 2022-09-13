@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -L",
-    "test": "mocha -w ./tests/**/*.spec.js"
+    "test": "mocha -w ./tests/**/*.spec.js",
+    "server": "json-server --watch ./db.json --port 3005"
   },
   "author": "28c GRUPO MUNDIAL :D",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
+    "json-server": "^0.17.0",
     "morgan": "^1.10.0",
     "pg": "^8.5.1",
     "sequelize": "^6.3.5"
