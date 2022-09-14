@@ -8,9 +8,8 @@ const jerseysSchema = new Schema({
     },
     brand: String ,
     price:  Number,
-    size: [String],
     img: String,
-    stock: Number,
+    stock: {S:Number,M:Number,L:Number,XL:Number},
     description: String
 })
 

@@ -1,8 +1,7 @@
 const Accesories = require('./src/models/accesories')
 const Jerseys = require('./src/models/jerseys')
 const Tickets = require('./src/models/tickets')
-const db = require('./db_updated.json')
-
+const db = require('./db.json')
 
 
 const main = async ()=>{

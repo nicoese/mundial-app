@@ -8,7 +8,7 @@ const accesoriesSchema = new Schema({
     },
     price: Number,
     img: String,
-    stock: Number,
+    stock: {X:Number},
     description: String
 })
 module.exports = model('Accesories',accesoriesSchema)
