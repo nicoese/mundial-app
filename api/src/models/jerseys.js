@@ -8,12 +8,9 @@ const jerseysSchema = new Schema({
     },
     brand: String ,
     price:  Number,
-    size: {
-        type: String,
-        enum: ["S", "M", "L", "XL"],
-        require: true
-    },
+    size: [String],
     img: String,
+    stock: Number,
     description: String
 })
 

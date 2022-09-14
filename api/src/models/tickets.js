@@ -1,13 +1,13 @@
 const {Schema, model} = require('mongoose');
 
 const ticketsSchema = new Schema({
-    match:{
+    name:{
         type: String,
         require: true
     },
     stadium: String,
     date: {
-        type: Date,
+        type: String,
         require: true
     },
     price: Number,
