@@ -9,7 +9,6 @@
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camiseta-adidas-argentina-2022-3.jpg"
       },
       {
-
         "name": "Camiseta Alternativa Argentina",
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
@@ -17,7 +16,6 @@
         "img": "https://www.afashop.com.ar/ccstore/v1/images/?source=/file/v3925886948759474626/products/HB9220_FR_Torso_eCom.jpg&height=475&width=475"
       },
       {
-
         "name": "Camiseta Titular Brasil",
         "brand": "Nike",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
@@ -28,6 +26,7 @@
 
         "name": "Camiseta Alternativa Brasil",
         "brand": "Nike",
+
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 15500,
         "img": "https://sc2.elpais.com.uy/files/article_default_content/uploads/2022/08/31/630f79dfdcddc.jpeg"
