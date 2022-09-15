@@ -26,6 +26,7 @@ router.get('/', async (req,res,next)=>{
 router.post('/insert_products',async (req,res,next)=>{
     try{
         insertProducts();
+        res.status(200).send('inserted')
     }catch(err){
         next(err)
     }
