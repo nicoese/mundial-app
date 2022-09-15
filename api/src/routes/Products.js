@@ -3,8 +3,6 @@ const router = Router();
 const Accesories = require('../models/accesories')
 const Jerseys = require('../models/jerseys');
 const Tickets = require('../models/tickets')
-const Purchase = require('../models/purchases')
-const User = require('../models/users');
 const db = require('../../db.json')
 
 

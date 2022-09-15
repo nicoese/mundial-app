@@ -1,6 +1,7 @@
 const { Router, response } = require('express');
+const Purchase = require('../models/purchases');
 const router = Router();
-const Purchase = require('../models/purchases')
+
 
 
 //purchase toma user products[ids] y totalPrice Number
@@ -10,6 +11,16 @@ const Purchase = require('../models/purchases')
 //PENDIENTE
 
 //no esta terminado
+router.get('/', async (req,res,next)=>{
+    try{
+        let result = await Purchase.find()
+        res.status(200).json(result)
+    }catch(err){
+        next(err)
+    }
+})
+
+
 router.post('/add_purchase', async (req,res,next)=>{
     try{
         const {user,products,totalPrice} =req.body

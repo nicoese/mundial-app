@@ -3,7 +3,8 @@ const {Schema, model} = require('mongoose');
 const ticketsSchema = new Schema({
     name:{
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
     stadium: String,
     date: {
