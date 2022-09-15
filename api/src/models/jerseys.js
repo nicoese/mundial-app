@@ -8,13 +8,9 @@ const jerseysSchema = new Schema({
     },
     brand: String ,
     price:  Number,
-    size: {
-        type: String,
-        enum: ["S", "M", "L", "XL"],
-        require: true
-    },
     img: String,
+    stock: {S:Number,M:Number,L:Number,XL:Number},
     description: String
 })
 
-module.exports = model('Jerseys', jerseysSchema)
+module.exports = model('Jersey', jerseysSchema)

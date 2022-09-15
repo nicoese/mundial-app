@@ -25,4 +25,4 @@ const usersSchema = new Schema({
 
 })
 
-module.exports = model('Users', usersSchema)
+module.exports = model('User', usersSchema)

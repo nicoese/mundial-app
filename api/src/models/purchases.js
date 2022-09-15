@@ -17,4 +17,4 @@ const purchasesSchema = new Schema({
     totalPrice: Number
     })
 
-module.exports = model('Purchases',purchasesSchema)
+module.exports = model('Purchase',purchasesSchema)
