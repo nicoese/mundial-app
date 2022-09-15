@@ -13,4 +13,4 @@ const jerseysSchema = new Schema({
     description: String
 })
 
-module.exports = model('Jerseys', jerseysSchema)
+module.exports = model('Jersey', jerseysSchema)

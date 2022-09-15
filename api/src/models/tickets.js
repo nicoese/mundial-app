@@ -14,4 +14,4 @@ const ticketsSchema = new Schema({
     sector: String
 })
 
-module.exports = model('Tickets',ticketsSchema)
+module.exports = model('Ticket',ticketsSchema)
