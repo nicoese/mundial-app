@@ -1,26 +1,7 @@
 
-/* import axios from 'axios' */
-
 import axios from "axios";
+/* export const getState = () => {
 
-export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
-export const SHUFFLE_PRODUCTS = 'SHUFFLE_PRODUCTS'
-export const SET_CURRENT_PRODUCTS = 'SET_CURRENT_PRODUCTS'
-
-const REACT_APP_API_URL = process.env.REACT_APP_API_URL
-
-export const getAllProducts = () => {
-    return async (dispatch) => {
-        const json = await axios.get(`${REACT_APP_API_URL}/products`)
-        dispatch({
-            type: GET_ALL_PRODUCTS,
-            payload: json.data
-        })
-
-    }
-}
-
-export const shuffleProducts = () => {
     return (dispatch) => {
         return dispatch({
             type: SHUFFLE_PRODUCTS
@@ -35,4 +16,32 @@ export const setCurrentProducts = (pageNumber) => {
             payload: 1
         })
     }
+} */
+
+/* TYPES */
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const GET_BYNAME = "GET_BYNAME";
+
+/* ACTIONS */
+export function getProducts() {
+  return async function (dispatch) {
+    let products = await axios.get(`http://localhost:3001/(completarruta)`);
+    dispatch({
+      type: GET_PRODUCTS,
+      payload: products.data,
+    });
+  };
+}
+export function getByName(name) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get("http://localhost:3001/(completarruta)?name=" + name);
+      return dispatch({
+        type: GET_BYNAME,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }
