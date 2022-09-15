@@ -1,3 +1,4 @@
+
 import { useDispatch } from "react-redux";
 /* import { getState } from "./redux/actions"; */
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -5,6 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Landing from "./components/Landing/Landing.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import "./App.css";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -16,9 +18,11 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Landing} />
+
         <Route exact path="/home" component={NavBar} />
       </Switch>
       
+
     </BrowserRouter>
   );
 }

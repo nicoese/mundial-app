@@ -1,9 +1,19 @@
+
 import axios from "axios";
 /* export const getState = () => {
+
     return (dispatch) => {
         return dispatch({
-            type: 'test',
-            payload: 'test state'
+            type: SHUFFLE_PRODUCTS
+        })
+    }
+}
+
+export const setCurrentProducts = (pageNumber) => {
+    return dispatch => {
+        return dispatch({
+            type: SET_CURRENT_PRODUCTS,
+            payload: 1
         })
     }
 } */
