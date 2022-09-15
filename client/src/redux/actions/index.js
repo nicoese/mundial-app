@@ -4,6 +4,7 @@ import axios from "axios";
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 export const SHUFFLE_PRODUCTS = 'SHUFFLE_PRODUCTS'
 export const SET_CURRENT_PRODUCTS = 'SET_CURRENT_PRODUCTS'
+export const SET_SORT_CRITERIA = 'SET_SORT_CRITERIA'
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
@@ -30,7 +31,16 @@ export const setCurrentProducts = (pageNumber) => {
     return dispatch => {
         return dispatch({
             type: SET_CURRENT_PRODUCTS,
-            payload: 1
+            payload: pageNumber ? pageNumber : 1
+        })
+    }
+}
+
+export const setSortCriteria = (criteria) => {
+    return dispatch => {
+        return dispatch({
+            type: SET_SORT_CRITERIA,
+            payload: criteria
         })
     }
 }
