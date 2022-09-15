@@ -1,3 +1,4 @@
+
 import './App.css';
 import './assets/main.css'
 import './assets/tailwind.css'
@@ -7,12 +8,14 @@ import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {getAllProducts, setCurrentProducts, shuffleProducts} from "./redux/actions";
 import {useNavigate} from "react-router";
+import Landing from "./components/Landing/Landing.jsx";
+import NavBar from "./components/NavBar/NavBar.jsx";
 
 function About() {
     return 'about';
 }
 
-function App() {
+
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -28,6 +31,7 @@ function App() {
             {/*<BrowserRouter>*/}
 
                 <Routes>
+                    <Route exact path="/" component={Landing} />
                     <Route exact path={'/products'} element={<ProductsContainer/>}/>
                     <Route path={'/about'} element={<About/>}/>
                     <Route path={'/redirect'} element=<Navigate to={'/about'}/> />
@@ -37,6 +41,6 @@ function App() {
         </div>
 
     );
-}
+
 
 export default App;

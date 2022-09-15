@@ -5,6 +5,8 @@ export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 export const SHUFFLE_PRODUCTS = 'SHUFFLE_PRODUCTS'
 export const SET_CURRENT_PRODUCTS = 'SET_CURRENT_PRODUCTS'
 export const SET_SORT_CRITERIA = 'SET_SORT_CRITERIA'
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const GET_BYNAME = "GET_BYNAME";
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
@@ -43,4 +45,29 @@ export const setSortCriteria = (criteria) => {
             payload: criteria
         })
     }
+} */
+
+
+/* ACTIONS */
+export function getProducts() {
+  return async function (dispatch) {
+    let products = await axios.get(`http://localhost:3001/(completarruta)`);
+    dispatch({
+      type: GET_PRODUCTS,
+      payload: products.data,
+    });
+  };
+}
+export function getByName(name) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get("http://localhost:3001/(completarruta)?name=" + name);
+      return dispatch({
+        type: GET_BYNAME,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }
