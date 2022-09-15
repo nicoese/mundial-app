@@ -453,6 +453,10 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .flex {
   display: flex;
 }
@@ -461,12 +465,6 @@ video {
 }
 .w-52 {
   width: 13rem;
-}
-.grid-cols-5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-.grid-cols-8 {
-  grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -477,54 +475,14 @@ video {
 .items-center {
   align-items: center;
 }
-.justify-center {
-  justify-content: center;
-}
-.gap-20 {
-  gap: 5rem;
-}
-.gap-10 {
-  gap: 2.5rem;
-}
-.gap-28 {
-  gap: 7rem;
-}
-.gap-5 {
-  gap: 1.25rem;
-}
-.gap-2 {
-  gap: 0.5rem;
-}
 .gap-1 {
   gap: 0.25rem;
 }
 .gap-y-20 {
   row-gap: 5rem;
 }
-.gap-x-20 {
-  column-gap: 5rem;
-}
-.gap-y-5 {
-  row-gap: 1.25rem;
-}
-.self-center {
-  align-self: center;
-}
-.justify-self-center {
-  justify-self: center;
-}
-.rounded {
-  border-radius: 0.25rem;
-}
 .text-center {
   text-align: center;
-}
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-.line-through {
-  text-decoration-line: line-through;
 }
 
 .btn {
