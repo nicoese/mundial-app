@@ -1,19 +1,22 @@
-import {} from "../actions"
+import { GET_BYNAME, GET_PRODUCTS } from "../actions";
 
 const initialState = {
-    test_state: ''
-}
+  products: [],
+};
 
 export const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-
-        case 'test':
-            return {
-                ...state,
-                test_state: action.payload
-            }
-
-        default:
-            return state
-    }
-}
+  switch (action.type) {
+    case GET_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+      };
+    case GET_BYNAME:
+      return {
+        ...state,
+        products: action.payload,
+      };
+    default:
+      return state;
+  }
+};
