@@ -1,4 +1,6 @@
 
+/* import axios from 'axios' */
+
 import axios from "axios";
 
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'

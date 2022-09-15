@@ -1,27 +1,25 @@
-import './App.css';
-import './assets/main.css'
-import './assets/tailwind.css'
-import {Route} from "react-router-dom";
-import {ProductsContainer} from "./react/components/ProductsContainer";
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
-import {getAllProducts, setCurrentProducts, shuffleProducts} from "./redux/actions";
+
+import "./App.css";
+import { useDispatch } from "react-redux";
+import { getState } from "./redux/actions";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import Landing from "./components/Landing";
 
 function App() {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
-
-    useEffect(async () => {
-        await dispatch(getAllProducts())
-        dispatch(shuffleProducts())
-        dispatch(setCurrentProducts())
-    }, [])
-
-    return (
-        <div className="App">
-                <Route exact path={'/'} component={ProductsContainer}/>
-        </div>
-    );
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Landing} />
+      </Switch>
+      <div className="App">
+        <h1>MUNDIAL</h1>
+        <button onClick={() => dispatch(getState())}>test</button>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
