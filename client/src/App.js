@@ -20,7 +20,7 @@ function App(){
 
 
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+    /* const navigate = useNavigate() */
 
     useEffect(async () => {
         await dispatch(getAllProducts())
@@ -29,7 +29,7 @@ function App(){
     }, [])
 
     // return <div className="App flex flex-col items-center">
-    return <div className="App flex flex-col justify-center">
+    return <div className="flex flex-col justify-center">
 
                 <Routes>
                     <Route exact path={"/"} element={<Landing />} />
