@@ -8,13 +8,15 @@ import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {getAllProducts, setCurrentProducts, shuffleProducts} from "./redux/actions";
 import {useNavigate} from "react-router";
-import Landing from "./components/Landing/Landing.jsx";
-import NavBar from "./components/NavBar/NavBar.jsx";
+// import Landing from "./react/components/Landing/Landing.jsx";
+import Landing from "./react/components/Landing/Landing.jsx";
+import {Products} from "./react/components/Products";
 
 function About() {
     return 'about';
 }
 
+function App(){
 
 
     const dispatch = useDispatch()
@@ -26,21 +28,18 @@ function About() {
         dispatch(setCurrentProducts())
     }, [])
 
-    return (
-        <div className="App">
-            {/*<BrowserRouter>*/}
+    // return <div className="App flex flex-col items-center">
+    return <div className="App flex flex-col justify-center">
 
                 <Routes>
-                    <Route exact path="/" component={Landing} />
-                    <Route exact path={'/products'} element={<ProductsContainer/>}/>
-                    <Route path={'/about'} element={<About/>}/>
+                    <Route exact path={"/"} element={<Landing />} />
+                    <Route exact path={'/products'} element={<Products />}/>
+                    <Route path={'/about'} element={<About />}/>
                     <Route path={'/redirect'} element=<Navigate to={'/about'}/> />
                 </Routes>
-            {/*</BrowserRouter>*/}
 
         </div>
 
-    );
-
+}
 
 export default App;

@@ -453,6 +453,9 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.m-2 {
+  margin: 0.5rem;
+}
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -466,20 +469,47 @@ video {
 .w-52 {
   width: 13rem;
 }
+.max-w-4xl {
+  max-width: 56rem;
+}
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.flex-row {
+  flex-direction: row;
 }
 .flex-col {
   flex-direction: column;
 }
+.flex-col-reverse {
+  flex-direction: column-reverse;
+}
 .items-center {
   align-items: center;
+}
+.justify-center {
+  justify-content: center;
 }
 .gap-1 {
   gap: 0.25rem;
 }
 .gap-y-20 {
   row-gap: 5rem;
+}
+.self-auto {
+  align-self: auto;
+}
+.self-start {
+  align-self: flex-start;
+}
+.self-end {
+  align-self: flex-end;
+}
+.self-center {
+  align-self: center;
+}
+.p-10 {
+  padding: 2.5rem;
 }
 .text-center {
   text-align: center;

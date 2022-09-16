@@ -62,9 +62,6 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
       };
-    default:
-      return state;
-  }
 
 
         default:
