@@ -20,7 +20,26 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
-
+router.get('/find', async (req,res,next)=>{
+    try{
+        //const docs = await User.find({ email: { $regex: 'gmail' } });
+        const {name} = req.query
+        let acc = await Accesories.find({name:{
+            $regex: name , $options: 'i'
+        }})
+        let jer = await Jerseys.find({name:{
+            $regex: name , $options: 'i'
+        }})
+        let tick = await Tickets.find({name:{
+            $regex: name , $options: 'i'
+        }})
+        let arr = []
+        arr = [...acc,...jer,...tick]
+        res.status(200).send(arr)
+    }catch(err){
+        next(err)
+    }
+})
 
 //esta ruta existe solo con el proposito de insertar todos los datos en la BD, no utilizar
 router.post('/insert_products',async (req,res,next)=>{
