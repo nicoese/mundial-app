@@ -1,9 +1,10 @@
 import './App.css';
+import Info from './Componentes/Info'
 
 function App() {
   return (
     <div className="App">
-      <h1>MUNDIAL</h1>
+      <Info />
     </div>
   );
 }
