@@ -2,413 +2,392 @@
   "products": {
     "jerseys":[
       {
-        "id": 1,
         "name": "Camiseta Titular Argentina ",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$16.999",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},  
+        "price": 16.999,
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camiseta-adidas-argentina-2022-3.jpg"
       },
       {
-        "id": 2,
         "name": "Camiseta Alternativa Argentina",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$16.999",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 16999,
         "img": "https://www.afashop.com.ar/ccstore/v1/images/?source=/file/v3925886948759474626/products/HB9220_FR_Torso_eCom.jpg&height=475&width=475"
       },
       {
-        "id": 3,
         "name": "Camiseta Titular Brasil",
         "brand": "Nike",
-        "stock": 10,
-        "price": "$15.500",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 15500,
         "img": "https://image-service.onefootball.com/transform?w=280&h=280&dpr=2&image=https%3A%2F%2Fpanamagol.com%2Fwp-content%2Fuploads%2F2022%2F08%2Fcamisetas-nike-brasil-2022-3.jpg"
       },
       {
-        "id": 4,
+
         "name": "Camiseta Alternativa Brasil",
         "brand": "Nike",
-        "stock": 10,
-        "price": "$15.500",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 15500,
         "img": "https://sc2.elpais.com.uy/files/article_default_content/uploads/2022/08/31/630f79dfdcddc.jpeg"
       },
       {
-        "id": 5,
+
         "name": "Camiseta Titular Uruguay",
         "brand": "Puma",
-        "stock": 10,
-        "price": "$12.500",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 12500,
         "img": "https://cdn11.bigcommerce.com/s-3stx4pub31/images/stencil/1280x1280/products/6842/20123/camiseta_uruguay-2022__83116.1660137281.jpg?c=2?imbypass=on"
       },
       {
-        "id": 6,
+
         "name": "Camiseta Alternativa Uruguay",
         "brand": "Puma",
-        "stock": 10,
-        "price": "$12.500",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 12500,
         "img": "https://media.subrayado.com.uy/p/fdf0017fdf64cb715330b9542f43d889/adjuntos/230/imagenes/003/141/0003141448/485x270/smart/puma-uruguayjpg.jpg"
       },
       {
-        "id": 7,
+
         "name": "Camiseta Titular España",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$13.500",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 13500,
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-adidas-espana-2022-1.jpg"
       },
       {
-        "id": 8,
+
         "name": "Camiseta Alternativa España",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$13.500",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 13500,
         "img": "https://www.futbolemotion.com/imagesarticulos/173985/grandes/camiseta-adidas-espana-segunda-equipacion-mundial-qatar-2022-nino-glow-blue-glory-blue-0.jpg"
       },
       {
-        "id": 9,
+
         "name": "Camiseta Titular Mexico",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$13.800",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 13800,
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camiseta-adidas-mexico-2022-5.jpg"
       },
       {
-        "id": 10,
+
         "name": "Camiseta Alternativa Mexico",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$13.800",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 13800,
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camiseta-away-adidas-mexico-2022-3.jpg"
       },
       {
-        "id": 11,
+
         "name": "Camiseta Alternativa Japon",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$14.300",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 14300,
         "img": "https://www.futbolemotion.com/imagesarticulos/174003/grandes/camiseta-adidas-japon-segunda-equipacion-mundial-qatar-2022-white-0.jpg"
       },
       {
-        "id": 12,
+
         "name": "Camiseta Titular Belgica",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$13.800",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 13800,
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-adidas-belgica-2022-2.jpg"
       },
       {
-        "id": 13,
+
         "name": "Camiseta Alternativa Belgica",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$13.800",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 13800,
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-adidas-belgica-2022-5.jpg"
       },
       {
-        "id": 14,
+
         "name": "Camiseta Titular Alemania",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$15.000",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 15000,
         "img": "https://cdn.shopify.com/s/files/1/0567/6639/8509/products/AAlemania_480x480.jpg?v=1661883189"
       },
       {
-        "id": 15,
+
         "name": "Camiseta Alternativa Alemania",
         "brand": "Adidas",
-        "stock": 10,
-        "price": "$15.000",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 15000,
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-adidas-alemania-2022-3.jpg"
       },
       {
-        "id": 16,
+
         "name": "Camiseta Titular Ecuador",
         "brand": "Marathon",
-        "stock": 10,
-        "price": "$12.800",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 12800,
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-marathon-ecuador-2022-2.jpg"
       },
       {
-        "id": 17,
+
         "name": "Camiseta Alternativa Ecuador",
         "brand": "Marathon",
-        "stock": 10,
-        "price": "$12.800",
-        "size": ["S", "M", "L", "XL"],
+        "stock": {"S":10,"M":10,"L":10,"XL":10},
+        "price": 12800,
         "img": "https://elcomercio.pe/resizer/Xhghti1FlvObGWL4aq5st2z7-vE=/400x0/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/QKI4HBQUOZFZ7MFOKSEDFAJS2I.jpg"
       }
     ],
     "accessories":[
       {
-        "id": 27,
         "name": "Soporte/Apoya Celular Qatar 2022",
-        "price": "$2.200",
-        "stock": 10,
+        "price": 2200,
+        "stock": {"X":10},
         "img": "https://http2.mlstatic.com/D_NQ_NP_687790-MLA51494115928_092022-O.webp"
       },
       {
-        "id": 28,
+
         "name": "Copa del mundo replica en Yeso",
-        "price": "$3.600",
-        "stock": 10,
+        "price": 3600,
+        "stock": {"X":10},
         "img": "https://http2.mlstatic.com/D_NQ_NP_946511-MLA50151925221_052022-O.webp"
       },
       {
-        "id": 29,
+
         "name": "Pelota Al Rihla",
-        "price": "$19.900",
-        "stock": 10,
+        "price": 19900,
+        "stock": {"X":10},
         "img": "https://http2.mlstatic.com/D_NQ_NP_754652-MLA50927396729_072022-O.webp"
       },
       {
-        "id": 30,
+
         "name": "Album de figuritas Panini Original",
-        "price": "$2.499",
-        "stock": 10,
+        "price": 2499,
+        "stock": {"X":10},
         "img": "https://http2.mlstatic.com/D_NQ_NP_765945-MLA51234412137_082022-O.webp"
       },
       {
-        "id": 31,
+
         "name": "x10 Sobres figuritas Panini",
-        "price": "$2.299",
+        "price": 2299,
+        "stock": {"X":10},
         "img": "https://http2.mlstatic.com/D_NQ_NP_767629-MLA51277747160_082022-O.webp"
       },
       {
-        "id": 32,
+
         "name": "Taza ceramica mascota mundial",
-        "price": "$1.299",
-        "stock": 10,
+        "price": 1299,
+        "stock": {"X":10},
         "img": "https://http2.mlstatic.com/D_NQ_NP_847633-MLA49548585941_042022-O.webp"
       },
       {
-        "id": 33,
+
         "name": "Vuvuzela celeste y blanca",
-        "price": "$1.890",
-        "stock": 10,
+        "price": 1890,
+        "stock": {"X":10},
         "img": "https://http2.mlstatic.com/D_NQ_NP_999908-MLA50775262031_072022-O.webp"
       },
       {
-        "id": 34,
+
         "name": "Gorra Qatar 2022",
-        "price": "$3.200",
-        "stock": 10,
+        "price": 3200,
+        "stock": {"X":10},
         "img": "https://i0.wp.com/www.argensend.com/wp-content/uploads/2022/07/D_NQ_NP_2X_823981-MLA49581413345_042022-F.jpg?fit=1040%2C1071&ssl=1"
       },
       {
-        "id": 35,
+
         "name": "Llavero Qatar 2022",
-        "price": "$700",
-        "stock": 10,
+        "price": 700,
+        "stock": {"X":10},
         "img": "https://cf.shopee.com.mx/file/048d57a58d7d0fe95c461d29c3afbdb9"
       },
       {
-        "id": 36,
+
         "name": "Set de maquillaje celeste y blanco",
-        "price": "$999",
-        "stock": 10,
+        "price": 999,
+        "stock": {"X":10},
         "img": "https://http2.mlstatic.com/D_NQ_NP_753092-MLA51263570081_082022-V.jpg"
       }
     ],
     "tickets":[
       {
-        "id": 46,
-        "match": "Qatar vs Ecuador",
+        "name": "Qatar vs Ecuador",
         "stadium": "Al Bayt Stadium",
-        "date": "20/11",
-        "price": "$130.000",
-        "sector": "Category 3"
+        "date": "20/11/22",
+        "price": 130000,
+        "sector": "Category 1"
       },
       {
-        "id": 47,
-        "match": "England vs Iran",
+
+        "name": "England vs Iran",
         "stadium": "Khalifa International Stadium",
-        "date": "21/11",
-        "price": "$38.800",
+        "date": "21/11/22",
+        "price": 38800,
         "sector": "Category 3"
       },
       {
-        "id": 48,
-        "match": "Argentina vs Arabia Saudita",
+
+        "name": "Argentina vs Arabia Saudita",
         "stadium": "Luisal Stadium",
-        "date": "22/11",
-        "price": "$61.000",
-        "sector": "Category 3"
+        "date": "22/11/22",
+        "price": 61000,
+        "sector": "Category 1"
       },
       {
-        "id": 49,
-        "match": "Francia vs Australia",
+
+        "name": "Francia vs Australia",
         "stadium": "Al Janoub Stadium",
-        "date": "22/11",
-        "price": "$55.000",
+        "date": "22/11/22",
+        "price": 55000,
         "sector": "Category 3"
       },
       {
-        "id": 50,
-        "match": "Brazil vs Serbia",
+
+        "name": "Brazil vs Serbia",
         "stadium": "Lusail Stadium",
-        "date": "24/11",
-        "price": "$52.000",
-        "sector": "Category 3"
+        "date": "24/11/22",
+        "price": 52000,
+        "sector": "Category 2"
       },
       {
-        "id": 51,
-        "match": "Portugal vs Ghana",
+
+        "name": "Portugal vs Ghana",
         "stadium": "Stadium 974",
-        "date": "24/11",
-        "price": "$47.000",
+        "date": "24/11/22",
+        "price": 47000,
         "sector": "Category 3"
       },
       {
-        "id": 52,
-        "match": "Uruguay vs Korea Del Sur",
+
+        "name": "Uruguay vs Korea Del Sur",
         "stadium": "Education City Stadium",
-        "date": "24/11",
-        "price": "$37.000",
+        "date": "24/11/22",
+        "price": 37000,
         "sector": "Category 3"
       },
       {
-        "id": 53,
-        "match": "Holanda vs Ecuador",
+
+        "name": "Holanda vs Ecuador",
         "stadium": "Khalifa International Stadium",
-        "date": "25/11",
-        "price": "$38.000",
+        "date": "25/11/22",
+        "price": 38000,
         "sector": "Category 3"
       },
       {
-        "id": 54,
-        "match": "Inglaterra vs USA",
+
+        "name": "Inglaterra vs USA",
         "stadium": "Al Bayt Stadium",
-        "date": "25/11",
-        "price": "$38.000",
+        "date": "25/11/22",
+        "price": 38000,
         "sector": "Category 3"
       },
       {
-        "id": 55,
-        "match": "Argentina vs Mexico",
+
+        "name": "Argentina vs Mexico",
         "stadium": "Lusail Stadium",
-        "date": "26/11",
-        "price": "$55.000",
-        "sector": "Category 3"
+        "date": "26/11/22",
+        "price": 55000,
+        "sector": "Category 1"
       },
       {
-        "id": 56,
-        "match": "Francia vs Dinamarca",
+
+        "name": "Francia vs Dinamarca",
         "stadium": "Stadium 974",
-        "date": "26/11",
-        "price": "$42.000",
-        "sector": "Category 3"
+        "date": "26/11/22",
+        "price": 42000,
+        "sector": "Category 2"
       },
       {
-        "id": 57,
-        "match": "España vs Alemania",
+
+        "name": "España vs Alemania",
         "stadium": "Al Bayt Stadium",
-        "date": "27/11",
-        "price": "$62.000",
-        "sector": "Category 3"
+        "date": "27/11/22",
+        "price": 62000,
+        "sector": "Category 1"
       },
       {
-        "id": 58,
-        "match": "Croacia vs Canada",
+
+        "name": "Croacia vs Canada",
         "stadium": "Khalifa International Stadium",
-        "date": "27/11",
-        "price": "$32.000",
+        "date": "27/11/22",
+        "price": 32000,
         "sector": "Category 3"
       },
       {
-        "id": 59,
-        "match": "Brazil vs Suiza",
+
+        "name": "Brazil vs Suiza",
         "stadium": "Stadium 974",
-        "date": "28/11",
-        "price": "$45.000",
+        "date": "28/11/22",
+        "price": 45000,
         "sector": "Category 3"
       },
       {
-        "id": 60,
-        "match": "Portugal vs Uruguay",
+
+        "name": "Portugal vs Uruguay",
         "stadium": "Lusail Stadium",
-        "date": "28/11",
-        "price": "$44.000",
+        "date": "28/11/22",
+        "price": 44000,
         "sector": "Category 3"
       },
       {
-        "id": 61,
-        "match": "Holanda vs Qatar",
+
+        "name": "Holanda vs Qatar",
         "stadium": "Al Bayt Stadium",
-        "date": "29/11",
-        "price": "$45.000",
+        "date": "29/11/22",
+        "price": 45000,
         "sector": "Category 3"
       },
       {
-        "id": 62,
-        "match": "Ecuador vs Senegal",
+
+        "name": "Ecuador vs Senegal",
         "stadium": "Khalifa International Stadium",
-        "date": "29/11",
-        "price": "$33.000",
+        "date": "29/11/22",
+        "price": 33000,
         "sector": "Category 3"
       },
       {
-        "id": 63,
-        "match": "Argentina vs Polonia",
+
+        "name": "Argentina vs Polonia",
         "stadium": "Stadium 974",
-        "date": "30/11",
-        "price": "$54.000",
-        "sector": "Category 3"
+        "date": "30/11/22",
+        "price": 54000,
+        "sector": "Category 2"
       },
       {
-        "id": 64,
-        "match": "Tunes vs Francia",
+
+        "name": "Tunes vs Francia",
         "stadium": "Education City Stadium",
-        "date": "30/11",
-        "price": "$47.000",
+        "date": "30/11/22",
+        "price": 47000,
         "sector": "Category 3"
       },
       {
-        "id": 65,
-        "match": "Belgica vs Croacia",
+
+        "name": "Belgica vs Croacia",
         "stadium": "Ahmed Bin Ali Stadium",
-        "date": "01/12",
-        "price": "$46.000",
-        "sector": "Category 3"
+        "date": "01/12/22",
+        "price": 46000,
+        "sector": "Category 2"
       },
       {
-        "id": 66,
-        "match": "España vs Japon",
+
+        "name": "España vs Japon",
         "stadium": "Khalifa International Stadium",
-        "date": "01/12",
-        "price": "$40.000",
+        "date": "01/12/22",
+        "price": 40000,
         "sector": "Category 3"
       },
       {
-        "id": 67,
-        "match": "Uruguay vs Ghana",
+
+        "name": "Uruguay vs Ghana",
         "stadium": "Al Janoub Stadium",
-        "date": "02/12",
-        "price": "$33.000",
+        "date": "02/12/22",
+        "price": 33000,
         "sector": "Category 3"
       },
       {
-        "id": 68,
-        "match": "Brazil vs Camerun",
+
+        "name": "Brazil vs Camerun",
         "stadium": "Lusail Stadium",
-        "date": "02/12",
-        "price": "$39.000",
+        "date": "02/12/22",
+        "price": 39000,
         "sector": "Category 3"
       }
     ]

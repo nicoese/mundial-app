@@ -18,11 +18,26 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const mongoose = require("mongoose");
+require('dotenv').config();
 
-// Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
-  });
-});
+
+
+const {MONGO_URL, MONGO_USER, MONGO_PASS} = process.env
+
+
+const mongooseOptions = {
+    user: MONGO_USER,
+    pass: MONGO_PASS
+}
+
+
+mongoose.connect(MONGO_URL,
+    mongooseOptions)
+    .then(db => {
+        console.log("mongo connect at", db.connection.host)
+        server.listen(3001, () => {
+            console.log('%s listening at 3001'); // eslint-disable-line no-console
+        });
+    })
+    .catch(err => console.log(err))
