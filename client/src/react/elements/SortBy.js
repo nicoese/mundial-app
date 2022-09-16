@@ -1,8 +1,7 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllProducts, setCurrentProducts, setSortCriteria, shuffleProducts} from "../../redux/actions";
+import {getAllProducts, setCurrentProducts, setSortCriteria} from "../../redux/actions";
 import {useLocation, useNavigate} from "react-router";
-import {Link, Router} from "react-router-dom";
 
 
 export const SortBy = () => {
@@ -20,30 +19,28 @@ export const SortBy = () => {
     const location = useLocation()
     const {currentPage} = useSelector(state => state)
 
-    useEffect(async () => {
+    useEffect( () => {
 
-        await delay(1200)
+        delay(1200).then(e => {
+            const queryList = getQueryList()
+            if(queryList.length > 0){
+                if (findSortQueryParam(queryList)){
+                    const criteria = findSortQueryParam(queryList).sort
+                    dispatchSorting(criteria)
+                    const option = options.find(op => op.value === criteria)
+                    set_sort_criteria(option.name)
+                }
 
-        const queryList = getQueryList()
-        if(queryList.length > 0){
-            if (findSortQueryParam(queryList)){
-                const criteria = findSortQueryParam(queryList).sort
-                dispatchSorting(criteria)
-                const option = options.find(op => op.value === criteria)
-                set_sort_criteria(option.name)
             }
+        })
 
-        }
-
-    }, [])
+    }, [options])
 
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
     }
 
     const handleChange = (ev) => {
-
-        console.log(ev.target.selectedIndex)
 
         const criteriaHTML = ev.target[ev.target.selectedIndex]
         set_sort_criteria(criteriaHTML.innerText)
@@ -67,7 +64,6 @@ export const SortBy = () => {
 
         const queryList = getQueryList()
         const ifSorting = findSortQueryParam(queryList)
-        console.log(ifSorting)
         dispatchSorting(ifSorting.sort)
 
     }
@@ -85,10 +81,10 @@ export const SortBy = () => {
         return queryList.find(e => e.hasOwnProperty('sort'))
     }
 
-    const dispatchSorting = (ifSorting) => {
+     function dispatchSorting (ifSorting) {
         if(ifSorting){
             dispatch(setSortCriteria(ifSorting))
-            return dispatch(setCurrentProducts(currentPage))
+            dispatch(setCurrentProducts(currentPage))
         }
     }
 
@@ -96,7 +92,6 @@ export const SortBy = () => {
         set_sort_criteria('')
         await dispatch(getAllProducts())
 
-        // dispatch(shuffleProducts())
         dispatch(setCurrentProducts(1))
 
 
@@ -105,12 +100,11 @@ export const SortBy = () => {
 
     return <div className={'flex flex-col-reverse items-end justify-center w-[50%] p-10 sm:p-4'}>
         <select onChange={(event) => {
-            console.log(event.target.selectedIndex)
             handleChange(event)
         }} className={'my-4'} value={sort_criteria} name="select-sort" id="">
             <option>---</option>
             {options.map(op => {
-                return <option value={op.value}>{op.name}</option>
+                return <option key={op.name} value={op.value}>{op.name}</option>
             })}
 
 

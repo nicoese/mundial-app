@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import "../components/Landing/Landing.css" //solo para tomar las fuentes
 
-export const ProductCard = ({ name, price, img, brand, stadium }) => {
+export const ProductCard = ({ id, name, price, img, brand, stadium }) => {
   return (
-    <Link className="flex flex-col max-w-sm bg-white shadow-md rounded-md">
-      <div className="flex flex-col max-w-sm bg-white h-[400px] rounded-md">
+    <Link className="flex flex-col max-w-sm bg-white shadow-md rounded-md" to={`${id}`}>
+      <div className="flex flex-col max-w-sm bg-white h-[400px] rounded-md" key={key}>
         {img ? (
           <div className="flex items-center justify-center w-full h-[15em]">
             <img className="h-[12em]" src={img} alt="" />
@@ -18,6 +18,7 @@ export const ProductCard = ({ name, price, img, brand, stadium }) => {
         <div className="mb-4 mt-1">
           <p className="font-[Lato] text-xl w-full text-start pl-[1.75em] ">$ {new Intl.NumberFormat().format(price)}</p>
           <p className="font-[Lato] text-2xl font-extrabold">{brand ? `marca ${brand}` : stadium ? `estadio ${stadium}` : ""}</p>
+
         </div>
         <div className="w-full flex items-center justify-around">
           <button className="w-[8em] h-[3em] mr-2 rounded-md bg-red-600 text-white font-bold font-[Lato]"> Add to cart </button>

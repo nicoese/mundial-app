@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getProducts, getByName } from "../../../redux/actions";
+import {getByName, setCurrentProducts} from "../../../redux/actions";
 import { HiSearch } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
 
@@ -35,8 +35,18 @@ const NavBar = () => {
   
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(name)
     dispatch(getByName(name));
-    setName("");
+
+    delay(1000).then(r => {
+      dispatch(setCurrentProducts(1))
+      setName("");
+    })
+
+  }
+
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
   }
 
   return (

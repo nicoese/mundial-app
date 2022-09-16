@@ -60,8 +60,9 @@ export const setSortCriteria = (criteria) => {
 
     export function getByName(name) {
         return async function (dispatch) {
+            console.log(name)
             try {
-                const json = await axios.get("http://localhost:3001/(completarruta)?name=" + name);
+                const json = await axios.get(`${REACT_APP_API_URL}/products/find?name=${name}`);
                 return dispatch({
                     type: GET_BYNAME,
                     payload: json.data,
