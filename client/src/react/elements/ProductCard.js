@@ -1,11 +1,11 @@
 import {Link} from "react-router-dom";
 
 
-export const ProductCard = ({name, price, img, brand, stadium}) => {
+export const ProductCard = ({id, key, name, price, img, brand, stadium}) => {
 
 
-    return <Link>
-        <div className={'flex flex-col items-center'}>
+    return <Link to={`${id}`}>
+        <div key={key} className={'flex flex-col items-center'}>
             {img ? <img className={'w-52'} src={img} alt=""/> : 'no available image'}
             <p>{name}</p>
             <p>$ {new Intl.NumberFormat().format(price)}</p>
