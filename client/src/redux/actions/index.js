@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
@@ -45,29 +44,31 @@ export const setSortCriteria = (criteria) => {
             payload: criteria
         })
     }
-} */
-
-
-/* ACTIONS */
-export function getProducts() {
-  return async function (dispatch) {
-    let products = await axios.get(`http://localhost:3001/(completarruta)`);
-    dispatch({
-      type: GET_PRODUCTS,
-      payload: products.data,
-    });
-  };
 }
-export function getByName(name) {
-  return async function (dispatch) {
-    try {
-      const json = await axios.get("http://localhost:3001/(completarruta)?name=" + name);
-      return dispatch({
-        type: GET_BYNAME,
-        payload: json.data,
-      });
-    } catch (err) {
-      console.log(err);
+
+
+    /* ACTIONS */
+    export function getProducts() {
+        return async function (dispatch) {
+            let products = await axios.get(`http://localhost:3001/(completarruta)`);
+            dispatch({
+                type: GET_PRODUCTS,
+                payload: products.data,
+            });
+        };
     }
-  };
+
+    export function getByName(name) {
+        return async function (dispatch) {
+            try {
+                const json = await axios.get("http://localhost:3001/(completarruta)?name=" + name);
+                return dispatch({
+                    type: GET_BYNAME,
+                    payload: json.data,
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
 }

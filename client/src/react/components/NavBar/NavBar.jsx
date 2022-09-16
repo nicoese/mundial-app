@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getProducts, getByName } from "../../redux/actions";
+import { getProducts, getByName } from "../../../redux/actions";
 import { HiSearch } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
 
 
 import './NavBar.css'
+import {useNavigate} from "react-router";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const navigate = useNavigate()
 
   /* funcion para el menu desplegable */
   let click = false
@@ -41,7 +43,7 @@ const NavBar = () => {
     <>
     <header>
         <nav className="navbar-ctn">
-          <h1 className="navbar-title">MundiApp</h1>
+          <h1 onClick={(ev) => navigate('/')} className="navbar-title">MundiApp</h1>
           <ul className="navbar-ul">
             <Link className="navbar-a"><li className="navbar-li">Inicio</li></Link>
             <Link className="navbar-a"><li className="navbar-li">Nosotros</li></Link>

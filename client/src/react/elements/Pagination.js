@@ -51,7 +51,7 @@ export const Pagination = () => {
         dispatch(setCurrentProducts(pageNumber))
     }
 
-    return <div>
+    return <div className={'p-10'}>
         {pageNumbers.map(number => <button className={'btn'} key={number} onClick={handleClick}>{number + 1}</button>)}
     </div>
 }

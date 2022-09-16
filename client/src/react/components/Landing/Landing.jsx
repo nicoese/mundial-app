@@ -22,13 +22,14 @@ const Landing = () => {
 
   return (
     <>
+
       <header>
         <nav className="nav-ctn">
           <h1 className="nav-title">MundiApp</h1>
           <ul className="nav-ul">
             <Link className="nav-a"><li className="nav-li">Inicio</li></Link>
             <Link className="nav-a"><li className="nav-li">Nosotros</li></Link>
-            <Link className="nav-a"><li className="nav-li">Productos</li></Link>
+            <Link to={'products'} className="nav-a"><li className="nav-li">Productos</li></Link>
             <Link className="nav-a"><li className="nav-li">Contacto</li></Link>
           </ul>
           <AiOutlineMenu size={28} className="nav-icon" onClick={()=> toggleMenu()}/>
@@ -49,7 +50,7 @@ const Landing = () => {
             <p className="hero-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptates unde ex animi doloribus quo distinctio explicabo voluptate! Quos nisi dolorum quas cumque hic reiciendis aut. Esse possimus vel in.</p>
             <div className="btns-ctn">
               <Link><button className="hero-btn">Registrarse</button></Link>
-              <Link><button className="hero-btn btn-s">Ver Productos</button></Link>
+              <Link to={'products'}><button className="hero-btn btn-s">Ver Productos</button></Link>
             </div>
             <div className="check-icons">
               <div className="chek">

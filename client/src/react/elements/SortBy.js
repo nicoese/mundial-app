@@ -103,7 +103,7 @@ export const SortBy = () => {
         navigate(location.pathname)
     }
 
-    return <div>
+    return <div className={'flex self-end flex-col-reverse p-10'}>
         <select onChange={(event) => {
             console.log(event.target.selectedIndex)
             handleChange(event)
@@ -115,8 +115,8 @@ export const SortBy = () => {
 
 
         </select>
-        {sort_criteria && <div>
-            <p>{sort_criteria}</p>
+        {sort_criteria && <div className={'flex'}>
+            <p className={'m-2'} >{sort_criteria}</p>
             <button onClick={handleClick}>❌</button>
         </div>}
 
