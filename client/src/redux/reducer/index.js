@@ -22,7 +22,8 @@ export const rootReducer = (state = initialState, action) => {
         case GET_ALL_PRODUCTS:
             return {
                 ...state,
-                products: [...action.payload.jerseys, ...action.payload.accessories, ...action.payload.tickets],
+                // products: [...action.payload.jerseys, ...action.payload.accessories, ...action.payload.tickets],
+                products: action.payload,
                 productsLength: state.products.length
             }
 
@@ -62,9 +63,6 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
       };
-    default:
-      return state;
-  }
 
 
         default:

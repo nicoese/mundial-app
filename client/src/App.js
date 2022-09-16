@@ -2,45 +2,48 @@
 import './App.css';
 import './assets/main.css'
 import './assets/tailwind.css'
-import {BrowserRouter, Route, Link, Routes, Navigate} from "react-router-dom";
-import {ProductsContainer} from "./react/components/ProductsContainer";
+import {Route, Routes} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {getAllProducts, setCurrentProducts, shuffleProducts} from "./redux/actions";
-import {useNavigate} from "react-router";
-import Landing from "./components/Landing/Landing.jsx";
-import NavBar from "./components/NavBar/NavBar.jsx";
+import {getAllProducts, setCurrentProducts} from "./redux/actions";
+import Landing from "./react/components/Landing/Landing.jsx";
+import {Products} from "./react/components/Products";
+import {Navigate} from "react-router";
 
 function About() {
     return 'about';
 }
 
+function App(){
 
 
     const dispatch = useDispatch()
-    const navigate = useNavigate()
 
-    useEffect(async () => {
-        await dispatch(getAllProducts())
+    useEffect( () => {
+        dispatch(getAllProducts())
         // dispatch(shuffleProducts())
-        dispatch(setCurrentProducts())
-    }, [])
 
-    return (
-        <div className="App">
-            {/*<BrowserRouter>*/}
+        delay(1000).then(e => {
+            dispatch(setCurrentProducts())
+        })
+
+    }, [dispatch])
+
+    function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+
+    return <div className="App flex flex-col justify-center">
 
                 <Routes>
-                    <Route exact path="/" component={Landing} />
-                    <Route exact path={'/products'} element={<ProductsContainer/>}/>
-                    <Route path={'/about'} element={<About/>}/>
+                    <Route exact path={"/"} element={<Landing />} />
+                    <Route exact path={'/products'} element={<Products />}/>
+                    <Route path={'/about'} element={<About />}/>
                     <Route path={'/redirect'} element=<Navigate to={'/about'}/> />
                 </Routes>
-            {/*</BrowserRouter>*/}
 
         </div>
 
-    );
-
+}
 
 export default App;

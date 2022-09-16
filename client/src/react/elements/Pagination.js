@@ -13,17 +13,18 @@ export const Pagination = () => {
         products
     } = useSelector(state => state)
 
-    useEffect(async () => {
+    useEffect( () => {
 
-        await delay(1200)
+        delay(1200).then(e => {
+            const url = new URL(window.location.href)
+            const page = url.searchParams.get('page')
 
-        const url = new URL(window.location.href)
-        const page = url.searchParams.get('page')
-
-        if (page){
-            dispatch(setCurrentProducts(Number(page)))
-        }
-    }, [])
+            if (page){
+                dispatch(setCurrentProducts(Number(page)))
+            }
+            }
+        )
+    }, [dispatch])
 
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
@@ -51,7 +52,7 @@ export const Pagination = () => {
         dispatch(setCurrentProducts(pageNumber))
     }
 
-    return <div>
+    return <div className={'p-10'}>
         {pageNumbers.map(number => <button className={'btn'} key={number} onClick={handleClick}>{number + 1}</button>)}
     </div>
 }
