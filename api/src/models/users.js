@@ -21,7 +21,12 @@ const usersSchema = new Schema({
     points:{
         type: Number,
         default: 0
-    }
+    },
+    purchases:[{
+        type:Schema.Types.ObjectId,
+        ref: 'purchases'
+    }],
+
 
 })
 
