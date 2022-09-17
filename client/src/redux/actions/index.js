@@ -6,6 +6,7 @@ export const SET_CURRENT_PRODUCTS = 'SET_CURRENT_PRODUCTS'
 export const SET_SORT_CRITERIA = 'SET_SORT_CRITERIA'
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_BYNAME = "GET_BYNAME";
+export const TEST_FILTERS = 'TEST_FILTERS'
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
@@ -46,17 +47,15 @@ export const setSortCriteria = (criteria) => {
     }
 }
 
-
-    /* ACTIONS */
-    export function getProducts() {
-        return async function (dispatch) {
-            let products = await axios.get(`http://localhost:3001/(completarruta)`);
-            dispatch({
-                type: GET_PRODUCTS,
-                payload: products.data,
-            });
-        };
+export const testFilters = (filters) => {
+    return dispatch => {
+        return dispatch({
+            type: TEST_FILTERS,
+            payload: filters
+        })
     }
+}
+
 
     export function getByName(name) {
         return async function (dispatch) {
