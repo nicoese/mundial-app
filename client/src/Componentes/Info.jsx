@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Info.module.css'
+import { NavLink } from 'react-router-dom';
 
 export default function Info() {
 
@@ -14,7 +15,7 @@ export default function Info() {
                     <li><a href="#sec-campeones">Campeones</a></li>
                     <li><a href="#sec-qatar">Qatar2022</a></li>
                     <li><a href="#sec-estadios">Estadios</a></li>
-                    <li>Tienda</li>
+                    <NavLink to='/' className={s.navlink}>Tienda</NavLink>
                 </ul>
             </nav>
 
@@ -31,7 +32,7 @@ export default function Info() {
                 <p>La Copa Mundial de Fútbol en la actualidad consta de dos etapas: una fase clasificatoria y una ronda final, considerada esta última usualmente como el evento en sí mismo. El número de participantes en esta ronda final ha variado con el paso de los años: 16 participantes hasta 1978 (a excepción de los mundiales de 1930 y 1950 con 13 participantes cada uno, y el de 1938 con 15), 24 entre 1982 y 1994, 32 desde 1998, y eventualmente serán 48 a partir de 2026.</p>
             </section>
 
-            <hr color='#D2001A' width= "70%"/>
+            <hr className={s.hrrr}/>
 
             <section className={s.secFormato} id='sec-formato'>
                 <h3>Fase de Clasificatoria:</h3>
@@ -43,7 +44,7 @@ export default function Info() {
                 <p>A estos cupos se suma el equipo del país organizador del torneo, que desde los orígenes del torneo (a excepción de 1934) ha tenido ese derecho. Los equipos campeones del torneo previo deben en la actualidad participar del proceso clasificatorio, aunque tuvieron el derecho de clasificación automática entre 1938 y 2002.</p>
             </section>
 
-            <hr color='#D2001A' width= "70%"/>
+            <hr className={s.hrrr}/>
 
             <section className={s.secCampeones} id='sec-campeones'>
                 <h3>Paises Ganadores del Mundial:</h3>
@@ -51,7 +52,7 @@ export default function Info() {
                 </div>
             </section>
 
-            <hr color='#D2001A' width= "70%"/>
+            <hr className={s.hrrr}/>
 
             <section className={s.secQatar} id='sec-qatar' >
                 <h3>Mundial Qatar 2022:</h3>
@@ -73,7 +74,7 @@ export default function Info() {
 
             </section>
 
-            <hr color='#D2001A' width= "70%"/>
+            <hr className={s.hrrr} />
 
             <section className={s.secEstadios} id='sec-estadios'>
                 <h3>Estadios Qatar 2022:</h3>
@@ -84,14 +85,14 @@ export default function Info() {
                 </p>
 
                 <ul>
-                    <li><p><b>Estadio Nacional de Lusail(Lusail):</b> 86.250 espectadores.</p> </li>
-                    <li><p><b>Estadio Ciudad de la Educación (Al-Rayyan):</b> 43.350 espectadores.</p></li>
-                    <li><p><b>Estadio Internacional Khalifa (Doha): </b>50.000 espectadores.</p></li>
-                    <li><p><b>Estadio Al Bayt (Jor):</b> 60.000 espectadores</p></li>
-                    <li><p><b>Estadio Al Thumama (Doha):</b> 40.000 espectadores</p></li>
-                    <li><p><b>Estadio Al-Rayyan (Rayyan):</b> 21.000 espectadores</p></li>
-                    <li><p><b>Estadio Ras Abu Aboud (Doha):</b> 48.000 espectadores</p></li>
-                    <li><p><b>Estadio Al Janoub (Al Wakrah):</b> 40.000 espectadores</p></li>
+                    <li><p>-<b>Estadio Nacional de Lusail(Lusail):</b> 86.250 espectadores.</p> </li>
+                    <li><p>-<b>Estadio Ciudad de la Educación (Al-Rayyan):</b> 43.350 espectadores.</p></li>
+                    <li><p>-<b>Estadio Internacional Khalifa (Doha): </b>50.000 espectadores.</p></li>
+                    <li><p>-<b>Estadio Al Bayt (Jor):</b> 60.000 espectadores</p></li>
+                    <li><p>-<b>Estadio Al Thumama (Doha):</b> 40.000 espectadores</p></li>
+                    <li><p>-<b>Estadio Al-Rayyan (Rayyan):</b> 21.000 espectadores</p></li>
+                    <li><p>-<b>Estadio Ras Abu Aboud (Doha):</b> 48.000 espectadores</p></li>
+                    <li><p>-<b>Estadio Al Janoub (Al Wakrah):</b> 40.000 espectadores</p></li>
                 </ul>
 
             </section>
