@@ -137,7 +137,6 @@
     ],
     "accessories":[
       {
-
         "name": "Soporte/Apoya Celular Qatar 2022",
         "price": 2200,
         "stock": {"X":10},
@@ -209,7 +208,6 @@
     ],
     "tickets":[
       {
-
         "name": "Qatar vs Ecuador",
         "stadium": "Al Bayt Stadium",
         "date": "20/11/22",

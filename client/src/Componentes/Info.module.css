@@ -1,0 +1,198 @@
+section[id]{
+    scroll-margin-top: 100px;
+    scroll-behavior:smooth
+}
+
+.containerPrincipal h1{
+    margin-top: 5%;
+    color: #000;
+    font-size: 3rem;
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.navbar{
+    display: flex;
+    position: sticky;
+    justify-content: center;
+    top:0;
+    width: 100%;
+    height: 10vh;
+    background-color: #D2001A;
+    box-shadow: -1px 10px 13px 0px rgba(0,0,0,0.85);
+    box-sizing: border-box;
+}
+
+.navbar ul{
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.navbar ul li{
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: #fff;
+    cursor: pointer;
+    letter-spacing:2px;
+    transition: 1s;
+    box-sizing: border-box;
+}
+
+.navbar ul a{
+    text-decoration: none;
+    color: #fff;
+    transition: 1s;
+}
+
+.navbar ul a:hover{
+    color: #000;
+}
+
+.navbar ul li:last-child{
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 9px;
+}
+
+.navbar ul li:hover{
+    color: #000;
+    border-bottom: thin solid #000;
+    box-sizing: border-box;
+}
+
+.navbar ul li:last-child:hover{
+    border: 1px solid #000;
+    color: #000
+}
+
+.secHistoria{
+    margin-top: 10% ;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    box-sizing: border-box;
+    margin-bottom: 5%;
+}
+
+.secHistoria p{
+    width: 100%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+}
+
+.secFormato{
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    box-sizing: border-box;
+    margin-bottom: 5%;
+}
+
+.secFormato h3{
+    font-weight: bold;
+    font-size: 2rem;
+    box-sizing: border-box;
+    color: #D2001A;
+}
+
+.secFormato p{
+    width: 100%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+}
+
+.secCampeones{
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    box-sizing: border-box;
+    margin-bottom: 5%;
+}
+
+.secCampeones h3{
+    font-weight: bold;
+    font-size: 2rem;
+    box-sizing: border-box;
+    color: #D2001A;
+}
+
+.divImg{
+    margin-left: 2%;
+    margin-top: 5%;
+    width: 1200px;
+    height: 90vh;
+    background-image: url('../img/campeonesMundiales.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-sizing: border-box;
+}
+
+.secQatar{
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    box-sizing: border-box;
+    margin-bottom: 5%;
+}
+
+.secQatar h3{
+    font-weight: bold;
+    font-size: 2rem;
+    box-sizing: border-box;
+    color: #D2001A;
+}
+
+.secQatar p{
+    width: 100%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+}
+
+.imgGrupos{
+    background-image: url('../img/gruposQatar.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-left: 2%;
+    margin-top: 5%;
+    width: 100%;
+    height: 90vh;
+    box-sizing: border-box;
+}
+
+.secEstadios{
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    box-sizing: border-box;
+    margin-bottom: 5%;
+}
+
+.secEstadios h3{
+    font-weight: bold;
+    font-size: 2rem;
+    box-sizing: border-box;
+    color: #D2001A;
+}
+
+.secEstadios p{
+    width: 100%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+}
