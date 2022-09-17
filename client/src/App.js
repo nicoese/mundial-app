@@ -23,17 +23,9 @@ function App(){
         dispatch(getAllProducts())
         // dispatch(shuffleProducts())
 
-        delay(1000).then(e => {
-            dispatch(setCurrentProducts())
-        })
+    // return <div className="App flex flex-col items-center">
+    return <div className="flex flex-col justify-center">
 
-    }, [dispatch])
-
-    function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
-    }
-
-    return <div className="App flex flex-col justify-center">
 
                 <Routes>
                     <Route exact path={"/"} element={<Landing />} />
