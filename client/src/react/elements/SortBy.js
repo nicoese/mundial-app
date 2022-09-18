@@ -34,7 +34,7 @@ export const SortBy = () => {
             }
         })
 
-    }, [options])
+    }, [])
 
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
@@ -94,8 +94,8 @@ export const SortBy = () => {
 
         dispatch(setCurrentProducts(1))
 
-
         navigate(location.pathname)
+        window.location.reload()
     }
 
     return <div className={'flex flex-col-reverse items-end justify-center w-[50%] p-10 sm:p-4'}>

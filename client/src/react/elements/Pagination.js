@@ -13,15 +13,15 @@ export const Pagination = () => {
         products
     } = useSelector(state => state)
 
-    useEffect( () => {
+    useEffect(() => {
 
         delay(1200).then(e => {
-            const url = new URL(window.location.href)
-            const page = url.searchParams.get('page')
+                const url = new URL(window.location.href)
+                const page = url.searchParams.get('page')
 
-            if (page){
-                dispatch(setCurrentProducts(Number(page)))
-            }
+                if (page) {
+                    dispatch(setCurrentProducts(Number(page)))
+                }
             }
         )
     }, [dispatch])
@@ -41,7 +41,7 @@ export const Pagination = () => {
 
         const url = new URL(window.location.href)
 
-        if (url.searchParams.get('page')){
+        if (url.searchParams.get('page')) {
             url.searchParams.delete('page')
         }
 

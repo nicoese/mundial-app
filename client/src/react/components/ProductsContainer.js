@@ -2,6 +2,7 @@ import {useSelector} from "react-redux";
 import {ProductCard} from "../elements/ProductCard";
 import {Pagination} from "../elements/Pagination";
 import {SortBy} from "../elements/SortBy";
+import {FilterBy} from "../elements/FilterBy";
 
 export const ProductsContainer = (props) => {
 
@@ -9,6 +10,9 @@ export const ProductsContainer = (props) => {
 
     return <div key={'ajslkdfjalskdfja'} className={'w-full text-center flex flex-col items-center justify-center bg-[#f6f6f6]'}>
             <SortBy />
+
+        <div className={'flex flex-row'}>
+            <FilterBy />
             <div key={"laksjdflak"} className={'grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-4 mx-5 bg-[#f6f6f6]'}>
                 {currentProducts.length > 0 ? currentProducts.map(prod => {
                     return <ProductCard
@@ -22,7 +26,9 @@ export const ProductsContainer = (props) => {
                     />
                 }): <p className={'btn'}> No se encontraron resultados</p>}
             </div>
-            <Pagination/>
+
+        </div>
+        <Pagination/>
 
     </div>
 }
