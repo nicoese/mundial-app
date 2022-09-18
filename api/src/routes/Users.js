@@ -12,7 +12,7 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
-//no esta terminado
+//Needs to be modified?
 router.post('/create_user', async (req,res,next)=>{
     try{
         const {first_name,last_name} = req.body
@@ -29,19 +29,20 @@ router.post('/create_user', async (req,res,next)=>{
     }
 })
 
-//traerme las compras de un usuario
-//problemas con el populate, ya que los productos son de 3 modelos distintos
-//PENDIENTE
-
-router.get('/:userId/purchases', async (req,res,next)=>{
+//this route modifies user, you can modify your name or the img in your profile
+//we can add more params in body for mods
+router.put('/:userId/modify_user', async (req,res,next)=>{
     try{
-        const {userId} = req.params;
-        let response = await Purchase.find({user: userId}).populate({path: 'products'})
-        res.status(200).json(response);
+        const{userId} = req.params
+        const{first_name,last_name,img} = req.body
+
+        let updated_user = await User.findByIdAndUpdate(userId,{first_name,last_name,img})
+        res.status(200).json(updated_user)
     }catch(err){
-        next(err)
+        next(err);
     }
 })
+
 
 
 

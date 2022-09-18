@@ -12,11 +12,13 @@ const purchasesSchema = new Schema({
         type: Date,
         default: new Date()
     },
-    user: Schema.Types.ObjectId,
-    products_type: String,
-    products:[{
+    user: {
         type:Schema.Types.ObjectId,
-        refPath: 'products_type'
+        ref: 'User'
+    },
+    products:[{
+        type:Schema.Types.Mixed,
+        ref: 'Product'
     }],
     totalPrice: Number
     })

@@ -24,10 +24,9 @@ const usersSchema = new Schema({
     },
     purchases:[{
         type:Schema.Types.ObjectId,
-        ref: 'purchases'
+        ref: 'Purchase'
     }],
-
-
 })
+
 
 module.exports = model('User', usersSchema)
