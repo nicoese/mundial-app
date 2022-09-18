@@ -1,6 +1,6 @@
 
 import {GET_ALL_PRODUCTS, SET_CURRENT_PRODUCTS, SET_SORT_CRITERIA, SHUFFLE_PRODUCTS} from "../actions"
-import { GET_BYNAME, GET_PRODUCTS } from "../actions";
+import { GET_BYNAME, GET_DETAILS } from "../actions";
 
 const initialState = {
     products: [],
@@ -8,7 +8,7 @@ const initialState = {
     productsPerPage: 20,
     currentPage: 0,
     currentProducts: [],
-    ProductDetail: {},
+    ProductDetail: [],
     sortCriteria: ''
 }
 
@@ -53,16 +53,16 @@ export const rootReducer = (state = initialState, action) => {
                 })
 
             }
-            case GET_PRODUCTS:
-      return {
-        ...state,
-        products: action.payload,
-      };
-    case GET_BYNAME:
-      return {
-        ...state,
-        products: action.payload,
-      };
+        case GET_DETAILS:
+            return {
+                ...state,
+                ProductDetail: action.payload,
+            };
+        case GET_BYNAME:
+            return {
+                ...state,
+                products: action.payload,
+            };
 
 
         default:

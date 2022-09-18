@@ -4,7 +4,7 @@ import "../components/Landing/Landing.css" //solo para tomar las fuentes
 export const ProductCard = ({ id, name, price, img, brand, stadium }) => {
   return (
     <Link className="flex flex-col max-w-sm bg-white shadow-md rounded-md" to={`${id}`}>
-      <div className="flex flex-col max-w-sm bg-white h-[400px] rounded-md" key={key}>
+      <div className="flex flex-col max-w-sm bg-white h-[400px] rounded-md" key={id}>
         {img ? (
           <div className="flex items-center justify-center w-full h-[15em]">
             <img className="h-[12em]" src={img} alt="" />
