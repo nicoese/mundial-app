@@ -36,24 +36,38 @@ export const FilterBy = () => {
 
         let queryFilter = []
         let minmax = []
+
+
         for (const e of url.searchParams.keys()) {
 
-
             if (url.searchParams.get(e).includes('-') && (e === 'category' || e === 'gender')) {
-                queryFilter = queryFilter.concat(url.searchParams.get(e).split('-'))
-            }else{
-                if (e === 'min' || e === 'max'){
+
+                queryFilter = queryFilter
+                    .concat(url.searchParams.get(e).split('-').map(elem => {
+                            return {
+                                key: e,
+                                value: elem
+                            }
+                        }))
+            } else {
+                if (e === 'min' || e === 'max') {
                     minmax.push(url.searchParams.get(e))
                 }
+                queryFilter.push({
+                    key: e,
+                    value: url.searchParams.get(e)
+                })
             }
         }
 
-        console.log(queryFilter, minmax)
 
         queryFilter.forEach(e => {
-            filters[e].checked = true
-            filters["price"].min = minmax[0]
-            filters["price"].max = minmax[1]
+            if (e.key === 'min' || e.key === 'max') {
+                filters["price"].min = minmax[0]
+                filters["price"].max = minmax[1]
+            } else {
+                filters[e.value].checked = true
+            }
         })
 
     }, [])
@@ -96,7 +110,6 @@ export const FilterBy = () => {
         const min = filtersList.filter(e => e.hasOwnProperty('price')).map(e => e.price.min).shift()
         const max = filtersList.filter(e => e.hasOwnProperty('price')).map(e => e.price.max).shift()
 
-
         const url = new URL(window.location.href)
 
         if (url.searchParams.get('category')) url.searchParams.delete('category')
@@ -106,9 +119,32 @@ export const FilterBy = () => {
 
         if (category.length > 0) url.searchParams.append('category', category)
         if (gender.length > 0) url.searchParams.append('gender', gender)
-        if (min > 0 && max > min) url.searchParams.append('min', min)
-        if (max > 0 && max > min) url.searchParams.append('max', max)
+        if (min) url.searchParams.append('min', min)
+        if (max) url.searchParams.append('max', max)
         navigate(url.search)
+
+        const filter_dispatch = filtersList.map(elem => {
+
+            const key = Object.keys(elem)[0]
+
+            if (key !== 'price') {
+                return {
+                    key: key,
+                    value: elem[key]
+                }
+            }
+        }).filter(e => e)
+
+        if (min) {
+            filter_dispatch.push({key: 'min', value: min})
+        }
+
+        if (max){
+            filter_dispatch.push({key: 'max', value: max})
+        }
+
+        console.log(filtersList)
+        console.log(filter_dispatch)
 
 
     }
@@ -149,7 +185,8 @@ export const FilterBy = () => {
 
                 {genres.map(e => {
                     return <label className={'flex  my-1 '} htmlFor={e.value}>
-                        <input onChange={handleChange} id={e.value} value={e.value} name={e.value} checked={filters[e.value].checked} type="checkbox"/>
+                        <input onChange={handleChange} id={e.value} value={e.value} name={e.value}
+                               checked={filters[e.value].checked} type="checkbox"/>
                         <p className={'mx-1'}>{e.name}</p>
                     </label>
                 })
