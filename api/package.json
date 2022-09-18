@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "json-server --watch db.json -p 3002",
     "start": "nodemon -L",
     "test": "mocha -w ./tests/**/*.spec.js",
     "server": "json-server --watch ./db.json --port 3005"
