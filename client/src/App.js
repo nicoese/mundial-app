@@ -8,6 +8,8 @@ import { getAllProducts, setCurrentProducts } from "./redux/actions";
 import Landing from "./react/components/Landing/Landing.jsx";
 import { Products } from "./react/components/Products";
 import Details from "./react/components/Details/Details";
+import Info from "./Componentes/Info"
+
 
 function About() {
   return "about";
@@ -36,9 +38,9 @@ function App() {
         <Route exact path={"/products"} element={<Products />} />
         <Route path={"/about"} element={<About />} />
         <Route path={"/products/:id"} element={<Details />} />
-      </Routes>
+        <Route path={'/blogInfo'} element={<Info />}/>
+       </Routes>
     </div>
-  );
 }
 
 export default App;
