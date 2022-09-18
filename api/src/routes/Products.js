@@ -1,8 +1,5 @@
 const { Router, response } = require('express');
 const router = Router();
-const Accesories = require('../models/accesories')
-const Jerseys = require('../models/jerseys');
-const Tickets = require('../models/tickets')
 const Products = require('../models/products');
 const db = require('../../db.json')
 
