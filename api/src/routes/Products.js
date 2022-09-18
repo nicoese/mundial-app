@@ -3,6 +3,7 @@ const router = Router();
 const Accesories = require('../models/accesories')
 const Jerseys = require('../models/jerseys');
 const Tickets = require('../models/tickets')
+const {detail} = require ('../controllers/index')
 
 
 router.get('/', async (req,res,next)=>{
@@ -17,6 +18,16 @@ router.get('/', async (req,res,next)=>{
         res.status(200).json(arr)
     }catch(err){
         next(err)
+    }
+})
+
+router.get('/:id', async (req,res,next)=>{
+    try{
+        const id = req.params.id
+        const info = await detail(id)
+        res.status(200).json(info)
+    }catch(err){
+        res.status(400).json(err)
     }
 })
 
