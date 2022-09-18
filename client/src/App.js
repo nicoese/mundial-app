@@ -9,6 +9,7 @@ import {getAllProducts, setCurrentProducts} from "./redux/actions";
 import Landing from "./react/components/Landing/Landing.jsx";
 import {Products} from "./react/components/Products";
 import {Navigate} from "react-router";
+import Info from "./Componentes/Info"
 
 function About() {
     return 'about';
@@ -31,7 +32,8 @@ function App(){
                     <Route exact path={"/"} element={<Landing />} />
                     <Route exact path={'/products'} element={<Products />}/>
                     <Route path={'/about'} element={<About />}/>
-                    <Route path={'/redirect'} element=<Navigate to={'/about'}/> />
+                    <Route path={'/redirect'} element={<Navigate />}/>
+                    <Route path={'/blogInfo'} element={<Info />}/>
                 </Routes>
 
         </div>
