@@ -7,10 +7,7 @@ const ticketsSchema = new Schema({
         unique: true
     },
     stadium: String,
-    date: {
-        type: String,
-        require: true
-    },
+    date: String,
     price: Number,
     sector: String
 })
