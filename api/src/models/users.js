@@ -8,7 +8,13 @@ const usersSchema = new Schema({
     last_name: {
         type : String,
         require:true
-        },
+    },
+    email:{
+        type: String,
+    },
+    username:{
+        type: String
+    },
     role: {
         type: Number,
         default: 1

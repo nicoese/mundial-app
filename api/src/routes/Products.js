@@ -2,6 +2,7 @@ const { Router, response } = require('express');
 const router = Router();
 const Products = require('../models/products');
 const db = require('../../db.json')
+const {detail} = require ('../controllers/index')
 
 
 
@@ -14,6 +15,15 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
+router.get('/:id', async (req,res,next)=>{
+    try{
+        const id = req.params.id
+        const info = await detail(id)
+        res.status(200).json(info)
+    }catch(err){
+        res.status(400).json(err)
+    }
+})
 
 router.get('/find', async (req,res,next)=>{
     try{
