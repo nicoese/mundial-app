@@ -98,7 +98,7 @@ export const SortBy = () => {
         window.location.reload()
     }
 
-    return <div className={'flex self-end flex-col-reverse p-10'}>
+    return <div className={'flex flex-col-reverse items-end justify-center w-[50%] p-10 sm:p-4'}>
         <select onChange={(event) => {
             handleChange(event)
         }} className={'my-4'} value={sort_criteria} name="select-sort" id="">

@@ -8,11 +8,12 @@ export const ProductsContainer = (props) => {
 
     const {currentProducts} = useSelector(state => state)
 
-    return <div key={'ajslkdfjalskdfja'} className={'text-center flex flex-col self-center'}>
+    return <div key={'ajslkdfjalskdfja'} className={'w-full text-center flex flex-col items-center justify-center bg-[#f6f6f6]'}>
             <SortBy />
+
         <div className={'flex flex-row'}>
             <FilterBy />
-            <div key={"laksjdflak"} className={'grid grid-cols-4 gap-y-20 gap-1'}>
+            <div key={"laksjdflak"} className={'grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-4 mx-5 bg-[#f6f6f6]'}>
                 {currentProducts.length > 0 ? currentProducts.map(prod => {
                     return <ProductCard
                         key={prod.id}

@@ -1,19 +1,17 @@
 const { Router, response } = require('express');
 const Purchase = require('../models/purchases');
+const User = require('../models/users');
 const router = Router();
 
 
 
-//purchase toma user products[ids] y totalPrice Number
-//632337ef4ed9cc00d7c9d56a <--- este es un id de un usuario, puede que no exista mas
 
-//cuando realizo una compra deberia guardarla en un array de compras hechas por el usuario tmb?
-//PENDIENTE
 
-//no esta terminado
+
+//get all purchases with user info
 router.get('/', async (req,res,next)=>{
     try{
-        let result = await Purchase.find()
+        let result = await Purchase.find({}).populate({path: 'user', select: 'first_name last_name -_id'})
         res.status(200).json(result)
     }catch(err){
         next(err)
@@ -21,6 +19,21 @@ router.get('/', async (req,res,next)=>{
 })
 
 
+//get all purchases by userId
+router.get('/:userId', async (req,res,next)=>{
+    try{
+        const {userId} = req.params
+        let result = await Purchase.find({user: userId})
+        res.status(200).json(result)
+    }catch(err){
+        next(err)
+    }
+
+})
+
+
+//add a purchase, i get by body the user, all the products and the total price..
+//MIGHT CHANGE
 router.post('/add_purchase', async (req,res,next)=>{
     try{
         const {user,products,totalPrice} =req.body
@@ -30,7 +43,14 @@ router.post('/add_purchase', async (req,res,next)=>{
             totalPrice
         })
         const savedPurchase = await purchase.save();
+
+        //^^purchase done, now saving it in the user
+
+        let found = await User.findById(user._id)
+        let savedInUser = found.set('purchases',[...found.purchases,savedPurchase._id])
+        let result = await savedInUser.save()
         res.status(200).json(savedPurchase)
+
     }catch(err){
         next(err)
     }
