@@ -48,7 +48,7 @@ const Landing = () => {
           <div className="hero-txt-btns">
             <h2>Venimos a entregarte </h2>
             <span className="hero-spn">lo mejor del mundial</span>
-            <p className="hero-p">Si sos un apasionado al futbol y principalmente al mundial, estas en el lugar correcto. Vas a poder conseguir los mejores productos al alcance de un solo click(Entradas, camisetas y accesorios).</p>
+            <p className="hero-p">Si sos un apasionado del futbol y principalmente del mundial, estas en el lugar correcto. Vas a poder conseguir los mejores productos al alcance de un solo click!</p>
             <div className="btns-ctn">
               <Link><button className="hero-btn">Registrarse</button></Link>
               <Link to={'products'}><button className="hero-btn btn-s">Ver Productos</button></Link>
