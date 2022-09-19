@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllProducts());
 
-    delay(5000).then((e) => {
+    delay(400).then((e) => {
       dispatch(setCurrentProducts());
     });
     // dispatch(shuffleProducts())
