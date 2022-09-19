@@ -40,6 +40,8 @@ export const FilterBy = () => {
 
         for (const e of url.searchParams.keys()) {
 
+            if (e === 'sort' || e === 'page') continue
+
             if (url.searchParams.get(e).includes('-') && (e === 'category' || e === 'gender')) {
 
                 queryFilter = queryFilter
@@ -65,6 +67,7 @@ export const FilterBy = () => {
             if (e.key === 'min' || e.key === 'max') {
                 filters["price"].min = minmax[0]
                 filters["price"].max = minmax[1]
+                filters["price"].checked = true
             } else {
                 filters[e.value].checked = true
             }
@@ -105,10 +108,12 @@ export const FilterBy = () => {
             })
             .filter(e => e);
 
+
+
         const category = filtersList.filter(e => e.hasOwnProperty('category')).map(e => e.category).join('-')
         const gender = filtersList.filter(e => e.hasOwnProperty('gender')).map(e => e.gender).join('-')
-        const min = filtersList.filter(e => e.hasOwnProperty('price')).map(e => e.price.min).shift()
-        const max = filtersList.filter(e => e.hasOwnProperty('price')).map(e => e.price.max).shift()
+        const min = filtersList.filter(e => e.hasOwnProperty('price')).map(e => e.price.min)[0]
+        const max = filtersList.filter(e => e.hasOwnProperty('price')).map(e => e.price.max)[0]
 
         const url = new URL(window.location.href)
 
@@ -119,7 +124,10 @@ export const FilterBy = () => {
 
         if (category.length > 0) url.searchParams.append('category', category)
         if (gender.length > 0) url.searchParams.append('gender', gender)
-        if (min) url.searchParams.append('min', min)
+
+        if (min) {
+            url.searchParams.append('min', min)
+        }
         if (max) url.searchParams.append('max', max)
         navigate(url.search)
 
@@ -143,8 +151,8 @@ export const FilterBy = () => {
             filter_dispatch.push({key: 'max', value: max})
         }
 
-        console.log(filtersList)
-        console.log(filter_dispatch)
+        // console.log(filtersList)
+        // console.log(filter_dispatch)
 
 
     }
