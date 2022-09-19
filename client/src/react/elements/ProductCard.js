@@ -16,7 +16,7 @@ export const ProductCard = ({ id, name, price, img, brand, stadium }) => {
           <p className="text-2xl w-[90%] text-start font-extrabold font-[Lato] truncate tracking-wide">{name}</p>
         </div>
         <div className="mb-4 mt-1">
-          <p className="font-[Lato] text-xl w-full text-start pl-[1.75em] ">$ {new Intl.NumberFormat().format(price)}</p>
+          <p className="font-[Lato] text-xl w-full text-start pl-[1.75em] ">${new Intl.NumberFormat().format(price)}</p>
           <p className="font-[Lato] text-2xl font-extrabold">{brand ? `marca ${brand}` : stadium ? `estadio ${stadium}` : ""}</p>
 
         </div>

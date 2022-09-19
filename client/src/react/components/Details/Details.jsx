@@ -46,7 +46,7 @@ const Details = (props) => {
           </div>
           <div className="flex flex-col items-start w-[30%] h-[580px]">
             <h1 className="mb-4 text-4xl font-bold  text-red-600">{details.name}</h1>
-            <p className="mb-4 text-2xl font-semibold">{details.price}</p>
+            <p className="mb-4 text-2xl font-semibold">$ {new Intl.NumberFormat().format(details.price)}</p>
             { details.type === "jersey" ?
               <div className="flex justify-around items-center w-[80%] h-[50px]">
               <div className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-red-600 border-[1px] border-red-600 cursor-pointer">XS</div>

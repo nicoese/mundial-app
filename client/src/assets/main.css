@@ -60,8 +60,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 */
 
 abbr:where([title]) {
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 /*
@@ -496,6 +495,9 @@ video {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+.mt-24 {
+  margin-top: 6rem;
+}
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -517,17 +519,14 @@ video {
 .mt-4 {
   margin-top: 1rem;
 }
-.mt-10 {
-  margin-top: 2.5rem;
-}
-.mt-24 {
-  margin-top: 6rem;
-}
 .flex {
   display: flex;
 }
 .grid {
   display: grid;
+}
+.h-\[300px\] {
+  height: 300px;
 }
 .h-\[400px\] {
   height: 400px;
@@ -571,17 +570,11 @@ video {
 .h-\[580px\] {
   height: 580px;
 }
-.h-\[300px\] {
-  height: 300px;
-}
-.h-\[auto\] {
-  height: auto;
-}
-.h-\[500px\] {
-  height: 500px;
-}
 .w-full {
   width: 100%;
+}
+.w-\[300px\] {
+  width: 300px;
 }
 .w-12 {
   width: 3rem;
@@ -601,6 +594,9 @@ video {
 .w-\[15\%\] {
   width: 15%;
 }
+.w-\[auto\] {
+  width: auto;
+}
 .w-\[50px\] {
   width: 50px;
 }
@@ -612,30 +608,6 @@ video {
 }
 .w-\[20\%\] {
   width: 20%;
-}
-.w-\[300px\] {
-  width: 300px;
-}
-.w-\[auto\] {
-  width: auto;
-}
-.w-\[600px\] {
-  width: 600px;
-}
-.w-auto {
-  width: auto;
-}
-.w-\[500px\] {
-  width: 500px;
-}
-.w-\[60\%\] {
-  width: 60%;
-}
-.w-\[100\%\] {
-  width: 100%;
-}
-.w-\[600\%\] {
-  width: 600%;
 }
 .max-w-sm {
   max-width: 24rem;
@@ -678,9 +650,6 @@ video {
 }
 .gap-4 {
   gap: 1rem;
-}
-.self-center {
-  align-self: center;
 }
 .truncate {
   overflow: hidden;
