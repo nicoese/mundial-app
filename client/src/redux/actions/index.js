@@ -8,6 +8,7 @@ export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_BYNAME = "GET_BYNAME";
 export const TEST_FILTERS = 'TEST_FILTERS'
 export const GET_DETAILS = "GET_DETAILS";
+export const FILTER = "FILTER";
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
@@ -79,4 +80,22 @@ export function getDetails(id) {
             payload: json.data,
         });
     };
+
+}
+
+export const filter = (critearia) => {
+    return async dispatch => {
+        try {
+            const json = await axios.post(`${REACT_APP_API_URL}/products/filtered`, critearia)
+            console.log(json.data)
+            return dispatch({
+                type: FILTER,
+                payload: json.data
+            })
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    }
 }

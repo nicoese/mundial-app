@@ -1,15 +1,17 @@
 import {useEffect, useState} from "react";
-import {setCurrentProducts} from "../../redux/actions";
+import {filter, setCurrentProducts} from "../../redux/actions";
 import {useNavigate} from "react-router";
+import {useDispatch} from "react-redux";
 
 export const FilterBy = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const productCategory = {
         name: 'Categoria de Producto',
         filters: [
-            {name: 'Indumentaria', value: 'clothes'},
+            {name: 'Indumentaria', value: 'jersey'},
             {name: 'Accesorios', value: 'accessories'},
             {name: 'Entradas', value: 'entradas'}
         ]
@@ -22,7 +24,7 @@ export const FilterBy = () => {
     ]
 
     const [filters, setFilters] = useState({
-        clothes: {checked: false, value: 'clothes', type: 'category'},
+        jersey: {checked: false, value: 'jersey', type: 'category'},
         accessories: {checked: false, value: 'accessories', type: 'category'},
         entradas: {checked: false, value: 'entradas', type: 'category'},
         male: {checked: false, value: 'male', type: 'gender'},
@@ -46,11 +48,11 @@ export const FilterBy = () => {
 
                 queryFilter = queryFilter
                     .concat(url.searchParams.get(e).split('-').map(elem => {
-                            return {
-                                key: e,
-                                value: elem
-                            }
-                        }))
+                        return {
+                            key: e,
+                            value: elem
+                        }
+                    }))
             } else {
                 if (e === 'min' || e === 'max') {
                     minmax.push(url.searchParams.get(e))
@@ -62,7 +64,6 @@ export const FilterBy = () => {
             }
         }
 
-
         queryFilter.forEach(e => {
             if (e.key === 'min' || e.key === 'max') {
                 filters["price"].min = minmax[0]
@@ -72,6 +73,23 @@ export const FilterBy = () => {
                 filters[e.value].checked = true
             }
         })
+
+        const filter_dispatch = queryFilter.map(e => {
+            return {
+                type: e.value
+            }
+        })
+
+        console.log(filter_dispatch)
+
+        // dispatch(filter(filter_dispatch))
+
+        // delay(2000)
+        //     .then(e => {
+        //         dispatch(setCurrentProducts(1))
+        //     })
+
+
 
     }, [])
 
@@ -107,7 +125,6 @@ export const FilterBy = () => {
                     {[filters[key].type]: filters[key].value} : ''
             })
             .filter(e => e);
-
 
 
         const category = filtersList.filter(e => e.hasOwnProperty('category')).map(e => e.category).join('-')
@@ -147,12 +164,13 @@ export const FilterBy = () => {
             filter_dispatch.push({key: 'min', value: min})
         }
 
-        if (max){
+        if (max) {
             filter_dispatch.push({key: 'max', value: max})
         }
 
         // console.log(filtersList)
-        // console.log(filter_dispatch)
+        console.log(filter_dispatch)
+        // dispatch(filter(filter_dispatch))
 
 
     }

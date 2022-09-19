@@ -1,4 +1,11 @@
-import {GET_ALL_PRODUCTS, SET_CURRENT_PRODUCTS, SET_SORT_CRITERIA, SHUFFLE_PRODUCTS, TEST_FILTERS} from "../actions"
+import {
+    FILTER,
+    GET_ALL_PRODUCTS,
+    SET_CURRENT_PRODUCTS,
+    SET_SORT_CRITERIA,
+    SHUFFLE_PRODUCTS,
+    TEST_FILTERS
+} from "../actions"
 import { GET_BYNAME, GET_DETAILS } from "../actions";
 
 
@@ -61,6 +68,13 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 products: action.payload,
             };
+
+        case FILTER:
+            console.log(action.payload)
+            return {
+                ...state,
+                products: action.payload
+            }
         // case TEST_FILTERS:
         //     return {
         //         ...state,
