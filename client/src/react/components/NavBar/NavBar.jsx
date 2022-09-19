@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {getByName, setCurrentProducts} from "../../../redux/actions";
+import {getAllProducts, getByName, setCurrentProducts} from "../../../redux/actions";
 import { HiSearch } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
 

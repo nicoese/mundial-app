@@ -5,7 +5,7 @@ const db = require('../../db.json')
 const {detail} = require ('../controllers/index')
 
 
-
+//FIND PROD BY NAME
 router.get('/find', async (req,res,next)=>{
     try{
         const {name} = req.query
@@ -18,17 +18,18 @@ router.get('/find', async (req,res,next)=>{
     }
 })
 
+// GET ALL PRODUCTS
 router.get('/', async (req,res,next)=>{
     try{
         let prods = await Products.find()
-        console.log('HOLA')
         res.status(200).json(prods)
     }catch(err){
         next(err)
     }
 })
 
-router.get('/', async (req,res,next)=>{
+//GET PRODUCT DETAIL BY ID
+router.get('/:id', async (req,res,next)=>{
     try{
         const {id} = req.params
         const result = await Products.findById(id)
@@ -39,6 +40,7 @@ router.get('/', async (req,res,next)=>{
 })
 
 
+//FILTER PRODUCTS
 router.get('/filtered/prods',async (req,res,next)=>{
     // filtro combinado con esto { $or: [ { type: "accesory" }, { type: 'jersey' } ] }
     let filter = req.body
