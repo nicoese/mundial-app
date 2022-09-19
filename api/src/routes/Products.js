@@ -6,9 +6,22 @@ const {detail} = require ('../controllers/index')
 
 
 
+router.get('/find', async (req,res,next)=>{
+    try{
+        const {name} = req.query
+        let acc = await Products.find({name:{
+                $regex: name , $options: 'i'
+            }})
+        res.status(201).json(acc)
+    }catch(err){
+        next(err)
+    }
+})
+
 router.get('/', async (req,res,next)=>{
     try{
         let prods = await Products.find();
+        console.log('HOLA')
         res.status(200).json(prods)
     }catch(err){
         next(err)
@@ -22,19 +35,6 @@ router.get('/:id', async (req,res,next)=>{
         res.status(200).json(info)
     }catch(err){
         res.status(400).json(err)
-    }
-})
-
-router.get('/find', async (req,res,next)=>{
-    try{
-        //const docs = await User.find({ email: { $regex: 'gmail' } });
-        const {name} = req.query
-        let acc = await Products.find({name:{
-                $regex: name , $options: 'i'
-            }})
-        res.status(200).send(acc)
-    }catch(err){
-        next(err)
     }
 })
 

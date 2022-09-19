@@ -41,6 +41,7 @@ function App() {
         <Route path={'/blogInfo'} element={<Info />}/>
        </Routes>
     </div>
+  )
 }
 
 export default App;

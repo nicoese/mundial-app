@@ -240,7 +240,8 @@
         "date": "20/11/22",
         "price": 130000,
         "type": "ticket",
-        "sector": "Category 1"
+        "sector": "Category 1",
+        "img": "https://bit.ly/3BNNM6G"
       },
       {
 
@@ -249,6 +250,7 @@
         "date": "21/11/22",
         "price": 38800,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -258,6 +260,7 @@
         "date": "22/11/22",
         "price": 61000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 1"
       },
       {
@@ -267,6 +270,7 @@
         "date": "22/11/22",
         "price": 55000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -276,6 +280,7 @@
         "date": "24/11/22",
         "price": 52000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 2"
       },
       {
@@ -285,6 +290,7 @@
         "date": "24/11/22",
         "price": 47000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -294,6 +300,7 @@
         "date": "24/11/22",
         "price": 37000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -303,6 +310,7 @@
         "date": "25/11/22",
         "price": 38000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -312,6 +320,7 @@
         "date": "25/11/22",
         "price": 38000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -321,6 +330,7 @@
         "date": "26/11/22",
         "price": 55000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 1"
       },
       {
@@ -330,6 +340,7 @@
         "date": "26/11/22",
         "price": 42000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 2"
       },
       {
@@ -339,6 +350,7 @@
         "date": "27/11/22",
         "price": 62000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 1"
       },
       {
@@ -348,6 +360,7 @@
         "date": "27/11/22",
         "price": 32000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -357,6 +370,7 @@
         "date": "28/11/22",
         "price": 45000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -366,6 +380,7 @@
         "date": "28/11/22",
         "price": 44000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -375,6 +390,7 @@
         "date": "29/11/22",
         "price": 45000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -384,6 +400,7 @@
         "date": "29/11/22",
         "price": 33000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -393,6 +410,7 @@
         "date": "30/11/22",
         "price": 54000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 2"
       },
       {
@@ -402,6 +420,7 @@
         "date": "30/11/22",
         "price": 47000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -411,6 +430,7 @@
         "date": "01/12/22",
         "price": 46000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 2"
       },
       {
@@ -420,6 +440,7 @@
         "date": "01/12/22",
         "price": 40000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -429,6 +450,7 @@
         "date": "02/12/22",
         "price": 33000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       },
       {
@@ -438,6 +460,7 @@
         "date": "02/12/22",
         "price": 39000,
         "type": "ticket",
+        "img": "https://bit.ly/3BNNM6G",
         "sector": "Category 3"
       }
     ]
