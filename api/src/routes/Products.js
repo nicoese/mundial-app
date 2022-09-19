@@ -6,9 +6,22 @@ const {detail} = require ('../controllers/index')
 
 
 
+router.get('/find', async (req,res,next)=>{
+    try{
+        const {name} = req.query
+        let acc = await Products.find({name:{
+                $regex: name , $options: 'i'
+            }})
+        res.status(201).json(acc)
+    }catch(err){
+        next(err)
+    }
+})
+
 router.get('/', async (req,res,next)=>{
     try{
-        let prods = await Products.find();
+        let prods = await Products.find()
+        console.log('HOLA')
         res.status(200).json(prods)
     }catch(err){
         next(err)
@@ -17,25 +30,46 @@ router.get('/', async (req,res,next)=>{
 
 router.get('/:id', async (req,res,next)=>{
     try{
-        const id = req.params.id
-        const info = await detail(id)
-        res.status(200).json(info)
+        const {id} = req.params
+        const result = await Products.findById(id)
+        res.status(200).json(result)
     }catch(err){
         res.status(400).json(err)
     }
 })
 
-router.get('/find', async (req,res,next)=>{
-    try{
-        //const docs = await User.find({ email: { $regex: 'gmail' } });
-        const {name} = req.query
-        let acc = await Products.find({name:{
-                $regex: name , $options: 'i'
-            }})
-        res.status(200).send(acc)
-    }catch(err){
-        next(err)
+
+
+router.get('/filtered/prods',async (req,res,next)=>{
+    // filtro combinado con esto { $or: [ { type: "accesory" }, { type: 'jersey' } ] }
+    let filter = req.body
+    console.log(filter)
+    if(filter.clothes.checked && filter.accessories.checked && filter.tickets.checked ){
+        let result = await Products.find()
+        res.status(200).json(result)
     }
+    if(filter.clothes.checked && filter.accessories.checked){
+        let arr = []
+        let clo = await Products.find({type:'jersey', type: 'accesory'})
+        let acc = await Products.find({type: 'accesory'})
+        arr = [...clo,...acc]
+        res.status(200).json(result)
+    }
+    // if(filter.clothes.checked && filter.entradas.checked){
+    //     let arr = []
+    //     let clo = await Products.find({type:'jersey'})
+    //     let tick = await Products.find({type: 'ticket'})
+    //     arr = [...clo,...tick]
+    //     res.status(200).json(result)
+    // }
+    // if(filter.accessories.checked && filter.entradas.checked){
+    //     let arr = []
+    //     let acc = await Products.find({type:'accesory'})
+    //     let tick = await Products.find({type: 'ticket'})
+    //     arr = [...acc,...tick]
+    //     res.status(200).json(result)
+    // }
+
 })
 
 

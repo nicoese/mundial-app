@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllProducts());
 
-    delay(5000).then((e) => {
+    delay(400).then((e) => {
       dispatch(setCurrentProducts());
     });
     // dispatch(shuffleProducts())
@@ -41,6 +41,7 @@ function App() {
         <Route path={'/blogInfo'} element={<Info />}/>
        </Routes>
     </div>
+  )
 }
 
 export default App;

@@ -35,12 +35,13 @@ const NavBar = () => {
   
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(name)
+    // console.log(name)
     dispatch(getByName(name));
 
     delay(1000).then(r => {
       dispatch(setCurrentProducts(1))
       setName("");
+      navigate('/products')
     })
 
   }
@@ -55,7 +56,7 @@ const NavBar = () => {
         <nav className="navbar-ctn">
           <h1 onClick={(ev) => navigate('/')} className="navbar-title">MundiApp</h1>
           <ul className="navbar-ul">
-            <Link className="navbar-a"><li className="navbar-li">Inicio</li></Link>
+            <Link to={"/products"} className="navbar-a"><li className="navbar-li">Inicio</li></Link>
             <Link className="navbar-a"><li className="navbar-li">Nosotros</li></Link>
             <Link className="navbar-a"><li className="navbar-li">Productos</li></Link>
             <Link className="navbar-a"><li className="navbar-li">Contacto</li></Link>
