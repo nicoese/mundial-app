@@ -95,7 +95,7 @@ export const SortBy = () => {
         dispatch(setCurrentProducts(1))
 
         navigate(location.pathname)
-        window.location.reload()
+        // window.location.reload()
     }
 
     return <div className={'flex flex-col-reverse items-end justify-center w-[50%] p-10 sm:p-4'}>
