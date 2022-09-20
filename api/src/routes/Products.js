@@ -45,9 +45,8 @@ router.get('/:id', async (req, res, next) => {
 
 //FILTER PRODUCTS
 router.post('/filtroscombinados', async (req, res) => {
-    // let filter = req.body
     let {type,brand,min,max} = req.body
-    // console.log(type,brand,min[0].min,max[0].max)
+    // console.log(type,brand,min,max)
     
         let result = await Products.find({
             $and: [
