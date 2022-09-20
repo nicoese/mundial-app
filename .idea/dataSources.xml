@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/world-cup</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="@cluster0.x9ksqwh.mongodb.net" uuid="6aeada01-3e7d-4a2f-bfec-f1320015c309">
+      <driver-ref>mongo</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
+      <jdbc-url>mongodb+srv://cluster0.x9ksqwh.mongodb.net/?retryWrites=true&amp;w=majority</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
