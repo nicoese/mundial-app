@@ -42,6 +42,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 
+
 //FILTER PRODUCTS
 router.post('/filtroscombinados', async (req, res) => {
     // let filter = req.body
@@ -66,6 +67,7 @@ router.post('/filtroscombinados', async (req, res) => {
         })
         res.json(result)
 })
+
 
 
 //esta ruta existe solo con el proposito de insertar todos los datos en la BD, no utilizar
