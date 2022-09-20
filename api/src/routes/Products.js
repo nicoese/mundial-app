@@ -41,79 +41,8 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.post('/filtroscombinados', async (req, res) => {
-    let filter = req.body
-
-    // console.log(req.body[0].type)
-
-    let [
-        type,
-        brand,
-        price
-    ] = req.body
-
-        let result = await Products.find({
-            $and: [
-                {
-                    $or: type.type
-                    // $or: type.type.length > 0 ? type.type : [{}]
-                    // type ? : type.type.length > 0 ? : type.type : [{}] : null
-                },
-                {
-                    // $or: brand && brand.brand.length > 0 ? brand.brand : [{}]
-                    $or: brand.brand
-
-                },
-                {
-                    $or: price ? [{price: {$lte: price.price[1].max || 1000000000, $gte: price.price[0].min || 0}}] : [{}]
-                }
-
-            ]
-        })
-        console.log(result)
-
-
-})
-
 //FILTER PRODUCTS
-router.post('/filtered', async (req, res, next) => {
-    // filtro combinado con esto { $or: [ { type: "accesory" }, { type: 'jersey' } ] }
-    let filter = req.body
-    // return console.log(req.body)
 
-    {
-        let result = await Products.find({$or: filter})
-        res.status(200).json(result)
-    }
-
-
-    // if(filter.clothes.checked && filter.accessories.checked && filter.tickets.checked ){
-    //     let result = await Products.find()
-    //     res.status(200).json(result)
-    // }
-    // if(filter.clothes.checked && filter.accessories.checked){
-    //     let arr = []
-    //     let clo = await Products.find({type:'jersey', type: 'accesory'})
-    //     let acc = await Products.find({type: 'accesory'})
-    //     arr = [...clo,...acc]
-    //     res.status(200).json(result)
-    // }
-    // if(filter.clothes.checked && filter.entradas.checked){
-    //     let arr = []
-    //     let clo = await Products.find({type:'jersey'})
-    //     let tick = await Products.find({type: 'ticket'})
-    //     arr = [...clo,...tick]
-    //     res.status(200).json(result)
-    // }
-    // if(filter.accessories.checked && filter.entradas.checked){
-    //     let arr = []
-    //     let acc = await Products.find({type:'accesory'})
-    //     let tick = await Products.find({type: 'ticket'})
-    //     arr = [...acc,...tick]
-    //     res.status(200).json(result)
-    // }
-
-})
 
 
 //esta ruta existe solo con el proposito de insertar todos los datos en la BD, no utilizar

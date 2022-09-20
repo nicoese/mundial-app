@@ -11,18 +11,19 @@ export const FilterBy = () => {
     const productType = {
         name: 'Categoria de Producto',
         filters: [
-            {name: 'Indumentaria', value: 'jersey'},
             {name: 'Accesorios', value: 'accessory'},
-            {name: 'Entradas', value: 'ticket'}
+            {name: 'Entradas', value: 'ticket'},
+            {name: 'Indumentaria', value: 'jersey'}
         ]
     }
 
     const brands = {
         name: 'Marca',
         brands: [
-            {name: 'Nike', value: 'nike'},
             {name: 'Adidas', value: 'adidas'},
             {name: 'Marathon', value: 'marathon'},
+            {name: 'Nike', value: 'nike'},
+            {name: 'Puma', value: 'puma'},
         ]
     }
 
@@ -32,6 +33,7 @@ export const FilterBy = () => {
         ticket: {checked: false, value: 'ticket', key: 'type'},
         nike: {checked: false, value: 'Nike', key: 'brand'},
         marathon: {checked: false, value: 'Marathon', key: 'brand'},
+        puma: {checked: false, value: 'Puma', key: 'brand'},
         adidas: {checked: false, value: 'Adidas', key: 'brand'},
         min: {checked: false, min: '', key: 'min'},
         max: {checked: false, max: '', key: 'max'},
@@ -119,6 +121,8 @@ export const FilterBy = () => {
         if (filters.ticket.checked || filters.accessory.checked) {
             filters.nike.checked = false
             filters.adidas.checked = false
+            filters.puma.checked = false
+            filters.marathon.checked = false
         }
 
         const filtersList = Object.keys(filters)
@@ -155,9 +159,29 @@ export const FilterBy = () => {
         })
 
 
-        console.log(filtersList)
         navigate(url.search)
-        dispatch(filter(filtersList))
+
+        let filter_dispatch = {
+            type:[],
+            brand: [],
+            min: [],
+            max: []
+        }
+
+        filtersList.map(e => {
+            const key = Object.keys(e)[0]
+               if (e[key]) filter_dispatch[key].push(e)
+        })
+
+        if (filter_dispatch.type.length === 0) filter_dispatch.type.push({})
+        if (filter_dispatch.brand.length === 0) filter_dispatch.brand.push({})
+        if (filter_dispatch.min.length === 0) filter_dispatch.min.push({})
+        if (filter_dispatch.max.length === 0) filter_dispatch.max.push({})
+
+
+        console.log(filter_dispatch)
+
+        // dispatch(filter(filtersList))
 
 
     }
