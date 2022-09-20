@@ -181,7 +181,10 @@ export const FilterBy = () => {
 
         console.log(filter_dispatch)
 
-        // dispatch(filter(filtersList))
+        dispatch(filter(filter_dispatch))
+        delay(1000).then(()=>{
+            dispatch(setCurrentProducts(1))
+        })
 
 
     }

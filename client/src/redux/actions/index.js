@@ -86,7 +86,7 @@ export function getDetails(id) {
 export const filter = (critearia) => {
     return async dispatch => {
         try {
-            const json = await axios.post(`${REACT_APP_API_URL}/products/filtered`, critearia)
+            const json = await axios.post(`${REACT_APP_API_URL}/products/filtroscombinados`, critearia)
             return dispatch({
                 type: FILTER,
                 payload: json.data
