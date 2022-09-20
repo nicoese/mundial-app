@@ -8,90 +8,94 @@ export const FilterBy = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const productCategory = {
+    const productType = {
         name: 'Categoria de Producto',
         filters: [
             {name: 'Indumentaria', value: 'jersey'},
-            {name: 'Accesorios', value: 'accessories'},
-            {name: 'Entradas', value: 'entradas'}
+            {name: 'Accesorios', value: 'accessory'},
+            {name: 'Entradas', value: 'ticket'}
         ]
     }
 
-    const genres = [
-        {name: 'Hombre', value: 'male'},
-        {name: 'Mujer', value: 'female'},
-        {name: 'Sin genero', value: 'unisex'}
-    ]
+    const brands = {
+        name: 'Marca',
+        brands: [
+            {name: 'Nike', value: 'nike'},
+            {name: 'Adidas', value: 'adidas'},
+            {name: 'Marathon', value: 'marathon'},
+        ]
+    }
 
     const [filters, setFilters] = useState({
-        jersey: {checked: false, value: 'jersey', type: 'category'},
-        accessories: {checked: false, value: 'accessories', type: 'category'},
-        entradas: {checked: false, value: 'entradas', type: 'category'},
-        male: {checked: false, value: 'male', type: 'gender'},
-        female: {checked: false, value: 'female', type: 'gender'},
-        unisex: {checked: false, value: 'unisex', type: 'gender'},
-        price: {checked: false, min: '', max: '', type: 'price'},
+        jersey: {checked: false, value: 'jersey', key: 'type'},
+        accessory: {checked: false, value: 'accessory', key: 'type'},
+        ticket: {checked: false, value: 'ticket', key: 'type'},
+        nike: {checked: false, value: 'Nike', key: 'brand'},
+        marathon: {checked: false, value: 'Marathon', key: 'brand'},
+        adidas: {checked: false, value: 'Adidas', key: 'brand'},
+        min: {checked: false, min: '', key: 'min'},
+        max: {checked: false, max: '', key: 'max'},
     })
 
-    useEffect(() => {
-        const url = new URL(window.location.href)
-
-        let queryFilter = []
-        let minmax = []
-
-
-        for (const e of url.searchParams.keys()) {
-
-            if (e === 'sort' || e === 'page') continue
-
-            if (url.searchParams.get(e).includes('-') && (e === 'category' || e === 'gender')) {
-
-                queryFilter = queryFilter
-                    .concat(url.searchParams.get(e).split('-').map(elem => {
-                        return {
-                            key: e,
-                            value: elem
-                        }
-                    }))
-            } else {
-                if (e === 'min' || e === 'max') {
-                    minmax.push(url.searchParams.get(e))
-                }
-                queryFilter.push({
-                    key: e,
-                    value: url.searchParams.get(e)
-                })
-            }
-        }
-
-        queryFilter.forEach(e => {
-            if (e.key === 'min' || e.key === 'max') {
-                filters["price"].min = minmax[0]
-                filters["price"].max = minmax[1]
-                filters["price"].checked = true
-            } else {
-                filters[e.value].checked = true
-            }
-        })
-
-        const filter_dispatch = queryFilter.map(e => {
-            return {
-                type: e.value
-            }
-        })
-
-        console.log(filter_dispatch)
-
-        // dispatch(filter(filter_dispatch))
-
-        // delay(2000)
-        //     .then(e => {
-        //         dispatch(setCurrentProducts(1))
-        //     })
-
-
-
-    }, [])
+    // useEffect(() => {
+    //     const url = new URL(window.location.href)
+    //
+    //     let queryFilter = []
+    //     let minmax = []
+    //
+    //
+    //     for (const e of url.searchParams.keys()) {
+    //
+    //         if (e === 'sort' || e === 'page') continue
+    //
+    //         if (url.searchParams.get(e).includes('-') && (e === 'category' || e === 'gender')) {
+    //
+    //             queryFilter = queryFilter
+    //                 .concat(url.searchParams.get(e).split('-').map(elem => {
+    //                     return {
+    //                         key: e,
+    //                         value: elem
+    //                     }
+    //                 }))
+    //         } else {
+    //             if (e === 'min' || e === 'max') {
+    //                 minmax.push(url.searchParams.get(e))
+    //             }
+    //             queryFilter.push({
+    //                 key: e,
+    //                 value: url.searchParams.get(e)
+    //             })
+    //         }
+    //     }
+    //
+    //     queryFilter.forEach(e => {
+    //         if (e.key === 'min' || e.key === 'max') {
+    //             filters["price"].min = minmax[0]
+    //             filters["price"].max = minmax[1]
+    //             filters["price"].checked = true
+    //         } else {
+    //             filters[e.value].checked = true
+    //         }
+    //     })
+    //
+    //     const filter_dispatch = queryFilter.map(e => {
+    //         return {
+    //             type: e.value
+    //         }
+    //     })
+    //
+    //     console.log(filter_dispatch)
+    //
+    //     // dispatch(filter(filter_dispatch))
+    //
+    //     // delay(2000)
+    //     //     .then(e => {
+    //     //         dispatch(setCurrentProducts(1))
+    //     //     })
+    //
+    //
+    //
+    // }, [])
 
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
@@ -112,65 +116,48 @@ export const FilterBy = () => {
     const handleClick = (ev) => {
 
 
-        if (filters.entradas.checked) {
-            filters.male.checked = false
-            filters.female.checked = false
-            filters.unisex.checked = false
+        if (filters.ticket.checked || filters.accessory.checked) {
+            filters.nike.checked = false
+            filters.adidas.checked = false
         }
 
         const filtersList = Object.keys(filters)
             .map((key) => {
-                return filters[key].checked ? key === 'price' ?
-                    {[filters[key].type]: {min: filters[key].min, max: filters[key].max}} :
-                    {[filters[key].type]: filters[key].value} : ''
+
+                if (filters[key].checked) {
+                    if (key === 'min' || key === 'max') {
+                        return {[filters[key].key]: filters[key][key]}
+                    } else {
+                        return {[filters[key].key]: filters[key].value}
+                    }
+                }
             })
             .filter(e => e);
 
-
-        const category = filtersList.filter(e => e.hasOwnProperty('category')).map(e => e.category).join('-')
-        const gender = filtersList.filter(e => e.hasOwnProperty('gender')).map(e => e.gender).join('-')
-        const min = filtersList.filter(e => e.hasOwnProperty('price')).map(e => e.price.min)[0]
-        const max = filtersList.filter(e => e.hasOwnProperty('price')).map(e => e.price.max)[0]
-
         const url = new URL(window.location.href)
 
-        if (url.searchParams.get('category')) url.searchParams.delete('category')
-        if (url.searchParams.get('gender')) url.searchParams.delete('gender')
+        if (url.searchParams.get('type')) url.searchParams.delete('type')
+        if (url.searchParams.get('brand')) url.searchParams.delete('brand')
         if (url.searchParams.get('min')) url.searchParams.delete('min')
         if (url.searchParams.get('max')) url.searchParams.delete('max')
 
-        if (category.length > 0) url.searchParams.append('category', category)
-        if (gender.length > 0) url.searchParams.append('gender', gender)
+        filtersList.map(e => {
+            const key = Object.keys(e)[0]
 
-        if (min) {
-            url.searchParams.append('min', min)
-        }
-        if (max) url.searchParams.append('max', max)
-        navigate(url.search)
-
-        const filter_dispatch = filtersList.map(elem => {
-
-            const key = Object.keys(elem)[0]
-
-            if (key !== 'price') {
-                return {
-                    key: key,
-                    value: elem[key]
-                }
+            if (url.searchParams.get(key)) {
+                let queryParam = url.searchParams.get(key)
+                queryParam += `-${e[key]}`
+                url.searchParams.delete(key)
+                url.searchParams.append(key, queryParam)
+            } else {
+                url.searchParams.append(key, e[key])
             }
-        }).filter(e => e)
+        })
 
-        if (min) {
-            filter_dispatch.push({key: 'min', value: min})
-        }
 
-        if (max) {
-            filter_dispatch.push({key: 'max', value: max})
-        }
-
-        // console.log(filtersList)
-        console.log(filter_dispatch)
-        // dispatch(filter(filter_dispatch))
+        console.log(filtersList)
+        navigate(url.search)
+        dispatch(filter(filtersList))
 
 
     }
@@ -180,22 +167,20 @@ export const FilterBy = () => {
 
         setFilters({
             ...filters,
-            price: {
-                ...filters["price"],
+            [ev.target.name]: {
+                ...filters[ev.target.name],
                 [ev.target.name]: ev.target.value,
                 checked: checked
-            }
+            },
         })
-
-        //checked: parseInt(filters["price"].max) > parseInt(filters["price"].min) ? checked : false
     }
 
     return <div className={'flex flex-col'}>
         <h2>filtros</h2>
 
         <div id={'category'}>
-            <h3>{productCategory.name}</h3>
-            {productCategory.filters.map(fil => {
+            <h3>{productType.name}</h3>
+            {productType.filters.map(fil => {
                 return <label className={'flex flex-row py-1'} htmlFor={fil.name} key={fil.name} name={fil.name}>
                     <input onChange={handleChange} id={fil.name} value={fil.value} checked={filters[fil.value].checked}
                            type="checkbox"/>
@@ -205,11 +190,11 @@ export const FilterBy = () => {
         </div>
 
 
-        {!filters.entradas.checked && <div id={'genderInputs'}>
-            <h3>Genero</h3>
+        {!filters.ticket.checked && !filters.accessory.checked && <div id={'genderInputs'}>
+            <h3>{brands.name}</h3>
             <div className="flex flex-col">
 
-                {genres.map(e => {
+                {brands.brands.map(e => {
                     return <label className={'flex  my-1 '} htmlFor={e.value}>
                         <input onChange={handleChange} id={e.value} value={e.value} name={e.value}
                                checked={filters[e.value].checked} type="checkbox"/>
@@ -226,10 +211,10 @@ export const FilterBy = () => {
             <div className={'flex justify-center'}>
 
                 <input onChange={handlePrice} className={'w-12 text-center m-5 border-2 outline-0'}
-                       value={filters.price.min} name={'min'} placeholder={'Min'} type="text"/>
+                       value={filters.min.value} name={'min'} placeholder={'Min'} type="text"/>
                 <p className={'my-5'}>-</p>
                 <input onChange={handlePrice} className={'w-12 text-center m-5 border-2 outline-0'}
-                       value={filters.price.max} name={'max'} placeholder={'Max'} type="text"/>
+                       value={filters.max.value} name={'max'} placeholder={'Max'} type="text"/>
             </div>
             <button onClick={handleClick} className={'btn '}>Aplicar</button>
         </div>

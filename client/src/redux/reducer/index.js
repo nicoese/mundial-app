@@ -6,7 +6,7 @@ import {
     SHUFFLE_PRODUCTS,
     TEST_FILTERS
 } from "../actions"
-import { GET_BYNAME, GET_DETAILS } from "../actions";
+import {GET_BYNAME, GET_DETAILS} from "../actions";
 
 
 const initialState = {
@@ -84,4 +84,5 @@ export const rootReducer = (state = initialState, action) => {
             return state
     }
 }
+
 
