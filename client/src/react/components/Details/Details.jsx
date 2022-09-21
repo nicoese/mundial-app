@@ -1,8 +1,9 @@
 import React ,{ useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { getDetails, addToCart } from "../../../redux/actions/index.js";
+import { getDetails, addToCart, resetDetail } from "../../../redux/actions/index.js";
 import NavBar from "../NavBar/NavBar.jsx";
+import Spinner from "../Spinner/Spinner.js";
 
 const Details = (props) => {
 
@@ -13,6 +14,9 @@ const Details = (props) => {
 
   useEffect(() => {
     dispatch(getDetails(params.id));
+    return ()=>{
+      dispatch(resetDetail());
+    }
   }, [dispatch]);
 
   /* const handleClick = ()=>{
@@ -62,10 +66,10 @@ const Details = (props) => {
               <div className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-red-600 border-[1px] border-red-600 cursor-pointer">M</div>
               <div className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-red-600 border-[1px] border-red-600 cursor-pointer">L</div>
               <div className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-red-600 border-[1px] border-red-600 cursor-pointer">XL</div>
-            </div>:null
+            </div>:null //NO SPINNER NEEDED JUST ERASING SIZE IF NOT JERSEY
             }
             
-            <p className="flex justify-start items-center w-[80%] h-[50px] my-2 text-3xl text-red-600 border-b-[1px] border-gray-200">DESCRIPTION</p>
+            <p className="flex justify-start items-center w-[80%] h-[50px] my-2 text-3xl text-red-600 border-b-[1px] border-gray-200">DESCRIPCIÓN</p>
             <p className="text-lg">
               {details.description}
             </p>

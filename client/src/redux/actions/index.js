@@ -11,6 +11,7 @@ export const GET_DETAILS = "GET_DETAILS";
 export const FILTER = "FILTER";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_TO_CART = "REMOVE_TO_CART";
+export const RESET_DETAIL = "RESET_DETAIL"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -90,6 +91,14 @@ export function getDetails(id) {
         });
     };
 
+}
+
+export function resetDetail(){
+  return{
+    type: RESET_DETAIL
+  }
+      
+  
 }
 
 export const filter = (critearia) => {
