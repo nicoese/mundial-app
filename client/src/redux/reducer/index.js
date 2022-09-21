@@ -27,9 +27,7 @@ export const rootReducer = (state = initialState, action) => {
         case GET_ALL_PRODUCTS:
             return {
                 ...state,
-                // products: [...action.payload.jerseys, ...action.payload.accessories, ...action.payload.tickets],
-                products: action.payload,
-                productsLength: state.products.length
+                products: action.payload
             }
 
         case SET_CURRENT_PRODUCTS:
@@ -70,7 +68,6 @@ export const rootReducer = (state = initialState, action) => {
             };
 
         case FILTER:
-            console.log(action.payload)
             return {
                 ...state,
                 products: action.payload

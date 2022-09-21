@@ -21,9 +21,9 @@ function App() {
   useEffect(() => {
     dispatch(getAllProducts());
 
-    delay(1000).then((e) => {
-      dispatch(setCurrentProducts());
-    });
+    // delay(1000).then((e) => {
+    //   dispatch(setCurrentProducts());
+    // });
   });
 
   function delay(time) {
