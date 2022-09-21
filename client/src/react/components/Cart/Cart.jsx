@@ -1,8 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
 
 const Cart = () => {
+
+  const prodcutsInCart = useSelector((state)=> state.cart)
+
   return (
     <>
       <NavBar />
@@ -12,15 +16,17 @@ const Cart = () => {
           <p className="pl-[10px] sm:pl-[93px] sm:mt-2 text-gray-600">Envios y devoluciones gratis.</p>
         </div>
         <div className="flex flex-col items-center w-full h-fit p-4">
-          <CartDetailCard />
-          <CartDetailCard />
-          <CartDetailCard />
-          <CartDetailCard />
-          <CartDetailCard />
-          <CartDetailCard />
-          <CartDetailCard />
-          <CartDetailCard />
-          <CartDetailCard />
+          { prodcutsInCart && prodcutsInCart.map((p)=>{
+            return(
+            <CartDetailCard 
+              id={p.id}
+              name={p.name}
+              price={p.price}
+              img={p.img}
+            />)
+          })
+
+          }
         </div>
         <hr className="w-[80%]"/>
         <div className="flex flex-col items-center w-[50%] h-fit py-4">

@@ -1,12 +1,12 @@
 import React ,{ useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { getDetails } from "../../../redux/actions/index.js";
+import { getDetails, addToCart } from "../../../redux/actions/index.js";
 import NavBar from "../NavBar/NavBar.jsx";
 
 const Details = (props) => {
 
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const details = useSelector((state) => state.ProductDetail);
   let params = useParams()
 
@@ -14,6 +14,14 @@ const Details = (props) => {
   useEffect(() => {
     dispatch(getDetails(params.id));
   }, [dispatch]);
+
+  /* const handleClick = ()=>{
+    dispatch(addToCart({
+      name:details.name,
+      price: details.price,
+      img: details.img,
+    }))
+  } */
 
   const selectPic = (e)=>{
     let principalPic = document.querySelector('#principal-pic') 
@@ -62,7 +70,7 @@ const Details = (props) => {
               {details.description}
             </p>
 
-            <button className="w-[8em] h-[3em] mt-4 rounded-md bg-red-600 text-white font-bold font-[Lato]"> Add to cart </button>
+            <button className="w-[8em] h-[3em] mt-4 rounded-md bg-red-600 text-white font-bold font-[Lato]"> Al Carrito </button>
           </div>
         </div>
       </section>
