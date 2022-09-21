@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {getByName, setCurrentProducts} from "../../../redux/actions";
 import { HiSearch } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 import './NavBar.css'
@@ -49,16 +50,20 @@ const NavBar = () => {
     return new Promise(resolve => setTimeout(resolve, time));
   }
 
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+
   return (
     <>
     <header>
         <nav className="navbar-ctn">
           <h1 onClick={(ev) => navigate('/')} className="navbar-title">MundiApp</h1>
           <ul className="navbar-ul">
-            <Link className="navbar-a"><li className="navbar-li">Inicio</li></Link>
-            <Link className="navbar-a"><li className="navbar-li">Nosotros</li></Link>
-            <Link className="navbar-a"><li className="navbar-li">Productos</li></Link>
-            <Link className="navbar-a"><li className="navbar-li">Contacto</li></Link>
+            <Link to={'/nosotros'} className="navbar-a"><li className="navbar-li">Nosotros</li></Link>
+            <Link to={'/blogInfo'} className="navbar-a"><li className="navbar-li">Info</li></Link>
+            {
+              isAuthenticated ? <li onClick={logout} className="li-inicioSesion">Cerrar Sesion</li>:
+              <li onClick={loginWithRedirect} className="li-inicioSesion">Iniciar Sesion</li>
+              }
           </ul>
           <div className="searchBar_search">
             <form onSubmit={handleSubmit}>
