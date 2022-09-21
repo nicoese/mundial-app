@@ -24,12 +24,6 @@ function App() {
   useEffect(() => {
     dispatch(getAllProducts());
 
-
-    delay(2000).then((e) => {
-      dispatch(setCurrentProducts());
-    });
-    // dispatch(shuffleProducts())
-
   });
 
   function delay(time) {
