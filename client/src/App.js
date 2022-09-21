@@ -10,11 +10,13 @@ import { Products } from "./react/components/Products";
 import Details from "./react/components/Details/Details";
 import Cart from "./react/components/Cart/Cart";
 import Info from "./Componentes/Info"
+import Nosotros from "./Componentes/Nosotros"
 
 
 function About() {
   return "about";
 }
+
 
 function App() {
   const dispatch = useDispatch();
@@ -22,16 +24,17 @@ function App() {
   useEffect(() => {
     dispatch(getAllProducts());
 
+
     delay(2000).then((e) => {
       dispatch(setCurrentProducts());
     });
     // dispatch(shuffleProducts())
+
   });
 
   function delay(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
-  // return <div className="App flex flex-col items-center">
   return (
     <div className="flex flex-col justify-center">
       <Routes>
@@ -41,7 +44,8 @@ function App() {
         <Route path={"/products/:id"} element={<Details />} />
         <Route path={'/blogInfo'} element={<Info />}/>
         <Route path={'/Cart'} element={<Cart />}/>
-      </Routes>
+        <Route path={'/nosotros'} element={<Nosotros />}/>
+       </Routes>
     </div>
   )
 }

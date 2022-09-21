@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {getAllProducts, getByName, setCurrentProducts} from "../../../redux/actions";
 import { HiSearch } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 import './NavBar.css'
@@ -49,6 +50,8 @@ const NavBar = () => {
   function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
   }
+
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
   return (
     <>

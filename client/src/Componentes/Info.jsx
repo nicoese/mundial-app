@@ -15,7 +15,7 @@ export default function Info() {
                     <li><a href="#sec-campeones">Campeones</a></li>
                     <li><a href="#sec-qatar">Qatar2022</a></li>
                     <li><a href="#sec-estadios">Estadios</a></li>
-                    <NavLink to='/' className={s.navlink}>Tienda</NavLink>
+                    <NavLink to='/products' className={s.navlink}>Inicio</NavLink>
                 </ul>
             </nav>
 

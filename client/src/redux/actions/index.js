@@ -17,11 +17,18 @@ const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
 export const getAllProducts = () => {
   return async (dispatch) => {
-    const json = await axios.get(`${REACT_APP_API_URL}/products`);
-    dispatch({
-      type: GET_ALL_PRODUCTS,
-      payload: json.data,
-    });
+    // const json = await axios.get(`${REACT_APP_API_URL}/products`);
+    return axios.get(`${REACT_APP_API_URL}/products`)
+        .then(json => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: json.data,
+            })
+        })
+    // dispatch({
+    //   type: GET_ALL_PRODUCTS,
+    //   payload: json.data,
+    // });
   };
 };
 
@@ -63,7 +70,6 @@ export const testFilters = (filters) => {
 
     export function getByName(name) {
         return async function (dispatch) {
-            console.log(name)
             try {
                 const json = await axios.get(`${REACT_APP_API_URL}/products/find?name=${name}`);
                 return dispatch({

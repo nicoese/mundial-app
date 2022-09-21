@@ -31,13 +31,14 @@ const mongooseOptions = {
     pass: MONGO_PASS
 }
 
+const PORT = process.env.PORT || 3001
 
 mongoose.connect(MONGO_URL,
     mongooseOptions)
     .then(db => {
         console.log("mongo connect at", db.connection.host)
-        server.listen(3001, () => {
-            console.log('%s listening at 3001'); // eslint-disable-line no-console
+        server.listen(PORT, () => {
+            console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
         });
     })
     .catch(err => console.log(err))
