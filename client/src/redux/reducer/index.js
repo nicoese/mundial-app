@@ -1,6 +1,13 @@
+import {
+    FILTER,
+    GET_ALL_PRODUCTS,
+    SET_CURRENT_PRODUCTS,
+    SET_SORT_CRITERIA,
+    SHUFFLE_PRODUCTS,
+    TEST_FILTERS
+} from "../actions"
+import {GET_BYNAME, GET_DETAILS} from "../actions";
 
-import {GET_ALL_PRODUCTS, SET_CURRENT_PRODUCTS, SET_SORT_CRITERIA, SHUFFLE_PRODUCTS} from "../actions"
-import { GET_BYNAME, GET_PRODUCTS } from "../actions";
 
 const initialState = {
     products: [],
@@ -8,11 +15,9 @@ const initialState = {
     productsPerPage: 20,
     currentPage: 0,
     currentProducts: [],
-    ProductDetail: {},
+    ProductDetail: [],
     sortCriteria: ''
 }
-
-
 
 
 export const rootReducer = (state = initialState, action) => {
@@ -46,27 +51,38 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 products: props[1] === 'asc' ? state.products.sort((a, b) => {
-                    return a[props[0]] < b[props[0]] ? -1 : 1
-                }) :
+                        return a[props[0]] < b[props[0]] ? -1 : 1
+                    }) :
                     state.products.sort((a, b) => {
-                    return a[props[0]] < b[props[0]] ? 1 : -1
-                })
+                        return a[props[0]] < b[props[0]] ? 1 : -1
+                    })
 
             }
-            case GET_PRODUCTS:
-      return {
-        ...state,
-        products: action.payload,
-      };
-    case GET_BYNAME:
-      return {
-        ...state,
-        products: action.payload,
-      };
+        case GET_DETAILS:
+            return {
+                ...state,
+                ProductDetail: action.payload,
+            };
+        case GET_BYNAME:
+            return {
+                ...state,
+                products: action.payload,
+            };
 
-
+        case FILTER:
+            console.log(action.payload)
+            return {
+                ...state,
+                products: action.payload
+            }
+        // case TEST_FILTERS:
+        //     return {
+        //         ...state,
+        //         products: state.products.filter(product => )
+        //     }
         default:
             return state
     }
 }
+
 

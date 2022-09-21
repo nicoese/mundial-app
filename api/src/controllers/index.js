@@ -27,13 +27,26 @@ async function filter(type){
     } else if (type.toLowerCase() === 'tickets'){
     const filt = await Tickets.find()
     return filt
+    } 
+}
+
+async function detail (id) {
+    try {
+        const jersey = await Jerseys.find();
+        const accesories = await Accesories.find();
+        const tickets = await Tickets.find();
+        let arr = [...jersey,...accesories,...tickets]
+        arr = arr.filter(e => e._id == id)
+        return arr
+    } catch (error) {
+        console.log(error)
     }
-    
 }
 
 module.exports = {
     search,
     filter,
+    detail,
 
 
 }

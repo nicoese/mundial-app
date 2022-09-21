@@ -8,7 +8,13 @@ const usersSchema = new Schema({
     last_name: {
         type : String,
         require:true
-        },
+    },
+    email:{
+        type: String,
+    },
+    username:{
+        type: String
+    },
     role: {
         type: Number,
         default: 1
@@ -24,10 +30,9 @@ const usersSchema = new Schema({
     },
     purchases:[{
         type:Schema.Types.ObjectId,
-        ref: 'purchases'
+        ref: 'Purchase'
     }],
-
-
 })
+
 
 module.exports = model('User', usersSchema)
