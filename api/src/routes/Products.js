@@ -9,12 +9,16 @@ const {detail} = require('../controllers/index')
 router.get('/find', async (req, res, next) => {
     try {
         const {name} = req.query
+        if(!name){
+            let result = await Products.find()
+           return res.json(result)
+        }
         let acc = await Products.find({
             name: {
                 $regex: name, $options: 'i'
             }
         })
-        res.status(201).json(acc)
+      return  res.status(201).json(acc)
     } catch (err) {
         next(err)
     }

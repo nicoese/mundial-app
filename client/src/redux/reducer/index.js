@@ -6,9 +6,12 @@ import {
     SHUFFLE_PRODUCTS,
     TEST_FILTERS,
     ADD_TO_CART,
-    REMOVE_TO_CART
+    REMOVE_TO_CART,
+    GET_BYNAME,
+    GET_DETAILS,
+    RESET_DETAIL
+
 } from "../actions"
-import {GET_BYNAME, GET_DETAILS} from "../actions";
 
 
 const initialState = {
@@ -64,6 +67,11 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 ProductDetail: action.payload,
             };
+        case RESET_DETAIL:
+            return{
+                ...state,
+                ProductDetail: []
+            }
         case GET_BYNAME:
             return {
                 ...state,
