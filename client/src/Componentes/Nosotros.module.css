@@ -1,0 +1,131 @@
+.contPrincipal {
+    background-color: #f7f7f7;
+    width: 100vw;
+    max-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hr {
+    border:1px solid #790829;
+}
+
+.atras {
+    font-size: 1.7rem;
+    background-color: #790829;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: 12vh;
+    align-items: center;
+}
+
+.titleNav {
+    font-size: 2.1rem;
+    font-weight: bold;
+    color: #790829;
+}
+
+.sectionTwo{
+    margin-top: 30px;
+    display: flex;
+    max-width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+
+.title{
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    height: 10%;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #790829;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.divDevelop{
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    height: 300px;
+    background-color: #790829;
+    align-items: center;
+    gap: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.titleDev {
+    display: flex;
+    font-weight: bold;
+    font-size: 1.4rem;
+    height: 20%;
+    align-items: center;
+    color: #ffffff;
+
+}
+
+.divIconos{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sectionOne {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pDiv {
+    width: 50%;
+}
+
+.pOne {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.3rem;
+    color: #790829;
+    margin-bottom: 60px;
+}
+
+.pDevelop {
+    height: 30%;
+    display: flex;
+    font-size: 1.1rem;
+    align-items: center;
+    color: #ffffff;
+}
+
+.imgLink {
+    width: 70px;
+    color: white;
+    height: 70px;
+}
+
+.imgGit {
+    color: white;
+    margin-top: 3px;
+    width: 63px;
+    height: 65px;
+}

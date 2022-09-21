@@ -9,6 +9,7 @@ import Landing from "./react/components/Landing/Landing.jsx";
 import { Products } from "./react/components/Products";
 import Details from "./react/components/Details/Details";
 import Info from "./Componentes/Info"
+import Nosotros from "./Componentes/Nosotros"
 
 
 function About() {
@@ -16,6 +17,28 @@ function About() {
 }
 
 
+    delay(1000).then((e) => {
+      dispatch(setCurrentProducts());
+    });
+    // dispatch(shuffleProducts())
+  });
+
+  function delay(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
+  // return <div className="App flex flex-col items-center">
+  return (
+    <div className="flex flex-col justify-center">
+      <Routes>
+        <Route exact path={"/"} element={<Landing />} />
+        <Route exact path={"/products"} element={<Products />} />
+        <Route path={"/about"} element={<About />} />
+        <Route path={"/products/:id"} element={<Details />} />
+        <Route path={'/blogInfo'} element={<Info />}/>
+        <Route path={'/nosotros'} element={<Nosotros />}/>
+       </Routes>
+    </div>
+  )
 }
 
 export default App;
