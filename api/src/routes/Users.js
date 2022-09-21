@@ -12,7 +12,7 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
-//Needs to be modified?
+//Needs to be modified?//email obligatorio deberia ser required y unique!!!
 router.post('/create_user', async (req,res,next)=>{
     try{
         const {first_name,last_name} = req.body

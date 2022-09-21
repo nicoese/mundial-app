@@ -12,10 +12,20 @@ export const FILTER = "FILTER";
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
+// export const getAllProducts = () => {
+//   return async (dispatch) => {
+//     const json = await axios.get(`${REACT_APP_API_URL}/products`);
+//     dispatch({
+//       type: GET_ALL_PRODUCTS,
+//       payload: json.data,
+//     });
+//   };
+// };
+
 export const getAllProducts = () => {
   return async (dispatch) => {
     const json = await axios.get(`${REACT_APP_API_URL}/products`);
-    dispatch({
+    await dispatch({
       type: GET_ALL_PRODUCTS,
       payload: json.data,
     });

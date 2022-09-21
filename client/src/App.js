@@ -21,10 +21,10 @@ function App() {
   useEffect(() => {
     dispatch(getAllProducts());
 
-    delay(400).then((e) => {
-      dispatch(setCurrentProducts());
-    });
-    // dispatch(shuffleProducts())
+    // delay(400).then((e) => {
+    //   dispatch(setCurrentProducts());
+    // });
+    // // dispatch(shuffleProducts())
   });
 
   function delay(time) {

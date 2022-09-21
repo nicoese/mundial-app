@@ -1,12 +1,26 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {ProductCard} from "../elements/ProductCard";
 import {Pagination} from "../elements/Pagination";
 import {SortBy} from "../elements/SortBy";
 import {FilterBy} from "../elements/FilterBy";
+import { useEffect } from "react";
+import { setCurrentProducts } from "../../redux/actions";
 
 export const ProductsContainer = (props) => {
 
-    const {currentProducts} = useSelector(state => state)
+    const {currentProducts,currentPage } = useSelector(state => state)
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        delay(1500).then(()=>{
+            console.log(currentPage)
+            dispatch(setCurrentProducts(currentPage));
+        })
+    }, [])
+
+    function delay(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
 
     return <div key={'ajslkdfjalskdfja'} className={'w-full text-center flex flex-col items-center justify-center bg-[#f6f6f6] mt-24'}>
             <SortBy />
