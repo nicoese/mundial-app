@@ -24,13 +24,11 @@ function App() {
     delay(1000).then((e) => {
       dispatch(setCurrentProducts());
     });
-    // dispatch(shuffleProducts())
   });
 
   function delay(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
-  // return <div className="App flex flex-col items-center">
   return (
     <div className="flex flex-col justify-center">
       <Routes>

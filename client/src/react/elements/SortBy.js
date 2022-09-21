@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllProducts, setCurrentProducts, setSortCriteria} from "../../redux/actions";
+import {getAllProducts, setCurrentProducts, setSortCriteria, shuffleProducts} from "../../redux/actions";
 import {useLocation, useNavigate} from "react-router";
 
 
@@ -90,8 +90,9 @@ export const SortBy = () => {
 
     const handleClick = async (ev) => {
         set_sort_criteria('')
-        await dispatch(getAllProducts())
+        // await dispatch(getAllProducts())
 
+        dispatch(shuffleProducts())
         dispatch(setCurrentProducts(1))
 
         navigate(location.pathname)
