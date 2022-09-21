@@ -4,7 +4,9 @@ import {
     SET_CURRENT_PRODUCTS,
     SET_SORT_CRITERIA,
     SHUFFLE_PRODUCTS,
-    TEST_FILTERS
+    TEST_FILTERS,
+    ADD_TO_CART,
+    REMOVE_TO_CART
 } from "../actions"
 import {GET_BYNAME, GET_DETAILS} from "../actions";
 
@@ -16,7 +18,8 @@ const initialState = {
     currentPage: 0,
     currentProducts: [],
     ProductDetail: [],
-    sortCriteria: ''
+    sortCriteria: '',
+    cart: []
 }
 
 
@@ -77,6 +80,16 @@ export const rootReducer = (state = initialState, action) => {
         //         ...state,
         //         products: state.products.filter(product => )
         //     }
+        case ADD_TO_CART:
+            return {
+                ...state,
+                cart: [...state.cart, action.payload]
+            }
+        case REMOVE_TO_CART:
+            return {
+                ...state,
+                cart: state.cart.filter((p) => p.id === action.payload)
+            }
         default:
             return state
     }
