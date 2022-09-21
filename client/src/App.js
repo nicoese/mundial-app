@@ -8,6 +8,7 @@ import { getAllProducts, setCurrentProducts } from "./redux/actions";
 import Landing from "./react/components/Landing/Landing.jsx";
 import { Products } from "./react/components/Products";
 import Details from "./react/components/Details/Details";
+import Cart from "./react/components/Cart/Cart";
 import Info from "./Componentes/Info"
 
 
@@ -21,7 +22,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllProducts());
 
-    delay(400).then((e) => {
+    delay(2000).then((e) => {
       dispatch(setCurrentProducts());
     });
     // dispatch(shuffleProducts())
@@ -39,7 +40,8 @@ function App() {
         <Route path={"/about"} element={<About />} />
         <Route path={"/products/:id"} element={<Details />} />
         <Route path={'/blogInfo'} element={<Info />}/>
-       </Routes>
+        <Route path={'/Cart'} element={<Cart />}/>
+      </Routes>
     </div>
   )
 }
