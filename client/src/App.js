@@ -9,11 +9,13 @@ import Landing from "./react/components/Landing/Landing.jsx";
 import { Products } from "./react/components/Products";
 import Details from "./react/components/Details/Details";
 import Info from "./Componentes/Info"
+import Nosotros from "./Componentes/Nosotros"
 
 
 function About() {
   return "about";
 }
+
 
 function App() {
   const dispatch = useDispatch();
@@ -21,9 +23,6 @@ function App() {
   useEffect(() => {
     dispatch(getAllProducts());
 
-    // delay(1000).then((e) => {
-    //   dispatch(setCurrentProducts());
-    // });
   });
 
   function delay(time) {
@@ -37,6 +36,7 @@ function App() {
         <Route path={"/about"} element={<About />} />
         <Route path={"/products/:id"} element={<Details />} />
         <Route path={'/blogInfo'} element={<Info />}/>
+        <Route path={'/nosotros'} element={<Nosotros />}/>
        </Routes>
     </div>
   )
