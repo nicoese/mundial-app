@@ -16,13 +16,8 @@ function About() {
   return "about";
 }
 
-function App() {
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(getAllProducts());
 
-    delay(400).then((e) => {
+    delay(1000).then((e) => {
       dispatch(setCurrentProducts());
     });
     // dispatch(shuffleProducts())
