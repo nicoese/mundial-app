@@ -33,7 +33,6 @@ function App() {
       dispatch(setCurrentProducts());
     });
     // dispatch(shuffleProducts())
-  });
   }, []);
 
   function delay(time) {
