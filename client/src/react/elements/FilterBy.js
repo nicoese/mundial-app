@@ -163,7 +163,7 @@ export const FilterBy = () => {
         })
 
 
-        navigate(url.search)
+        // navigate(url.search)
 
         let filter_dispatch = {
             type:[],

@@ -47,7 +47,7 @@ export const Pagination = () => {
 
         url.searchParams.append('page', pageNumber.toString())
 
-        navigate(url.search)
+        // navigate(url.search)
 
         dispatch(setCurrentProducts(pageNumber))
     }

@@ -55,7 +55,7 @@ export const SortBy = () => {
 
             url.searchParams.append('sort', criteriaHTML.value)
 
-            navigate(url.search)
+            // navigate(url.search)
         }
 
         const queryList = getQueryList()

@@ -19,8 +19,6 @@ export const SearchBar = () => {
 
         if (search) {
 
-            console.log(search)
-
             delay(1600)
                 .then(() => {
                     dispatch(getByName(search))
@@ -47,8 +45,8 @@ export const SearchBar = () => {
         delay(1500).then(r => {
             dispatch(setCurrentProducts(1))
             setName("");
-            if (name) return navigate(`/products?search=${name}`)
-            navigate('/products')
+            // if (name) return navigate(`/products?search=${name}`)
+            // navigate('/products')
         })
 
     }

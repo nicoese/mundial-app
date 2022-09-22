@@ -529,14 +529,14 @@ video {
 .mt-2 {
   margin-top: 0.5rem;
 }
+.mt-48 {
+  margin-top: 12rem;
+}
 .ml-2 {
   margin-left: 0.5rem;
 }
 .mr-1 {
   margin-right: 0.25rem;
-}
-.mt-48 {
-  margin-top: 12rem;
 }
 .flex {
   display: flex;
