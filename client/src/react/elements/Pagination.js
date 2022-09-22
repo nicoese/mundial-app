@@ -15,8 +15,8 @@ export const Pagination = () => {
 
     useEffect(() => {
 
-        delay(1200).then(e => {
-                const url = new URL(window.location.href)
+        delay(4000).then(e => {
+                const url = new URL(window.location)
                 const page = url.searchParams.get('page')
 
                 if (page) {
@@ -47,7 +47,7 @@ export const Pagination = () => {
 
         url.searchParams.append('page', pageNumber.toString())
 
-        navigate(url.search)
+        // navigate(url.search)
 
         dispatch(setCurrentProducts(pageNumber))
     }

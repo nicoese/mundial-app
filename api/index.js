@@ -38,7 +38,7 @@ mongoose.connect(MONGO_URL,
     .then(db => {
         console.log("mongo connect at", db.connection.host)
         server.listen(PORT, () => {
-            console.log('%s listening at '+PORT); // eslint-disable-line no-console
+            console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
         });
     })
     .catch(err => console.log(err))
