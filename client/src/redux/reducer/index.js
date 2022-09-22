@@ -9,7 +9,7 @@ import {
     REMOVE_TO_CART,
     GET_BYNAME,
     GET_DETAILS,
-    RESET_DETAIL, PRODUCTS_NOT_FOUND
+    RESET_DETAIL, PRODUCTS_NOT_FOUND, DETAILS_ERROR, CLEAR_DETAILS_ERROR, CLEAR_PRODUCTS_ERROR
 
 } from "../actions"
 
@@ -20,9 +20,10 @@ const initialState = {
     productsPerPage: 20,
     currentPage: 0,
     currentProducts: [],
-    ProductDetail: [],
+    ProductDetail: {},
     sortCriteria: '',
     productsError: '',
+    detailsError: '',
     cart: []
 }
 
@@ -68,7 +69,7 @@ export const rootReducer = (state = initialState, action) => {
                 ProductDetail: action.payload,
             };
         case RESET_DETAIL:
-            return{
+            return {
                 ...state,
                 ProductDetail: []
             }
@@ -100,6 +101,24 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 productsError: action.payload
             }
+
+        case DETAILS_ERROR:
+            return {
+                ...state,
+                detailsError: action.payload
+            }
+
+        case CLEAR_DETAILS_ERROR:
+            return {
+                ...state,
+                detailsError: ''
+            }
+        case CLEAR_PRODUCTS_ERROR:
+            return {
+                ...state,
+                productsError: ''
+            }
+
         default:
             return state
     }

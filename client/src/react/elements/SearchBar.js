@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router";
 import {useDispatch} from "react-redux";
 import React, {useEffect, useState} from "react";
-import {getByName, setCurrentProducts} from "../../redux/actions";
+import {clearProductsError, getByName, setCurrentProducts} from "../../redux/actions";
 import {HiSearch} from "react-icons/hi";
 
 
@@ -41,6 +41,8 @@ export const SearchBar = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
+
+        dispatch(clearProductsError())
         dispatch(getByName(name));
         delay(1500).then(r => {
             dispatch(setCurrentProducts(1))

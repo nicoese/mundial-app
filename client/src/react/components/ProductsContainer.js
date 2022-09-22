@@ -4,7 +4,7 @@ import {Pagination} from "../elements/Pagination";
 import {SortBy} from "../elements/SortBy";
 import {FilterBy} from "../elements/FilterBy";
 import {useEffect} from "react";
-import {setCurrentProducts} from "../../redux/actions";
+import {clearProductsError, setCurrentProducts} from "../../redux/actions";
 import {useLocation} from "react-router";
 import Spinner from "./Spinner/Spinner";
 import {SearchBar} from "../elements/SearchBar";
@@ -13,7 +13,7 @@ export const ProductsContainer = (props) => {
 
     const dispatch = useDispatch()
     const location = useLocation()
-    const {products, currentProducts, currentPage} = useSelector(state => state)
+    const {productsError, currentProducts, currentPage} = useSelector(state => state)
 
 
     useEffect(() => {
@@ -21,6 +21,9 @@ export const ProductsContainer = (props) => {
         delay(1500).then(() => {
             dispatch(setCurrentProducts(currentPage))
         })
+
+        return () => {
+        }
 
     }, [dispatch])
 
@@ -36,7 +39,7 @@ export const ProductsContainer = (props) => {
         <div className={'flex flex-row'}>
             {currentProducts.length > 0 ? <FilterBy/> : null}
             {
-                currentProducts.length > 0 ? <div key={"laksjdflak"}
+               productsError ? <div>{productsError}</div> : currentProducts.length > 0 ? <div key={"laksjdflak"}
                                                   className={'grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-4 mx-5 bg-[#f6f6f6]'}>
 
                     {currentProducts.map(prod => {

@@ -13,6 +13,7 @@ import Info from "./Componentes/Info"
 import Nosotros from "./Componentes/Nosotros"
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router";
+import {NotFound} from "./react/components/Not_Found/Not_Found";
 
 
 function About() {
@@ -44,6 +45,7 @@ function App() {
         <Route path={'/blogInfo'} element={<Info />}/>
         <Route path={'/Cart'} element={<Cart />}/>
         <Route path={'/nosotros'} element={<Nosotros />}/>
+        <Route path={'*'} element={<NotFound />}/>
        </Routes>
     </div>
   )
