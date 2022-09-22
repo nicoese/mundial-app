@@ -21,18 +21,17 @@ export const SortBy = () => {
 
     useEffect(() => {
 
-        delay(2000).then(e => {
-            const queryList = getQueryList()
-            if (queryList.length > 0) {
-                if (findSortQueryParam(queryList)) {
-                    const criteria = findSortQueryParam(queryList).sort
-                    dispatchSorting(criteria)
-                    const option = options.find(op => op.value === criteria)
-                    set_sort_criteria(option.name)
-                }
-
-            }
-        })
+        // delay(2000).then(e => {
+        //     const queryList = getQueryList()
+        //     if (queryList.length > 0) {
+        //         if (findSortQueryParam(queryList)) {
+        //             const criteria = findSortQueryParam(queryList).sort
+        //             dispatchSorting(criteria)
+        //             const option = options.find(op => op.value === criteria)
+        //             set_sort_criteria(option.name)
+        //         }
+        //     }
+        // })
 
     }, [])
 
@@ -55,7 +54,7 @@ export const SortBy = () => {
 
             url.searchParams.append('sort', criteriaHTML.value)
 
-            // navigate(url.search)
+            navigate(url.search)
         }
 
         const queryList = getQueryList()
