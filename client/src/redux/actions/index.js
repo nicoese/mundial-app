@@ -11,6 +11,7 @@ export const GET_DETAILS = "GET_DETAILS";
 export const FILTER = "FILTER";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_TO_CART = "REMOVE_TO_CART";
+export const UPDATE_TO_CART = "UPDATE_TO_CART";
 export const RESET_DETAIL = "RESET_DETAIL"
 export const PRODUCTS_NOT_FOUND = "PRODUCTS_NOT_FOUND"
 export const DETAILS_ERROR = 'DETAILS_ERROR'
@@ -73,8 +74,7 @@ export const testFilters = (filters) => {
     }
 }
 
-
-    export function getByName(name) {
+export function getByName(name) {
         return async function (dispatch) {
             try {
                 const json = await axios.get(`${REACT_APP_API_URL}/products/find?name=${name}`);
@@ -93,6 +93,7 @@ export const testFilters = (filters) => {
             }
         };
 }
+
 export function getDetails(id) {
     return async function (dispatch) {
         try {
@@ -144,6 +145,7 @@ export const addToCart = (product) => {
     })
   }
 }
+
 export const removeToCart = (id) => {
   return (dispatch) => {
     return dispatch({
@@ -152,7 +154,13 @@ export const removeToCart = (id) => {
     })
   }
 }
-
+export const updateToCart = (id, price) => {
+  return (dispatch) => {
+    return dispatch({
+      type: UPDATE_TO_CART,
+      payload: [id, price]
+    })
+  }
 export const clearDetailsErr = () => {
     return (dispatch) => {
         return dispatch({

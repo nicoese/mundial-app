@@ -29,6 +29,11 @@ function App() {
 
   useEffect(() => {
     dispatch(getAllProducts());
+    delay(2000).then((e) => {
+      dispatch(setCurrentProducts());
+    });
+    // dispatch(shuffleProducts())
+  });
   }, []);
 
   function delay(time) {
@@ -46,7 +51,7 @@ function App() {
         <Route path={'/Cart'} element={<Cart />}/>
         <Route path={'/nosotros'} element={<Nosotros />}/>
         <Route path={'*'} element={<NotFound />}/>
-       </Routes>
+      </Routes>
     </div>
   )
 }
