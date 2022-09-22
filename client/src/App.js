@@ -11,6 +11,9 @@ import Details from "./react/components/Details/Details";
 import Cart from "./react/components/Cart/Cart";
 import Info from "./Componentes/Info"
 import Nosotros from "./Componentes/Nosotros"
+import {useAuth0} from "@auth0/auth0-react";
+import {useNavigate} from "react-router";
+import {NotFound} from "./react/components/Not_Found/Not_Found";
 
 
 function About() {
@@ -20,16 +23,19 @@ function About() {
 
 function App() {
   const dispatch = useDispatch();
-  
+  const {isAuthenticated} = useAuth0()
+  const navigate = useNavigate()
+
+
   useEffect(() => {
     dispatch(getAllProducts());
-
-  });
+  }, []);
 
   function delay(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
   return (
+
     <div className="flex flex-col justify-center">
       <Routes>
         <Route exact path={"/"} element={<Landing />} />
@@ -39,6 +45,7 @@ function App() {
         <Route path={'/blogInfo'} element={<Info />}/>
         <Route path={'/Cart'} element={<Cart />}/>
         <Route path={'/nosotros'} element={<Nosotros />}/>
+        <Route path={'*'} element={<NotFound />}/>
        </Routes>
     </div>
   )

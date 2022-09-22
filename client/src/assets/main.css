@@ -60,8 +60,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 */
 
 abbr:where([title]) {
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 /*
@@ -529,6 +528,9 @@ video {
 }
 .mt-2 {
   margin-top: 0.5rem;
+}
+.mt-48 {
+  margin-top: 12rem;
 }
 .ml-2 {
   margin-left: 0.5rem;

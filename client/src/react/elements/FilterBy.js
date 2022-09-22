@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {filter, setCurrentProducts} from "../../redux/actions";
+import {clearProductsError, filter, setCurrentProducts} from "../../redux/actions";
 import {useNavigate} from "react-router";
 import {useDispatch} from "react-redux";
 
@@ -163,7 +163,7 @@ export const FilterBy = () => {
         })
 
 
-        navigate(url.search)
+        // navigate(url.search)
 
         let filter_dispatch = {
             type:[],
@@ -188,6 +188,7 @@ export const FilterBy = () => {
             dispatch(setCurrentProducts(1))
         })
 
+        dispatch(clearProductsError())
 
     }
 
@@ -252,3 +253,6 @@ export const FilterBy = () => {
     </div>
 }
 
+///todo: make useEffect filter component
+///todo: routing and redirections
+///todo: error handling

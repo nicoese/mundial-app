@@ -9,10 +9,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import './NavBar.css'
 import {useNavigate} from "react-router";
+import {SearchBar} from "../../elements/SearchBar";
 
 const NavBar = () => {
-  const dispatch = useDispatch();
-  const [name, setName] = useState("");
+  // const dispatch = useDispatch();
+  // const [name, setName] = useState("");
   const navigate = useNavigate()
 
   /* funcion para el menu desplegable */
@@ -30,26 +31,26 @@ const NavBar = () => {
   }
   /* funcion para el menu desplegable */
 
-  function handleInputChange(e) {
-    setName(e.target.value);
-  }
+  // function handleInputChange(e) {
+  //   setName(e.target.value);
+  // }
   
-  function handleSubmit(e) {
-    e.preventDefault();
-    // console.log(name)
-    dispatch(getByName(name));
-
-    delay(1000).then(r => {
-      dispatch(setCurrentProducts(1))
-      setName("");
-      navigate('/products')
-    })
-
-  }
-
-  function delay(time) {
-    return new Promise(resolve => setTimeout(resolve, time));
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   // console.log(name)
+  //   dispatch(getByName(name));
+  //
+  //   delay(1000).then(r => {
+  //     dispatch(setCurrentProducts(1))
+  //     setName("");
+  //     navigate('/products')
+  //   })
+  //
+  // }
+  //
+  // function delay(time) {
+  //   return new Promise(resolve => setTimeout(resolve, time));
+  // }
 
   const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
@@ -64,21 +65,22 @@ const NavBar = () => {
             <Link className="navbar-a"><li className="navbar-li">Productos</li></Link>
             <Link className="navbar-a"><li className="navbar-li">Contacto</li></Link>
           </ul>
-          <div className="searchBar_search">
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Search..."
-                value={name}
-                onChange={handleInputChange}
-              />
-              <div className="searchBar_btn">
-                <button className="search_btn-submit">
-                  <HiSearch size={23}/>
-                </button>
-              </div>
-            </form>
-          </div>
+          {/*<div className="searchBar_search">*/}
+          {/*      <form onSubmit={handleSubmit}>*/}
+          {/*        <input*/}
+          {/*            type="text"*/}
+          {/*            placeholder="Search..."*/}
+          {/*            value={name}*/}
+          {/*            onChange={handleInputChange}*/}
+          {/*        />*/}
+          {/*        <div className="searchBar_btn">*/}
+          {/*      <button className="search_btn-submit">*/}
+          {/*        <HiSearch size={23}/>*/}
+          {/*      </button>*/}
+          {/*    </div>*/}
+          {/*  </form>*/}
+          {/*</div>*/}
+          <SearchBar />
           <AiOutlineMenu size={28} className="navbar-icon" onClick={()=> toggleMenu()}/>
         </nav>
       </header>

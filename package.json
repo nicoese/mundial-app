@@ -1,0 +1,19 @@
+{
+  "name": "proyecto-grupal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "api": "cd api && npm start",
+    "client": "cd client && npm start",
+    "styles": "cd client && npm run watch:css",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run api\" \"npm run client\" \"npm run styles\" "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.4.0"
+  }
+}
