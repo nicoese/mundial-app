@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllProducts, setCurrentProducts, setSortCriteria} from "../../redux/actions";
+import {getAllProducts, setCurrentProducts, setSortCriteria, shuffleProducts} from "../../redux/actions";
 import {useLocation, useNavigate} from "react-router";
 
 
@@ -34,7 +34,7 @@ export const SortBy = () => {
             }
         })
 
-    }, [options])
+    }, [])
 
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
@@ -90,15 +90,16 @@ export const SortBy = () => {
 
     const handleClick = async (ev) => {
         set_sort_criteria('')
-        await dispatch(getAllProducts())
+        // await dispatch(getAllProducts())
 
+        dispatch(shuffleProducts())
         dispatch(setCurrentProducts(1))
 
-
         navigate(location.pathname)
+        // window.location.reload()
     }
 
-    return <div className={'flex self-end flex-col-reverse p-10'}>
+    return <div className={'flex flex-col-reverse items-end justify-center w-[50%] p-10 sm:p-4'}>
         <select onChange={(event) => {
             handleChange(event)
         }} className={'my-4'} value={sort_criteria} name="select-sort" id="">

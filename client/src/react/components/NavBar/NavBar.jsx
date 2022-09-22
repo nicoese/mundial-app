@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {getByName, setCurrentProducts} from "../../../redux/actions";
+import {getAllProducts, getByName, setCurrentProducts} from "../../../redux/actions";
 import { HiSearch } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useAuth0 } from '@auth0/auth0-react';
@@ -36,12 +36,13 @@ const NavBar = () => {
   
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(name)
+    // console.log(name)
     dispatch(getByName(name));
 
     delay(1000).then(r => {
       dispatch(setCurrentProducts(1))
       setName("");
+      navigate('/products')
     })
 
   }
@@ -58,12 +59,10 @@ const NavBar = () => {
         <nav className="navbar-ctn">
           <h1 onClick={(ev) => navigate('/')} className="navbar-title">MundiApp</h1>
           <ul className="navbar-ul">
-            <Link to={'/nosotros'} className="navbar-a"><li className="navbar-li">Nosotros</li></Link>
-            <Link to={'/blogInfo'} className="navbar-a"><li className="navbar-li">Info</li></Link>
-            {
-              isAuthenticated ? <li onClick={logout} className="li-inicioSesion">Cerrar Sesion</li>:
-              <li onClick={loginWithRedirect} className="li-inicioSesion">Iniciar Sesion</li>
-              }
+            <Link to={"/products"} className="navbar-a"><li className="navbar-li">Inicio</li></Link>
+            <Link to={"/cart"} className="navbar-a"><li className="navbar-li">Carrito</li></Link>
+            <Link className="navbar-a"><li className="navbar-li">Productos</li></Link>
+            <Link className="navbar-a"><li className="navbar-li">Contacto</li></Link>
           </ul>
           <div className="searchBar_search">
             <form onSubmit={handleSubmit}>

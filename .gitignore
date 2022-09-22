@@ -110,3 +110,6 @@ package-lock.json
 
 #testingInsertMongo
 testingInsertMongo
+
+#mainCSS
+main.css

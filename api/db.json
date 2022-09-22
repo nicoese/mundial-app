@@ -5,7 +5,9 @@
         "name": "Camiseta Titular Argentina ",
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},  
-        "price": 16.999,
+        "price": 16999,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camiseta-adidas-argentina-2022-3.jpg"
       },
       {
@@ -13,6 +15,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 16999,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://www.afashop.com.ar/ccstore/v1/images/?source=/file/v3925886948759474626/products/HB9220_FR_Torso_eCom.jpg&height=475&width=475"
       },
       {
@@ -20,6 +24,8 @@
         "brand": "Nike",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 15500,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://image-service.onefootball.com/transform?w=280&h=280&dpr=2&image=https%3A%2F%2Fpanamagol.com%2Fwp-content%2Fuploads%2F2022%2F08%2Fcamisetas-nike-brasil-2022-3.jpg"
       },
       {
@@ -28,6 +34,8 @@
         "brand": "Nike",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 15500,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://sc2.elpais.com.uy/files/article_default_content/uploads/2022/08/31/630f79dfdcddc.jpeg"
       },
       {
@@ -36,6 +44,8 @@
         "brand": "Puma",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 12500,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://cdn11.bigcommerce.com/s-3stx4pub31/images/stencil/1280x1280/products/6842/20123/camiseta_uruguay-2022__83116.1660137281.jpg?c=2?imbypass=on"
       },
       {
@@ -44,6 +54,8 @@
         "brand": "Puma",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 12500,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://media.subrayado.com.uy/p/fdf0017fdf64cb715330b9542f43d889/adjuntos/230/imagenes/003/141/0003141448/485x270/smart/puma-uruguayjpg.jpg"
       },
       {
@@ -52,6 +64,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 13500,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-adidas-espana-2022-1.jpg"
       },
       {
@@ -60,6 +74,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 13500,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://www.futbolemotion.com/imagesarticulos/173985/grandes/camiseta-adidas-espana-segunda-equipacion-mundial-qatar-2022-nino-glow-blue-glory-blue-0.jpg"
       },
       {
@@ -68,6 +84,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 13800,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camiseta-adidas-mexico-2022-5.jpg"
       },
       {
@@ -76,6 +94,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 13800,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camiseta-away-adidas-mexico-2022-3.jpg"
       },
       {
@@ -84,6 +104,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 14300,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://www.futbolemotion.com/imagesarticulos/174003/grandes/camiseta-adidas-japon-segunda-equipacion-mundial-qatar-2022-white-0.jpg"
       },
       {
@@ -92,6 +114,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 13800,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-adidas-belgica-2022-2.jpg"
       },
       {
@@ -100,6 +124,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 13800,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-adidas-belgica-2022-5.jpg"
       },
       {
@@ -108,6 +134,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 15000,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://cdn.shopify.com/s/files/1/0567/6639/8509/products/AAlemania_480x480.jpg?v=1661883189"
       },
       {
@@ -116,6 +144,8 @@
         "brand": "Adidas",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 15000,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-adidas-alemania-2022-3.jpg"
       },
       {
@@ -124,6 +154,8 @@
         "brand": "Marathon",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 12800,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://todosobrecamisetas.com/wp-content/uploads/camisetas-marathon-ecuador-2022-2.jpg"
       },
       {
@@ -132,6 +164,8 @@
         "brand": "Marathon",
         "stock": {"S":10,"M":10,"L":10,"XL":10},
         "price": 12800,
+        "type": "jersey",
+        "description": "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
         "img": "https://elcomercio.pe/resizer/Xhghti1FlvObGWL4aq5st2z7-vE=/400x0/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/QKI4HBQUOZFZ7MFOKSEDFAJS2I.jpg"
       }
     ],
@@ -140,6 +174,8 @@
         "name": "Soporte/Apoya Celular Qatar 2022",
         "price": 2200,
         "stock": {"X":10},
+        "type": "accesory",
+        "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_687790-MLA51494115928_092022-O.webp"
       },
       {
@@ -147,6 +183,8 @@
         "name": "Copa del mundo replica en Yeso",
         "price": 3600,
         "stock": {"X":10},
+        "type": "accesory",
+        "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_946511-MLA50151925221_052022-O.webp"
       },
       {
@@ -154,6 +192,8 @@
         "name": "Pelota Al Rihla",
         "price": 19900,
         "stock": {"X":10},
+        "type": "accesory",
+        "description": "Pelota oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_754652-MLA50927396729_072022-O.webp"
       },
       {
@@ -161,6 +201,8 @@
         "name": "Album de figuritas Panini Original",
         "price": 2499,
         "stock": {"X":10},
+        "type": "accesory",
+        "description": "Album oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_765945-MLA51234412137_082022-O.webp"
       },
       {
@@ -168,6 +210,7 @@
         "name": "x10 Sobres figuritas Panini",
         "price": 2299,
         "stock": {"X":10},
+        "description": "figuritas oficiales del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_767629-MLA51277747160_082022-O.webp"
       },
       {
@@ -175,6 +218,8 @@
         "name": "Taza ceramica mascota mundial",
         "price": 1299,
         "stock": {"X":10},
+        "type": "accesory",
+        "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_847633-MLA49548585941_042022-O.webp"
       },
       {
@@ -182,6 +227,8 @@
         "name": "Vuvuzela celeste y blanca",
         "price": 1890,
         "stock": {"X":10},
+        "type": "accesory",
+        "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_999908-MLA50775262031_072022-O.webp"
       },
       {
@@ -189,6 +236,8 @@
         "name": "Gorra Qatar 2022",
         "price": 3200,
         "stock": {"X":10},
+        "type": "accesory",
+        "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://i0.wp.com/www.argensend.com/wp-content/uploads/2022/07/D_NQ_NP_2X_823981-MLA49581413345_042022-F.jpg?fit=1040%2C1071&ssl=1"
       },
       {
@@ -196,6 +245,8 @@
         "name": "Llavero Qatar 2022",
         "price": 700,
         "stock": {"X":10},
+        "type": "accesory",
+        "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://cf.shopee.com.mx/file/048d57a58d7d0fe95c461d29c3afbdb9"
       },
       {
@@ -203,6 +254,8 @@
         "name": "Set de maquillaje celeste y blanco",
         "price": 999,
         "stock": {"X":10},
+        "type": "accesory",
+        "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_753092-MLA51263570081_082022-V.jpg"
       }
     ],
@@ -212,7 +265,10 @@
         "stadium": "Al Bayt Stadium",
         "date": "20/11/22",
         "price": 130000,
-        "sector": "Category 1"
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "sector": "Category 1",
+        "img": "https://bit.ly/3ShL2UL"
       },
       {
 
@@ -220,6 +276,9 @@
         "stadium": "Khalifa International Stadium",
         "date": "21/11/22",
         "price": 38800,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -228,6 +287,9 @@
         "stadium": "Luisal Stadium",
         "date": "22/11/22",
         "price": 61000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 1"
       },
       {
@@ -236,6 +298,9 @@
         "stadium": "Al Janoub Stadium",
         "date": "22/11/22",
         "price": 55000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -244,6 +309,9 @@
         "stadium": "Lusail Stadium",
         "date": "24/11/22",
         "price": 52000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 2"
       },
       {
@@ -252,6 +320,9 @@
         "stadium": "Stadium 974",
         "date": "24/11/22",
         "price": 47000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -260,6 +331,9 @@
         "stadium": "Education City Stadium",
         "date": "24/11/22",
         "price": 37000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -268,6 +342,9 @@
         "stadium": "Khalifa International Stadium",
         "date": "25/11/22",
         "price": 38000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -276,6 +353,9 @@
         "stadium": "Al Bayt Stadium",
         "date": "25/11/22",
         "price": 38000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -284,6 +364,9 @@
         "stadium": "Lusail Stadium",
         "date": "26/11/22",
         "price": 55000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 1"
       },
       {
@@ -292,6 +375,9 @@
         "stadium": "Stadium 974",
         "date": "26/11/22",
         "price": 42000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 2"
       },
       {
@@ -300,6 +386,9 @@
         "stadium": "Al Bayt Stadium",
         "date": "27/11/22",
         "price": 62000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 1"
       },
       {
@@ -308,6 +397,9 @@
         "stadium": "Khalifa International Stadium",
         "date": "27/11/22",
         "price": 32000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -316,6 +408,9 @@
         "stadium": "Stadium 974",
         "date": "28/11/22",
         "price": 45000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -324,6 +419,9 @@
         "stadium": "Lusail Stadium",
         "date": "28/11/22",
         "price": 44000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -332,6 +430,9 @@
         "stadium": "Al Bayt Stadium",
         "date": "29/11/22",
         "price": 45000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -340,6 +441,9 @@
         "stadium": "Khalifa International Stadium",
         "date": "29/11/22",
         "price": 33000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -348,6 +452,9 @@
         "stadium": "Stadium 974",
         "date": "30/11/22",
         "price": 54000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 2"
       },
       {
@@ -356,6 +463,9 @@
         "stadium": "Education City Stadium",
         "date": "30/11/22",
         "price": 47000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -364,6 +474,9 @@
         "stadium": "Ahmed Bin Ali Stadium",
         "date": "01/12/22",
         "price": 46000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 2"
       },
       {
@@ -372,6 +485,9 @@
         "stadium": "Khalifa International Stadium",
         "date": "01/12/22",
         "price": 40000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -380,6 +496,9 @@
         "stadium": "Al Janoub Stadium",
         "date": "02/12/22",
         "price": 33000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       },
       {
@@ -388,6 +507,9 @@
         "stadium": "Lusail Stadium",
         "date": "02/12/22",
         "price": 39000,
+        "type": "ticket",
+        "description": "Ticket oficial del Mundial Qatar 2022 ",
+        "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
       }
     ]
