@@ -1,5 +1,6 @@
 import React from "react";
 import imgLanding from '../img/imgLanding.jpeg'
+import imgOk from '../img/iconOk.png'
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsCheck2Circle } from "react-icons/bs";
@@ -28,7 +29,9 @@ const Landing = () => {
 
 
 
-  const { loginWithRedirect, isAuthenticated, logout} = useAuth0();
+  const { loginWithRedirect, isAuthenticated, logout, user  } = useAuth0();
+
+  console.log(user)
 
   return (
 
@@ -63,8 +66,11 @@ const Landing = () => {
             <h2>Venimos a entregarte </h2>
             <span className="hero-spn">lo mejor del mundial</span>
             <p className="hero-p">Si sos un apasionado al futbol y principalmente al mundial, estas en el lugar correcto. Vas a poder conseguir los mejores productos al alcance de un solo click(Entradas, camisetas y accesorios).</p>
-            <div className="btns-ctn">
-              <Link><button className="hero-btn">Registrarse</button></Link>
+            <div className="btns-ctn"> 
+            {
+              isAuthenticated ? <button className="hero-btnlog"><img src={imgOk} width='30px' height='30px'/>Logeado</button> : <button onClick={loginWithRedirect} className="hero-btn">Registrarse</button>
+
+            }
               <Link to={'products'}><button className="hero-btn btn-s">Ver Productos</button></Link>
             </div>
             <div className="check-icons">
