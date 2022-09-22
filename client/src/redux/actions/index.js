@@ -11,6 +11,7 @@ export const GET_DETAILS = "GET_DETAILS";
 export const FILTER = "FILTER";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_TO_CART = "REMOVE_TO_CART";
+export const UPDATE_TO_CART = "UPDATE_TO_CART";
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -60,8 +61,7 @@ export const testFilters = (filters) => {
     }
 }
 
-
-    export function getByName(name) {
+export function getByName(name) {
         return async function (dispatch) {
             console.log(name)
             try {
@@ -75,6 +75,7 @@ export const testFilters = (filters) => {
             }
         };
 }
+
 export function getDetails(id) {
     return async function (dispatch) {
         const json = await axios.get(`${REACT_APP_API_URL}/products/` + id);
@@ -110,11 +111,21 @@ export const addToCart = (product) => {
     })
   }
 }
+
 export const removeToCart = (id) => {
   return (dispatch) => {
     return dispatch({
       type: REMOVE_TO_CART,
       payload: id
+    })
+  }
+}
+
+export const updateToCart = (id, price) => {
+  return (dispatch) => {
+    return dispatch({
+      type: UPDATE_TO_CART,
+      payload: [id, price]
     })
   }
 }

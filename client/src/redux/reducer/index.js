@@ -1,4 +1,6 @@
 import {
+    GET_BYNAME,
+    GET_DETAILS,
     FILTER,
     GET_ALL_PRODUCTS,
     SET_CURRENT_PRODUCTS,
@@ -6,9 +8,9 @@ import {
     SHUFFLE_PRODUCTS,
     TEST_FILTERS,
     ADD_TO_CART,
-    REMOVE_TO_CART
+    REMOVE_TO_CART,
+    UPDATE_TO_CART
 } from "../actions"
-import {GET_BYNAME, GET_DETAILS} from "../actions";
 
 
 const initialState = {
@@ -91,7 +93,17 @@ export const rootReducer = (state = initialState, action) => {
         case REMOVE_TO_CART:
             return {
                 ...state,
-                cart: state.cart.filter((p) => p.id === action.payload)
+                cart: state.cart.filter((p) => p.id !== action.payload)
+            }
+        case UPDATE_TO_CART:
+            console.log(action.payload[0]);
+            return {
+                ...state,
+                cart: state.cart.map((p) => {
+                    if(p.id === action.payload[0]){
+                        p.price = action.payload[1]
+                    }
+                })
             }
         default:
             return state
