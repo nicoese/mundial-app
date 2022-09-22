@@ -12,9 +12,9 @@ const purchasesSchema = new Schema({
         type: Date,
         default: new Date()
     },
-    user: {
-        type:Schema.Types.ObjectId,
-        ref: 'User'
+    email:{
+        type: String,
+        required: true
     },
     products:[{
         type:Schema.Types.Mixed,
