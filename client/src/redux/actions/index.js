@@ -12,6 +12,7 @@ export const FILTER = "FILTER";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_TO_CART = "REMOVE_TO_CART";
 export const RESET_DETAIL = "RESET_DETAIL"
+export const PRODUCTS_NOT_FOUND = "PRODUCTS_NOT_FOUND"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;

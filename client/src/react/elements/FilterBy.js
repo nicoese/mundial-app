@@ -252,3 +252,6 @@ export const FilterBy = () => {
     </div>
 }
 
+///todo: make useEffect filter component
+///todo: routing and redirections
+///todo: error handling

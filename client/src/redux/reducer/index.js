@@ -9,7 +9,7 @@ import {
     REMOVE_TO_CART,
     GET_BYNAME,
     GET_DETAILS,
-    RESET_DETAIL
+    RESET_DETAIL, PRODUCTS_NOT_FOUND
 
 } from "../actions"
 
@@ -22,6 +22,7 @@ const initialState = {
     currentProducts: [],
     ProductDetail: [],
     sortCriteria: '',
+    productsError: '',
     cart: []
 }
 
@@ -60,7 +61,6 @@ export const rootReducer = (state = initialState, action) => {
                     state.products.sort((a, b) => {
                         return a[props[0]] < b[props[0]] ? 1 : -1
                     })
-
             }
         case GET_DETAILS:
             return {
@@ -83,11 +83,7 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 products: action.payload
             }
-        // case TEST_FILTERS:
-        //     return {
-        //         ...state,
-        //         products: state.products.filter(product => )
-        //     }
+
         case ADD_TO_CART:
             return {
                 ...state,
@@ -97,6 +93,12 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cart: state.cart.filter((p) => p.id === action.payload)
+            }
+
+        case PRODUCTS_NOT_FOUND:
+            return {
+                ...state,
+                productsError: action.payload
             }
         default:
             return state
