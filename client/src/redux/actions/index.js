@@ -161,6 +161,7 @@ export const updateToCart = (id, price) => {
       payload: [id, price]
     })
   }
+}
 export const clearDetailsErr = () => {
     return (dispatch) => {
         return dispatch({
