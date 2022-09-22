@@ -26,7 +26,6 @@ const Cart = () => {
     setSubtotal(value);
   }
 
-
   return (
     <>
       <NavBar />
@@ -45,9 +44,8 @@ const Cart = () => {
               img={p.img}
               addTotalPrice={addTotalPrice}
               subTotalPrice={subTotalPrice}
-            />)
-          })
-
+             />)
+           })
           }
         </div>
         <hr className="w-[80%]"/>
