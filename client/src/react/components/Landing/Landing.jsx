@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsCheck2Circle } from "react-icons/bs";
 import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "../Login/LoginButton";
+import LogoutButton from "../Login/LogoutButton";
+import SignupButton from "../Login/SignupButton";
 import swal from 'sweetalert'
 import "./Landing.css";
 
@@ -26,18 +29,14 @@ const Landing = () => {
     }
   }
 
-
-
-
   const { loginWithRedirect, isAuthenticated, logout, user  } = useAuth0();
 
+  
   console.log(user)
 
   return (
-
-    
+ 
     <>
-
       <header>
         <nav className="nav-ctn">
           <h1 className="nav-title">MundiApp</h1>
@@ -46,8 +45,8 @@ const Landing = () => {
             <Link to={'/nosotros'} className="nav-a"><li className="nav-li">Nosotros</li></Link>
             <Link to='/blogInfo' className="nav-a"><li className="nav-li">info</li></Link>
             {
-              isAuthenticated ? <li onClick={logout} className="li-inicioSesion">Cerrar Sesion</li>:
-              <li onClick={loginWithRedirect} className="li-inicioSesion">Iniciar Sesion</li>
+              isAuthenticated ? <LogoutButton/>:<LoginButton/>
+
               }
           </ul>
           <AiOutlineMenu size={28} className="nav-icon" onClick={()=> toggleMenu()}/>
@@ -67,7 +66,7 @@ const Landing = () => {
             <span className="hero-spn">lo mejor del mundial</span>
             <p className="hero-p">Si sos un apasionado del futbol y principalmente del mundial, estas en el lugar correcto. Vas a poder conseguir los mejores productos al alcance de un solo click!</p>
             <div className="btns-ctn">
-              <Link><button onClick={loginWithRedirect} className="hero-btn">Registrarse</button></Link>
+              <Link><SignupButton/></Link>
               <Link to={'products'}><button className="hero-btn btn-s">Ver Productos</button></Link>
             </div>
             <div className="check-icons">
