@@ -37,10 +37,11 @@ const Cart = () => {
       }
     }
 
+
     console.log(productsInfo)
     /* dispatch(buyDetail(JSON.parse(buyInfo))) */
   }
-
+  
   return (
     <>
       <NavBar />
@@ -59,9 +60,8 @@ const Cart = () => {
               img={p.img}
               addTotalPrice={addTotalPrice}
               subTotalPrice={subTotalPrice}
-            />)
-          })
-
+             />)
+           })
           }
         </div>
         <hr className="w-[80%]"/>

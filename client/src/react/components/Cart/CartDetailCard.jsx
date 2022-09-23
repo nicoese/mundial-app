@@ -44,7 +44,6 @@ const CartDetailCard = ({ id, name, price, img, addTotalPrice, subTotalPrice }) 
     }
     if(arrProductsId.includes(e.target.id)){
       dispatch(removeToCart(e.target.id))
-      
       updateState(!state);
     }
   }

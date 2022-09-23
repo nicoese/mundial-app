@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllProducts, setCurrentProducts, setSortCriteria} from "../../redux/actions";
+import {getAllProducts, setCurrentProducts, setSortCriteria, shuffleProducts} from "../../redux/actions";
 import {useLocation, useNavigate} from "react-router";
 
 
@@ -19,20 +19,19 @@ export const SortBy = () => {
     const location = useLocation()
     const {currentPage} = useSelector(state => state)
 
-    useEffect( () => {
+    useEffect(() => {
 
-        delay(1200).then(e => {
-            const queryList = getQueryList()
-            if(queryList.length > 0){
-                if (findSortQueryParam(queryList)){
-                    const criteria = findSortQueryParam(queryList).sort
-                    dispatchSorting(criteria)
-                    const option = options.find(op => op.value === criteria)
-                    set_sort_criteria(option.name)
-                }
-
-            }
-        })
+        // delay(2000).then(e => {
+        //     const queryList = getQueryList()
+        //     if (queryList.length > 0) {
+        //         if (findSortQueryParam(queryList)) {
+        //             const criteria = findSortQueryParam(queryList).sort
+        //             dispatchSorting(criteria)
+        //             const option = options.find(op => op.value === criteria)
+        //             set_sort_criteria(option.name)
+        //         }
+        //     }
+        // })
 
     }, [])
 
@@ -45,17 +44,13 @@ export const SortBy = () => {
         const criteriaHTML = ev.target[ev.target.selectedIndex]
         set_sort_criteria(criteriaHTML.innerText)
 
-        dispatch(setSortCriteria(criteriaHTML.value))
-
-
         if (criteriaHTML.value) {
 
             const url = new URL(window.location.href)
 
-            if (url.searchParams.get('sort')){
+            if (url.searchParams.get('sort')) {
                 url.searchParams.delete('sort')
             }
-
 
             url.searchParams.append('sort', criteriaHTML.value)
 
@@ -81,22 +76,25 @@ export const SortBy = () => {
         return queryList.find(e => e.hasOwnProperty('sort'))
     }
 
-     function dispatchSorting (ifSorting) {
-        if(ifSorting){
+    function dispatchSorting(ifSorting) {
+        if (ifSorting) {
             dispatch(setSortCriteria(ifSorting))
             dispatch(setCurrentProducts(currentPage))
         }
     }
 
-    const handleClick = async (ev) => {
-        set_sort_criteria('')
-        await dispatch(getAllProducts())
-
-        dispatch(setCurrentProducts(1))
-
-        navigate(location.pathname)
-        // window.location.reload()
-    }
+    // const handleClick = async (ev) => {
+    //     set_sort_criteria('')
+    //
+    //     dispatch(shuffleProducts())
+    //     dispatch(setCurrentProducts(1))
+    //
+    //     const url = new URL(window.location)
+    //     url.searchParams.delete('sort')
+    //
+    //
+    //     navigate(url.search)
+    // }
 
     return <div className={'flex flex-col-reverse items-end justify-center w-[50%] p-10 sm:p-4'}>
         <select onChange={(event) => {
@@ -106,13 +104,11 @@ export const SortBy = () => {
             {options.map(op => {
                 return <option key={op.name} value={op.value}>{op.name}</option>
             })}
-
-
         </select>
-        {sort_criteria && <div className={'flex'}>
-            <p className={'m-2'} >{sort_criteria}</p>
-            <button onClick={handleClick}>❌</button>
-        </div>}
+        {/*{sort_criteria && <div className={'flex'}>*/}
+        {/*    <p className={'m-2'} >{sort_criteria}</p>*/}
+        {/*    <button onClick={handleClick}>❌</button>*/}
+        {/*</div>}*/}
 
     </div>
 }

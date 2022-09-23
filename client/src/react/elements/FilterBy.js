@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {filter, setCurrentProducts} from "../../redux/actions";
+import {clearProductsError, filter, setCurrentProducts} from "../../redux/actions";
 import {useNavigate} from "react-router";
 import {useDispatch} from "react-redux";
 
@@ -118,6 +118,9 @@ export const FilterBy = () => {
     const handleClick = (ev) => {
 
 
+        ///todo: cuando seteo los filtros vuelvo a la pag 1
+
+
         if (filters.ticket.checked || filters.accessory.checked) {
             filters.nike.checked = false
             filters.adidas.checked = false
@@ -144,6 +147,7 @@ export const FilterBy = () => {
         if (url.searchParams.get('brand')) url.searchParams.delete('brand')
         if (url.searchParams.get('min')) url.searchParams.delete('min')
         if (url.searchParams.get('max')) url.searchParams.delete('max')
+        if (url.searchParams.get('page')) url.searchParams.delete('page')
 
         filtersList.map(e => {
             const key = Object.keys(e)[0]
@@ -159,7 +163,7 @@ export const FilterBy = () => {
         })
 
 
-        navigate(url.search)
+        // navigate(url.search)
 
         let filter_dispatch = {
             type:[],
@@ -178,14 +182,13 @@ export const FilterBy = () => {
         if (filter_dispatch.min.length === 0) filter_dispatch.min.push({})
         if (filter_dispatch.max.length === 0) filter_dispatch.max.push({})
 
-
-        console.log(filter_dispatch)
-
         dispatch(filter(filter_dispatch))
+
         delay(1000).then(()=>{
             dispatch(setCurrentProducts(1))
         })
 
+        dispatch(clearProductsError())
 
     }
 
@@ -250,3 +253,6 @@ export const FilterBy = () => {
     </div>
 }
 
+///todo: make useEffect filter component
+///todo: routing and redirections
+///todo: error handling

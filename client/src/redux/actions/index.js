@@ -12,17 +12,30 @@ export const FILTER = "FILTER";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_TO_CART = "REMOVE_TO_CART";
 export const UPDATE_TO_CART = "UPDATE_TO_CART";
+export const RESET_DETAIL = "RESET_DETAIL"
+export const PRODUCTS_NOT_FOUND = "PRODUCTS_NOT_FOUND"
+export const DETAILS_ERROR = 'DETAILS_ERROR'
+export const CLEAR_DETAILS_ERROR = 'CLEAR_DETAILS_ERROR'
+export const CLEAR_PRODUCTS_ERROR = 'CLEAR_PRODUCTS_ERROR'
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
 export const getAllProducts = () => {
   return async (dispatch) => {
-    const json = await axios.get(`${REACT_APP_API_URL}/products`);
-    dispatch({
-      type: GET_ALL_PRODUCTS,
-      payload: json.data,
-    });
+    return axios.get(`${REACT_APP_API_URL}/products`)
+        .then(json => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: json.data,
+            })
+        })
+        .catch(err => {
+            return dispatch({
+                type: PRODUCTS_NOT_FOUND,
+                payload: 'No se han encontrado productos'
+            })
+        })
   };
 };
 
@@ -63,28 +76,49 @@ export const testFilters = (filters) => {
 
 export function getByName(name) {
         return async function (dispatch) {
-            console.log(name)
             try {
                 const json = await axios.get(`${REACT_APP_API_URL}/products/find?name=${name}`);
+                if (json.data.length === 0) {
+                    throw new Error('Products not found')
+                }
                 return dispatch({
                     type: GET_BYNAME,
                     payload: json.data,
                 });
             } catch (err) {
-                console.log(err);
+                return dispatch({
+                    type: PRODUCTS_NOT_FOUND,
+                    payload: 'No se han encontrado productos'
+                })
             }
         };
 }
 
 export function getDetails(id) {
     return async function (dispatch) {
-        const json = await axios.get(`${REACT_APP_API_URL}/products/` + id);
-        dispatch({
-            type: GET_DETAILS,
-            payload: json.data,
-        });
+        try {
+            const json = await axios.get(`${REACT_APP_API_URL}/products/` + id);
+            dispatch({
+                type: GET_DETAILS,
+                payload: json.data,
+            });
+        }catch (err){
+            return dispatch({
+                type: DETAILS_ERROR,
+                payload: 'Producto no encontrado'
+            })
+        }
+
     };
 
+}
+
+export function resetDetail(){
+  return{
+    type: RESET_DETAIL
+  }
+      
+  
 }
 
 export const filter = (critearia) => {
@@ -120,7 +154,6 @@ export const removeToCart = (id) => {
     })
   }
 }
-
 export const updateToCart = (id, price) => {
   return (dispatch) => {
     return dispatch({
@@ -129,6 +162,7 @@ export const updateToCart = (id, price) => {
     })
   }
 }
+
 export function buyDetail(buyDetail) {
   /* return async function (dispatch) {
     var response = await axios.post(`http://localhost:3001/x`, buyDetail);
@@ -136,3 +170,18 @@ export function buyDetail(buyDetail) {
   }; */
   console.log(`Productos seleccionados: ${buyDetail}`)
 }
+export const clearDetailsErr = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: CLEAR_DETAILS_ERROR
+        })
+    }
+}
+export const clearProductsError = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: CLEAR_PRODUCTS_ERROR
+        })
+    }
+}
+
