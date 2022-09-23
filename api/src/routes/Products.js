@@ -2,7 +2,6 @@ const {Router, response} = require('express');
 const router = Router();
 const Products = require('../models/products');
 const db = require('../../db.json')
-const {detail} = require('../controllers/index')
 
 
 //FIND PROD BY NAME

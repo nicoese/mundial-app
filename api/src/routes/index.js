@@ -3,7 +3,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const routeSearch = require('./routeSearch')
 const routeFilter = require('./routeFilter')
-
+const routeMP = require ('./mercadoPago')
 
 const productsRoute = require('./Products')
 
@@ -19,6 +19,7 @@ const router = Router();
 router.use('/products', productsRoute);
 router.use('/users', usersRoute);
 router.use('/purchases',purchasesRoute)
+router.use('/prueba', routeMP)
 
 
 
