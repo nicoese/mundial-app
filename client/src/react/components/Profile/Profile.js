@@ -10,6 +10,6 @@ export const Profile = () => {
     return <div>
         <p>{user.name}</p>
         <p>{user.email}</p>
-        <img src={user.picture} alt=""/>
+        <img className={'rounded-full'} src={user.picture} alt=""/>
     </div>
 }

@@ -62,7 +62,7 @@ const Landing = () => {
 
                         {
                             isAuthenticated && user && <div className={'flex '}>
-                                <img onClick={() => navigate('profile')} className={'w-10 rounded-full hover:border-red-500 hover:border-4 cursor-pointer'} src={user.picture} alt=""/>
+                                <img onClick={() => navigate('profile')} className={'w-10 rounded-full hover:border-red-500 hover:border-2 cursor-pointer'} src={user.picture} alt=""/>
 
 
                             </div>
