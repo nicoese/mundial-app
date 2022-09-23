@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { buyDetail } from "../../../redux/actions";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
 
 const Cart = () => {
+  const dispatch = useDispatch()
   const prodcutsInCart = useSelector((state)=> state.cart)
   const [subtotal, setSubtotal] = useState(0)
 
@@ -25,7 +27,19 @@ const Cart = () => {
     let value = subtotal - num
     setSubtotal(value);
   }
+  const handleClick = ()=>{
+    let productsInfo = []
+    let storageKeys = Object.keys(localStorage)
+    
+    for (let i = 0; i < storageKeys.length; i++) {
+      if(storageKeys[i] !== 'products'){
+        productsInfo.push(JSON.parse(localStorage[storageKeys[i]]))
+      }
+    }
 
+    console.log(productsInfo)
+    /* dispatch(buyDetail(JSON.parse(buyInfo))) */
+  }
 
   return (
     <>
@@ -64,6 +78,9 @@ const Cart = () => {
           <div className="flex items-start w-[90%] h-fit py-2"> 
             <div className="w-full h-fit px-2 text-xl font-bold text-red-600 ">Total</div>
             <div id="total" className="w-full h-fit px-2 text-xl font-bold text-red-600 text-end">{`$${subtotal + resto} ARS`}</div>
+          </div>
+          <div className="flex items-start justify-center w-[90%] h-fit py-2"> 
+          <button onClick={()=>handleClick()} className="w-[12em] h-[3em] mr-2 rounded-md bg-red-600 hover:bg-red-800 text-white font-bold font-[Lato] tracking-wider"> Pagar </button>
           </div>
         </div>
       </main>

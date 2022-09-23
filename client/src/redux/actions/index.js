@@ -129,3 +129,10 @@ export const updateToCart = (id, price) => {
     })
   }
 }
+export function buyDetail(buyDetail) {
+  /* return async function (dispatch) {
+    var response = await axios.post(`http://localhost:3001/x`, buyDetail);
+    return response;
+  }; */
+  console.log(`Productos seleccionados: ${buyDetail}`)
+}

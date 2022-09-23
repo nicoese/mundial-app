@@ -6,10 +6,10 @@ const CartDetailCard = ({ id, name, price, img, addTotalPrice, subTotalPrice }) 
   const dispatch = useDispatch()
   let productInCart = useSelector((state)=>state.cart)
 
-  localStorage.setItem(`${id}`, JSON.stringify({name, price, img, cantidad: 1}))
-  /* let productInStorage =  JSON.parse(localStorage.getItem(`${id}`)) */
-
-  /* const item = {id, name, price, img, addTotalPrice, subTotalPrice} */
+  const firstAdd = localStorage.getItem(`${id}`)
+  
+  if(firstAdd === null) localStorage.setItem(`${id}`, JSON.stringify({name, price, img, cantidad: 1}))
+  
 
   const [cantidad, setCantidad] = useState(1)
   const [state, updateState] = useState(true);
@@ -20,6 +20,7 @@ const CartDetailCard = ({ id, name, price, img, addTotalPrice, subTotalPrice }) 
 
     setCantidad(cantidad + 1)
     addTotalPrice(initialValue)
+    localStorage.setItem(`${e.target.id}`, JSON.stringify({name, price, img, cantidad: cantidad + 1}))
     updateState(!state);
   }
   
@@ -29,7 +30,8 @@ const CartDetailCard = ({ id, name, price, img, addTotalPrice, subTotalPrice }) 
     
     if(cantidad >= 2){ 
       setCantidad(cantidad - 1)
-      subTotalPrice(initialValue) 
+      subTotalPrice(initialValue)
+      localStorage.setItem(`${e.target.id}`, JSON.stringify({name, price, img, cantidad: cantidad - 1}))
     }
     updateState(!state);
   }

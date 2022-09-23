@@ -657,6 +657,12 @@ video {
 .w-\[20\%\] {
   width: 20%;
 }
+.w-\[10em\] {
+  width: 10em;
+}
+.w-\[12em\] {
+  width: 12em;
+}
 .max-w-sm {
   max-width: 24rem;
 }
@@ -839,6 +845,12 @@ video {
 }
 .tracking-wide {
   letter-spacing: 0.025em;
+}
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+.tracking-widest {
+  letter-spacing: 0.1em;
 }
 .text-white {
   --tw-text-opacity: 1;
