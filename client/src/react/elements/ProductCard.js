@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import "../components/Landing/Landing.css" //solo para tomar las fuentes
 
@@ -9,34 +8,13 @@ export const ProductCard = ({ id, name, price, img, brand, stadium }) => {
   const prodcutsInCart = useSelector((state)=> state.cart)
 
   const handleClick = ()=>{
-    if(prodcutsInCart.length === 0 ){
-      dispatch(addToCart({
-        id,
-        name,
-        price,
-        img,
-        brand,
-        stadium
-      }))
-      alert("Añadido al carrito")
-    } else {
-      let arrId = []
-      for (let i = 0; i < prodcutsInCart.length; i++) {
-        arrId.push(prodcutsInCart[i].id)
-      }
-      if(arrId.includes(id)){
-        alert("Ya añadiste este producto a tu carrito. Revisa tu carrito");
-      } else {
-        dispatch(addToCart({
-          id,
-          name,
-          price,
-          img,
-          brand,
-          stadium
-        }))
-        alert("Añadido a carrito")
-      }
+    const firstAdd = localStorage.getItem(`${id}`)
+
+    if(firstAdd === null){
+      localStorage.setItem(`${id}`, JSON.stringify({id, name, price, img, cantidad: 1})) 
+      alert("Añadiste el Producto a tu carrito")
+    } else{
+      alert("Este producto ya fue añadido. Echale un vistazo al carrito!")
     }
   }
 
