@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from "react";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
+import {buyDetail} from "../../../redux/actions";
 
 const Cart = () => {
   const [state, updateState] = useState(true);
   let productsInStorage = [];
   let totalPrice = 0;
   let storageKeys = Object.keys(localStorage);
+  const dispatch = useDispatch()
     
   for (let i = 0; i < storageKeys.length; i++) {
     if(storageKeys[i] !== 'products'){
@@ -20,7 +22,8 @@ const Cart = () => {
 
   const handleClick = ()=>{
     productsInStorage.length !== 0 ? console.log(productsInStorage) : alert("No tienes productos en tu carrito. Añade algunos!")
-    /* dispatch(buyDetail(JSON.parse(buyInfo))) */
+    dispatch(buyDetail(productsInStorage))
+
   }
   const deleteProduct = ()=>{
     updateState(!state)
