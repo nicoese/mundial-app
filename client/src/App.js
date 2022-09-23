@@ -14,6 +14,9 @@ import Nosotros from "./Componentes/Nosotros"
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router";
 import {NotFound} from "./react/components/Not_Found/Not_Found";
+import {Profile} from "./react/components/Profile/Profile";
+import {Wishlist} from "./react/components/Wishlist/Wishlist";
+import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 
 
 function About() {
@@ -45,6 +48,12 @@ function App() {
         <Route path={'/blogInfo'} element={<Info />}/>
         <Route path={'/Cart'} element={<Cart />}/>
         <Route path={'/nosotros'} element={<Nosotros />}/>
+        <Route path={'/profile'} element={<ProtectedRoutes>
+          <Profile />
+        </ProtectedRoutes>}/>
+        <Route path={'/wishlist'} element={<ProtectedRoutes>
+          <Wishlist />
+        </ProtectedRoutes>}/>
         <Route path={'*'} element={<NotFound />}/>
        </Routes>
     </div>
