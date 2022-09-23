@@ -20,7 +20,11 @@ const purchasesSchema = new Schema({
         type:Schema.Types.Mixed,
         ref: 'Product'
     }],
-    totalPrice: Number
+    totalPrice: Number,
+    status: {
+        type: String,
+        default: 'pending'
+    }
     })
 
 module.exports = model('Purchase',purchasesSchema)

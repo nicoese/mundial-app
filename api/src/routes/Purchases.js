@@ -38,23 +38,27 @@ router.post('/add_purchase', async (req,res,next)=>{
     try{
         const {user,products,totalPrice} =req.body
         let purchase = new Purchase({
-            user: user._id,
+            email: user.email,
             products: [...products],
             totalPrice
         })
         const savedPurchase = await purchase.save();
 
+        savedPurchase.set()
+
         //^^purchase done, now saving it in the user
 
-        let found = await User.findById(user._id)
-        let savedInUser = found.set('purchases',[...found.purchases,savedPurchase._id])
-        let result = await savedInUser.save()
+        // let found = await User.findById(user.email)
+        // let savedInUser = found.set('purchases',[...found.purchases,savedPurchase._id])
+        // let result = await savedInUser.save()
         res.status(200).json(savedPurchase)
 
     }catch(err){
         next(err)
     }
 })
+
+//si esta ok, cambiarle el status a complete, sino a failed, estado default = pending
 
 
 module.exports = router;
