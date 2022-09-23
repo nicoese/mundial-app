@@ -3,7 +3,11 @@ import imgLanding from '../img/imgLanding.jpeg'
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsCheck2Circle } from "react-icons/bs";
+import { useAuth0 } from "@auth0/auth0-react";
+import swal from 'sweetalert'
 import "./Landing.css";
+
+
 
 const Landing = () => {
 
@@ -21,17 +25,27 @@ const Landing = () => {
     }
   }
 
+
+
+
+  const { loginWithRedirect, isAuthenticated, logout} = useAuth0();
+
   return (
+
+    
     <>
 
       <header>
         <nav className="nav-ctn">
           <h1 className="nav-title">MundiApp</h1>
           <ul className="nav-ul">
-            <Link className="nav-a"><li className="nav-li">Inicio</li></Link>
-            <Link className="nav-a"><li className="nav-li">Nosotros</li></Link>
-            <Link to={'products'} className="nav-a"><li className="nav-li">Productos</li></Link>
-            <Link to='/blogInfo' className="nav-a"><li className="nav-li">Info</li></Link>
+            <Link to={'products'} className="nav-a"><li className="nav-li">Inicio</li></Link>
+            <Link to={'/nosotros'} className="nav-a"><li className="nav-li">Nosotros</li></Link>
+            <Link to='/blogInfo' className="nav-a"><li className="nav-li">info</li></Link>
+            {
+              isAuthenticated ? <li onClick={logout} className="li-inicioSesion">Cerrar Sesion</li>:
+              <li onClick={loginWithRedirect} className="li-inicioSesion">Iniciar Sesion</li>
+              }
           </ul>
           <AiOutlineMenu size={28} className="nav-icon" onClick={()=> toggleMenu()}/>
         </nav>

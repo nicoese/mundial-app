@@ -21,7 +21,7 @@ export const ProductCard = ({ id, name, price, img, brand, stadium }) => {
   return (
     <div className="flex flex-col max-w-sm bg-white h-[400px] rounded-md" key={id}>
         {img ? (
-          <Link className="flex items-center justify-center w-full h-[15em]">
+          <Link to={`${id}`} className="flex items-center justify-center w-full h-[15em]">
             <div className="flex items-center justify-center w-full h-[15em]">
               <img className="h-[12em]" src={img} alt="" />
             </div>
