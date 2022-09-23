@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
 import {buyDetail} from "../../../redux/actions";
+import {useAuth0} from "@auth0/auth0-react";
 
 const Cart = () => {
   const [state, updateState] = useState(true);
@@ -10,6 +11,7 @@ const Cart = () => {
   let totalPrice = 0;
   let storageKeys = Object.keys(localStorage);
   const dispatch = useDispatch()
+  const {user} = useAuth0()
     
   for (let i = 0; i < storageKeys.length; i++) {
     if(storageKeys[i] !== 'products'){
@@ -21,8 +23,15 @@ const Cart = () => {
   }
 
   const handleClick = ()=>{
-    productsInStorage.length !== 0 ? console.log(productsInStorage) : alert("No tienes productos en tu carrito. Añade algunos!")
-    dispatch(buyDetail(productsInStorage))
+
+    const purchase = {
+      email: user.email,
+      products: productsInStorage,
+      totalPrice: totalPrice
+    }
+
+    productsInStorage.length !== 0 ? dispatch(buyDetail(purchase)) : alert("No tienes productos en tu carrito. Añade algunos!")
+    // dispatch(buyDetail(productsInStorage))
 
   }
   const deleteProduct = ()=>{

@@ -166,13 +166,12 @@ export const updateToCart = (id, price) => {
 export function buyDetail(buyDetail) {
     return async function (dispatch) {
         try {
-            const response = await axios.post(`http://localhost:3001/x`, buyDetail);
+            const response = await axios.post(`${REACT_APP_API_URL}/purchases/add_purchase`, buyDetail);
             return dispatch({
                 type: DISPATCH_PURCHASE,
                 payload: response.data
             })
-        }
-        catch (err) {
+        } catch (err) {
             console.log(err)
         }
     };
