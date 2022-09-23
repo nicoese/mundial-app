@@ -26,6 +26,7 @@ const initialState = {
     detailsError: '',
     purchase: {},
     purchaseStatus: '',
+    mp_link: '',
     cart: []
 }
 
@@ -132,8 +133,7 @@ export const rootReducer = (state = initialState, action) => {
         case DISPATCH_PURCHASE:
             return {
                 ...state,
-                purchaseStatus: action.payload.status,
-                purchase: action.payload.purchase
+                mp_link: action.payload
             }
         default:
             return state

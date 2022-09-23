@@ -166,7 +166,9 @@ export const updateToCart = (id, price) => {
 export function buyDetail(buyDetail) {
     return async function (dispatch) {
         try {
-            const response = await axios.post(`${REACT_APP_API_URL}/purchases/add_purchase`, buyDetail);
+
+            const response = await axios.post(`${REACT_APP_API_URL}/mp`, buyDetail);
+            console.log(response.data)
             return dispatch({
                 type: DISPATCH_PURCHASE,
                 payload: response.data
