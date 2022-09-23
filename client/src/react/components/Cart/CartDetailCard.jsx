@@ -1,50 +1,64 @@
-import React, { useState } from "react";
-import { removeToCart } from "../../../redux/actions";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 
-const CartDetailCard = ({ id, name, price, img, addTotalPrice, subTotalPrice }) => {
-  const dispatch = useDispatch()
-  let productInCart = useSelector((state)=>state.cart)
+const CartDetailCard = ({ id, name, price, img, cantidad, deleteProduct}) => {
+  let productsInStorage = []
+  let storageKeys = Object.keys(localStorage)
+  
+  for (let i = 0; i < storageKeys.length; i++) {
+    if(storageKeys[i] !== 'products'){
+      productsInStorage.push(JSON.parse(localStorage[storageKeys[i]]))
+    }
+  }
 
-  localStorage.setItem(`${id}`, JSON.stringify({name, price, img, cantidad: 1}))
-  /* let productInStorage =  JSON.parse(localStorage.getItem(`${id}`)) */
-
-  /* const item = {id, name, price, img, addTotalPrice, subTotalPrice} */
-
+/*   
+  const firstAdd = localStorage.getItem(`${id}`)
+  if(firstAdd === null) localStorage.setItem(`${id}`, JSON.stringify({name, price, img, cantidad: 1}))
+  
   const [cantidad, setCantidad] = useState(1)
-  const [state, updateState] = useState(true);
+   */
 
   const handleAddition = (e)=>{
-    /* let initialValue = parseInt(((e.target.parentNode).nextSibling).innerHTML.slice(1)) */
-    const initialValue = price
-
-    setCantidad(cantidad + 1)
-    addTotalPrice(initialValue)
-    updateState(!state);
+    for (let i = 0; i < productsInStorage.length; i++) {
+      if(productsInStorage[i].id === e.target.id){
+        if(productsInStorage[i].cantidad >= 1){
+          localStorage.setItem(`${productsInStorage[i].id}`, 
+            JSON.stringify({
+            id: productsInStorage[i].id, 
+            name: productsInStorage[i].name, 
+            price: productsInStorage[i].price, 
+            img: productsInStorage[i].img, 
+            cantidad: (productsInStorage[i].cantidad + 1)
+          }));
+        }
+      }
+    }
+    deleteProduct()
   }
-  
   const handleSubtraction = (e)=>{
-    /* let initialValue = parseInt(((e.target.parentNode).nextSibling).innerHTML.slice(1)) */
-    const initialValue = price
-    
-    if(cantidad >= 2){ 
-      setCantidad(cantidad - 1)
-      subTotalPrice(initialValue) 
+    for (let i = 0; i < productsInStorage.length; i++) {
+      if(productsInStorage[i].id === e.target.id){
+        if(productsInStorage[i].cantidad > 1){
+          localStorage.setItem(`${productsInStorage[i].id}`, 
+            JSON.stringify({
+            id: productsInStorage[i].id, 
+            name: productsInStorage[i].name, 
+            price: productsInStorage[i].price, 
+            img: productsInStorage[i].img, 
+            cantidad: (productsInStorage[i].cantidad - 1)
+          }));
+        }
+      }
     }
-    updateState(!state);
+    deleteProduct()
   }
-  
   const handleRemove = (e)=>{
-    let arrProductsId = [];
-
-    for (let i = 0; i < productInCart.length; i++) {
-      arrProductsId.push(productInCart[i].id);
+    for (let i = 0; i < productsInStorage.length; i++) {
+      if(productsInStorage[i].id === e.target.id){
+        localStorage.removeItem(productsInStorage[i].id);
+      }
     }
-    if(arrProductsId.includes(e.target.id)){
-      dispatch(removeToCart(e.target.id))
-      updateState(!state);
-    }
-  }
+    deleteProduct()
+  } 
 
   return (
     <div className="flex-col items-center flex sm:flex-row sm:items-center sm:justify-around w-full sm:w-[60%] h-fit my-2 shadow-md">
