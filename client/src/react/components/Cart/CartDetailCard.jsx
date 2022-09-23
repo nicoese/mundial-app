@@ -6,6 +6,9 @@ const CartDetailCard = ({id, name, price, img}) => {
   const dispatch = useDispatch()
   let productInCart = useSelector((state)=>state.cart)
 
+    useEffect(() => {
+    }, [])
+
   localStorage.setItem(`${id}`, JSON.stringify({name, price, img, cantidad: 1}))
   let productInStorage =  JSON.parse(localStorage.getItem(`${id}`))
   console.log(productInStorage)

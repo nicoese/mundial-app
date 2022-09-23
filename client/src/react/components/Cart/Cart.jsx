@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useSelector } from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
 
 const Cart = () => {
+
+  useEffect(() => {
+
+
+  }, []);
+
 
   const prodcutsInCart = useSelector((state)=> state.cart)
 
