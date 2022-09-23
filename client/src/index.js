@@ -12,6 +12,8 @@ import { Auth0Provider } from '@auth0/auth0-react'
 
 const {REACT_APP_AUTH_DOMAIN, REACT_APP_AUTH_CLIENT_ID}= process.env
 
+console.log(REACT_APP_AUTH_CLIENT_ID)
+
 ReactDOM.render(
   <>
       <Provider store={store}>
