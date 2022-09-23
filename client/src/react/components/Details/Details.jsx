@@ -7,7 +7,6 @@ import Spinner from "../Spinner/Spinner.js";
 import {NotFound} from "../Not_Found/Not_Found";
 
 const Details = (props) => {
-
     const dispatch = useDispatch();
     const details = useSelector((state) => state.ProductDetail);
     const error = useSelector((state) => state.detailsError);
@@ -15,7 +14,6 @@ const Details = (props) => {
 
 
     useEffect(() => {
-
         dispatch(clearDetailsErr())
 
         delay(1000)
@@ -25,8 +23,6 @@ const Details = (props) => {
                     dispatch(resetDetail());
                 }
             })
-
-
     }, [dispatch]);
 
     function delay(time) {

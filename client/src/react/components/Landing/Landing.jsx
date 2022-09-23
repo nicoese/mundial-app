@@ -1,9 +1,11 @@
 import React from "react";
 import imgLanding from '../img/imgLanding.jpeg'
-import {Link} from "react-router-dom";
-import {AiOutlineMenu} from "react-icons/ai";
-import {BsCheck2Circle} from "react-icons/bs";
-import {useAuth0} from "@auth0/auth0-react";
+
+import imgOk from '../img/iconOk.png'
+import { Link } from "react-router-dom";
+import { AiOutlineMenu } from "react-icons/ai";
+import { BsCheck2Circle } from "react-icons/bs";
+import { useAuth0 } from "@auth0/auth0-react";
 import swal from 'sweetalert'
 import "./Landing.css";
 import {useNavigate} from "react-router";
@@ -205,6 +207,7 @@ const Landing = () => {
             </section>
         </>
     );
+
 };
 
 export default Landing;

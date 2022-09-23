@@ -1381,6 +1381,11 @@ input:checked + .toggle-bg {
 }
 .w-auto {
   width: auto;
+.w-\[10em\] {
+  width: 10em;
+}
+.w-\[12em\] {
+  width: 12em;
 }
 .max-w-sm {
   max-width: 24rem;
@@ -1901,6 +1906,15 @@ input:checked + .toggle-bg {
 .bg-gray-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .bg-blue-600 {
   --tw-bg-opacity: 1;

@@ -1,4 +1,6 @@
 import {
+    GET_BYNAME,
+    GET_DETAILS,
     FILTER,
     GET_ALL_PRODUCTS,
     SET_CURRENT_PRODUCTS,
@@ -7,10 +9,8 @@ import {
     TEST_FILTERS,
     ADD_TO_CART,
     REMOVE_TO_CART,
-    GET_BYNAME,
-    GET_DETAILS,
+    UPDATE_TO_CART,
     RESET_DETAIL, PRODUCTS_NOT_FOUND, DETAILS_ERROR, CLEAR_DETAILS_ERROR, CLEAR_PRODUCTS_ERROR
-
 } from "../actions"
 
 
@@ -85,6 +85,11 @@ export const rootReducer = (state = initialState, action) => {
                 products: action.payload
             }
 
+        // case TEST_FILTERS:
+        //     return {
+        //         ...state,
+        //         products: state.products.filter(product => )
+        //     }
         case ADD_TO_CART:
             return {
                 ...state,
@@ -93,9 +98,18 @@ export const rootReducer = (state = initialState, action) => {
         case REMOVE_TO_CART:
             return {
                 ...state,
-                cart: state.cart.filter((p) => p.id === action.payload)
+                cart: state.cart.filter((p) => p.id !== action.payload)
             }
-
+        case UPDATE_TO_CART:
+            console.log(action.payload[0]);
+            return {
+                ...state,
+                cart: state.cart.map((p) => {
+                    if(p.id === action.payload[0]){
+                        p.price = action.payload[1]
+                    }
+                })
+            }
         case PRODUCTS_NOT_FOUND:
             return {
                 ...state,
@@ -118,7 +132,6 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 productsError: ''
             }
-
         default:
             return state
     }
