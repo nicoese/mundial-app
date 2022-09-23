@@ -98,7 +98,6 @@ const Details = (props) => {
                                         </div>
                                     </div> : null //NO SPINNER NEEDED JUST ERASING SIZE IF NOT JERSEY
                                 }
-                                {error && <p>vieja puta</p>}
                                 <p className="flex justify-start items-center w-[80%] h-[50px] my-2 text-3xl text-red-600 border-b-[1px] border-gray-200">DESCRIPCIÓN</p>
                                 <p className="text-lg">
                                     {details.description}

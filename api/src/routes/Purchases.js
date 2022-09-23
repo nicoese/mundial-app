@@ -36,9 +36,10 @@ router.get('/:userId', async (req,res,next)=>{
 //MIGHT CHANGE
 router.post('/add_purchase', async (req,res,next)=>{
     try{
+        console.log('entro a la purchase')
         const {user,products,totalPrice} =req.body
         let purchase = new Purchase({
-            user: user._id,
+            email: user.email,
             products: [...products],
             totalPrice
         })
@@ -46,13 +47,16 @@ router.post('/add_purchase', async (req,res,next)=>{
 
         //^^purchase done, now saving it in the user
 
-        let found = await User.findById(user._id)
-        let savedInUser = found.set('purchases',[...found.purchases,savedPurchase._id])
-        let result = await savedInUser.save()
+        // let found = await User.findById(user._id)
+        // let savedInUser = found.set('purchases',[...found.purchases,savedPurchase._id])
+        // let result = await savedInUser.save()
         res.status(200).json(savedPurchase)
 
     }catch(err){
-        next(err)
+
+        return res.status(418)
+
+        // next(err)
     }
 })
 

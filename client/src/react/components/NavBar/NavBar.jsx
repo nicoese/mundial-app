@@ -56,7 +56,7 @@ const NavBar = () => {
 
   return (
     <>
-    <header>
+      <header>
         <nav className="navbar-ctn">
           <h1 onClick={(ev) => navigate('/')} className="navbar-title">MundiApp</h1>
           <ul className="navbar-ul">
@@ -65,6 +65,7 @@ const NavBar = () => {
             <Link className="navbar-a"><li className="navbar-li">Productos</li></Link>
             <Link className="navbar-a"><li className="navbar-li">Contacto</li></Link>
           </ul>
+
           {/*<div className="searchBar_search">*/}
           {/*      <form onSubmit={handleSubmit}>*/}
           {/*        <input*/}
@@ -80,15 +81,18 @@ const NavBar = () => {
           {/*    </div>*/}
           {/*  </form>*/}
           {/*</div>*/}
+
           <SearchBar />
           <AiOutlineMenu size={28} className="navbar-icon" onClick={()=> toggleMenu()}/>
         </nav>
       </header>
       <ul className="navbar-ul-toggle">
+
         <Link className="navbar-a-sm"><li className="navbar-li_a">Inicio</li></Link>
         <Link to={'/nosotros'} className="navbar-a-sm"><li className="navbar-li_a">Nosotros</li></Link>
         <Link className="navbar-a-sm"><li className="navbar-li_a">Productos</li></Link>
         <Link className="navbar-a-sm"><li className="navbar-li_a">Contacto</li></Link>
+
       </ul>
     </>
   )
