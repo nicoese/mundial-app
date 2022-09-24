@@ -6,18 +6,17 @@ const router = Router();
 
 
 
-
+//.populate({path: 'user', select: 'first_name last_name -_id'})
 
 //get all purchases with user info
 router.get('/', async (req,res,next)=>{
     try{
-        let result = await Purchase.find({}).populate({path: 'user', select: 'first_name last_name -_id'})
+        let result = await Purchase.find({})
         res.status(200).json(result)
     }catch(err){
         next(err)
     }
 })
-
 
 //get all purchases by userId
 router.get('/:userId', async (req,res,next)=>{
@@ -31,6 +30,14 @@ router.get('/:userId', async (req,res,next)=>{
 
 })
 
+
+router.put('/set_status', (req,res,next)=>{
+    const {status,} = req.body;
+})
+
+router.get('/last_purchase',(req,res,next)=>{
+    
+})
 
 //add a purchase, i get by body the user, all the products and the total price..
 //MIGHT CHANGE
@@ -53,10 +60,7 @@ router.post('/add_purchase', async (req,res,next)=>{
         res.status(200).json(savedPurchase)
 
     }catch(err){
-
-        return res.status(418)
-
-        // next(err)
+        next(err)
     }
 })
 

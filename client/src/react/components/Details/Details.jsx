@@ -27,13 +27,15 @@ const Details = (props) => {
     useEffect(() => {
         dispatch(clearDetailsErr())
 
-        // delay(1000)
-        //     .then(() => {
-        //         dispatch(getDetails(params.id));
-        //     })
+
+        delay(100).then(() => {
+                dispatch(getDetails(params.id));
+            })
+            
         return () => {
             dispatch(resetDetail());
         }
+        
     }, [dispatch]);
 
     function delay(time) {
