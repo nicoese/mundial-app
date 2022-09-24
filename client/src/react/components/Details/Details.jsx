@@ -1,28 +1,41 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
-import {getDetails, addToCart, resetDetail, clearDetailsErr} from "../../../redux/actions/index.js";
+import {
+    getDetails,
+    addToCart,
+    resetDetail,
+    clearDetailsErr,
+    addToFavorites,
+    removeFromFavorites
+} from "../../../redux/actions/index.js";
 import NavBar from "../NavBar/NavBar.jsx";
 import Spinner from "../Spinner/Spinner.js";
 import {NotFound} from "../Not_Found/Not_Found";
+import {useAuth0} from "@auth0/auth0-react";
 
 const Details = (props) => {
     const dispatch = useDispatch();
     const details = useSelector((state) => state.ProductDetail);
     const error = useSelector((state) => state.detailsError);
+    const favorites = useSelector((state) => state.favorites);
+    const user = useAuth0().user
     let params = useParams()
 
+    dispatch(getDetails(params.id))
 
     useEffect(() => {
         dispatch(clearDetailsErr())
 
+
         delay(100).then(() => {
                 dispatch(getDetails(params.id));
             })
-
+            
         return () => {
             dispatch(resetDetail());
         }
+        
     }, [dispatch]);
 
     function delay(time) {
@@ -44,9 +57,31 @@ const Details = (props) => {
         principalPic.src = e.target.src
     }
 
+    function handleLike(ev) {
+
+        //manejo del boton de like
+
+        //si la tarjeta contenedora tiene el corazon blanco
+        //agrego el prod a favoritos
+        if (ev.target.innerText === "🤍") {
+
+            //envio el id del producto y el mail del user a la api
+            dispatch(addToFavorites(details.id, user.email))
+        }
+
+        //si la tarjeta tiene el corazon rojo elimino el prod de favoritos
+        if (ev.target.innerText === "❤") {
+            //igualmente envio el id del prod y el user email
+            dispatch(removeFromFavorites(details.id, user.email))
+        }
+
+
+    }
+
+
     return (
         <div>
-            { details === {} ? <div className={'mt-48'} >cargando</div> : error ? <NotFound/> :
+            {details === {} ? <div className={'mt-48'}>cargando</div> : error ? <NotFound/> :
                 <div>
                     <NavBar/>
                     <section className="flex flex-col w-full h-[100vh] py-4">
@@ -72,7 +107,14 @@ const Details = (props) => {
                                     <img src={details.img} alt="product-pic" id="principal-pic"
                                          className="w-full h-full"/>
                                     <button
-                                        className="absolute top-6 right-9 flex items-center justify-center h-[50px] w-[50px] rounded-md border-2 border-red-600 duration-300 hover:text-2xl text-gray-400 font-bold">❤
+                                        onClick={handleLike}
+                                        className="absolute top-6 right-9 flex items-center justify-center
+                                        h-[50px] w-[50px] rounded-md border-2 border-red-600 duration-300
+                                        hover:text-2xl text-gray-400 font-bold">
+                                        {/*busco el producto en el arreglo de favoritos del user
+                                        en el estado global si lo encuentro el corazon que muestro es
+                                        el rojo */}
+                                        {favorites.find(fav => fav.id === details.id) ? "❤" : "🤍"}
                                     </button>
                                 </div>
                             </div>
