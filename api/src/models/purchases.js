@@ -19,7 +19,8 @@ const purchasesSchema = new Schema({
 
     email:{
         type: String,
-        required: true
+        required: true,
+        ref: 'User'
     },
     products:[{
         type:Schema.Types.Mixed,

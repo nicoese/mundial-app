@@ -22,7 +22,8 @@ const productsSchema = new Schema({
     stadium: String,
     date: String,
     sector: String,
-    rating: Number
+    rating: Number,
+    cantidad: Number
 })
 
 module.exports = model('Product', productsSchema)

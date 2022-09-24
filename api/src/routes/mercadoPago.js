@@ -1,4 +1,5 @@
 const {Router} = require('express');
+const Purchase = require('../models/purchases.js');
 const router = Router();
 const PaymentService = require('../service/PaymentService.js')
 
@@ -6,13 +7,20 @@ router.post("/", async (req, res) => {
     try {
 
 
+        //MP OPERATIONS CREATE A NEW PAYMENT
         const {products, email, totalPrice} = req.body;
-
-
         const response = await PaymentService(email, products);
-
         let link = response.data.init_point
 
+        //MONGO OPERATIONS SAVE PENDING PURCHASE
+        let purchase = new Purchase({
+            email,
+            products:[...products],
+            totalPrice
+        })
+        const savedPurchase = await purchase.save();
+
+        //RETURN PAYMENT LINK
         return res.send(link);
     } catch (error) {
         res.send(error);
