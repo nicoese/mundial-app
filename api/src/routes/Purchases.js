@@ -5,7 +5,6 @@ const router = Router();
 
 
 
-
 //.populate({path: 'user', select: 'first_name last_name -_id'})
 
 //get all purchases with user info
@@ -17,7 +16,6 @@ router.get('/', async (req,res,next)=>{
         next(err)
     }
 })
-
 
 router.put('/set_status', async (req,res,next)=>{
     const {status,} = req.body;
@@ -34,7 +32,6 @@ router.get('/last_purchase', async (req,res,next)=>{
 
     let success = await setStatus.save()
 
-
     console.log(success)
 
     // db.col.find().sort({"datetime": -1}).limit(1)
@@ -42,7 +39,6 @@ router.get('/last_purchase', async (req,res,next)=>{
     res.status(200).json(result);
     
 })
-
 
 //get all purchases by userId
 // router.get('/:userId', async (req,res,next)=>{
