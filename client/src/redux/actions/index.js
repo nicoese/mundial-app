@@ -200,7 +200,7 @@ export const clearProductsError = () => {
 
 export const getLastPurchase = (userEmail) => {
     return async (dispatch) => {
-        return axios.get(`${REACT_APP_API_URL}/${userEmail}`)
+        return axios.get(`${REACT_APP_API_URL}/purchases/last_purchase?email=${userEmail}`)
             .then(json => {
                 return dispatch({
                     type: GET_LAST_PURCHASE,
