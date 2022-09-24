@@ -27,6 +27,17 @@ router.post("/", async (req, res) => {
     }
 });
 
+    /*
+            test user Comprador MP
+        MAIL: test_user_43321909@testuser.com 
+        USER: TETE3052091
+        PASSWORD: kEbwVb0wdD
+
+        test VENDEDOR
+        MAIL: test_user_45818772@testuser.com
+        USUARIO: TEST3EKGSFBZ
+        PASSWORD: Uf4fmqx0KE
+    */
 
 //   {
 //     "id": 1203699430,

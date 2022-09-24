@@ -16,13 +16,13 @@ const Details = (props) => {
     useEffect(() => {
         dispatch(clearDetailsErr())
 
-        delay(1000)
-            .then(() => {
+        delay(100).then(() => {
                 dispatch(getDetails(params.id));
-                return () => {
-                    dispatch(resetDetail());
-                }
             })
+
+        return () => {
+            dispatch(resetDetail());
+        }
     }, [dispatch]);
 
     function delay(time) {
