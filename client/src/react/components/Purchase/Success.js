@@ -6,22 +6,22 @@ import {getLastPurchase} from "../../../redux/actions";
 
 export const Success = () => {
 
-    // useEffect(() => {
-    //     delay(1000)
-    //         .then(e => {
-    //             dispatch(getLastPurchase(user.email))
-    //         })
-    //
-    // }, []);
+    useEffect(() => {
+        delay(1000)
+            .then(e => {
+                dispatch(getLastPurchase(user.email))
+            })
 
-    // function delay(time) {
-    //     return new Promise((resolve) => setTimeout(resolve, time));
-    // }
+    }, []);
+
+    function delay(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
 
     const dispatch = useDispatch()
     const {user} = useAuth0()
 
-    user && dispatch(getLastPurchase(user.email))
+    // user && dispatch(getLastPurchase(user.email))
 
     const {
         purchase
