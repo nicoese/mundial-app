@@ -6,20 +6,22 @@ import {getLastPurchase} from "../../../redux/actions";
 
 export const Success = () => {
 
-    useEffect(() => {
-        delay(1000)
-            .then(e => {
-                dispatch(getLastPurchase(user.email))
-            })
+    // useEffect(() => {
+    //     delay(1000)
+    //         .then(e => {
+    //             dispatch(getLastPurchase(user.email))
+    //         })
+    //
+    // }, []);
 
-    }, []);
-
-    function delay(time) {
-        return new Promise((resolve) => setTimeout(resolve, time));
-    }
+    // function delay(time) {
+    //     return new Promise((resolve) => setTimeout(resolve, time));
+    // }
 
     const dispatch = useDispatch()
     const {user} = useAuth0()
+
+    user && dispatch(getLastPurchase(user.email))
 
     const {
         purchase
@@ -27,6 +29,16 @@ export const Success = () => {
 
     return <div>
         <NavBar/>
-        <div>{purchase.name}</div>
+
+        {user && <div className={'mt-24'}>
+            <div>{user.name}</div>
+            <div>{user.email}</div>
+            <img src={user.picture} alt={user.name}/>
+        </div>}
+
+        {purchase.products && purchase.products.map(e => {
+            return <div>{e.name}</div>
+        })}
+        {purchase && <div>{purchase.totalPrice}</div>}
     </div>
 }

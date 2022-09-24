@@ -19,6 +19,9 @@ export const CLEAR_DETAILS_ERROR = 'CLEAR_DETAILS_ERROR'
 export const CLEAR_PRODUCTS_ERROR = 'CLEAR_PRODUCTS_ERROR'
 export const DISPATCH_PURCHASE = "DISPATCH_PURCHASE"
 export const GET_LAST_PURCHASE = "GET_LAST_PURCHASE"
+export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES"
+export const GET_FAVORITES = "GET_FAVORITES"
+export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -201,6 +204,48 @@ export const getLastPurchase = (userEmail) => {
             .then(json => {
                 return dispatch({
                     type: GET_LAST_PURCHASE,
+                    payload: json.data
+                })
+            })
+    }
+}
+
+export const addToFavorites = (productId, userEmail) => {
+    return async (dispatch) => {
+        return axios.post(`${REACT_APP_API_URL}/favorites/add`, {
+            productId: productId,
+            userEmail: userEmail
+        })
+            .then(json => {
+                return dispatch({
+                    type: ADD_TO_FAVORITES,
+                    payload: json.data
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+export const getFavorites = (userEmail) => {
+    return async (dispatch) => {
+        return axios.get(`${REACT_APP_API_URL}/favorites/${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type: GET_FAVORITES,
+                    payload: json.data
+                })
+            })
+    }
+}
+
+export const removeFromFavorites = (productId, userEmail) => {
+    return async (dispatch) => {
+        return axios.delete(`${REACT_APP_API_URL}/favorites/${productId}?${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type: REMOVE_FROM_FAVORITES,
                     payload: json.data
                 })
             })
