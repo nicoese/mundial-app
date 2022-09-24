@@ -6,8 +6,17 @@ export const ProtectedRoutes = ({children}) => {
 
     const {isAuthenticated} = useAuth0()
 
-    if (!isAuthenticated) {
-        return <Navigate  to={'/products'}/>
+    delay(1000)
+        .then(e => {
+            if (!isAuthenticated) {
+                return <Navigate  to={'/products'}/>
+            }
+        })
+
+
+
+    function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
     }
 
     return children

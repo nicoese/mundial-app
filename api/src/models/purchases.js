@@ -12,6 +12,11 @@ const purchasesSchema = new Schema({
         type: Date,
         default: new Date()
     },
+    status:{
+        type: String,
+        default: 'pending'
+    },
+
     email:{
         type: String,
         required: true

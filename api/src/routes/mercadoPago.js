@@ -2,18 +2,23 @@ const {Router} = require('express');
 const router = Router();
 const PaymentService = require('../service/PaymentService.js')
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
-      const {userEmail } = req.query.userEmail;
-      const items  = req.body;
-      const response = await PaymentService(userEmail,items);
-      console.log(response.data)
-      return res.send(response.data.init_point);
+
+
+        const {products, email, totalPrice} = req.body;
+
+
+        const response = await PaymentService(email, products);
+
+        let link = response.data.init_point
+
+        return res.send(link);
     } catch (error) {
-      res.send(error);
+        res.send(error);
     }
-  });
-  
+});
+
 
 //   {
 //     "id": 1203699430,
@@ -31,4 +36,4 @@ router.get("/", async (req, res) => {
 //   "email": "test_user_51813153@testuser.com"
 // }
 
-module.exports= router;
+module.exports = router;

@@ -4,6 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
 import {buyDetail} from "../../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
+import {useNavigate} from "react-router";
 
 const Cart = () => {
   const [state, updateState] = useState(true);
@@ -12,6 +13,8 @@ const Cart = () => {
   let storageKeys = Object.keys(localStorage);
   const dispatch = useDispatch()
   const {user} = useAuth0()
+  const navigate = useNavigate()
+  const {mp_link} = useSelector(state => state)
     
   for (let i = 0; i < storageKeys.length; i++) {
     if(storageKeys[i] !== 'products'){
@@ -22,7 +25,9 @@ const Cart = () => {
     totalPrice += productsInStorage[i].price * productsInStorage[i].cantidad 
   }
 
-  const handleClick = ()=>{
+  if (mp_link) window.location.replace(mp_link)
+
+  const handleClick = async ()=>{
 
     const purchase = {
       email: user.email,
@@ -30,10 +35,21 @@ const Cart = () => {
       totalPrice: totalPrice
     }
 
-    productsInStorage.length !== 0 ? dispatch(buyDetail(purchase)) : alert("No tienes productos en tu carrito. Añade algunos!")
-    // dispatch(buyDetail(productsInStorage))
+    if (productsInStorage.length !== 0) {
+
+      await dispatch(buyDetail(purchase))
+    } else {
+      alert("No tienes productos en tu carrito. Añade algunos!")
+    }
+
+
 
   }
+
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+
   const deleteProduct = ()=>{
     updateState(!state)
   }

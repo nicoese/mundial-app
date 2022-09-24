@@ -19,7 +19,7 @@ const router = Router();
 router.use('/products', productsRoute);
 router.use('/users', usersRoute);
 router.use('/purchases',purchasesRoute)
-router.use('/prueba', routeMP)
+router.use('/mp', routeMP)
 
 
 
