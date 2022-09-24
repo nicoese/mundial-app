@@ -10,7 +10,13 @@ import {
     ADD_TO_CART,
     REMOVE_TO_CART,
     UPDATE_TO_CART,
-    RESET_DETAIL, PRODUCTS_NOT_FOUND, DETAILS_ERROR, CLEAR_DETAILS_ERROR, CLEAR_PRODUCTS_ERROR, DISPATCH_PURCHASE
+    RESET_DETAIL,
+    PRODUCTS_NOT_FOUND,
+    DETAILS_ERROR,
+    CLEAR_DETAILS_ERROR,
+    CLEAR_PRODUCTS_ERROR,
+    DISPATCH_PURCHASE,
+    GET_LAST_PURCHASE
 } from "../actions"
 
 
@@ -134,6 +140,12 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 mp_link: action.payload
+            }
+
+        case GET_LAST_PURCHASE:
+            return {
+                ...state,
+                purchase: action.payload
             }
         default:
             return state

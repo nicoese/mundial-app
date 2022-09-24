@@ -17,6 +17,7 @@ import {NotFound} from "./react/components/Not_Found/Not_Found";
 import {Profile} from "./react/components/Profile/Profile";
 import {Wishlist} from "./react/components/Wishlist/Wishlist";
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
+import {Success} from "./react/components/Purchase/Success";
 
 
 function About() {
@@ -52,6 +53,11 @@ function App() {
         <Route path={'/blogInfo'} element={<Info />}/>
         <Route path={'/Cart'} element={<Cart />}/>
         <Route path={'/nosotros'} element={<Nosotros />}/>
+        <Route path={'/purchases/success'} element={
+          <ProtectedRoutes>
+            <Success />
+          </ProtectedRoutes>
+        } />
         <Route path={'/profile'} element={<ProtectedRoutes>
           <Profile />
         </ProtectedRoutes>}/>

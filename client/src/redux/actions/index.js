@@ -18,6 +18,7 @@ export const DETAILS_ERROR = 'DETAILS_ERROR'
 export const CLEAR_DETAILS_ERROR = 'CLEAR_DETAILS_ERROR'
 export const CLEAR_PRODUCTS_ERROR = 'CLEAR_PRODUCTS_ERROR'
 export const DISPATCH_PURCHASE = "DISPATCH_PURCHASE"
+export const GET_LAST_PURCHASE = "GET_LAST_PURCHASE"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -191,5 +192,17 @@ export const clearProductsError = () => {
         return dispatch({
             type: CLEAR_PRODUCTS_ERROR
         })
+    }
+}
+
+export const getLastPurchase = (userEmail) => {
+    return async (dispatch) => {
+        return axios.get(`${REACT_APP_API_URL}/${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type: GET_LAST_PURCHASE,
+                    payload: json.data
+                })
+            })
     }
 }
