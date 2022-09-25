@@ -13,6 +13,7 @@ import NavBar from "../NavBar/NavBar.jsx";
 import Spinner from "../Spinner/Spinner.js";
 import {NotFound} from "../Not_Found/Not_Found";
 import {useAuth0} from "@auth0/auth0-react";
+import Swal from 'sweetalert'
 
 const Details = (props) => {
     const dispatch = useDispatch();
@@ -59,17 +60,26 @@ const Details = (props) => {
 
     const handleClick = () => {
 
-        details["id"] = details._id
-        delete details["_id"]
+        if (details._id){
+            details["id"] = details._id
+            delete details["_id"]
+        }
 
-        const firstAdd = localStorage.getItem(`${details.id}`)
+        console.log(details.id)
 
-        if (firstAdd === null) {
+        const firstAdd = localStorage.getItem(details.id)
+
+        if (!firstAdd) {
             details["cantidad"] = 1
             localStorage.setItem(`${details.id}`, JSON.stringify(details))
-            alert("Añadiste el Producto a tu carrito")
+            Swal('Añadiste el Producto a tu carrito', '', 'success')
+
         } else {
-            alert("Este producto ya fue añadido. Echale un vistazo al carrito!")
+            Swal({
+                title: "Este producto ya fue añadido. Echale un vistazo al carrito!",
+                icon: 'warning'
+            })
+
         }
     }
 
