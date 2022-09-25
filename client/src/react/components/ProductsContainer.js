@@ -4,15 +4,17 @@ import {Pagination} from "../elements/Pagination";
 import {SortBy} from "../elements/SortBy";
 import {FilterBy} from "../elements/FilterBy";
 import {useEffect} from "react";
-import {clearProductsError, setCurrentProducts} from "../../redux/actions";
+import {clearProductsError, getFavorites, setCurrentProducts} from "../../redux/actions";
 import {useLocation} from "react-router";
 import Spinner from "./Spinner/Spinner";
 import {SearchBar} from "../elements/SearchBar";
+import {useAuth0} from "@auth0/auth0-react";
 
 export const ProductsContainer = (props) => {
 
     const dispatch = useDispatch()
     const location = useLocation()
+    const {user, isAuthenticated} = useAuth0()
     const {productsError, currentProducts, currentPage} = useSelector(state => state)
 
 
@@ -21,6 +23,9 @@ export const ProductsContainer = (props) => {
         delay(1500).then(() => {
             dispatch(setCurrentProducts(currentPage))
         })
+
+        isAuthenticated && dispatch(getFavorites(user.email))
+
 
         return () => {
         }

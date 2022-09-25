@@ -4,7 +4,7 @@ import "./assets/tailwind.css";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getAllProducts, setCurrentProducts } from "./redux/actions";
+import {getAllProducts, getFavorites, setCurrentProducts} from "./redux/actions";
 import Landing from "./react/components/Landing/Landing.jsx";
 import { Products } from "./react/components/Products";
 import Details from "./react/components/Details/Details";
@@ -27,17 +27,17 @@ function About() {
 
 function App() {
   const dispatch = useDispatch();
-  const {isAuthenticated} = useAuth0()
+  const {isAuthenticated, user} = useAuth0()
   const navigate = useNavigate()
 
+  user && dispatch(getFavorites(user.email))
 
   useEffect(() => {
     dispatch(getAllProducts());
     delay(2000).then((e) => {
       dispatch(setCurrentProducts());
     });
-    // dispatch(shuffleProducts())
-  }, []);
+  }, [isAuthenticated]);
 
   function delay(time) {
     return new Promise((resolve) => setTimeout(resolve, time));

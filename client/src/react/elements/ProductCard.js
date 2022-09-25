@@ -3,18 +3,40 @@ import {Link} from "react-router-dom";
 import "../components/Landing/Landing.css"
 import {addToFavorites, removeFromFavorites} from "../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
-import Swal from "sweetalert"; //solo para tomar las fuentes
+import Swal from "sweetalert";
+import {useEffect, useState} from "react"; //solo para tomar las fuentes
 
 
 export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     const dispatch = useDispatch()
     const prodcutsInCart = useSelector((state) => state.cart)
 
+    //estado para el renderizado del corazon (like)
+    const [state, setState] = useState({
+        liked: false
+    });
+
     //traigo el estado de favoritos del usuario
     const favorites = useSelector(state => state.favorites)
 
     //traigo el user de auth0
-    const user = useAuth0().user
+    const {user, isAuthenticated} = useAuth0()
+
+    useEffect(() => {
+
+        //si el user esta logeado comparo el id de la card
+        //con los favoritos del user
+        if (isAuthenticated){
+
+            const liked = favorites.find(e => e.id === id)
+            //si existe en la lista muestro el producto
+            //como likeado
+            if (liked) toggleLike()
+        }
+
+    }, [favorites]);
+
+
 
     const handleClick = () => {
         const firstAdd = localStorage.getItem(`${id}`)
@@ -32,14 +54,29 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     }
 
 
+    //toggle like
+    const toggleLike = () => {
+        setState({liked: true})
+    };
+
+    //toggle dislike
+    const toggleDislike = () => {
+        setState({liked: false})
+    };
+
+
     function handleLike(ev) {
+
+        //si el user no esta logeado no puede likear
+        if (!isAuthenticated){
+            return Swal('logueate')
+        }
 
         //manejo del boton de like
 
         //si la tarjeta contenedora tiene el corazon blanco
         //agrego el prod a favoritos
         if (ev.target.innerText === "🤍") {
-
             //envio el id del producto y el mail del user a la api
             dispatch(addToFavorites({id, name, price, img, brand, stadium}, user.email))
         }
@@ -47,10 +84,10 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
         //si la tarjeta tiene el corazon rojo elimino el prod de favoritos
         if (ev.target.innerText === "❤") {
             //igualmente envio el id del prod y el user email
-            dispatch(removeFromFavorites({id, name, price, img, brand, stadium}, user.email))
+            dispatch(removeFromFavorites(id, user.email))
+            toggleDislike()
         }
-
-
+        // toggleLike()
     }
 
     return (
@@ -85,7 +122,8 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
                     {/*busco el producto en el arreglo de favoritos del user
                     en el estado global si lo encuentro el corazon que muestro es
                     el rojo */}
-                    {favorites.find(fav => fav.id === id) ? "❤" : "🤍"}
+                    {/*{favorites.length > 0 ? favorites.find(fav => fav.id === id) ?  : "🤍" : "🤍"}*/}
+                    {state.liked ? "❤" : "🤍"}
                 </button>
             </div>
         </div>
