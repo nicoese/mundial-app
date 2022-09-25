@@ -210,10 +210,10 @@ export const getLastPurchase = (userEmail) => {
     }
 }
 
-export const addToFavorites = (productId, userEmail) => {
+export const addToFavorites = (product, userEmail) => {
     return async (dispatch) => {
-        return axios.post(`${REACT_APP_API_URL}/favorites/add`, {
-            productId: productId,
+        return axios.post(`${REACT_APP_API_URL}/favorites`, {
+            product: product,
             userEmail: userEmail
         })
             .then(json => {
@@ -242,7 +242,9 @@ export const getFavorites = (userEmail) => {
 
 export const removeFromFavorites = (productId, userEmail) => {
     return async (dispatch) => {
-        return axios.delete(`${REACT_APP_API_URL}/favorites/${productId}?${userEmail}`)
+        return axios.put(`${REACT_APP_API_URL}/favorites`, {
+            productId,userEmail
+        })
             .then(json => {
                 return dispatch({
                     type: REMOVE_FROM_FAVORITES,

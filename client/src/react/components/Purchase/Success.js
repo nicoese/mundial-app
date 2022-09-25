@@ -1,33 +1,39 @@
 import NavBar from "../NavBar/NavBar";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useAuth0} from "@auth0/auth0-react";
 import {getLastPurchase} from "../../../redux/actions";
+import Confetti from "react-confetti";
 
 export const Success = () => {
 
-    useEffect(() => {
-        delay(1000)
-            .then(e => {
-                dispatch(getLastPurchase(user.email))
-            })
-
-    }, []);
-
-    function delay(time) {
-        return new Promise((resolve) => setTimeout(resolve, time));
-    }
 
     const dispatch = useDispatch()
     const {user} = useAuth0()
 
-    // user && dispatch(getLastPurchase(user.email))
 
-    const {
-        purchase
-    } = useSelector(state => state)
+    const purchase = useSelector(state => state.purchase[0])
+
+    const [state, setState] = useState({
+        animationDone: true
+    });
+
+    useEffect(() => {
+
+        user && dispatch(getLastPurchase(user.email))
+        setTimeout(() => {
+            toggleConfetti();
+        }, 8000);
+        localStorage.clear()
+
+    }, [user]);
+
+    const toggleConfetti = () => {
+        setState({ animationDone: !state.animationDone });
+    };
 
     return <div>
+        {state.animationDone && <Confetti numberOfPieces={200}/>}
         <NavBar/>
 
         {user && <div className={'mt-24'}>
@@ -36,8 +42,14 @@ export const Success = () => {
             <img src={user.picture} alt={user.name}/>
         </div>}
 
-        {purchase.products && purchase.products.map(e => {
-            return <div>{e.name}</div>
+        <div className={'grid grid-cols-1'}></div>
+        {purchase && purchase.products.map(e => {
+            return <div className={'flex '}>
+                <p className={'p-10'}>{e.name}</p>
+                <p className={'p-10'}>{e.price}</p>
+                <p className={'p-10'}>{e.cantidad}</p>
+                <img className={'w-24 h-[auto]'} src={e.img} alt={e.name}/>
+            </div>
         })}
         {purchase && <div>{purchase.totalPrice}</div>}
     </div>

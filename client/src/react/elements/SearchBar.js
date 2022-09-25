@@ -46,7 +46,7 @@ export const SearchBar = () => {
             dispatch(setCurrentProducts(1))
             setName("");
             // if (name) return navigate(`/products?search=${name}`)
-            // navigate('/products')
+            navigate('/products')
         })
 
     }
