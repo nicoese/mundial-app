@@ -13,9 +13,11 @@ router.post("/", async (req, res) => {
         let link = response.data.init_point
 
         //MONGO OPERATIONS SAVE PENDING PURCHASE
+        let date = new Date();
         let purchase = new Purchase({
             date: new Date(),
             email,
+            date,
             products:[...products],
             totalPrice
         })

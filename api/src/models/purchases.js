@@ -9,8 +9,7 @@ y el precio final
 */
 const purchasesSchema = new Schema({
     date:{
-        type: Date,
-        default: new Date()
+        type: Date
     },
     status:{
         type: String,
