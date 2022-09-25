@@ -210,10 +210,10 @@ export const getLastPurchase = (userEmail) => {
     }
 }
 
-export const addToFavorites = (productId, userEmail) => {
+export const addToFavorites = (product, userEmail) => {
     return async (dispatch) => {
-        return axios.post(`${REACT_APP_API_URL}/favorites/add`, {
-            productId: productId,
+        return axios.post(`${REACT_APP_API_URL}/favorites`, {
+            product: product,
             userEmail: userEmail
         })
             .then(json => {

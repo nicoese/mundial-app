@@ -24,6 +24,7 @@ export const Success = () => {
         setTimeout(() => {
             toggleConfetti();
         }, 8000);
+        localStorage.clear()
 
     }, [user]);
 

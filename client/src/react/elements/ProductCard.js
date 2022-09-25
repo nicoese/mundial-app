@@ -26,22 +26,23 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
         }
     }
 
+
     function handleLike(ev) {
 
         //manejo del boton de like
 
         //si la tarjeta contenedora tiene el corazon blanco
         //agrego el prod a favoritos
-        if (ev.target.innerText === "🤍"){
+        if (ev.target.innerText === "🤍") {
 
             //envio el id del producto y el mail del user a la api
-            dispatch(addToFavorites(id, user.email))
+            dispatch(addToFavorites({id, name, price, img, brand, stadium}, user.email))
         }
 
         //si la tarjeta tiene el corazon rojo elimino el prod de favoritos
-        if (ev.target.innerText === "❤"){
+        if (ev.target.innerText === "❤") {
             //igualmente envio el id del prod y el user email
-            dispatch(removeFromFavorites(id, user.email))
+            dispatch(removeFromFavorites({id, name, price, img, brand, stadium}, user.email))
         }
 
 

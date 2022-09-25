@@ -22,7 +22,6 @@ const Details = (props) => {
     const user = useAuth0().user
     let params = useParams()
 
-    dispatch(getDetails(params.id))
 
     useEffect(() => {
         dispatch(clearDetailsErr())
@@ -56,6 +55,25 @@ const Details = (props) => {
         principalPic.alt = e.target.alt
         principalPic.src = e.target.src
     }
+
+
+    const handleClick = () => {
+
+        details["id"] = details._id
+        delete details["_id"]
+
+        const firstAdd = localStorage.getItem(`${details.id}`)
+
+        if (firstAdd === null) {
+            details["cantidad"] = 1
+            localStorage.setItem(`${details.id}`, JSON.stringify(details))
+            alert("Añadiste el Producto a tu carrito")
+        } else {
+            alert("Este producto ya fue añadido. Echale un vistazo al carrito!")
+        }
+    }
+
+
 
     function handleLike(ev) {
 
@@ -145,7 +163,7 @@ const Details = (props) => {
                                     {details.description}
                                 </p>
 
-                                <button
+                                <button onClick={handleClick}
                                     className="w-[8em] h-[3em] mt-4 rounded-md bg-red-600 text-white font-bold font-[Lato]"> Al
                                     Carrito
                                 </button>
