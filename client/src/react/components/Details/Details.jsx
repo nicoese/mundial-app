@@ -142,7 +142,7 @@ const Details = (props) => {
                                         {/*busco el producto en el arreglo de favoritos del user
                                         en el estado global si lo encuentro el corazon que muestro es
                                         el rojo */}
-                                        {favorites.find(fav => fav.id === details.id) ? "❤" : "🤍"}
+                                        {favorites.length > 0 ? favorites.find(fav => fav.id === details.id) ? "❤" : "🤍" : "🤍"}
                                     </button>
                                 </div>
                             </div>

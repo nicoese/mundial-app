@@ -149,9 +149,10 @@ export const rootReducer = (state = initialState, action) => {
                 purchase: action.payload
             }
         case ADD_TO_FAVORITES:
+            console.log(action.payload)
             return {
                 ...state,
-                favorites: action.payload
+                favorites: action.payload.products
             }
         case GET_FAVORITES:
             return {
@@ -159,9 +160,10 @@ export const rootReducer = (state = initialState, action) => {
                 favorites: action.payload
             }
         case REMOVE_FROM_FAVORITES:
+            console.log(action.payload)
             return {
                 ...state,
-                favorites: action.payload
+                favorites: action.payload.products
             }
         default:
             return state

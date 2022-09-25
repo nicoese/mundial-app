@@ -49,6 +49,16 @@ router.post('/add',async (req,res,next)=>{
 
 router.get('/', async (req,res,next)=>{
     try{
+        const {email} = req.query
+        let result = await Favorites.find({email:email})
+        res.status(200).send(result[0].products)
+    }catch(err){
+        next(err)
+    }
+})
+
+router.get('/', async (req,res,next)=>{
+    try{
         let result = await Favorites.find()
         res.status(200).send(result)
     }catch(err){
@@ -65,8 +75,9 @@ router.put('/delete', async (req,res,next)=>{
         let user = await Favorites.find({email: userEmail})
 
         if (user.length !== 0){
-            
-            let filtered = user[0].products.filter(e=>e._id !== productId)
+
+
+            let filtered = user[0].products.filter(e=>e.id !== productId)
 
             let setFavs = user[0].set({products: filtered})
 
