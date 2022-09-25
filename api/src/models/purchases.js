@@ -28,4 +28,13 @@ const purchasesSchema = new Schema({
     totalPrice: Number
     })
 
+    purchasesSchema.virtual('id').get(function(){
+        return this._id.toHexString();
+    });
+    
+    purchasesSchema.set('toJSON', {
+        virtuals: true
+    });
+
+
 module.exports = model('Purchase',purchasesSchema)

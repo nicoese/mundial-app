@@ -26,4 +26,13 @@ const productsSchema = new Schema({
     cantidad: Number
 })
 
+
+productsSchema.virtual('id').get(function(){
+    return this._id.toHexString();
+});
+
+productsSchema.set('toJSON', {
+    virtuals: true
+});
+
 module.exports = model('Product', productsSchema)

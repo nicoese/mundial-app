@@ -34,5 +34,13 @@ const usersSchema = new Schema({
     }],
 })
 
+usersSchema.virtual('id').get(function(){
+    return this._id.toHexString();
+});
+
+usersSchema.set('toJSON', {
+    virtuals: true
+});
+
 
 module.exports = model('User', usersSchema)
