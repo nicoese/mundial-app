@@ -10,6 +10,8 @@ import {useEffect, useState} from "react"; //solo para tomar las fuentes
 export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     const dispatch = useDispatch()
     const prodcutsInCart = useSelector((state) => state.cart)
+
+    //estado para el renderizado del corazon (like)
     const [state, setState] = useState({
         liked: false
     });
@@ -21,10 +23,14 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     const {user, isAuthenticated} = useAuth0()
 
     useEffect(() => {
+
+        //si el user esta logeado comparo el id de la card
+        //con los favoritos del user
         if (isAuthenticated){
 
             const liked = favorites.find(e => e.id === id)
-
+            //si existe en la lista muestro el producto
+            //como likeado
             if (liked) toggleLike()
         }
 
@@ -47,9 +53,13 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
         }
     }
 
+
+    //toggle like
     const toggleLike = () => {
         setState({liked: true})
     };
+
+    //toggle dislike
     const toggleDislike = () => {
         setState({liked: false})
     };
@@ -57,6 +67,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
 
     function handleLike(ev) {
 
+        //si el user no esta logeado no puede likear
         if (!isAuthenticated){
             return Swal('logueate')
         }

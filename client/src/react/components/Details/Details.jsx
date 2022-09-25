@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 import {
@@ -20,13 +20,15 @@ const Details = (props) => {
     const details = useSelector((state) => state.ProductDetail);
     const error = useSelector((state) => state.detailsError);
     const favorites = useSelector((state) => state.favorites);
-    const user = useAuth0().user
+    const {user, isAuthenticated} = useAuth0()
     let params = useParams()
+    const [state, setState] = useState({
+        liked: false
+    });
 
 
     useEffect(() => {
         dispatch(clearDetailsErr())
-
 
         delay(100).then(() => {
                 dispatch(getDetails(params.id));
@@ -37,6 +39,63 @@ const Details = (props) => {
         }
         
     }, [dispatch]);
+
+
+
+    //
+
+
+    useEffect(() => {
+
+        //si el user esta logeado comparo el id de la card
+        //con los favoritos del use
+        if (isAuthenticated){
+
+            const liked = favorites.find(e => e.id === details.id || e.id === details._id)
+
+            console.log(details.id)
+
+            //si existe en la lista muestro el producto
+            //como likeado
+
+            if (liked) toggleLike()
+        }
+    }, [favorites, isAuthenticated, details]);
+
+    //toggle like
+    const toggleLike = () => {
+        setState({liked: true})
+    };
+    //toggle dislike
+    const toggleDislike = () => {
+        setState({liked: false})
+    };
+
+
+    function handleLike(ev) {
+
+        //si el user no esta logeado no puede likear
+        if (!isAuthenticated){
+            return Swal('logueate')
+        }
+
+        //manejo del boton de like
+
+        //si la tarjeta contenedora tiene el corazon blanco
+        //agrego el prod a favoritos
+        if (ev.target.innerText === "🤍") {
+            //envio el id del producto y el mail del user a la api
+            dispatch(addToFavorites(details, user.email))
+        }
+
+        //si la tarjeta tiene el corazon rojo elimino el prod de favoritos
+        if (ev.target.innerText === "❤") {
+            //igualmente envio el id del prod y el user email
+            dispatch(removeFromFavorites(details.id, user.email))
+            toggleDislike()
+        }
+        // toggleLike()
+    }
 
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
@@ -84,29 +143,6 @@ const Details = (props) => {
     }
 
 
-
-    function handleLike(ev) {
-
-        //manejo del boton de like
-
-        //si la tarjeta contenedora tiene el corazon blanco
-        //agrego el prod a favoritos
-        if (ev.target.innerText === "🤍") {
-
-            //envio el id del producto y el mail del user a la api
-            dispatch(addToFavorites(details.id, user.email))
-        }
-
-        //si la tarjeta tiene el corazon rojo elimino el prod de favoritos
-        if (ev.target.innerText === "❤") {
-            //igualmente envio el id del prod y el user email
-            dispatch(removeFromFavorites(details.id, user.email))
-        }
-
-
-    }
-
-
     return (
         <div>
             {details === {} ? <div className={'mt-48'}>cargando</div> : error ? <NotFound/> :
@@ -142,7 +178,8 @@ const Details = (props) => {
                                         {/*busco el producto en el arreglo de favoritos del user
                                         en el estado global si lo encuentro el corazon que muestro es
                                         el rojo */}
-                                        {favorites.length > 0 ? favorites.find(fav => fav.id === details.id) ? "❤" : "🤍" : "🤍"}
+                                        {/*{favorites.length > 0 ? favorites.find(fav => fav.id === details.id) ? "❤" : "🤍" : "🤍"}*/}
+                                        {state.liked ? "❤" : "🤍"}
                                     </button>
                                 </div>
                             </div>
