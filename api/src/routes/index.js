@@ -5,10 +5,11 @@ const routeSearch = require('./routeSearch')
 const routeFilter = require('./routeFilter')
 const routeMP = require ('./mercadoPago')
 
-const productsRoute = require('./Products')
 
+const productsRoute = require('./Products')
 const usersRoute = require('./Users')
 const purchasesRoute = require('./Purchases')
+const favoritesRoute = require('./Favorites')
 
 
 
@@ -16,13 +17,14 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+
 router.use('/products', productsRoute);
 router.use('/users', usersRoute);
 router.use('/purchases',purchasesRoute)
+router.use('/favorites',favoritesRoute)
+
+
 router.use('/mp', routeMP)
-
-
-
 router.use('/search', routeSearch)
 router.use('/filter', routeFilter)
 
