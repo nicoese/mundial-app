@@ -1009,6 +1009,9 @@ input:checked + .toggle-bg {
 .m-2 {
   margin: 0.5rem;
 }
+.m-10 {
+  margin: 2.5rem;
+}
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
@@ -1288,6 +1291,9 @@ input:checked + .toggle-bg {
 .h-0 {
   height: 0px;
 }
+.h-\[auto\] {
+  height: auto;
+}
 .w-full {
   width: 100%;
 }
@@ -1384,6 +1390,12 @@ input:checked + .toggle-bg {
 }
 .w-auto {
   width: auto;
+}
+.w-14 {
+  width: 3.5rem;
+}
+.w-24 {
+  width: 6rem;
 }
 .max-w-sm {
   max-width: 24rem;

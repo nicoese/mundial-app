@@ -2,7 +2,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import "../components/Landing/Landing.css"
 import {addToFavorites, removeFromFavorites} from "../../redux/actions";
-import {useAuth0} from "@auth0/auth0-react"; //solo para tomar las fuentes
+import {useAuth0} from "@auth0/auth0-react";
+import Swal from "sweetalert"; //solo para tomar las fuentes
 
 
 export const ProductCard = ({id, name, price, img, brand, stadium}) => {
@@ -20,11 +21,16 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
 
         if (firstAdd === null) {
             localStorage.setItem(`${id}`, JSON.stringify({id, name, price, img, cantidad: 1}))
-            alert("Añadiste el Producto a tu carrito")
+            Swal('Añadiste el Producto a tu carrito', '', 'success')
+
         } else {
-            alert("Este producto ya fue añadido. Echale un vistazo al carrito!")
+            Swal({
+                title: "Este producto ya fue añadido. Echale un vistazo al carrito!",
+                icon: 'warning'
+            })
         }
     }
+
 
     function handleLike(ev) {
 
@@ -32,16 +38,16 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
 
         //si la tarjeta contenedora tiene el corazon blanco
         //agrego el prod a favoritos
-        if (ev.target.innerText === "🤍"){
+        if (ev.target.innerText === "🤍") {
 
             //envio el id del producto y el mail del user a la api
-            dispatch(addToFavorites(id, user.email))
+            dispatch(addToFavorites({id, name, price, img, brand, stadium}, user.email))
         }
 
         //si la tarjeta tiene el corazon rojo elimino el prod de favoritos
-        if (ev.target.innerText === "❤"){
+        if (ev.target.innerText === "❤") {
             //igualmente envio el id del prod y el user email
-            dispatch(removeFromFavorites(id, user.email))
+            dispatch(removeFromFavorites({id, name, price, img, brand, stadium}, user.email))
         }
 
 
