@@ -17,10 +17,6 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
-router.put('/set_status', async (req,res,next)=>{
-    const {status,} = req.body;
-})
-
 router.get('/last_purchase', async (req,res,next)=>{
     const {email} = req.query;
 
@@ -39,6 +35,22 @@ router.get('/last_purchase', async (req,res,next)=>{
     res.status(200).json(result);
     
 })
+
+router.put('/purchase_failed', async (req,res,next)=>{
+    const {email} = req.query;
+
+    let result = await Purchase.find({email: email}).sort({"date": -1}).limit(1)
+
+    let setStatus = result[0].set({status: 'failed'})
+
+    let success = await setStatus.save()
+
+    res.status(201).send('purchase status failed saved');
+    
+})
+
+
+
 
 //get all purchases by userId
 // router.get('/:userId', async (req,res,next)=>{
