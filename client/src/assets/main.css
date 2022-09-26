@@ -1100,6 +1100,9 @@ input[type="range"]::-ms-fill-lower {
 .p-4 {
   padding: 1rem;
 }
+.p-5 {
+  padding: 1.25rem;
+}
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;

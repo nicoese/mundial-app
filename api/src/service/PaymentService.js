@@ -15,7 +15,7 @@ async function PaymentService(userEmail,items) {
       }})
       ,
       back_urls: {
-        failure: `${process.env.CLIENT_URL}/purchases/failed`,
+        failure: `${process.env.CLIENT_URL}/cart`,
         pending: `${process.env.CLIENT_URL}/cart`,
         success: `${process.env.CLIENT_URL}/purchases/success`
       }
