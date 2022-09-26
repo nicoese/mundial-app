@@ -26,7 +26,7 @@ export const Success = () => {
         }, 8000);
         localStorage.clear()
 
-    }, [user, purchase]);
+    }, [user]);
 
     const toggleConfetti = () => {
         setState({ animationDone: !state.animationDone });
