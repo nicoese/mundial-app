@@ -9,11 +9,16 @@ y el precio final
 */
 const purchasesSchema = new Schema({
     date:{
-        type: Date,
-        default: new Date()
+        type: Date
     },
-    user: {
-        type:Schema.Types.ObjectId,
+    status:{
+        type: String,
+        default: 'pending'
+    },
+
+    email:{
+        type: String,
+        required: true,
         ref: 'User'
     },
     products:[{
@@ -22,5 +27,14 @@ const purchasesSchema = new Schema({
     }],
     totalPrice: Number
     })
+
+    purchasesSchema.virtual('id').get(function(){
+        return this._id.toHexString();
+    });
+    
+    purchasesSchema.set('toJSON', {
+        virtuals: true
+    });
+
 
 module.exports = model('Purchase',purchasesSchema)

@@ -205,30 +205,30 @@ export const FilterBy = () => {
         })
     }
 
-    return <div className={'flex flex-col'}>
-        <h2>filtros</h2>
+    return <div className={'flex flex-col h-[30%] w-[25%] sticky top-40'}>
+        <h2>Filtros</h2>
 
         <div id={'category'}>
-            <h3>{productType.name}</h3>
+            <h3 className="text-start pl-2 font-semibold text-[#790729]">{productType.name}</h3>
             {productType.filters.map(fil => {
-                return <label className={'flex flex-row py-1'} htmlFor={fil.name} key={fil.name} name={fil.name}>
-                    <input onChange={handleChange} id={fil.name} value={fil.value} checked={filters[fil.value].checked}
+                return <label className={'flex py-1'} htmlFor={fil.name} key={fil.name} name={fil.name}>
+                    <input className={'flex mt-[4px] ml-4'} onChange={handleChange} id={fil.name} value={fil.value} checked={filters[fil.value].checked}
                            type="checkbox"/>
-                    <p className={'mx-1'}>{fil.name}</p>
+                    <p className={'pl-2'}>{fil.name}</p>
                 </label>
             })}
         </div>
 
 
         {!filters.ticket.checked && !filters.accessory.checked && <div id={'genderInputs'}>
-            <h3>{brands.name}</h3>
+            <h3 className="text-start pl-2 font-semibold text-[#790729]">{brands.name}</h3>
             <div className="flex flex-col">
 
                 {brands.brands.map(e => {
-                    return <label className={'flex  my-1 '} htmlFor={e.value}>
-                        <input onChange={handleChange} id={e.value} value={e.value} name={e.value}
+                    return <label className={'flex  my-1'} htmlFor={e.value}>
+                        <input className={'flex mt-[4px] ml-4'} onChange={handleChange} id={e.value} value={e.value} name={e.value}
                                checked={filters[e.value].checked} type="checkbox"/>
-                        <p className={'mx-1'}>{e.name}</p>
+                        <p className={'pl-2'}>{e.name}</p>
                     </label>
                 })
                 }
@@ -237,19 +237,16 @@ export const FilterBy = () => {
         </div>}
 
         <div className={'py-5'}>
-            <h3>Rango de Precios</h3>
-            <div className={'flex justify-center'}>
-
-                <input onChange={handlePrice} className={'w-12 text-center m-5 border-2 outline-0'}
+            <h3 className="font-semibold text-[#790729]">Rango de Precios</h3>
+            <div className={'flex items-center justify-around mt-1 mb-3'}>
+                <input onChange={handlePrice} className={'h-8 w-[5.2rem] focus:border-none focus:outline-none'}
                        value={filters.min.value} name={'min'} placeholder={'Min'} type="text"/>
-                <p className={'my-5'}>-</p>
-                <input onChange={handlePrice} className={'w-12 text-center m-5 border-2 outline-0'}
+                <p><hr className="h-[3px] w-3 bg-gray-400"/></p>
+                <input onChange={handlePrice} className={'h-8 w-[5.2rem] focus:border-none focus:outline-none'}
                        value={filters.max.value} name={'max'} placeholder={'Max'} type="text"/>
             </div>
-            <button onClick={handleClick} className={'btn '}>Aplicar</button>
+            <button onClick={handleClick} className={'w-[5.2rem] h-[2.3rem] rounded-sm bg-[#790729] text-white font-semibold'}>Aplicar</button>
         </div>
-
-
     </div>
 }
 

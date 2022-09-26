@@ -22,7 +22,17 @@ const productsSchema = new Schema({
     stadium: String,
     date: String,
     sector: String,
-    rating: Number
+    rating: Number,
+    cantidad: Number
 })
+
+
+productsSchema.virtual('id').get(function(){
+    return this._id.toHexString();
+});
+
+productsSchema.set('toJSON', {
+    virtuals: true
+});
 
 module.exports = model('Product', productsSchema)

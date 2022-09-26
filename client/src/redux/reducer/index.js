@@ -1,4 +1,6 @@
 import {
+    GET_BYNAME,
+    GET_DETAILS,
     FILTER,
     GET_ALL_PRODUCTS,
     SET_CURRENT_PRODUCTS,
@@ -7,10 +9,14 @@ import {
     TEST_FILTERS,
     ADD_TO_CART,
     REMOVE_TO_CART,
-    GET_BYNAME,
-    GET_DETAILS,
-    RESET_DETAIL, PRODUCTS_NOT_FOUND, DETAILS_ERROR, CLEAR_DETAILS_ERROR, CLEAR_PRODUCTS_ERROR
-
+    UPDATE_TO_CART,
+    RESET_DETAIL,
+    PRODUCTS_NOT_FOUND,
+    DETAILS_ERROR,
+    CLEAR_DETAILS_ERROR,
+    CLEAR_PRODUCTS_ERROR,
+    DISPATCH_PURCHASE,
+    GET_LAST_PURCHASE, ADD_TO_FAVORITES, GET_FAVORITES, REMOVE_FROM_FAVORITES, PURCHASE_FAILED
 } from "../actions"
 
 
@@ -24,6 +30,10 @@ const initialState = {
     sortCriteria: '',
     productsError: '',
     detailsError: '',
+    purchase: {},
+    purchaseStatus: '',
+    mp_link: '',
+    favorites: [],
     cart: []
 }
 
@@ -93,9 +103,18 @@ export const rootReducer = (state = initialState, action) => {
         case REMOVE_TO_CART:
             return {
                 ...state,
-                cart: state.cart.filter((p) => p.id === action.payload)
+                cart: state.cart.filter((p) => p.id !== action.payload)
             }
-
+        case UPDATE_TO_CART:
+            console.log(action.payload[0]);
+            return {
+                ...state,
+                cart: state.cart.map((p) => {
+                    if(p.id === action.payload[0]){
+                        p.price = action.payload[1]
+                    }
+                })
+            }
         case PRODUCTS_NOT_FOUND:
             return {
                 ...state,
@@ -118,7 +137,38 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 productsError: ''
             }
+        case DISPATCH_PURCHASE:
+            return {
+                ...state,
+                mp_link: action.payload
+            }
 
+        case GET_LAST_PURCHASE:
+            return {
+                ...state,
+                purchase: action.payload
+            }
+        case ADD_TO_FAVORITES:
+            console.log(action.payload)
+            return {
+                ...state,
+                favorites: action.payload.products
+            }
+        case GET_FAVORITES:
+            return {
+                ...state,
+                favorites: action.payload
+            }
+        case REMOVE_FROM_FAVORITES:
+            console.log(action.payload)
+            return {
+                ...state,
+                favorites: action.payload.products
+            }
+        case PURCHASE_FAILED:
+            return {
+                ...state
+            }
         default:
             return state
     }

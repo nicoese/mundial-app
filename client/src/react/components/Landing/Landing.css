@@ -113,10 +113,9 @@ section{
     font-family: 'Lato', sans-serif;
     color: #3E3636;
 }
-.hero-txt-btns .hero-spn{
+.hero-spn{
     margin-top: .5em;
     margin-left: .5em;
-    
     font-family: 'Mulish', sans-serif;
     font-weight: bold;
     font-size: 3.2em;
@@ -126,7 +125,6 @@ section{
     width: 90%;
     margin-top: .5em;
     margin-left: 1.4em;
-
     font-family: 'Mulish', sans-serif;
     font-size: 1.2em;
     color: #3E3636;
@@ -141,15 +139,30 @@ section{
     margin-bottom: 1em;
     margin-left: 1.8em;
 }
-.hero-btn, .btn-s{
-    width: 180px;
+.hero-btn{
+    width: 200px;
     height: 45px;
     margin-top: 25px;
     margin-right: 25px;
-
     border: none;
     border-radius: 5px;
     background-color: #790729;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2em;
+    color: #f6f6f6;
+    cursor: pointer;
+}
+.hero-btnlog{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 200px;
+    height: 45px;
+    margin-top: 25px;
+    margin-right: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #24a249;
     font-family: 'Lato', sans-serif;
     font-size: 1.2em;
     color: #f6f6f6;
