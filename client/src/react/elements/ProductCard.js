@@ -91,7 +91,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     }
 
     return (
-        <div className="flex flex-col max-w-sm bg-white h-[400px] rounded-md" key={id}>
+        <div className="flex flex-col pb-2 max-w-sm bg-white h-[400px] rounded-md" key={id}>
             {img ? (
                 <Link to={`${id}`} className="flex items-center justify-center w-full h-[15em]">
                     <div className="flex items-center justify-center w-full h-[15em]">
@@ -108,16 +108,16 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
             </div>
             <div className="mb-4 mt-1">
                 <p className="font-[Lato] text-xl w-full text-start pl-[1.75em] ">${new Intl.NumberFormat().format(price)}</p>
-                <p className="font-[Lato] text-2xl font-extrabold">{brand ? `marca ${brand}` : stadium ? `estadio ${stadium}` : ""}</p>
+                <p className="w-[4em] h-[1.5rem] ml-[1.7em] font-[Lato] text-md text-[#790729] font-semibold">{brand ? `${brand}` : stadium ? `${stadium}` : ""}</p>
             </div>
             <div className="w-full flex items-center justify-around">
                 <button onClick={() => handleClick()}
-                        className="w-[8em] h-[3em] mr-2 rounded-md bg-red-600 hover:bg-red-800 text-white font-bold font-[Lato]"> Al
+                        className="w-[8em] h-[2.3em] mr-2 rounded-md bg-[#790729] hover:bg-red-800 text-white font-bold font-[Lato]"> Al
                     Carrito
                 </button>
                 <button onClick={handleLike}
                         className=" flex items-center justify-center h-[2.3em] ml-[3em] rounded-md p-2 border-2
-                  border-red-600 text-red-600 font-bold"
+                  border-[#790729] text-[#790729] font-bold"
                 >
                     {/*busco el producto en el arreglo de favoritos del user
                     en el estado global si lo encuentro el corazon que muestro es
