@@ -22,6 +22,7 @@ export const GET_LAST_PURCHASE = "GET_LAST_PURCHASE"
 export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES"
 export const GET_FAVORITES = "GET_FAVORITES"
 export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES"
+export const PURCHASE_FAILED = "PURCHASE_FAILED"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -212,7 +213,7 @@ export const getLastPurchase = (userEmail) => {
 
 export const addToFavorites = (product, userEmail) => {
     return async (dispatch) => {
-        return axios.post(`${REACT_APP_API_URL}/favorites`, {
+        return axios.post(`${REACT_APP_API_URL}/favorites/add`, {
             product: product,
             userEmail: userEmail
         })
@@ -230,7 +231,7 @@ export const addToFavorites = (product, userEmail) => {
 
 export const getFavorites = (userEmail) => {
     return async (dispatch) => {
-        return axios.get(`${REACT_APP_API_URL}/favorites/${userEmail}`)
+        return axios.get(`${REACT_APP_API_URL}/favorites/?email=${userEmail}`)
             .then(json => {
                 return dispatch({
                     type: GET_FAVORITES,
@@ -242,12 +243,26 @@ export const getFavorites = (userEmail) => {
 
 export const removeFromFavorites = (productId, userEmail) => {
     return async (dispatch) => {
-        return axios.put(`${REACT_APP_API_URL}/favorites`, {
-            productId,userEmail
+        console.log(productId, userEmail)
+        return axios.put(`${REACT_APP_API_URL}/favorites/delete`, {
+            userEmail,
+            productId
         })
             .then(json => {
                 return dispatch({
                     type: REMOVE_FROM_FAVORITES,
+                    payload: json.data
+                })
+            })
+    }
+}
+
+export const purchaseFailed = (userEmail) => {
+    return async (dispatch) => {
+        return axios.put(`${REACT_APP_API_URL}/purchases/purchase_failed?email=${userEmail}`)
+            .then(json => {
+                dispatch({
+                    type: PURCHASE_FAILED,
                     payload: json.data
                 })
             })
