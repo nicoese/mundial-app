@@ -31,7 +31,7 @@ const Cart = () => {
         button: 'Volver al carrito',
       })
           .then(e => {
-              // dispatch(purchaseFailed(user.email))
+              dispatch(purchaseFailed(user.email))
           })
       purchaseStatus = ''
     }

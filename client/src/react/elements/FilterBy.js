@@ -206,10 +206,10 @@ export const FilterBy = () => {
     }
 
     return <div className={'flex flex-col'}>
-        <h2>filtros</h2>
+        <h2 className={'text-2xl p-10 '} >filtros</h2>
 
         <div id={'category'}>
-            <h3>{productType.name}</h3>
+            <h3 className={'p-5'}>{productType.name}</h3>
             {productType.filters.map(fil => {
                 return <label className={'flex flex-row py-1'} htmlFor={fil.name} key={fil.name} name={fil.name}>
                     <input onChange={handleChange} id={fil.name} value={fil.value} checked={filters[fil.value].checked}
@@ -221,7 +221,7 @@ export const FilterBy = () => {
 
 
         {!filters.ticket.checked && !filters.accessory.checked && <div id={'genderInputs'}>
-            <h3>{brands.name}</h3>
+            <h3 className={'p-5'}>{brands.name}</h3>
             <div className="flex flex-col">
 
                 {brands.brands.map(e => {
@@ -237,7 +237,7 @@ export const FilterBy = () => {
         </div>}
 
         <div className={'py-5'}>
-            <h3>Rango de Precios</h3>
+            <h3 className={'p-5'}>Rango de Precios</h3>
             <div className={'flex justify-center'}>
 
                 <input onChange={handlePrice} className={'w-12 text-center m-5 border-2 outline-0'}
@@ -246,7 +246,7 @@ export const FilterBy = () => {
                 <input onChange={handlePrice} className={'w-12 text-center m-5 border-2 outline-0'}
                        value={filters.max.value} name={'max'} placeholder={'Max'} type="text"/>
             </div>
-            <button onClick={handleClick} className={'btn '}>Aplicar</button>
+            <button onClick={handleClick} className={'btn p-10'}>Aplicar</button>
         </div>
 
 
