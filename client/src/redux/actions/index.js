@@ -22,6 +22,7 @@ export const GET_LAST_PURCHASE = "GET_LAST_PURCHASE"
 export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES"
 export const GET_FAVORITES = "GET_FAVORITES"
 export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES"
+export const PURCHASE_FAILED = "PURCHASE_FAILED"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -250,6 +251,18 @@ export const removeFromFavorites = (productId, userEmail) => {
             .then(json => {
                 return dispatch({
                     type: REMOVE_FROM_FAVORITES,
+                    payload: json.data
+                })
+            })
+    }
+}
+
+export const purchaseFailed = (userEmail) => {
+    return async (dispatch) => {
+        return axios.put(`${REACT_APP_API_URL}/purchases/purchase_failed?email=${userEmail}`)
+            .then(json => {
+                dispatch({
+                    type: PURCHASE_FAILED,
                     payload: json.data
                 })
             })

@@ -58,6 +58,7 @@ function App() {
             <Success />
           </ProtectedRoutes>
         } />
+        <Route path={'/purchases/failure'} element={<Cart />} />
         <Route path={'/profile'} element={<ProtectedRoutes>
           <Profile />
         </ProtectedRoutes>}/>

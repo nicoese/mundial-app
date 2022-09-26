@@ -2,9 +2,10 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
-import {buyDetail} from "../../../redux/actions";
+import {buyDetail, purchaseFailed} from "../../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router";
+import Swal from "sweetalert";
 
 const Cart = () => {
   const [state, updateState] = useState(true);
@@ -15,7 +16,29 @@ const Cart = () => {
   const {user} = useAuth0()
   const navigate = useNavigate()
   const {mp_link} = useSelector(state => state)
-    
+  const url = new URL(window.location)
+
+  let purchaseStatus = !!url.searchParams.get('status')
+
+
+
+  useEffect(() => {
+
+    if (purchaseStatus) {
+      Swal({
+        icon: 'error',
+        title: 'No se pudo realizar la compra :(',
+        button: 'Volver al carrito',
+      })
+          .then(e => {
+              // dispatch(purchaseFailed(user.email))
+          })
+      purchaseStatus = ''
+    }
+
+  }, [purchaseStatus, user]);
+
+
   for (let i = 0; i < storageKeys.length; i++) {
     if(storageKeys[i] !== 'products'){
       productsInStorage.push(JSON.parse(localStorage[storageKeys[i]]))
