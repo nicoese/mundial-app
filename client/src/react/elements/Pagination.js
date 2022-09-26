@@ -52,8 +52,8 @@ export const Pagination = () => {
         dispatch(setCurrentProducts(pageNumber))
     }
 
-    return <div className={'p-10'}>
-        {pageNumbers.map(number => <button className={'btn'} key={number} onClick={handleClick}>{number + 1}</button>)}
+    return <div className={'flex justify-end my-10'}>
+        {pageNumbers.map(number => <button className={'w-[2.7rem] h-[2.3rem] mx-1 rounded-md bg-[#790729] text-white font-semibold}'} key={number} onClick={handleClick}>{number + 1}</button>)}
     </div>
 }
 

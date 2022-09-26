@@ -112,32 +112,32 @@ const Details = (props) => {
             {details === {} ? <div className={'mt-48'}>cargando</div> : error ? <NotFound/> :
                 <div>
                     <NavBar/>
-                    <section className="flex flex-col w-full h-[100vh] py-4">
-                        <div className="flex items-center w-[95%] h-[45px] my-4">
-                            <p className="text-xl ml-2 text-red-600"> {`Category >`} </p>
-                            <p className="text-xl ml-2 text-red-600 font-semibold"> Product </p>
+                    <section className="relative flex flex-col w-full h-[100vh] py-8 mt-[60px]">
+                        <div className="flex items-center w-[95%] h-[45px] my-8">
+                            <p className="text-xl ml-2 text-[#790729]"> {`Category >`} </p>
+                            <p className="text-xl ml-2 text-[#790729] font-semibold"> Product </p>
                         </div>
-                        <div className="flex items-center justify-between w-[95%] h-[95%]">
+                        <div className="sticky top-40 flex items-center justify-between w-[95%] h-[95%]">
                             <div className="flex flex-col items-center justify-between w-[15%] h-[550px]">
                                 <img src='https://bit.ly/3eXgVU4' alt="product-pic1"
-                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-red-600 shadow-md"
+                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-[#790729]shadow-md"
                                      onClick={selectPic}/>
                                 <img src='https://bit.ly/3eXgVU4' alt="product-pic2"
-                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-red-600 shadow-md"
+                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-[#790729] shadow-md"
                                      onClick={selectPic}/>
                                 <img src='https://bit.ly/3eXgVU4' alt="product-pic3"
-                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-red-600 shadow-md"
+                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-[#790729] shadow-md"
                                      onClick={selectPic}/>
                             </div>
                             <div
-                                className="relative flex items-center justify-center w-[50%] h-[600px] shadow-lg bg-white">
-                                <div className="flex items-center w-[auto] h-[600px]">
+                                className="relative flex items-center justify-center w-[50%] h-[550px] shadow-lg bg-white">
+                                <div className="flex items-center w-[auto] h-[550px]">
                                     <img src={details.img} alt="product-pic" id="principal-pic"
                                          className="w-full h-full"/>
                                     <button
                                         onClick={handleLike}
                                         className="absolute top-6 right-9 flex items-center justify-center
-                                        h-[50px] w-[50px] rounded-md border-2 border-red-600 duration-300
+                                        h-[50px] w-[50px] rounded-md border-2 border-[#790729] duration-300
                                         hover:text-2xl text-gray-400 font-bold">
                                         {/*busco el producto en el arreglo de favoritos del user
                                         en el estado global si lo encuentro el corazon que muestro es
@@ -146,35 +146,35 @@ const Details = (props) => {
                                     </button>
                                 </div>
                             </div>
-                            <div className="flex flex-col items-start w-[30%] h-[580px]">
-                                <h1 className="mb-4 text-4xl font-bold  text-red-600">{details.name}</h1>
+                            <div className="flex flex-col items-start w-[30%] h-[580px] mt-[50px]">
+                                <h1 className="mb-4 text-4xl font-bold  text-[#790729]">{details.name}</h1>
                                 <p className="mb-4 text-2xl font-semibold">$ {new Intl.NumberFormat().format(details.price)}</p>
                                 {details.type === "jersey" ?
                                     <div className="flex justify-around items-center w-[80%] h-[50px]">
                                         <div
-                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-red-600 border-[1px] border-red-600 cursor-pointer">XS
+                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-[#790729] border-[1px] border-[#790729] cursor-pointer">XS
                                         </div>
                                         <div
-                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-red-600 border-[1px] border-red-600 cursor-pointer">S
+                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-[#790729] border-[1px] border-[#790729] cursor-pointer">S
                                         </div>
                                         <div
-                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-red-600 border-[1px] border-red-600 cursor-pointer">M
+                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-[#790729] border-[1px] border-[#790729] cursor-pointer">M
                                         </div>
                                         <div
-                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-red-600 border-[1px] border-red-600 cursor-pointer">L
+                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-[#790729] border-[1px] border-[#790729] cursor-pointer">L
                                         </div>
                                         <div
-                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-red-600 border-[1px] border-red-600 cursor-pointer">XL
+                                            className="flex items-center justify-center h-full w-[20%] mr-1 text-xl hover:font-bold hover:border-2 text-[#790729] border-[1px] border-[#790729] cursor-pointer">XL
                                         </div>
                                     </div> : null //NO SPINNER NEEDED JUST ERASING SIZE IF NOT JERSEY
                                 }
-                                <p className="flex justify-start items-center w-[80%] h-[50px] my-2 text-3xl text-red-600 border-b-[1px] border-gray-200">DESCRIPCIÓN</p>
+                                <p className="flex justify-start items-center w-[80%] h-[50px] my-2 text-3xl text-[#790729] border-b-[1px] border-gray-200">DESCRIPCIÓN</p>
                                 <p className="text-lg">
                                     {details.description}
                                 </p>
 
                                 <button onClick={handleClick}
-                                    className="w-[8em] h-[3em] mt-4 rounded-md bg-red-600 text-white font-bold font-[Lato]"> Al
+                                    className="w-[8em] h-[3em] mt-4 rounded-md bg-[#790729] text-white font-bold font-[Lato]"> Al
                                     Carrito
                                 </button>
                             </div>

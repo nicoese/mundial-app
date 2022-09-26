@@ -99,7 +99,7 @@ export const SortBy = () => {
     return <div className={'flex flex-col-reverse items-end justify-center w-[50%] p-10 sm:p-4'}>
         <select onChange={(event) => {
             handleChange(event)
-        }} className={'my-4'} value={sort_criteria} name="select-sort" id="">
+        }} className={'my-4 outline-transparent focus:border-none focus:outline-none'} value={sort_criteria} name="select-sort" id="">
             <option>---</option>
             {options.map(op => {
                 return <option key={op.name} value={op.value}>{op.name}</option>
