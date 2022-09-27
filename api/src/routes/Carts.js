@@ -32,20 +32,21 @@ router.post('/add_to_cart', async (req,res,next)=>{
         // if not added we insert in the array of prods the new product
         if(!arr.find(e=>e.name === product.name)){
             arr.push(product)
-        }else{
-            //if product is already there check the quantity
-            let newArr = arr.map(e=>{
-                if(e.name === product.name){
-                    if(e.cantidad !== product.cantidad){
-                        e.cantidad = product.cantidad
-                    }
-                }
-            })
         }
+            //if product is already there check the quantity
+        let newArr = arr.map(e=>{
+            if(e.name === product.name){
+                if(e.cantidad !== product.cantidad){
+                       return {...e,cantidad: product.cantidad}
+                }
+            }
+            return e
+        })
+        
 
         //set new array in cart
 
-        let setCart = user[0].set({products: arr})
+        let setCart = user[0].set({products: newArr})
         
         let result = await setCart.save()
 

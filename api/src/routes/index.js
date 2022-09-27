@@ -11,6 +11,7 @@ const usersRoute = require('./Users')
 const purchasesRoute = require('./Purchases')
 const favoritesRoute = require('./Favorites')
 const cartsRoute = require('./Carts')
+const mailsRoute = require('./Mails')
 
 
 
@@ -24,6 +25,7 @@ router.use('/users', usersRoute);
 router.use('/purchases',purchasesRoute)
 router.use('/favorites',favoritesRoute)
 router.use('/carts',cartsRoute)
+router.use('/mails',mailsRoute)
 
 
 
