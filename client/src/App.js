@@ -18,6 +18,7 @@ import {Profile} from "./react/components/Profile/Profile";
 import {Wishlist} from "./react/components/Wishlist/Wishlist";
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
+import UserProfile from "./react/components/UserProfile/UserProfile";
 
 
 function About() {
@@ -61,7 +62,7 @@ function App() {
                 }/>
                 <Route path={'/purchases/failure'} element={<Cart/>}/>
                 <Route path={'/profile'} element={<ProtectedRoutes>
-                    <Profile/>
+                    <UserProfile />
                 </ProtectedRoutes>}/>
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>

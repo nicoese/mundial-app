@@ -101,7 +101,7 @@ const NavBar = () => {
 
 
 
-          {!isAuthenticated && <li onClick={loginWithRedirect} className="li-inicioSesion">Login</li>}
+          {!isAuthenticated && <div onClick={loginWithRedirect} className="li-inicioSesion mr-[7%]">Login</div>}
 
           {
             isAuthenticated && user && <div className={'flex '}>
