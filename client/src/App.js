@@ -14,8 +14,8 @@ import Nosotros from "./Componentes/Nosotros"
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router";
 import {NotFound} from "./react/components/Not_Found/Not_Found";
-import {Profile} from "./react/components/Profile/Profile";
 import {Wishlist} from "./react/components/Wishlist/Wishlist";
+import DashboardProfile from "./react/components/DashboardProfile/DashboardProfile";
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
 
@@ -61,7 +61,7 @@ function App() {
                 }/>
                 <Route path={'/purchases/failure'} element={<Cart/>}/>
                 <Route path={'/profile'} element={<ProtectedRoutes>
-                    <Profile/>
+                    <DashboardProfile />
                 </ProtectedRoutes>}/>
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>

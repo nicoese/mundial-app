@@ -1,63 +1,36 @@
 import React from "react";
+import {useDispatch, useSelector} from "react-redux";
+import { addToCart, removeToCart } from "../../../redux/actions/index.js";
+import {useAuth0} from "@auth0/auth0-react";
 
-const CartDetailCard = ({ id, name, price, img, cantidad, deleteProduct}) => {
-  let productsInStorage = []
-  let storageKeys = Object.keys(localStorage)
-  
-  for (let i = 0; i < storageKeys.length; i++) {
-    if(storageKeys[i] !== 'products'){
-      productsInStorage.push(JSON.parse(localStorage[storageKeys[i]]))
-    }
-  }
-
-/*   
-  const firstAdd = localStorage.getItem(`${id}`)
-  if(firstAdd === null) localStorage.setItem(`${id}`, JSON.stringify({name, price, img, cantidad: 1}))
-  
-  const [cantidad, setCantidad] = useState(1)
-   */
+const CartDetailCard = ({ id, name, price, img, cantidad }) => {
+  const { user } = useAuth0()
+  const dispatch = useDispatch()
+  const productsInCart = useSelector(state => state.cart)
 
   const handleAddition = (e)=>{
-    for (let i = 0; i < productsInStorage.length; i++) {
-      if(productsInStorage[i].id === e.target.id){
-        if(productsInStorage[i].cantidad >= 1){
-          localStorage.setItem(`${productsInStorage[i].id}`, 
-            JSON.stringify({
-            id: productsInStorage[i].id, 
-            name: productsInStorage[i].name, 
-            price: productsInStorage[i].price, 
-            img: productsInStorage[i].img, 
-            cantidad: (productsInStorage[i].cantidad + 1)
-          }));
-        }
-      }
-    }
-    deleteProduct()
+    let newAmount = productsInCart.products.filter( p => p.id === e.target.id )
+    console.log(newAmount);
+    dispatch(addToCart(user.email, { id: e.target.id, name, price, img, cantidad: newAmount[0].cantidad + 1 } ))
   }
+
   const handleSubtraction = (e)=>{
-    for (let i = 0; i < productsInStorage.length; i++) {
-      if(productsInStorage[i].id === e.target.id){
-        if(productsInStorage[i].cantidad > 1){
-          localStorage.setItem(`${productsInStorage[i].id}`, 
-            JSON.stringify({
-            id: productsInStorage[i].id, 
-            name: productsInStorage[i].name, 
-            price: productsInStorage[i].price, 
-            img: productsInStorage[i].img, 
-            cantidad: (productsInStorage[i].cantidad - 1)
-          }));
-        }
-      }
-    }
-    deleteProduct()
+    let newAmount = productsInCart.products.filter( p => p.id === e.target.id )
+    console.log(newAmount);
+    dispatch(addToCart(user.email, { id: e.target.id, name, price, img, cantidad: newAmount[0].cantidad - 1 } ))
   }
+  
   const handleRemove = (e)=>{
-    for (let i = 0; i < productsInStorage.length; i++) {
+
+    /* console.log("cartdetail", user.email, e.target.id); */
+    dispatch(removeToCart(user.email, e.target.id))
+
+    /* for (let i = 0; i < productsInStorage.length; i++) {
       if(productsInStorage[i].id === e.target.id){
         localStorage.removeItem(productsInStorage[i].id);
       }
     }
-    deleteProduct()
+    deleteProduct() */
   } 
 
   return (

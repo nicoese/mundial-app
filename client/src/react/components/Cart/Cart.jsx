@@ -9,9 +9,8 @@ import Swal from "sweetalert";
 
 const Cart = () => {
   const [state, updateState] = useState(true);
-  let productsInStorage = [];
+  let productsInCart = useSelector(state => state.cart);
   let totalPrice = 0;
-  let storageKeys = Object.keys(localStorage);
   const dispatch = useDispatch()
   const {user} = useAuth0()
   const navigate = useNavigate()
@@ -39,14 +38,14 @@ const Cart = () => {
   }, [purchaseStatus, user]);
 
 
-  for (let i = 0; i < storageKeys.length; i++) {
+  /* for (let i = 0; i < storageKeys.length; i++) {
     if(storageKeys[i] !== 'products'){
       productsInStorage.push(JSON.parse(localStorage[storageKeys[i]]))
     }
   }
   for (let i = 0; i < productsInStorage.length; i++) {
     totalPrice += productsInStorage[i].price * productsInStorage[i].cantidad 
-  }
+  } */
 
   if (mp_link) window.location.replace(mp_link)
 
@@ -54,11 +53,11 @@ const Cart = () => {
 
     const purchase = {
       email: user.email,
-      products: productsInStorage,
+      products: productsInCart.products,
       totalPrice: totalPrice
     }
 
-    if (productsInStorage.length !== 0) {
+    if (productsInCart.products.length !== 0) {
 
       await dispatch(buyDetail(purchase))
     } else {
@@ -77,11 +76,13 @@ const Cart = () => {
     updateState(!state)
   }
 
+  console.log("cart", productsInCart.products);
+
   return (
     <>
       <NavBar />
 
-      {productsInStorage.length > 0 ?
+      {productsInCart.products.length > 0 ?
 
 
           <main className="flex flex-col items-center w-full h-fit mt-6 sm:mt-8 xl:mt-16 2xl:mt-40 bg-[#f6f6f6]">
@@ -90,7 +91,7 @@ const Cart = () => {
               <p className="pl-[10px] sm:pl-[93px] sm:mt-2 text-gray-600">Envios y devoluciones gratis.</p>
             </div>
             <div className="flex flex-col items-center w-full h-fit p-4">
-              { productsInStorage && productsInStorage.map((p)=>{
+              { productsInCart.products && productsInCart.products.map((p)=>{
                 return(
                     <CartDetailCard
                         id={p.id}
