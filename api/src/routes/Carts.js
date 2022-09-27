@@ -4,6 +4,9 @@ const Cart = require('../models/carts')
 
 
 
+
+
+
 router.post('/add_to_cart', async (req,res,next)=>{
     try{
         const {userEmail,product} = req.body
@@ -30,7 +33,7 @@ router.post('/add_to_cart', async (req,res,next)=>{
         if(!arr.find(e=>e.name === product.name)){
             arr.push(product)
         }else{
-        //if product is already there check the quantity
+            //if product is already there check the quantity
             let newArr = arr.map(e=>{
                 if(e.name === product.name){
                     if(e.cantidad !== product.cantidad){
@@ -71,6 +74,22 @@ router.put('/remove_from_cart', async (req,res,next)=>{
 
             return res.status(200).json(setCart)
         }
+    }catch(err){
+        next(err)
+    }
+
+})
+
+
+router.get('/',async (req,res,next)=>{
+
+    try{
+        const {email}= req.query
+
+        let user = await Cart.find({email})
+
+        return res.status(200).json(user[0].products)
+
     }catch(err){
         next(err)
     }
