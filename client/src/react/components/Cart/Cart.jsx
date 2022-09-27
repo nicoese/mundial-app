@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
-import {buyDetail, purchaseFailed} from "../../../redux/actions";
+import {buyDetail, getProductsInCart, purchaseFailed} from "../../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router";
 import Swal from "sweetalert";
@@ -12,7 +12,7 @@ const Cart = () => {
   let productsInCart = useSelector(state => state.cart);
   let totalPrice = 0;
   const dispatch = useDispatch()
-  const {user} = useAuth0()
+  const {user, isAuthenticated} = useAuth0()
   const navigate = useNavigate()
   const {mp_link} = useSelector(state => state)
   const url = new URL(window.location)
@@ -37,6 +37,10 @@ const Cart = () => {
 
   }, [purchaseStatus, user]);
 
+  useEffect(()=>{
+    console.log('dipatch cart', user.email);
+    isAuthenticated && dispatch(getProductsInCart(user.email))
+  }, [])
 
   /* for (let i = 0; i < storageKeys.length; i++) {
     if(storageKeys[i] !== 'products'){
@@ -58,14 +62,10 @@ const Cart = () => {
     }
 
     if (productsInCart.products.length !== 0) {
-
       await dispatch(buyDetail(purchase))
     } else {
       alert("No tienes productos en tu carrito. Añade algunos!")
     }
-
-
-
   }
 
   function delay(time) {
@@ -76,22 +76,22 @@ const Cart = () => {
     updateState(!state)
   }
 
-  console.log("cart", productsInCart.products);
+  console.log("cart", productsInCart);
 
   return (
     <>
       <NavBar />
 
-      {productsInCart.products.length > 0 ?
+      {productsInCart.length > 0 ?
 
 
           <main className="flex flex-col items-center w-full h-fit mt-6 sm:mt-8 xl:mt-16 2xl:mt-40 bg-[#f6f6f6]">
             <div className="w-full h-[100px] mt-10">
-              <h3 className="pl-2 text-3xl sm:pl-[90px] sm:text-4xl font-bold text-red-600">Revisa tu carrito.</h3>
+              <h3 className="pl-2 text-3xl sm:pl-[90px] sm:text-4xl font-bold text-[#790729]">Revisa tu carrito.</h3>
               <p className="pl-[10px] sm:pl-[93px] sm:mt-2 text-gray-600">Envios y devoluciones gratis.</p>
             </div>
             <div className="flex flex-col items-center w-full h-fit p-4">
-              { productsInCart.products && productsInCart.products.map((p)=>{
+              { productsInCart && productsInCart.map((p)=>{
                 return(
                     <CartDetailCard
                         id={p.id}
@@ -115,11 +115,11 @@ const Cart = () => {
               </div>
               <hr className="w-[90%]"/>
               <div className="flex items-start w-[90%] h-fit py-2">
-                <div className="w-full h-fit px-2 text-xl font-bold text-red-600 ">Total</div>
-                <div id="total" className="w-full h-fit px-2 text-xl font-bold text-red-600 text-end">{`$${totalPrice} ARS`}</div>
+                <div className="w-full h-fit px-2 text-xl font-bold text-[#790729] ">Total</div>
+                <div id="total" className="w-full h-fit px-2 text-xl font-bold text-[#790729] text-end">{`$${totalPrice} ARS`}</div>
               </div>
               <div className="flex items-start justify-center w-[90%] h-fit py-2">
-                <button onClick={()=>handleClick()} className="w-[12em] h-[3em] mr-2 rounded-md bg-red-600 hover:bg-red-800 text-white font-bold font-[Lato] tracking-wider"> Pagar </button>
+                <button onClick={()=>handleClick()} className="w-[12em] h-[3em] mr-2 rounded-md bg-[#790729] hover:bg-red-800 text-white font-bold font-[Lato] tracking-wider"> Pagar </button>
               </div>
             </div>
           </main>

@@ -10,6 +10,7 @@ export const TEST_FILTERS = 'TEST_FILTERS'
 export const GET_DETAILS = "GET_DETAILS";
 export const FILTER = "FILTER";
 export const ADD_TO_CART = "ADD_TO_CART";
+export const GET_CART = "GET_CART";
 export const REMOVE_TO_CART = "REMOVE_TO_CART";
 export const RESET_DETAIL = "RESET_DETAIL"
 export const PRODUCTS_NOT_FOUND = "PRODUCTS_NOT_FOUND"
@@ -153,6 +154,19 @@ export const addToCart = ( userEmail, product) => {
             })
         }).catch(err => {
                 console.log(err)
+            })
+    }
+}
+
+export const getProductsInCart = (userEmail) => {
+    return async (dispatch) => {
+        console.log('action', userEmail);
+        return axios.get(`${REACT_APP_API_URL}/carts?email=${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type: GET_CART,
+                    payload: json.data
+                })
             })
     }
 }

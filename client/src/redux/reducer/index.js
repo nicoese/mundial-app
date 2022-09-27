@@ -9,6 +9,7 @@ import {
     TEST_FILTERS,
     ADD_TO_CART,
     REMOVE_TO_CART,
+    GET_CART,
     RESET_DETAIL,
     PRODUCTS_NOT_FOUND,
     DETAILS_ERROR,
@@ -99,7 +100,13 @@ export const rootReducer = (state = initialState, action) => {
             }
 
         case ADD_TO_CART:
-            console.log( "reducer", action.payload.products)
+            /* console.log( "reducer", action.payload.products) */
+            return {
+                ...state,
+                cart: action.payload
+            }
+        case GET_CART:
+            console.log( "reducer", action.payload)
             return {
                 ...state,
                 cart: action.payload

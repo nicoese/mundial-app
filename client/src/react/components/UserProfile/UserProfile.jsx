@@ -1,11 +1,12 @@
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { BsImageAlt } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import "./modal.css"
 
 const UserProfile = () => {
-
+  const {user} = useAuth0()
   const handleOpenModalProfilPic = ()=>{
     let bgImageModal = document.querySelector('#bg-image-modal')
     let modal = document.querySelector('#modal-img')
@@ -28,8 +29,8 @@ const UserProfile = () => {
         <div className="relative bottom-[-80px] flex flex-col items-center w-full h-[150px] bg-transparent">
           <div className="absolute z-10 flex flex-col items-center justify-center w-[160px] h-[160px] rounded-[50%] bg-gradient-to-l from-[#790729] to-[#f6f6f6]">
             <img
-              src="https://bit.ly/3eXgVU4"
-              alt="profile image"
+              src={user.picture}
+              alt="profile picture"
               className="z-20 absolute w-[150px] h-[150px] rounded-[50%]"
             />
             <button onClick={handleOpenModalProfilPic} id='btn-profile-img' className="relative z-30 bottom-[-50px] left-[60px] flex items-center justify-center w-[35px] h-[35px] rounded-[50%] border-2 border-[#790729] bg-[#f6f6f6] hover:cursor-pointer">
@@ -42,12 +43,12 @@ const UserProfile = () => {
       <div className="flex flex-col items-center w-full h-full">
         <div className="flex flex-col items-center w-[60%] h-full">
           <div className="w-[60%] h-fit border-2 mt-[70px] text-[#790729]">
-            <h4 className="flex items-center justify-center h-[70px] text-4xl font-bold font-['Lato']">user name</h4>
+            <h4 className="flex items-center justify-center h-[70px] text-4xl font-bold font-['Lato']">{user.name}</h4>
           </div>
           <div className="w-[60%] h-fit mt-8 border-2">
             <div className="flex items-center w-full h-fit p-4">
               <HiLocationMarker size={40} color='#790729' />
-              <p className="text-xl text-gray-800 font-['Lato'] ml-2" >Santiago del Estero, Capital</p>
+              <p className="text-xl text-gray-800 font-['Lato'] ml-2">Santiago del Estero, Capital</p>
             </div>
           </div>
         </div>
@@ -59,7 +60,7 @@ const UserProfile = () => {
           </div>
           <p className="text-[#790729] text-2xl font-bold font-['Lato'] mb-4">Elige tu foto nueva foto de perfil</p>
           <input 
-            onChange={(e)=>{setImage(e.target.files[0])}} 
+            /* onChange={(e)=>{setImage(e.target.files[0])}} */ 
             id="image-inp" 
             type="file" 
             name="image"
