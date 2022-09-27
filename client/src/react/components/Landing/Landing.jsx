@@ -121,7 +121,7 @@ const Landing = () => {
                                         <li >
                                             <Link to={'wishlist'}>
                                                 <a className="block py-2 px-4 hover:bg-gray-100
-                                        dark:hover:bg-gray-600 dark:hover:text-white">Lista de deseos</a>
+                                        dark:hover:bg-gray-600 dark:hover:text-white">Favoritos</a>
                                             </Link>
                                         </li>
 

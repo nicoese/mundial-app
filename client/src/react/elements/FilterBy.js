@@ -206,7 +206,7 @@ export const FilterBy = () => {
     }
 
     return <div className={'flex flex-col h-[30%] w-[25%] sticky top-40'}>
-        <h2>Filtros</h2>
+        <h2 className={'p-5 text-3xl font-semibold text-zinc-500'}>Filtros</h2>
 
         <div id={'category'}>
             <h3 className="text-start pl-2 font-semibold text-[#790729]">{productType.name}</h3>
