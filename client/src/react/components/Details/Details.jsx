@@ -14,6 +14,7 @@ import Spinner from "../Spinner/Spinner.js";
 import {NotFound} from "../Not_Found/Not_Found";
 import {useAuth0} from "@auth0/auth0-react";
 import Swal from 'sweetalert'
+import {Link} from "react-router-dom";
 
 const Details = (props) => {
     const dispatch = useDispatch();
@@ -31,15 +32,14 @@ const Details = (props) => {
         dispatch(clearDetailsErr())
 
         delay(100).then(() => {
-                dispatch(getDetails(params.id));
-            })
-            
+            dispatch(getDetails(params.id));
+        })
+
         return () => {
             dispatch(resetDetail());
         }
-        
-    }, [dispatch]);
 
+    }, [dispatch]);
 
 
     //
@@ -49,7 +49,7 @@ const Details = (props) => {
 
         //si el user esta logeado comparo el id de la card
         //con los favoritos del use
-        if (isAuthenticated){
+        if (isAuthenticated) {
 
             const liked = favorites.find(e => e.id === details.id || e.id === details._id)
 
@@ -75,7 +75,7 @@ const Details = (props) => {
     function handleLike(ev) {
 
         //si el user no esta logeado no puede likear
-        if (!isAuthenticated){
+        if (!isAuthenticated) {
             return Swal('logueate')
         }
 
@@ -119,7 +119,7 @@ const Details = (props) => {
 
     const handleClick = () => {
 
-        if (details._id){
+        if (details._id) {
             details["id"] = details._id
             delete details["_id"]
         }
@@ -150,8 +150,16 @@ const Details = (props) => {
                     <NavBar/>
                     <section className="relative flex flex-col w-full h-[100vh] py-8 mt-[60px]">
                         <div className="flex items-center w-[95%] h-[45px] my-8">
-                            <p className="text-xl ml-2 text-[#790729]"> {`Category >`} </p>
-                            <p className="text-xl ml-2 text-[#790729] font-semibold"> Product </p>
+                            <Link to={'/'}>
+                                <p className="text-xl ml-2 text-[#790729]"> {`Inicio >`} </p>
+                            </Link>
+
+                            <Link to={'/products'}>
+                                <p className="text-xl ml-2 text-[#790729] font-semibold"> Productos > </p>
+                            </Link>
+
+                            <p className="text-xl ml-2 text-black text-[#790729]"> {details.name} </p>
+
                         </div>
                         <div className="sticky top-40 flex items-center justify-between w-[95%] h-[95%]">
                             <div className="flex flex-col items-center justify-between w-[15%] h-[550px]">
@@ -211,12 +219,59 @@ const Details = (props) => {
                                 </p>
 
                                 <button onClick={handleClick}
-                                    className="w-[8em] h-[3em] mt-4 rounded-md bg-[#790729] text-white font-bold font-[Lato]"> Al
+                                        className="w-[8em] h-[3em] mt-4 rounded-md bg-[#790729] text-white font-bold font-[Lato]"> Al
                                     Carrito
                                 </button>
                             </div>
                         </div>
                     </section>
+
+
+                    {/* todo: componente por separadao seccion de resenas y valoraciones*/}
+
+                    <div className={'flex flex-col px-20'}>
+                        <h2 className={"font-['Lato'] text-2xl my-2"}>RESENAS (cantidad de resenas)</h2>
+                        <h3 className={"font-['Lato'] text-xl mb-10"}>Puntaje General: cantidad total de puntajes sumado/cantidad de puntajes</h3>
+                        {/*  aqui va el contenedor de valoraciones */}
+
+                        <div>
+                            <h4>Titulo de la valoracion</h4>
+                            <h4>puntaje de la valoracion</h4>
+                            <div className={'flex'}>
+                                <textarea className={'min-w-[70%]'} name="" id="" cols="20" rows="4">descripcion de la valoracion</textarea>
+                                <p>imagen ?</p>
+                                {/*<img src="" alt=""/>*/}
+                            </div>
+                            <p>username | fecha</p>
+                            <div className={'flex justify-center'}>
+                                <button>like</button>
+                                <button>dislike</button>
+                            </div>
+                            <tr className={'flex self-center'}>
+                                ---------------------------------------------------
+                            </tr>
+
+                            <h4>Titulo de la valoracion</h4>
+                            <h4>puntaje de la valoracion</h4>
+                            <div className={'flex'}>
+                                <textarea className={'min-w-[70%]'} name="" id="" cols="20" rows="4">descripcion de la valoracion</textarea>
+                                <p>imagen ?</p>
+                                {/*<img src="" alt=""/>*/}
+                            </div>
+                            <p>username | fecha</p>
+                            <div className={'flex justify-center'}>
+                                <button>like</button>
+                                <button>dislike</button>
+                            </div>
+                            <tr className={'flex self-center'}>
+                                ---------------------------------------------------
+                            </tr>
+                        </div>
+
+
+
+                    </div>
+
                 </div>
             }
         </div>
