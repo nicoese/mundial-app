@@ -4,12 +4,12 @@ const nodemailer = require('nodemailer')
 async function create_transport(){
     //user y password en env
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false,
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
         auth:{
-            user: "oliver72@ethereal.email",
-            pass: "CxX8uN442JGSs8mpBX"
+            user: process.env.NODEMAILER_USER,
+            pass: process.env.NODEMAILER_PASSWORD
         }})
 
         return transporter
@@ -21,7 +21,7 @@ async function mailOptions(reciever,body){
     let options = {
         from: "MundiApp",
         to: reciever ,
-        subject: "hola vengo a flotar",
+        subject: "Detalle de compra en MundiApp. Muchas Gracias!",
         html: body       
     }
     return options
@@ -36,7 +36,7 @@ async function create_body(products,totalPrice,id){
     <meta name="x-apple-disable-message-reformatting">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="telephone=no" name="format-detection">
-    <title>New email template 2022-09-27</title><!--[if (mso 16)]>
+    <title> Gracias por su compra! </title><!--[if (mso 16)]>
     <style type="text/css">
     a {text-decoration: none;}
     </style>
