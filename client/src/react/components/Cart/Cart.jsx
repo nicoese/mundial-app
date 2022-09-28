@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
-import {buyDetail, getProductsInCart, purchaseFailed} from "../../../redux/actions";
+import {buyDetail, getProductsInCart, purchaseFailed, cleanCart} from "../../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router";
 import Swal from "sweetalert";
@@ -38,8 +38,11 @@ const Cart = () => {
   }, [purchaseStatus, user]);
 
   useEffect(()=>{
-    console.log('dipatch cart', user.email);
-    isAuthenticated && dispatch(getProductsInCart(user.email))
+  
+    user && dispatch(getProductsInCart(user.email)) 
+    /* return () =>{ 
+      dispatch(cleanCart())
+    } */
   }, [])
 
   /* for (let i = 0; i < storageKeys.length; i++) {

@@ -9,6 +9,7 @@ import {
     TEST_FILTERS,
     ADD_TO_CART,
     REMOVE_TO_CART,
+    CLEAR_CART,
     GET_CART,
     RESET_DETAIL,
     PRODUCTS_NOT_FOUND,
@@ -116,6 +117,12 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cart: action.payload
+            }
+        case CLEAR_CART:
+            /* console.log("reducer", action.payload) */
+            return {
+                ...state,
+                cart: []
             }
         case PRODUCTS_NOT_FOUND:
             return {

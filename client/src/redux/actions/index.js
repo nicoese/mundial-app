@@ -12,6 +12,7 @@ export const FILTER = "FILTER";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const GET_CART = "GET_CART";
 export const REMOVE_TO_CART = "REMOVE_TO_CART";
+export const CLEAR_CART = "CLEAR_CART";
 export const RESET_DETAIL = "RESET_DETAIL"
 export const PRODUCTS_NOT_FOUND = "PRODUCTS_NOT_FOUND"
 export const DETAILS_ERROR = 'DETAILS_ERROR'
@@ -184,6 +185,11 @@ export const removeToCart = (userEmail, productId) => {
                     payload: json.data
                 })
             })
+    }
+}
+export const cleanCart = () => {
+    return {
+        type: CLEAR_CART,
     }
 }
 
