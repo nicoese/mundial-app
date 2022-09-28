@@ -44,6 +44,11 @@ const Cart = () => {
     } */
   }, [user,dispatch])
 
+  useEffect(() => {
+    
+  }, [productsInCart])
+  
+
   /* for (let i = 0; i < storageKeys.length; i++) {
     if(storageKeys[i] !== 'products'){
       productsInStorage.push(JSON.parse(localStorage[storageKeys[i]]))
