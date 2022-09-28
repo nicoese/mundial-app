@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { BsImageAlt } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
@@ -7,10 +7,40 @@ import "./modal.css"
 
 const UserProfile = () => {
   const {user} = useAuth0()
+  const [imgURL, setImgURL] = useState('')
+  const [loading, setLoading] = useState(false) //con este estado le podemos avisar al usuario si esta actualizandose su foto 
+  const [file, setFile] = useState()
+
+  const cloud_name = 'dakxsizpf';
+  const preset = 'lo8pmqjv';
+
+  /*  esta funcion es la que sube la img a cloud y te devuelve el string(link) de referencia donde queda almacenada la img */
+  const fileUpload = async (file) =>{
+    const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`
+    const formData = new FormData();
+    formData.append('upload_preset', `${preset}`)
+    formData.append('file', file);
+
+    try {
+        const res = await fetch(cloudinaryUrl, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!res.ok) return null;
+
+        const data = await res.json();
+        return data.secure_url;
+
+    } catch (error) {
+        return null;
+    }
+  }
+
   const handleOpenModalProfilPic = ()=>{
     let bgImageModal = document.querySelector('#bg-image-modal')
     let modal = document.querySelector('#modal-img')
-    console.log(bgImageModal);
+    
     bgImageModal.style.opacity = '1'
     bgImageModal.style.visibility = 'visible'
     modal.style.transform = "translate-y(0%)"
@@ -23,13 +53,22 @@ const UserProfile = () => {
     bgImageModal.style.visibility = 'hidden'
   }
 
+  const handleSubmit = async (file)=>{
+    setLoading(true)
+    const url = await fileUpload(file)
+    setLoading(false)
+
+    if(url) setImgURL(url) && console.log("image upload succesfully");
+    else alert("no se pudo crack")
+  }
+
   return (
     <div className="flex flex-col h-[100vh] w-full">
       <div className="w-full h-[150px] bg-gradient-to-r from-[#790729] to-[#f6f6f6]">
         <div className="relative bottom-[-80px] flex flex-col items-center w-full h-[150px] bg-transparent">
           <div className="absolute z-10 flex flex-col items-center justify-center w-[160px] h-[160px] rounded-[50%] bg-gradient-to-l from-[#790729] to-[#f6f6f6]">
             <img
-              src={user.picture}
+              src={imgURL? imgURL : user.picture}
               alt="profile picture"
               className="z-20 absolute w-[150px] h-[150px] rounded-[50%]"
             />
@@ -60,12 +99,12 @@ const UserProfile = () => {
           </div>
           <p className="text-[#790729] text-2xl font-bold font-['Lato'] mb-4">Elige tu foto nueva foto de perfil</p>
           <input 
-            /* onChange={(e)=>{setImage(e.target.files[0])}} */ 
+            onChange={(e)=>{setFile(e.target.files[0])}} 
             id="image-inp" 
             type="file" 
             name="image"
           /> 
-          <button className="w-[8em] h-[3em] mr-2 rounded-md bg-red-600 hover:bg-red-800 text-white font-bold font-[Lato]"> Guardar </button>
+          <button onClick={()=> handleSubmit(file)} className="w-[8em] h-[3em] mr-2 rounded-md bg-red-600 hover:bg-red-800 text-white font-bold font-[Lato]"> Guardar </button>
           <img className="h-[150px] w-[150px] border-2 border-[#790729] my-4" src="#" alt="#" />      
         </div>
       </div>
