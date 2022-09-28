@@ -20,6 +20,7 @@ import UserProfile from "./react/components/UserProfile/UserProfile";
  */
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
+import UserProfile from "./react/components/UserProfile/UserProfile";
 
 
 function About() {

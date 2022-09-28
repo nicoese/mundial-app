@@ -66,9 +66,7 @@ const CartDetailCard = ({ id, name, price, img, cantidad }) => {
             Quitar producto
           </button>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default CartDetailCard;

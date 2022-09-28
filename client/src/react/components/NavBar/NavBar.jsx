@@ -28,6 +28,10 @@ const NavBar = () => {
 
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
+  function delay(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
+
   return (
     <>
       <header>
@@ -53,12 +57,10 @@ const NavBar = () => {
         </nav>
       </header>
       <ul className="navbar-ul-toggle">
-
         <Link className="navbar-a-sm"><li className="navbar-li_a">Inicio</li></Link>
         <Link to={'/nosotros'} className="navbar-a-sm"><li className="navbar-li_a">Nosotros</li></Link>
         <Link className="navbar-a-sm"><li className="navbar-li_a">Productos</li></Link>
         <Link className="navbar-a-sm"><li className="navbar-li_a">Contacto</li></Link>
-
       </ul>
     </>
   )

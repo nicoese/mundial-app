@@ -4,6 +4,9 @@ import { BsImageAlt } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import "./modal.css"
+import {useAuth0} from "@auth0/auth0-react";
+import NavBar from "../NavBar/NavBar";
+import {MdAlternateEmail} from "react-icons/all";
 
 const UserProfile = () => {
   const {user} = useAuth0()
