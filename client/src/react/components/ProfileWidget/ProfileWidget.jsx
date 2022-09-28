@@ -12,9 +12,9 @@ const ProfileWidget = () => {
   return (
     <>
       {!isAuthenticated && (
-        <li onClick={loginWithRedirect} className="li-inicioSesion">
+        <div onClick={loginWithRedirect} className="li-inicioSesion">
           Login
-        </li>
+        </div>
       )}
 
       {isAuthenticated && user && (
@@ -22,7 +22,7 @@ const ProfileWidget = () => {
           <img
             onClick={() => navigate("profile")}
             className={
-              "w-10 rounded-full hover:border-red-500 hover:border-2 cursor-pointer"
+              "w-[3.2em] h-[3.2em] rounded-full hover:shadow-[#790729] hover:shadow-sm hover:cursor-pointer"
             }
             src={user.picture}
             alt=""
@@ -48,10 +48,7 @@ const ProfileWidget = () => {
             }}
             id="dropdownDefault"
             data-dropdown-toggle="dropdown"
-            className=" text-red  focus:ring-4 focus:outline-none
-focus:ring-red-300
-rounded-full text-md px-2 py-2 pr-3.5 text-center inline-flex items-center dark:bg-blue-600
-dark:hover:bg-red-700 dark:focus:ring-red-800"
+            className="flex items-center focus:outline-none rounded-full"
             type="button"
           >
             <svg
@@ -72,56 +69,28 @@ dark:hover:bg-red-700 dark:focus:ring-red-800"
           </button>
           <div
             id="dropdown"
-            className="hidden absolute z-10 w-30 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+            className="hidden absolute z-10 w-[7.2em] right-4 top-20 bg-white"
           >
-            <ul
-              className="py-1 text-sm text-gray-700 dark:text-gray-200"
-              aria-labelledby="dropdownDefault"
-            >
+            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
               <li>
-                <Link to={"profile"}>
-                  <a
-                    className="block py-2 px-4 hover:bg-gray-100
-                dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Perfil
-                  </a>
+                <Link to={"/profile"}>
+                  <a className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">Perfil</a>
                 </Link>
               </li>
               <li>
-                <Link to={"cart"}>
-                  <a
-                    className="block py-2 px-4 hover:bg-gray-100
-                dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Mi carrito
-                  </a>
+                <Link to={"/cart"}>
+                  <a className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">Mi carrito</a>
                 </Link>
               </li>
               <li>
-                <Link to={"wishlist"}>
-                  <a
-                    className="block py-2 px-4 hover:bg-gray-100
-                dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Lista de deseos
-                  </a>
+                <Link to={"/wishlist"}>
+                  <a className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">Lista de deseos </a>
                 </Link>
               </li>
 
-              <li
-                onClick={() => {
-                  logout();
-                }}
-              >
+              <li onClick={() => { logout(); }} >
                 <Link>
-                  <a
-                    onClick={() => {
-                      logout();
-                    }}
-                    className="block py-2 px-4 hover:bg-gray-100
-                dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
+                  <a onClick={() => { logout();}} className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">
                     Salir
                   </a>
                 </Link>

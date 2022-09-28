@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useAuth0 } from '@auth0/auth0-react';
-
-
 import './NavBar.css'
 import {useNavigate} from "react-router";
 import {SearchBar} from "../../elements/SearchBar";
@@ -27,7 +25,7 @@ const NavBar = () => {
   }
   /* funcion para el menu desplegable */
 
-  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   return (
     <>

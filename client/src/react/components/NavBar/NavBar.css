@@ -27,7 +27,6 @@ header {
   cursor: pointer;
 }
 .navbar-ul {
-  border: 1px solid red;
   display: flex;
   align-items: center;
   margin: 0px 2em;
@@ -71,16 +70,15 @@ header {
 
 /* SEARCHBAR */
 .searchbar-ctn{
-  border: 1px solid blue;
   display: flex;
   justify-content: end;
   align-items: center;
   height: 100%;
-  width: 250px;
+  width: 100px;
+  margin: 0px 1em 0px 8em;
 }
 
 .searchBar_search {
-  border: 1px solid red;
   position: relative;
   padding: 5px;
   margin-right:  5%;
@@ -125,6 +123,15 @@ header {
 }
 .searchBar_search input:focus {
   width: 240px;
+}
+
+/* WIDGET */
+.profile-ctn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 180px;
 }
 
 
