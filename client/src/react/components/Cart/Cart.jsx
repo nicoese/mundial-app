@@ -124,7 +124,7 @@ const Cart = () => {
           </main>
 
 
-      : <div className={'mt-48'}><h1 className={'text-2xl text-center'}>No tiene productos en el carro</h1></div>}
+      : <div className={'mt-48'}><h1 className={'text-2xl text-center mt-20'}>No tenes productos en el carrito</h1></div>}
 
 
     </>
