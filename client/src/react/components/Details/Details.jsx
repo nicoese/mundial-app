@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import {
     getDetails,
     addToCart,
@@ -15,6 +17,9 @@ import {NotFound} from "../Not_Found/Not_Found";
 import {useAuth0} from "@auth0/auth0-react";
 import Swal from 'sweetalert'
 import {Link} from "react-router-dom";
+import {Rating} from "@material-ui/lab";
+import {IconButton} from "@material-ui/core";
+import {ReviewSection} from "../ReviewSection/ReviewSection";
 
 const Details = (props) => {
     const dispatch = useDispatch();
@@ -229,48 +234,7 @@ const Details = (props) => {
 
                     {/* todo: componente por separadao seccion de resenas y valoraciones*/}
 
-                    <div className={'flex flex-col px-20'}>
-                        <h2 className={"font-['Lato'] text-2xl my-2"}>RESENAS (cantidad de resenas)</h2>
-                        <h3 className={"font-['Lato'] text-xl mb-10"}>Puntaje General: cantidad total de puntajes sumado/cantidad de puntajes</h3>
-                        {/*  aqui va el contenedor de valoraciones */}
-
-                        <div>
-                            <h4>Titulo de la valoracion</h4>
-                            <h4>puntaje de la valoracion</h4>
-                            <div className={'flex'}>
-                                <textarea className={'min-w-[70%]'} name="" id="" cols="20" rows="4">descripcion de la valoracion</textarea>
-                                <p>imagen ?</p>
-                                {/*<img src="" alt=""/>*/}
-                            </div>
-                            <p>username | fecha</p>
-                            <div className={'flex justify-center'}>
-                                <button>like</button>
-                                <button>dislike</button>
-                            </div>
-                            <tr className={'flex self-center'}>
-                                ---------------------------------------------------
-                            </tr>
-
-                            <h4>Titulo de la valoracion</h4>
-                            <h4>puntaje de la valoracion</h4>
-                            <div className={'flex'}>
-                                <textarea className={'min-w-[70%]'} name="" id="" cols="20" rows="4">descripcion de la valoracion</textarea>
-                                <p>imagen ?</p>
-                                {/*<img src="" alt=""/>*/}
-                            </div>
-                            <p>username | fecha</p>
-                            <div className={'flex justify-center'}>
-                                <button>like</button>
-                                <button>dislike</button>
-                            </div>
-                            <tr className={'flex self-center'}>
-                                ---------------------------------------------------
-                            </tr>
-                        </div>
-
-
-
-                    </div>
+                    <ReviewSection />
 
                 </div>
             }
