@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
+import { BiUserCircle } from "react-icons/bi";
 import { useAuth0 } from '@auth0/auth0-react';
 import './NavBar.css'
 import {useNavigate} from "react-router";
@@ -25,7 +26,7 @@ const NavBar = () => {
   }
   /* funcion para el menu desplegable */
 
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   return (
     <>
@@ -41,7 +42,12 @@ const NavBar = () => {
             <SearchBar />
           </div>
           <div className="profile-ctn">
-            {isAuthenticated && <ProfileWidget />}
+            {isAuthenticated? <ProfileWidget /> :
+              <div className='flex items-center'>
+                <BiUserCircle size={50} onClick={loginWithRedirect} className="hover:cursor-pointer"/>
+                <p onClick={loginWithRedirect} className="ml-2 hover:font-semibold text-[#790729] hover:cursor-pointer"> Inicia sesion </p>
+              </div> 
+            }
           </div>
           <AiOutlineMenu size={28} className="navbar-icon" onClick={()=> toggleMenu()}/>
         </nav>

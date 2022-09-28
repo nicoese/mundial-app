@@ -20,7 +20,7 @@ const ProfileWidget = () => {
       {isAuthenticated && user && (
         <div className={"flex "}>
           <img
-            onClick={() => navigate("profile")}
+            onClick={() => navigate("/profile")}
             className={
               "w-[3.2em] h-[3.2em] rounded-full hover:shadow-[#790729] hover:shadow-sm hover:cursor-pointer"
             }
