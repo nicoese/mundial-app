@@ -27,7 +27,7 @@ export const Success = () => {
         }, 8000);
         localStorage.clear()
 
-    }, [user]);
+    }, [user, dispatch]);
 
     const toggleConfetti = () => {
         setState({animationDone: !state.animationDone});
@@ -41,13 +41,13 @@ export const Success = () => {
 
         {user && <div className={'mt-32 ml-[15%]'}>
 
-            <h2 className={'text-3xl font-semibold text-red-700 mb-[4%]'}>Detalle ></h2>
+            <h2 className={'text-3xl font-semibold text-red-700 mb-[4%]'}>Detalle </h2>
 
             <div className={'flex ml-[7%]'}>
                 <img className={'rounded-[50%] py-5 mr-[5%] '} src={user.picture} alt={user.name}/>
                 <p className={'py-5 text-xl font-semibold self-center'}>{user.name}</p>
             </div>
-            <p className={'py-5 text-xl mb-[5%] ml-[7%] font-semibold text-zinc-500'}>Revisa tu casilla en -> {user.email}</p>
+            <p className={'py-5 text-xl mb-[5%] ml-[7%] font-semibold text-zinc-500'}>Revisa tu casilla en - {user.email}</p>
         </div>}
 
         <div className={'flex flex-col-reverse min-w-fit items-center'}>

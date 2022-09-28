@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllProducts, setCurrentProducts, setSortCriteria, shuffleProducts} from "../../redux/actions";
-import {useLocation, useNavigate} from "react-router";
+import {setCurrentProducts, setSortCriteria} from "../../redux/actions";
+import {useNavigate} from "react-router";
 
 
 export const SortBy = () => {
@@ -16,28 +16,7 @@ export const SortBy = () => {
     const [sort_criteria, set_sort_criteria] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const location = useLocation()
     const {currentPage} = useSelector(state => state)
-
-    useEffect(() => {
-
-        // delay(2000).then(e => {
-        //     const queryList = getQueryList()
-        //     if (queryList.length > 0) {
-        //         if (findSortQueryParam(queryList)) {
-        //             const criteria = findSortQueryParam(queryList).sort
-        //             dispatchSorting(criteria)
-        //             const option = options.find(op => op.value === criteria)
-        //             set_sort_criteria(option.name)
-        //         }
-        //     }
-        // })
-
-    }, [])
-
-    function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
-    }
 
     const handleChange = (ev) => {
 
@@ -51,22 +30,19 @@ export const SortBy = () => {
             if (url.searchParams.get('sort')) {
                 url.searchParams.delete('sort')
             }
-
             url.searchParams.append('sort', criteriaHTML.value)
-
             navigate(url.search)
         }
 
         const queryList = getQueryList()
         const ifSorting = findSortQueryParam(queryList)
         dispatchSorting(ifSorting.sort)
-
     }
 
     const getQueryList = () => {
         const queryParams = Object.fromEntries(new URLSearchParams(window.location.search).entries())
         const queryList = []
-        Object.keys(queryParams).map(key => {
+        Object.keys(queryParams).forEach( key =>  {
             queryList.push({[key]: queryParams[key]})
         })
         return queryList && queryList
@@ -83,32 +59,14 @@ export const SortBy = () => {
         }
     }
 
-    // const handleClick = async (ev) => {
-    //     set_sort_criteria('')
-    //
-    //     dispatch(shuffleProducts())
-    //     dispatch(setCurrentProducts(1))
-    //
-    //     const url = new URL(window.location)
-    //     url.searchParams.delete('sort')
-    //
-    //
-    //     navigate(url.search)
-    // }
-
-    return <div className={'flex flex-col-reverse items-end justify-center w-[50%] p-10 sm:p-4'}>
+    return <div className={'flex flex-col-reverse ml-[75%] mb-5  justify-center w-[15%] '}>
         <select onChange={(event) => {
             handleChange(event)
-        }} className={'my-4 outline-transparent focus:border-none focus:outline-none'} value={sort_criteria} name="select-sort" id="">
-            <option>---</option>
+        }} className={'outline-transparent focus:border-none focus:outline-none rounded-full text-[#790729] font-semibold'} value={sort_criteria} name="select-sort" id="">
+            <option>Ordenar por:</option>
             {options.map(op => {
                 return <option key={op.name} value={op.value}>{op.name}</option>
             })}
         </select>
-        {/*{sort_criteria && <div className={'flex'}>*/}
-        {/*    <p className={'m-2'} >{sort_criteria}</p>*/}
-        {/*    <button onClick={handleClick}>❌</button>*/}
-        {/*</div>}*/}
-
     </div>
 }

@@ -1,13 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentProducts} from "../../redux/actions";
-import {useNavigate} from "react-router";
 import {useEffect} from "react";
 
 export const Pagination = () => {
-
     const dispatch = useDispatch()
-    const navigate = useNavigate()
-
     const {
         productsPerPage,
         products
@@ -46,8 +42,6 @@ export const Pagination = () => {
         }
 
         url.searchParams.append('page', pageNumber.toString())
-
-        // navigate(url.search)
 
         dispatch(setCurrentProducts(pageNumber))
     }

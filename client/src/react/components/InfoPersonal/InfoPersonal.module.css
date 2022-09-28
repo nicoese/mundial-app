@@ -1,0 +1,194 @@
+.king{
+    display: flex;
+    background-color: #a9a9a9;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.divPrincipal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+    height: 90vh;
+    border: 3px solid #790722;
+    border-radius: 10px;
+    background-color: #f6f6f6;
+}
+
+.divPrincipal h1{
+    display: flex;
+    margin-top: 2%;
+    width: 100%;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight:500;
+}
+
+.hr1{
+    margin-top: 2%;
+    width: 82%;
+    border: 1px solid #790729;
+}
+
+.contForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    gap: 5%;
+    width: 100%;
+    height: 100%;
+    margin-top: 4%;
+}
+
+.divOne{
+    width: 40%;
+}
+
+.divFullname{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+.inpName{
+    border-color: #790722;
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+.divUbication{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+.inpUbi{
+    border-color: #790722;
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+.divCity{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+.inpCity{
+    border-color: #790722;
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+.divCountry{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+.inpCountry{
+    border-color: #790722;
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+.divTwo{
+    width: 40%;
+}
+
+.divCorreo{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+.inpEmail{
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+.divDepartment{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+.inpDepartment{
+    border-color: #790722;
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+.divCp{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+.inpCp{
+    border-color: #790722;
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+.divPhone{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+.inpPhone{
+    border-color: #790722;
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+label{
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.btnCancelar{
+    color: #f6f6f6;
+    background-color: #790729;
+    width: 7rem;
+    height: 3rem;
+    border-radius: 10px;
+}
+
+.btnGuardar{
+    color: #f6f6f6;
+    background-color: #790729;
+    width: 7rem;
+    height: 3rem;
+    border-radius: 10px;
+}

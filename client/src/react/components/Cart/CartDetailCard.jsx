@@ -1,5 +1,4 @@
 import React from "react";
-import {useParams} from "react-router";
 
 const CartDetailCard = ({id, name, price, img, cantidad, deleteProduct, isPurchase}) => {
     let productsInStorage = []
@@ -10,14 +9,6 @@ const CartDetailCard = ({id, name, price, img, cantidad, deleteProduct, isPurcha
             productsInStorage.push(JSON.parse(localStorage[storageKeys[i]]))
         }
     }
-
-
-    /*
-      const firstAdd = localStorage.getItem(`${id}`)
-      if(firstAdd === null) localStorage.setItem(`${id}`, JSON.stringify({name, price, img, cantidad: 1}))
-
-      const [cantidad, setCantidad] = useState(1)
-       */
 
     const handleAddition = (e) => {
         for (let i = 0; i < productsInStorage.length; i++) {
@@ -67,7 +58,7 @@ const CartDetailCard = ({id, name, price, img, cantidad, deleteProduct, isPurcha
             className="flex-col items-center flex sm:flex-row sm:items-center sm:justify-around w-full sm:w-[60%] h-fit my-2 shadow-md">
             <div className="flex justify-end w-full mb-2 pr-2 sm:hidden">
                 <button onClick={(e) => handleRemove(e)} id={id}
-                        className="flex items-center justify-center h-8 w-7 text-white font-bold bg-red-600 rounded-md">
+                        className="flex items-center justify-center h-8 w-7 text-white font-bold bg-[#790729] rounded-md">
                     x
                 </button>
             </div>
@@ -79,7 +70,7 @@ const CartDetailCard = ({id, name, price, img, cantidad, deleteProduct, isPurcha
                 />
             </div>
             <div className="h-full w-[80%] py-4">
-                <p className="mb-2 px-3 text-xl sm:text-3xl font-bold sm:font-semibold text-red-600">
+                <p className="mb-2 px-3 text-xl sm:text-3xl font-bold sm:font-semibold text-[#790729]">
                     {name}
                 </p>
                 <div className="flex justify-between items-center mt-4 pr-4 pl-4 sm:pr-14">
@@ -87,14 +78,14 @@ const CartDetailCard = ({id, name, price, img, cantidad, deleteProduct, isPurcha
                         !isPurchase &&
                         <div className="flex items-center justify-center">
                         <button onClick={(e) => handleSubtraction(e)} id={id}
-                                className="flex items-center justify-center h-5 w-5 mx-2 rounded-md font-semibold text-xl text-white bg-red-600 hover:bg-red-700">-
+                                className="flex items-center justify-center h-5 w-5 mx-2 rounded-md font-semibold text-xl text-white bg-[#790729] hover:bg-red-700">-
                         </button>
                         <div id='cantidad'
-                             className="flex items-center justify-center h-8 w-10 bg-transparent font-semibold rounded-md border-[1px] border-red-600 cursor-pointer">
+                             className="flex items-center justify-center h-8 w-10 bg-transparent font-semibold rounded-md border-[1px] border-[#790729] cursor-pointer">
                             {cantidad}
                         </div>
                         <button onClick={(e) => handleAddition(e)} id={id}
-                                className="flex items-center justify-center h-5 w-5 mx-2 rounded-md font-semibold text-xl text-white bg-red-600 hover:bg-red-700">+
+                                className="flex items-center justify-center h-5 w-5 mx-2 rounded-md font-semibold text-xl text-white bg-[#790729] hover:bg-red-700">+
                         </button>
                     </div>}
                     {isPurchase && <p className={'text-xl'}>{cantidad} {cantidad === 1 ? 'Unidad' : 'Unidades'}</p>}
@@ -105,7 +96,7 @@ const CartDetailCard = ({id, name, price, img, cantidad, deleteProduct, isPurcha
 
                     {!isPurchase &&
                     <button onClick={(e) => handleRemove(e)} id={id}
-                            className="sm:hover:font-semibold sm:text-sm sm:underline sm:text-red-600">
+                            className="sm:hover:font-semibold sm:text-sm sm:underline text-[#790729] ">
                         Quitar producto
                     </button>
                     }
