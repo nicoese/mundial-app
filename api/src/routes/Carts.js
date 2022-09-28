@@ -47,7 +47,7 @@ router.post('/add_to_cart', async (req,res,next)=>{
         
         let result = await setCart.save()
 
-        return res.status(200).json(setCart)
+        return res.status(200).json(setCart.products)
     }catch(err){
         next(err)
     }
