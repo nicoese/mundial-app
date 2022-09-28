@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import {
     getDetails,
     addToCart,
@@ -14,6 +16,10 @@ import Spinner from "../Spinner/Spinner.js";
 import {NotFound} from "../Not_Found/Not_Found";
 import {useAuth0} from "@auth0/auth0-react";
 import Swal from 'sweetalert'
+import {Link} from "react-router-dom";
+import {Rating} from "@material-ui/lab";
+import {IconButton} from "@material-ui/core";
+import {ReviewSection} from "../ReviewSection/ReviewSection";
 
 const Details = (props) => {
     const dispatch = useDispatch();
@@ -31,15 +37,14 @@ const Details = (props) => {
         dispatch(clearDetailsErr())
 
         delay(100).then(() => {
-                dispatch(getDetails(params.id));
-            })
-            
+            dispatch(getDetails(params.id));
+        })
+
         return () => {
             dispatch(resetDetail());
         }
-        
-    }, [dispatch]);
 
+    }, [dispatch]);
 
 
     //
@@ -49,7 +54,7 @@ const Details = (props) => {
 
         //si el user esta logeado comparo el id de la card
         //con los favoritos del use
-        if (isAuthenticated){
+        if (isAuthenticated) {
 
             const liked = favorites.find(e => e.id === details.id || e.id === details._id)
 
@@ -75,7 +80,7 @@ const Details = (props) => {
     function handleLike(ev) {
 
         //si el user no esta logeado no puede likear
-        if (!isAuthenticated){
+        if (!isAuthenticated) {
             return Swal('logueate')
         }
 
@@ -119,7 +124,7 @@ const Details = (props) => {
 
     const handleClick = () => {
 
-        if (details._id){
+        if (details._id) {
             details["id"] = details._id
             delete details["_id"]
         }
@@ -150,8 +155,16 @@ const Details = (props) => {
                     <NavBar/>
                     <section className="relative flex flex-col w-full h-[100vh] py-8 mt-[60px]">
                         <div className="flex items-center w-[95%] h-[45px] my-8">
-                            <p className="text-xl ml-2 text-[#790729]"> {`Category >`} </p>
-                            <p className="text-xl ml-2 text-[#790729] font-semibold"> Product </p>
+                            <Link to={'/'}>
+                                <p className="text-xl ml-2 text-[#790729]"> {`Inicio >`} </p>
+                            </Link>
+
+                            <Link to={'/products'}>
+                                <p className="text-xl ml-2 text-[#790729] font-semibold"> Productos > </p>
+                            </Link>
+
+                            <p className="text-xl ml-2 text-black text-[#790729]"> {details.name} </p>
+
                         </div>
                         <div className="sticky top-40 flex items-center justify-between w-[95%] h-[95%]">
                             <div className="flex flex-col items-center justify-between w-[15%] h-[550px]">
@@ -211,12 +224,18 @@ const Details = (props) => {
                                 </p>
 
                                 <button onClick={handleClick}
-                                    className="w-[8em] h-[3em] mt-4 rounded-md bg-[#790729] text-white font-bold font-[Lato]"> Al
+                                        className="w-[8em] h-[3em] mt-4 rounded-md bg-[#790729] text-white font-bold font-[Lato]"> Al
                                     Carrito
                                 </button>
                             </div>
                         </div>
                     </section>
+
+
+                    {/* todo: componente por separadao seccion de resenas y valoraciones*/}
+
+                    <ReviewSection />
+
                 </div>
             }
         </div>
