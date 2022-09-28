@@ -38,12 +38,11 @@ const Cart = () => {
   }, [purchaseStatus, user]);
 
   useEffect(()=>{
-  
     user && dispatch(getProductsInCart(user.email)) 
     /* return () =>{ 
       dispatch(cleanCart())
     } */
-  }, [])
+  }, [user,dispatch])
 
   /* for (let i = 0; i < storageKeys.length; i++) {
     if(storageKeys[i] !== 'products'){
