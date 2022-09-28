@@ -69,7 +69,7 @@ const ProfileWidget = () => {
           </button>
           <div
             id="dropdown"
-            className="hidden absolute z-10 w-[7.2em] right-4 top-20 bg-white"
+            className="hidden absolute z-50 w-[7.2em] right-4 top-20 bg-white"
           >
             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
               <li>

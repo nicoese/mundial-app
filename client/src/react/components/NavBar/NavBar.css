@@ -3,21 +3,19 @@
 /* NAVBAR */
 
 header {
-  width: 100%;
+  width: 100vw;
   height: 50px;
   position: sticky;
   top: 0;
 }
+
 .navbar-ctn {
   display: flex;
   align-items: center;
-  position: sticky;
-  top: 0;
-  width: 100%;
+  width: 100vw;
   height: 15vh;
   background-color: #f6f6f6;
   color: #790729;
-  box-shadow: -1px 10px 13px 0px rgba(0,0,0,0.35);
 }
 .navbar-title {
   margin-left: 2.6em;

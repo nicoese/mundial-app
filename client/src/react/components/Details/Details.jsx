@@ -148,33 +148,25 @@ const Details = (props) => {
             {details === {} ? <div className={'mt-48'}>cargando</div> : error ? <NotFound/> :
                 <div>
                     <NavBar/>
-                    <section className="relative flex flex-col w-full h-[100vh] py-8 mt-[60px]">
+                    <section className="flex flex-col w-full h-[100vh] py-8 mt-[60px] pl-16">
                         <div className="flex items-center w-[95%] h-[45px] my-8">
                             <p className="text-xl ml-2 text-[#790729]"> {`Category >`} </p>
                             <p className="text-xl ml-2 text-[#790729] font-semibold"> Product </p>
                         </div>
-                        <div className="sticky top-40 flex items-center justify-between w-[95%] h-[95%]">
-                            <div className="flex flex-col items-center justify-between w-[15%] h-[550px]">
-                                <img src='https://bit.ly/3eXgVU4' alt="product-pic1"
-                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-[#790729]shadow-md"
-                                     onClick={selectPic}/>
-                                <img src='https://bit.ly/3eXgVU4' alt="product-pic2"
-                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-[#790729] shadow-md"
-                                     onClick={selectPic}/>
-                                <img src='https://bit.ly/3eXgVU4' alt="product-pic3"
-                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-[#790729] shadow-md"
-                                     onClick={selectPic}/>
-                            </div>
-                            <div
-                                className="relative flex items-center justify-center w-[50%] h-[550px] shadow-lg bg-white">
+                        <div className="flex items-center w-[95%] h-[95%]">
+                            <div className="flex items-center justify-center w-[50%] h-[550px] shadow-lg bg-white">
                                 <div className="flex items-center w-[auto] h-[550px]">
-                                    <img src={details.img} alt="product-pic" id="principal-pic"
-                                         className="w-full h-full"/>
+                                    <img src={details.img} alt="product-pic" id="principal-pic" className="w-full h-full"/>
+                                </div>
+                            </div>
+                            <div className="flex flex-col items-start w-[30%] h-[580px] mt-[50px] ml-16">
+                                <div className="flex items-center h-fit w-fit">
+                                    <h1 className="mb-4 text-4xl font-bold  text-[#790729]">{details.name}</h1>
                                     <button
                                         onClick={handleLike}
-                                        className="absolute top-6 right-9 flex items-center justify-center
-                                        h-[50px] w-[50px] rounded-md border-2 border-[#790729] duration-300
-                                        hover:text-2xl text-gray-400 font-bold">
+                                        className="flex items-center justify-center text-2xl
+                                        h-[50px] w-[70px] rounded-md shadow-md duration-300
+                                        hover:text-3xl hover:shadow-inner font-bold">
                                         {/*busco el producto en el arreglo de favoritos del user
                                         en el estado global si lo encuentro el corazon que muestro es
                                         el rojo */}
@@ -182,9 +174,6 @@ const Details = (props) => {
                                         {state.liked ? "❤" : "🤍"}
                                     </button>
                                 </div>
-                            </div>
-                            <div className="flex flex-col items-start w-[30%] h-[580px] mt-[50px]">
-                                <h1 className="mb-4 text-4xl font-bold  text-[#790729]">{details.name}</h1>
                                 <p className="mb-4 text-2xl font-semibold">$ {new Intl.NumberFormat().format(details.price)}</p>
                                 {details.type === "jersey" ?
                                     <div className="flex justify-around items-center w-[80%] h-[50px]">
@@ -211,7 +200,7 @@ const Details = (props) => {
                                 </p>
 
                                 <button onClick={handleClick}
-                                    className="w-[8em] h-[3em] mt-4 rounded-md bg-[#790729] text-white font-bold font-[Lato]"> Al
+                                    className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-[#790729] shadow-md duration-300 hover:bg-[#790729] hover:text-white font-bold font-[Lato]"> Al
                                     Carrito
                                 </button>
                             </div>

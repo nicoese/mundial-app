@@ -31,7 +31,7 @@ const NavBar = () => {
   return (
     <>
       <header>
-        <nav className="navbar-ctn">
+        <nav className="navbar-ctn shadow-md">
           <h1 onClick={(ev) => navigate('/')} className="navbar-title">MundiApp</h1>
           <ul className="navbar-ul">
             <Link to={"/products"} className="navbar-a"><li className="navbar-li">Productos</li></Link>
