@@ -1,10 +1,42 @@
 import {Rating} from "@material-ui/lab";
 import {IconButton} from "@material-ui/core";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbUpAlt from "@mui/icons-material/ThumbUpAlt";
+import ThumbDownAlt from "@mui/icons-material/ThumbDownAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-import React from "react";
+import React, {useState} from "react";
 
 export const ReviewCard = ({title, rating, content, img, username, date, likes, dislikes}) => {
+
+
+    const [state, setState] = useState({
+        liked: false,
+        disliked: false,
+        likes: likes,
+        dislikes: dislikes
+    });
+
+
+    const handleClick = (ev, value, name, name2xd) => {
+
+        if (ev === 'add') {
+            setState({
+                ...state,
+                [name2xd]: state[name2xd]++
+            })
+        }
+        if (ev === 'subtract') {
+            setState({
+                ...state,
+                [name2xd]: state[name2xd]--
+            })
+        }
+
+        setState({
+            ...state,
+            [name]: value
+        })
+    }
 
 
     return <>
@@ -16,18 +48,21 @@ export const ReviewCard = ({title, rating, content, img, username, date, likes, 
                 {content}
             </p>
             <img className={'self-center px-10 rounded-[50%] w-32'}
-                 src={img}  alt={title}/>
+                 src={img} alt={title}/>
         </div>
         <p className={'font-semibold text-zinc-500'}>{username} | {date}</p>
         <div className={'flex justify-center'}>
-            <IconButton aria-label={'delete'}>
-                <ThumbUpOffAltIcon />
-            </IconButton>
-            <p className={'self-center'}>{likes}</p>
-            <IconButton aria-label={'delete'}>
-                <ThumbDownOffAltIcon />
-            </IconButton>
-            <p className={'self-center'}>{dislikes}</p>
+            { !state.disliked && <IconButton aria-label={'delete'}>
+                {state.liked ? <ThumbUpAlt onClick={(ev) => handleClick('subtract', false, 'liked', 'likes')}/> :
+                    <ThumbUpOffAltIcon onClick={(ev) => handleClick('add', true, 'liked', 'likes')}/>}
+            </IconButton> }
+            {!state.disliked && <p className={'self-center'}>{state.likes}</p>}
+            {!state.liked && <IconButton aria-label={'delete'}>
+                {state.disliked ?
+                    <ThumbDownAlt onClick={(ev) => handleClick('subtract', false, 'disliked', 'dislikes')}/> :
+                    <ThumbDownOffAltIcon onClick={(ev) => handleClick('add', true, 'disliked', 'dislikes')}/>}
+            </IconButton>}
+            {!state.liked && <p className={'self-center'}>{state.dislikes}</p>}
 
         </div>
         <hr className={'flex self-center max-w-[85%] mb-10'}/>
