@@ -33,10 +33,7 @@
 .modal-img-close {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding: .5rem;
 }
-.modal-img-title {
-}
-.modal-img-pic {
-}
+

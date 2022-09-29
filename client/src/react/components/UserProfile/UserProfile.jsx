@@ -11,8 +11,6 @@ const UserProfile = () => {
 
     const {user} = useAuth0()
 
-    console.log(user)
-
     const handleOpenModalProfilPic = () => {
         let bgImageModal = document.querySelector('#bg-image-modal')
         let modal = document.querySelector('#modal-img')
@@ -40,7 +38,7 @@ const UserProfile = () => {
                             className="absolute z-10 flex flex-col items-center justify-center w-[160px] h-[160px] rounded-[50%] bg-gradient-to-l from-[#790729] to-[#f6f6f6]">
                             <img
                                 src={user && user.picture ? user.picture : "https://bit.ly/3eXgVU4"}
-                                alt="profile image"
+                                alt="profile"
                                 className="z-20 absolute w-[150px] h-[150px] rounded-[50%]"
                             />
                             <button onClick={handleOpenModalProfilPic} id='btn-profile-img'
@@ -77,7 +75,6 @@ const UserProfile = () => {
                         <p className="text-[#790729] text-2xl font-bold font-['Lato'] mb-4">Elige tu foto nueva foto de
                             perfil</p>
                         <input
-                            // onChange={(e)=>{setImage(e.target.files[0])}}
                             id="image-inp"
                             type="file"
                             name="image"

@@ -6,7 +6,6 @@ import {
     SET_CURRENT_PRODUCTS,
     SET_SORT_CRITERIA,
     SHUFFLE_PRODUCTS,
-    TEST_FILTERS,
     ADD_TO_CART,
     REMOVE_TO_CART,
     UPDATE_TO_CART,
@@ -106,7 +105,6 @@ export const rootReducer = (state = initialState, action) => {
                 cart: state.cart.filter((p) => p.id !== action.payload)
             }
         case UPDATE_TO_CART:
-            console.log(action.payload[0]);
             return {
                 ...state,
                 cart: state.cart.map((p) => {

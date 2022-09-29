@@ -1,11 +1,9 @@
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import {clearProductsError, filter, setCurrentProducts} from "../../redux/actions";
-import {useNavigate} from "react-router";
+
 import {useDispatch} from "react-redux";
 
 export const FilterBy = () => {
-
-    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const productType = {
@@ -39,72 +37,11 @@ export const FilterBy = () => {
         max: {checked: false, max: '', key: 'max'},
     })
 
-    // useEffect(() => {
-    //     const url = new URL(window.location.href)
-    //
-    //     let queryFilter = []
-    //     let minmax = []
-    //
-    //
-    //     for (const e of url.searchParams.keys()) {
-    //
-    //         if (e === 'sort' || e === 'page') continue
-    //
-    //         if (url.searchParams.get(e).includes('-') && (e === 'category' || e === 'gender')) {
-    //
-    //             queryFilter = queryFilter
-    //                 .concat(url.searchParams.get(e).split('-').map(elem => {
-    //                     return {
-    //                         key: e,
-    //                         value: elem
-    //                     }
-    //                 }))
-    //         } else {
-    //             if (e === 'min' || e === 'max') {
-    //                 minmax.push(url.searchParams.get(e))
-    //             }
-    //             queryFilter.push({
-    //                 key: e,
-    //                 value: url.searchParams.get(e)
-    //             })
-    //         }
-    //     }
-    //
-    //     queryFilter.forEach(e => {
-    //         if (e.key === 'min' || e.key === 'max') {
-    //             filters["price"].min = minmax[0]
-    //             filters["price"].max = minmax[1]
-    //             filters["price"].checked = true
-    //         } else {
-    //             filters[e.value].checked = true
-    //         }
-    //     })
-    //
-    //     const filter_dispatch = queryFilter.map(e => {
-    //         return {
-    //             type: e.value
-    //         }
-    //     })
-    //
-    //     console.log(filter_dispatch)
-    //
-    //     // dispatch(filter(filter_dispatch))
-    //
-    //     // delay(2000)
-    //     //     .then(e => {
-    //     //         dispatch(setCurrentProducts(1))
-    //     //     })
-    //
-    //
-    //
-    // }, [])
-
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
     }
 
     const handleChange = (ev) => {
-
         setFilters({
             ...filters,
             [ev.target.value]: {
@@ -114,13 +51,7 @@ export const FilterBy = () => {
         })
     }
 
-
     const handleClick = (ev) => {
-
-
-        ///todo: cuando seteo los filtros vuelvo a la pag 1
-
-
         if (filters.ticket.checked || filters.accessory.checked) {
             filters.nike.checked = false
             filters.adidas.checked = false
@@ -162,14 +93,7 @@ export const FilterBy = () => {
             }
         })
 
-
-        // navigate(url.search)
-
-        let filter_dispatch = {
-            type:[],
-            brand: [],
-            min: [],
-            max: []
+        let filter_dispatch = { type:[],brand: [],min: [],max: []
         }
 
         filtersList.map(e => {
@@ -189,7 +113,6 @@ export const FilterBy = () => {
         })
 
         dispatch(clearProductsError())
-
     }
 
     const handlePrice = (ev) => {
@@ -205,8 +128,10 @@ export const FilterBy = () => {
         })
     }
 
-    return <div className={'flex flex-col h-[30%] w-[25%] sticky top-40'}>
-        <h2 className={'p-5 text-3xl font-semibold text-zinc-500'}>Filtros</h2>
+    return <div className="flex items-start h-[10vh] w-[25%] sticky top-[20vh]">
+
+    <div className={'flex flex-col mt-[-40px] pl-1 h-[50%] w-[100%] '}>
+        <h2 className={'text-start p-5 text-3xl font-semibold text-zinc-500'}>Filtros</h2>
 
         <div id={'category'}>
             <h3 className="text-start pl-2 font-semibold text-[#790729]">{productType.name}</h3>
@@ -218,7 +143,6 @@ export const FilterBy = () => {
                 </label>
             })}
         </div>
-
 
         {!filters.ticket.checked && !filters.accessory.checked && <div id={'genderInputs'}>
             <h3 className="text-start pl-2 font-semibold text-[#790729]">{brands.name}</h3>
@@ -245,11 +169,8 @@ export const FilterBy = () => {
                 <input onChange={handlePrice} className={'h-8 w-[5.2rem] focus:border-none focus:outline-none'}
                        value={filters.max.value} name={'max'} placeholder={'Max'} type="text"/>
             </div>
-            <button onClick={handleClick} className={'w-[5.2rem] h-[2.3rem] rounded-sm bg-[#790729] text-white font-semibold'}>Aplicar</button>
+            <button onClick={handleClick} className={'w-[5.2rem] h-[2.3rem] rounded-md bg-[#790729] text-white font-semibold'}>Aplicar</button>
         </div>
     </div>
+    </div> 
 }
-
-///todo: make useEffect filter component
-///todo: routing and redirections
-///todo: error handling

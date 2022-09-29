@@ -12,13 +12,12 @@ import Cart from "./react/components/Cart/Cart";
 import Info from "./Componentes/Info"
 import Nosotros from "./Componentes/Nosotros"
 import {useAuth0} from "@auth0/auth0-react";
-import {useNavigate} from "react-router";
 import {NotFound} from "./react/components/Not_Found/Not_Found";
-import {Profile} from "./react/components/Profile/Profile";
 import {Wishlist} from "./react/components/Wishlist/Wishlist";
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
 import UserProfile from "./react/components/UserProfile/UserProfile";
+import InfoPersonal from "./react/components/InfoPersonal/InfoPersonal";
 
 
 function About() {
@@ -28,8 +27,7 @@ function About() {
 
 function App() {
     const dispatch = useDispatch();
-    const {isAuthenticated, user} = useAuth0()
-    const navigate = useNavigate()
+    const { user} = useAuth0()
 
     user && dispatch(getFavorites(user.email))
 
@@ -38,7 +36,7 @@ function App() {
         delay(2000).then((e) => {
             dispatch(setCurrentProducts());
         });
-    }, [isAuthenticated]);
+    },[dispatch]);
 
     function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
@@ -46,7 +44,7 @@ function App() {
 
     return (
 
-        <div className="flex flex-col justify-center">
+        <div >
             <Routes>
                 <Route exact path={"/"} element={<Landing/>}/>
                 <Route exact path={"/products"} element={<Products/>}/>
@@ -68,6 +66,7 @@ function App() {
                     <Wishlist/>
                 </ProtectedRoutes>}/>
                 <Route path={'*'} element={<NotFound/>}/>
+                <Route path={'/infoPersonal'} element={<InfoPersonal/>}/>
             </Routes>
         </div>
     )
