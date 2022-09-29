@@ -23,6 +23,7 @@ export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES"
 export const GET_FAVORITES = "GET_FAVORITES"
 export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES"
 export const PURCHASE_FAILED = "PURCHASE_FAILED"
+export const POST_NEWPRODUCT = "POST_NEWPRODUCT"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -268,3 +269,10 @@ export const purchaseFailed = (userEmail) => {
             })
     }
 }
+
+export const postNewProduct = (payload) => {
+    return async function (dispatch) {
+        const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, payload)
+        return info
+    };
+};

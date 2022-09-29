@@ -2,6 +2,7 @@ const {Router, response} = require('express');
 const router = Router();
 const Products = require('../models/products');
 const db = require('../../db.json')
+const {postProducts} = require ('../controllers/index')
 
 
 //FIND PROD BY NAME
@@ -41,6 +42,17 @@ router.get('/:id', async (req, res, next) => {
         res.status(200).json(result)
     } catch (err) {
         next(err)
+    }
+})
+
+//POST NEW PRODUCTS BY ADMIN
+router.post('/newProduct', async (req,res) => {
+    try {
+        const produc = req.body
+        const saved= await postProducts(produc)
+        return res.status(200).send("producto guardado")   
+    } catch (error) {
+        return res.status(400).send(error.message)   
     }
 })
 

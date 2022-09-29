@@ -19,6 +19,7 @@ import {Wishlist} from "./react/components/Wishlist/Wishlist";
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
 import UserProfile from "./react/components/UserProfile/UserProfile";
+import FormProducts from "./react/components/formPost/FormProducts";
 
 
 function About() {
@@ -66,6 +67,9 @@ function App() {
                 </ProtectedRoutes>}/>
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
+                </ProtectedRoutes>}/>
+                <Route path={'/admin-post'} element={<ProtectedRoutes>
+                    <FormProducts/>
                 </ProtectedRoutes>}/>
                 <Route path={'*'} element={<NotFound/>}/>
             </Routes>
