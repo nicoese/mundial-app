@@ -25,6 +25,9 @@ router.put('/set_status', async (req,res,next)=>{
 
 router.get('/last_purchase', async (req,res,next)=>{
     try{
+
+        console.log('hola last purchase')
+
         const {email} = req.query;
 
         let result = await Purchase.find({email: email}).sort({"date": -1}).limit(1)

@@ -2,7 +2,7 @@ import NavBar from "../NavBar/NavBar";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useAuth0} from "@auth0/auth0-react";
-import {getLastPurchase} from "../../../redux/actions";
+import {cleanCart, getLastPurchase} from "../../../redux/actions";
 import Confetti from "react-confetti";
 import CartDetailCard from "../Cart/CartDetailCard";
 
@@ -25,7 +25,8 @@ export const Success = () => {
         setTimeout(() => {
             toggleConfetti();
         }, 8000);
-        localStorage.clear()
+
+       user && dispatch(cleanCart(user.email))
 
     }, [user, dispatch]);
 
