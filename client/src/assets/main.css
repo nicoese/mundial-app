@@ -912,9 +912,7 @@ input[type="range"]::-ms-fill-lower {
 }
 .mr-\[7\%\] {
   margin-right: 7%;
-}
-.mr-28 {
-  margin-right: 7rem;
+=======
 
 .mt-\[70px\] {
   margin-top: 70px;
@@ -948,18 +946,6 @@ input[type="range"]::-ms-fill-lower {
 }
 .mb-\[3\%\] {
   margin-bottom: 3%;
-}
-.mb-1 {
-  margin-bottom: 0.25rem;
-}
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
-.mb-16 {
-  margin-bottom: 4rem;
-}
-.ml-1 {
-  margin-left: 0.25rem;
 }
 
 .mt-\[70px\] {
@@ -1207,9 +1193,6 @@ input[type="range"]::-ms-fill-lower {
 .w-28 {
   width: 7rem;
 }
-.w-32 {
-  width: 8rem;
-}
 .w-\[160px\] {
   width: 160px;
 }
@@ -1239,15 +1222,6 @@ input[type="range"]::-ms-fill-lower {
 
 .max-w-sm {
   max-width: 24rem;
-}
-.max-w-\[55\%\] {
-  max-width: 55%;
-}
-.max-w-\[85\%\] {
-  max-width: 85%;
-}
-.max-w-\[65\%\] {
-  max-width: 65%;
 }
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1432,14 +1406,6 @@ input[type="range"]::-ms-fill-lower {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-.px-20 {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
 .pl-2 {
   padding-left: 0.5rem;
 }
@@ -1493,9 +1459,6 @@ input[type="range"]::-ms-fill-lower {
 }
 .font-\[\'Lato\'\] {
   font-family: 'Lato';
-}
-.font-\[\"Lato\"\] {
-  font-family: "Lato";
 }
 
 .text-3xl {
@@ -1584,11 +1547,6 @@ input[type="range"]::-ms-fill-lower {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-.text-gray-400 {
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));

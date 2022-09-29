@@ -24,8 +24,6 @@ export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES"
 export const GET_FAVORITES = "GET_FAVORITES"
 export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES"
 export const PURCHASE_FAILED = "PURCHASE_FAILED"
-export const GET_PRODUCT_REVIEWS = "GET_PRODUCT_REVIEWS"
-export const CLEAR_PRODUCT_REVIEWS = "CLEAR_PRODUCT_REVIEWS"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -293,25 +291,5 @@ export const purchaseFailed = (userEmail) => {
                     payload: json.data
                 })
             })
-    }
-}
-
-export const getReviews = (productId) => {
-    return async dispatch => {
-        return axios.get(`${REACT_APP_API_URL}/reviews?id=${productId}`)
-            .then(json => {
-                return dispatch({
-                    type: GET_PRODUCT_REVIEWS,
-                    payload: json.data
-                })
-            })
-    }
-}
-
-export const clearReviews = () => {
-    return dispatch => {
-        return dispatch({
-            type: CLEAR_PRODUCT_REVIEWS
-        })
     }
 }
