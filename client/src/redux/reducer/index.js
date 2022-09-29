@@ -6,10 +6,10 @@ import {
     SET_CURRENT_PRODUCTS,
     SET_SORT_CRITERIA,
     SHUFFLE_PRODUCTS,
-    TEST_FILTERS,
     ADD_TO_CART,
     REMOVE_TO_CART,
-    UPDATE_TO_CART,
+    CLEAR_CART,
+    GET_CART,
     RESET_DETAIL,
     PRODUCTS_NOT_FOUND,
     DETAILS_ERROR,
@@ -103,24 +103,28 @@ export const rootReducer = (state = initialState, action) => {
             }
 
         case ADD_TO_CART:
+            /* console.log( "reducer", action.payload.products) */
             return {
                 ...state,
-                cart: [...state.cart, action.payload]
+                cart: action.payload
+            }
+        case GET_CART:
+            console.log( "reducer", action.payload)
+            return {
+                ...state,
+                cart: action.payload
             }
         case REMOVE_TO_CART:
+            /* console.log("reducer", action.payload) */
             return {
                 ...state,
-                cart: state.cart.filter((p) => p.id !== action.payload)
+                cart: action.payload
             }
-        case UPDATE_TO_CART:
-            console.log(action.payload[0]);
+        case CLEAR_CART:
+            /* console.log("reducer", action.payload) */
             return {
                 ...state,
-                cart: state.cart.map((p) => {
-                    if(p.id === action.payload[0]){
-                        p.price = action.payload[1]
-                    }
-                })
+                cart: []
             }
         case PRODUCTS_NOT_FOUND:
             return {

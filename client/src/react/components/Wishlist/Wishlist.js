@@ -1,26 +1,20 @@
-import {useAuth0} from "@auth0/auth0-react";
 import {useSelector} from "react-redux";
 import {useEffect} from "react";
 import {ProductCard} from "../../elements/ProductCard";
 import NavBar from "../NavBar/NavBar";
 
-
 export const Wishlist = () => {
 
-    const {user} = useAuth0()
     const {favorites} = useSelector(state => state)
-
 
     useEffect(() => {
         return () => {
         };
     }, []);
 
-
-
     return <>
         <NavBar />
-        <h2 className={'mt-40 ml-[15%] font-bold text-3xl text-red-700'}>Tus Favoritos</h2>
+        <h2 className={'mt-40 ml-[15%] font-bold text-3xl text-[#790729]'}>Tus Favoritos</h2>
         <div className={'grid grid-cols-3 mt-12 self-center gap-6 mb-6'}>
             {favorites.length > 0 ? favorites.map(e => {
                 return <ProductCard

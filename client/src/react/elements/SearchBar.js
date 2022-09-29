@@ -4,7 +4,6 @@ import React, {useEffect, useState} from "react";
 import {clearProductsError, getByName, setCurrentProducts} from "../../redux/actions";
 import {HiSearch} from "react-icons/hi";
 
-
 export const SearchBar = () => {
 
     const navigate = useNavigate()
@@ -15,10 +14,7 @@ export const SearchBar = () => {
         const url = new URL(window.location)
         const search = url.searchParams.get('search')
 
-
-
         if (search) {
-
             delay(1600)
                 .then(() => {
                     dispatch(getByName(search))
@@ -30,8 +26,7 @@ export const SearchBar = () => {
                 })
 
         }
-    }, []);
-
+    }, [dispatch, navigate]);
 
     function handleInputChange(e) {
         setName(e.target.value);
@@ -45,10 +40,8 @@ export const SearchBar = () => {
         delay(1500).then(r => {
             dispatch(setCurrentProducts(1))
             setName("");
-            // if (name) return navigate(`/products?search=${name}`)
             navigate('/products')
         })
-
     }
 
     function delay(time) {

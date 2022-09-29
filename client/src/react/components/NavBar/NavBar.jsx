@@ -1,22 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import {getAllProducts, getByName, setCurrentProducts} from "../../../redux/actions";
-import { HiSearch } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
+import { BiUserCircle } from "react-icons/bi";
 import { useAuth0 } from '@auth0/auth0-react';
-
-
 import './NavBar.css'
 import {useNavigate} from "react-router";
 import {SearchBar} from "../../elements/SearchBar";
+import ProfileWidget from '../ProfileWidget/ProfileWidget';
 
 const NavBar = () => {
 
-  const {user} = useAuth0()
 
-  // const dispatch = useDispatch();
-  // const [name, setName] = useState("");
+  const {user} = useAuth0()
   const navigate = useNavigate()
 
   /* funcion para el menu desplegable */
@@ -32,30 +27,10 @@ const NavBar = () => {
       menuIcon.setAttribute('class', 'navbar-ul-toggle')
     }
   }
-  /* funcion para el menu desplegable */
 
-  // function handleInputChange(e) {
-  //   setName(e.target.value);
-  // }
   
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   // console.log(name)
-  //   dispatch(getByName(name));
-  //
-  //   delay(1000).then(r => {
-  //     dispatch(setCurrentProducts(1))
-  //     setName("");
-  //     navigate('/products')
-  //   })
-  //
-  // }
-  //
-  // function delay(time) {
-  //   return new Promise(resolve => setTimeout(resolve, time));
-  // }
-
   const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+
 
   function delay(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -64,54 +39,27 @@ const NavBar = () => {
   return (
     <>
       <header>
-        <nav className="navbar-ctn">
+        <nav className="navbar-ctn shadow-md">
           <h1 onClick={(ev) => navigate('/')} className="navbar-title">MundiApp</h1>
           <ul className="navbar-ul">
-            <Link to={"/products"} className="navbar-a"><li className="navbar-li">Inicio</li></Link>
+            <Link to={"/products"} className="navbar-a"><li className="navbar-li">Productos</li></Link>
             <Link to={"/cart"} className="navbar-a"><li className="navbar-li">Carrito</li></Link>
-            <Link className="navbar-a"><li className="navbar-li">Productos</li></Link>
-            <Link className="navbar-a"><li className="navbar-li">Contacto</li></Link>
+            <Link to={'/nosotros'} className="navbar-a"><li className="navbar-li">Nosotros</li></Link>
+            <Link to={'/blogInfo'} className="navbar-a"><li className="navbar-li">Info</li></Link>
           </ul>
-
-          {/*<div className="searchBar_search">*/}
-          {/*      <form onSubmit={handleSubmit}>*/}
-          {/*        <input*/}
-          {/*            type="text"*/}
-          {/*            placeholder="Search..."*/}
-          {/*            value={name}*/}
-          {/*            onChange={handleInputChange}*/}
-          {/*        />*/}
-          {/*        <div className="searchBar_btn">*/}
-          {/*      <button className="search_btn-submit">*/}
-          {/*        <HiSearch size={23}/>*/}
-          {/*      </button>*/}
-          {/*    </div>*/}
-          {/*  </form>*/}
-          {/*</div>*/}
 
           <SearchBar />
 
-
-
-
-
-
-
-
-
-
-
-          {!isAuthenticated && <div onClick={loginWithRedirect} className="li-inicioSesion mr-[7%]">Login</div>}
+          {!isAuthenticated && <div onClick={loginWithRedirect} className="li-inicioSesion mr-[7%]">Ingresa</div>}
 
           {
             isAuthenticated && user && <div className={'flex '}>
-              <img onClick={() => navigate('/profile')} className={'w-10 rounded-full hover:border-red-500 hover:border-2 cursor-pointer'} src={user.picture} alt=""/>
-
+              <img onClick={() => navigate('/profile')} className={'w-10 rounded-full hover:border-[#790729] hover:border-2 cursor-pointer'} src={user.picture} alt=""/>
 
             </div>
           }
           { isAuthenticated && user &&
-          <div>
+          <div >
             <button
                 onClick={() => {
                   const dropdown = document.getElementById('dropdown')
@@ -133,8 +81,8 @@ const NavBar = () => {
 
                 id="dropdownDefault" data-dropdown-toggle="dropdown"
                 className="focus:ring-4 focus:outline-none
-                    focus:ring-red-300
-                    rounded-full text-xl pr-3.5 py-1 px-2 mr-28 text-center inline-flex items-center dark:bg-blue-600
+                    focus:ring-[red-300]
+                    rounded-full text-xl  mr-28 text-center inline-flex items-center dark:bg-blue-600
                     dark:hover:bg-red-700 dark:focus:ring-red-800"
                 type="button"><svg className="ml-2 w-4 h-4" aria-hidden="true" fill="none"
                                    stroke="currentColor" viewBox="0 0 24 24"
@@ -144,13 +92,19 @@ const NavBar = () => {
             </svg>
             </button>
             <div id="dropdown"
-                 className="hidden absolute z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
+                 className="hidden absolute z-10 w-28 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
               <ul className="py-1 text-sm text-gray-700 dark:text-gray-200"
                   aria-labelledby="dropdownDefault">
-                <li >
+                <li>
                   <Link to={'/profile'}>
                     <a className="block py-2 px-4 hover:bg-gray-100
                                         dark:hover:bg-gray-600 dark:hover:text-white">Perfil</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={'/infoPersonal'}>
+                    <a className="block py-2 px-4 hover:bg-gray-100
+                                        dark:hover:bg-gray-600 dark:hover:text-white">Datos Personales</a>
                   </Link>
                 </li>
                 <li >
@@ -169,8 +123,8 @@ const NavBar = () => {
                 <li onClick={() => {
                   logout()
                 }}>
-                  <Link>
 
+                  <Link>
                     <a onClick={() => {
                       logout()
                     }} className="block py-2 px-4 hover:bg-gray-100
@@ -180,40 +134,16 @@ const NavBar = () => {
 
               </ul>
             </div>
-
           </div>
-
-          }
-
-
-
-
-
-
-
-
           <AiOutlineMenu size={28} className="navbar-icon" onClick={()=> toggleMenu()}/>
         </nav>
       </header>
       <ul className="navbar-ul-toggle">
-
         <Link className="navbar-a-sm"><li className="navbar-li_a">Inicio</li></Link>
         <Link to={'/nosotros'} className="navbar-a-sm"><li className="navbar-li_a">Nosotros</li></Link>
         <Link className="navbar-a-sm"><li className="navbar-li_a">Productos</li></Link>
         <Link className="navbar-a-sm"><li className="navbar-li_a">Contacto</li></Link>
-
       </ul>
-
-
-
-
-
-
-
-
-
-
-
     </>
   )
 }

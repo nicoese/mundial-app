@@ -1,6 +1,7 @@
 const { Router, response } = require('express');
 const Purchase = require('../models/purchases');
 const User = require('../models/users');
+const axios = require('axios')
 const router = Router();
 
 
@@ -22,22 +23,35 @@ router.put('/set_status', async (req,res,next)=>{
 })
 
 router.get('/last_purchase', async (req,res,next)=>{
-    const {email} = req.query;
+    try{
+        const {email} = req.query;
 
-    console.log(email);
+        let result = await Purchase.find({email: email}).sort({"date": -1}).limit(1)
+        // db.col.find().sort({"datetime": -1}).limit(1)
 
-    let result = await Purchase.find({email: email}).sort({"date": -1}).limit(1)
+        let setStatus = result[0].set({status: 'success'})
 
-    let setStatus = result[0].set({status: 'success'})
+        let success = await setStatus.save()
 
-    let success = await setStatus.save()
+        // SENDING EMAIL PROCESS
 
-    console.log(success)
+        let {products,totalPrice,_id} = result[0]
 
-    // db.col.find().sort({"datetime": -1}).limit(1)
+        // console.log(result[0])
 
-    res.status(200).json(result);
-    
+        let mailed = await axios.post(`${process.env.API_URL}/mails/purchase_success`,
+        {
+            email: result[0].email,
+            products,
+            totalPrice,
+            id: _id
+        })
+
+        return res.status(200).json(result);
+
+    }catch(err){
+        next()
+    }
 })
 
 router.put('/purchase_failed', async (req,res,next)=>{
