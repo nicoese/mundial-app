@@ -3,22 +3,19 @@
 /* NAVBAR */
 
 header {
-  width: 100%;
+  width: 100vw;
   height: 50px;
   position: sticky;
   top: 0;
 }
+
 .navbar-ctn {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  width: 100%;
+  width: 100vw;
   height: 15vh;
   background-color: #f6f6f6;
   color: #790729;
-  box-shadow: -1px 10px 13px 0px rgba(0,0,0,0.35);
 }
 .navbar-title {
   margin-left: 2.6em;
@@ -29,10 +26,9 @@ header {
 }
 .navbar-ul {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  margin-right: 3em;
-  width: 50%;
+  margin: 0px 2em;
+  width: 40%;
   height: 100%;
   font-family: "Mulish", sans-serif;
   list-style: none;
@@ -42,7 +38,7 @@ header {
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 25%;
+  width: 100px;
   color: #790729;
   font-size: 1rem;
   text-decoration: none;
@@ -71,6 +67,15 @@ header {
 }
 
 /* SEARCHBAR */
+.searchbar-ctn{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 100%;
+  width: 100px;
+  margin: 0px 1em 0px 8em;
+}
+
 .searchBar_search {
   position: relative;
   padding: 5px;
@@ -116,6 +121,15 @@ header {
 }
 .searchBar_search input:focus {
   width: 240px;
+}
+
+/* WIDGET */
+.profile-ctn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 180px;
 }
 
 

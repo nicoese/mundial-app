@@ -8,14 +8,19 @@ import {
     SHUFFLE_PRODUCTS,
     ADD_TO_CART,
     REMOVE_TO_CART,
-    UPDATE_TO_CART,
+    CLEAR_CART,
+    GET_CART,
     RESET_DETAIL,
     PRODUCTS_NOT_FOUND,
     DETAILS_ERROR,
     CLEAR_DETAILS_ERROR,
     CLEAR_PRODUCTS_ERROR,
     DISPATCH_PURCHASE,
-    GET_LAST_PURCHASE, ADD_TO_FAVORITES, GET_FAVORITES, REMOVE_FROM_FAVORITES, PURCHASE_FAILED
+    GET_LAST_PURCHASE, 
+    ADD_TO_FAVORITES, 
+    GET_FAVORITES, 
+    REMOVE_FROM_FAVORITES, 
+    PURCHASE_FAILED
 } from "../actions"
 
 
@@ -95,23 +100,28 @@ export const rootReducer = (state = initialState, action) => {
             }
 
         case ADD_TO_CART:
+            /* console.log( "reducer", action.payload.products) */
             return {
                 ...state,
-                cart: [...state.cart, action.payload]
+                cart: action.payload
+            }
+        case GET_CART:
+            console.log( "reducer", action.payload)
+            return {
+                ...state,
+                cart: action.payload
             }
         case REMOVE_TO_CART:
+            /* console.log("reducer", action.payload) */
             return {
                 ...state,
-                cart: state.cart.filter((p) => p.id !== action.payload)
+                cart: action.payload
             }
-        case UPDATE_TO_CART:
+        case CLEAR_CART:
+            /* console.log("reducer", action.payload) */
             return {
                 ...state,
-                cart: state.cart.map((p) => {
-                    if(p.id === action.payload[0]){
-                        p.price = action.payload[1]
-                    }
-                })
+                cart: []
             }
         case PRODUCTS_NOT_FOUND:
             return {
