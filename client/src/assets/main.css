@@ -803,9 +803,11 @@ input[type="range"]::-ms-fill-lower {
 .z-30 {
   z-index: 30;
 }
+
 .col-span-3 {
   grid-column: span 3 / span 3;
 }
+
 .m-2 {
   margin: 0.5rem;
 }
@@ -901,6 +903,7 @@ input[type="range"]::-ms-fill-lower {
 .mr-1 {
   margin-right: 0.25rem;
 }
+
 .mt-\[70px\] {
   margin-top: 70px;
 }
@@ -934,6 +937,14 @@ input[type="range"]::-ms-fill-lower {
 .mb-\[3\%\] {
   margin-bottom: 3%;
 }
+
+.mt-\[70px\] {
+  margin-top: 70px;
+}
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .mt-40 {
   margin-top: 10rem;
 }
@@ -946,6 +957,12 @@ input[type="range"]::-ms-fill-lower {
 .mt-28 {
   margin-top: 7rem;
 }
+
+.mr-\[7\%\] {
+  margin-right: 7%;
+}
+
+
 .block {
   display: block;
 }
@@ -1143,10 +1160,12 @@ input[type="range"]::-ms-fill-lower {
 .w-\[60\%\] {
   width: 60%;
 }
+
 .min-w-fit {
   min-width: -moz-fit-content;
   min-width: fit-content;
 }
+
 .max-w-sm {
   max-width: 24rem;
 }
@@ -1275,6 +1294,11 @@ input[type="range"]::-ms-fill-lower {
 .to-\[\#f6f6f6\] {
   --tw-gradient-to: #f6f6f6;
 }
+
+.p-5 {
+  padding: 1.25rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -1394,15 +1418,24 @@ input[type="range"]::-ms-fill-lower {
 .font-bold {
   font-weight: 700;
 }
+
 .font-thin {
   font-weight: 100;
 }
+
 .tracking-wide {
   letter-spacing: 0.025em;
 }
 .tracking-wider {
   letter-spacing: 0.05em;
 }
+
+
+.text-zinc-500 {
+  --tw-text-opacity: 1;
+  color: rgb(113 113 122 / var(--tw-text-opacity));
+}
+
 .text-\[\#790729\] {
   --tw-text-opacity: 1;
   color: rgb(121 7 41 / var(--tw-text-opacity));
@@ -1431,18 +1464,26 @@ input[type="range"]::-ms-fill-lower {
   --tw-text-opacity: 1;
   color: rgb(113 113 122 / var(--tw-text-opacity));
 }
+
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(200 30 30 / var(--tw-text-opacity));
 }
 .text-red-800 {
+
   --tw-text-opacity: 1;
   color: rgb(155 28 28 / var(--tw-text-opacity));
 }
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
+.text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);

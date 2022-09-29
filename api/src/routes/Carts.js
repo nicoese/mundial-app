@@ -4,6 +4,9 @@ const Cart = require('../models/carts')
 
 
 
+
+
+
 router.post('/add_to_cart', async (req,res,next)=>{
     try{
         const {userEmail,product} = req.body
@@ -34,7 +37,8 @@ router.post('/add_to_cart', async (req,res,next)=>{
         let newArr = arr.map(e=>{
             if(e.name === product.name){
                 if(e.cantidad !== product.cantidad){
-                    return {...e,cantidad: product.cantidad}
+
+                 return {...e,cantidad: product.cantidad}
                 }
             }
             return e
@@ -89,6 +93,22 @@ router.get('/', async (req,res,next)=>{
     }catch(err){
         next(err)
     }
+})
+
+
+router.get('/',async (req,res,next)=>{
+
+    try{
+        const {email}= req.query
+
+        let user = await Cart.find({email})
+
+        return res.status(200).json(user[0].products)
+
+    }catch(err){
+        next(err)
+    }
+
 })
 
 
