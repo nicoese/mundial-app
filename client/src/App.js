@@ -16,11 +16,8 @@ import {useNavigate} from "react-router";
 import {NotFound} from "./react/components/Not_Found/Not_Found";
 import {Wishlist} from "./react/components/Wishlist/Wishlist";
 import UserProfile from "./react/components/UserProfile/UserProfile";
-/* import DashboardProfile from "./react/components/DashboardProfile/DashboardProfile";
- */
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
-import UserProfile from "./react/components/UserProfile/UserProfile";
 
 
 function About() {

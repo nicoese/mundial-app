@@ -2,6 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { addToCart, removeToCart } from "../../../redux/actions/index.js";
 import {useAuth0} from "@auth0/auth0-react";
+import swal from "sweetalert";
 
 const CartDetailCard = ({ id, name, price, img, cantidad }) => {
   const { user } = useAuth0()
@@ -10,27 +11,23 @@ const CartDetailCard = ({ id, name, price, img, cantidad }) => {
 
   const handleAddition = (e)=>{
     let newAmount = productsInCart.filter( p => p.id === e.target.id )
-    console.log(newAmount);
     dispatch(addToCart(user.email, { id: e.target.id, name, price, img, cantidad: newAmount[0].cantidad + 1 } ))
   }
 
   const handleSubtraction = (e)=>{
     let newAmount = productsInCart.filter( p => p.id === e.target.id )
-    console.log(newAmount);
-    dispatch(addToCart(user.email, { id: e.target.id, name, price, img, cantidad: newAmount[0].cantidad - 1 } ))
+    if(newAmount[0].cantidad !== 1){
+      dispatch(addToCart(user.email, { id: e.target.id, name, price, img, cantidad: newAmount[0].cantidad - 1 } ))
+    } else{
+      swal({
+        text: 'No puedes tener menos de un producto',
+        icon: "info",
+      });
+    }
   }
   
   const handleRemove = (e)=>{
-
-    /* console.log("cartdetail", user.email, e.target.id); */
     dispatch(removeToCart(user.email, e.target.id))
-
-    /* for (let i = 0; i < productsInStorage.length; i++) {
-      if(productsInStorage[i].id === e.target.id){
-        localStorage.removeItem(productsInStorage[i].id);
-      }
-    }
-    deleteProduct() */
   } 
 
   return (
@@ -66,7 +63,9 @@ const CartDetailCard = ({ id, name, price, img, cantidad }) => {
             Quitar producto
           </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default CartDetailCard;

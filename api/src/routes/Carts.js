@@ -68,7 +68,7 @@ router.put('/remove_from_cart', async (req,res,next)=>{
 
             let result = setCart.save();
 
-            return res.status(200).json(setCart)
+            return res.status(200).json(setCart.products)
         }
     }catch(err){
         next(err)

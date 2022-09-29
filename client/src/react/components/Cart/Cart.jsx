@@ -18,8 +18,11 @@ const Cart = () => {
   const url = new URL(window.location)
 
   let purchaseStatus = !!url.searchParams.get('status')
-
-
+  
+  let total = 0;
+  for (let i = 0; i < productsInCart.length; i++) {
+    total += productsInCart[i].cantidad * productsInCart[i].price
+  }
 
   useEffect(() => {
 
@@ -39,24 +42,8 @@ const Cart = () => {
 
   useEffect(()=>{
     user && dispatch(getProductsInCart(user.email)) 
-    /* return () =>{ 
-      dispatch(cleanCart())
-    } */
   }, [user,dispatch])
-
-  useEffect(() => {
-    
-  }, [productsInCart])
   
-
-  /* for (let i = 0; i < storageKeys.length; i++) {
-    if(storageKeys[i] !== 'products'){
-      productsInStorage.push(JSON.parse(localStorage[storageKeys[i]]))
-    }
-  }
-  for (let i = 0; i < productsInStorage.length; i++) {
-    totalPrice += productsInStorage[i].price * productsInStorage[i].cantidad 
-  } */
 
   if (mp_link) window.location.replace(mp_link)
 
@@ -75,23 +62,10 @@ const Cart = () => {
     }
   }
 
-  function delay(time) {
-    return new Promise(resolve => setTimeout(resolve, time));
-  }
-
-  const deleteProduct = ()=>{
-    updateState(!state)
-  }
-
-  console.log("cart", productsInCart);
-
   return (
     <>
       <NavBar />
-
       {productsInCart.length > 0 ?
-
-
           <main className="flex flex-col items-center w-full h-fit mt-6 sm:mt-8 xl:mt-16 2xl:mt-40 bg-[#f6f6f6]">
             <div className="w-full h-[100px] mt-10">
               <h3 className="pl-2 text-3xl sm:pl-[90px] sm:text-4xl font-bold text-[#790729]">Revisa tu carrito.</h3>
@@ -106,7 +80,6 @@ const Cart = () => {
                         price={p.price}
                         img={p.img}
                         cantidad={p.cantidad}
-                        deleteProduct={deleteProduct}
                     />)
               })}
             </div>
@@ -114,7 +87,7 @@ const Cart = () => {
             <div className="flex flex-col items-center w-[50%] h-fit py-4">
               <div className="flex items-start w-[90%] h-fit">
                 <div className="w-full h-fit text-gray-500">Subtotal</div>
-                <div id="subtotal" className="w-full h-fit text-gray-500 text-end">{`$${totalPrice} ARS`}</div>
+                <div id="subtotal" className="w-full h-fit text-gray-500 text-end">{`$${total} ARS`}</div>
               </div>
               <div className="flex items-start w-[90%] h-fit py-2">
                 <div className="w-full h-fit text-gray-500 ">Descuento</div>
@@ -123,18 +96,14 @@ const Cart = () => {
               <hr className="w-[90%]"/>
               <div className="flex items-start w-[90%] h-fit py-2">
                 <div className="w-full h-fit px-2 text-xl font-bold text-[#790729] ">Total</div>
-                <div id="total" className="w-full h-fit px-2 text-xl font-bold text-[#790729] text-end">{`$${totalPrice} ARS`}</div>
+                <div id="total" className="w-full h-fit px-2 text-xl font-bold text-[#790729] text-end">{`$${total} ARS`}</div>
               </div>
               <div className="flex items-start justify-center w-[90%] h-fit py-2">
                 <button onClick={()=>handleClick()} className="w-[12em] h-[3em] mr-2 rounded-md bg-[#790729] hover:bg-red-800 text-white font-bold font-[Lato] tracking-wider"> Pagar </button>
               </div>
             </div>
           </main>
-
-
       : <div className={'mt-48'}><h1 className={'text-2xl text-center mt-20'}>No tenes productos en el carrito</h1></div>}
-
-
     </>
   );
 };

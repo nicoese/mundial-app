@@ -25,7 +25,7 @@ const ProfileWidget = () => {
               "w-[3.2em] h-[3.2em] rounded-full hover:shadow-[#790729] hover:shadow-sm hover:cursor-pointer"
             }
             src={user.picture}
-            alt=""
+            alt="profile picture"
           />
         </div>
       )}
