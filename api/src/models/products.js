@@ -16,6 +16,9 @@ const productsSchema = new Schema({
     },
     img: String,
     stock: {S:Number,M:Number,L:Number,XL:Number,X:Number},
+
+    // stock: [{id,size:S,stock:10},{}]
+
 //^^^^^MANDATORY FIELDS^^^^^
     brand: String ,
     description: String,
@@ -23,7 +26,8 @@ const productsSchema = new Schema({
     date: String,
     sector: String,
     rating: Number,
-    cantidad: Number
+    cantidad: Number,
+    size: String
 })
 
 
