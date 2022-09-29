@@ -48,7 +48,7 @@ const Cart = () => {
       totalPrice: totalPrice
     }
 
-    if (productsInStorage.length !== 0) {
+    if (productsInCart.length !== 0) {
 
      dispatch(buyDetail(purchase))
     } else {
@@ -70,7 +70,7 @@ const Cart = () => {
       <NavBar />
 
 
-      {productsInStorage.length > 0 ?
+      {productsInCart.length > 0 ?
       
           <main className="flex flex-col items-center w-full h-fit mt-6 sm:mt-8 xl:mt-16 2xl:mt-40 bg-[#f6f6f6]">
             <div className="w-full h-[100px] mt-10">
@@ -93,7 +93,7 @@ const Cart = () => {
             <div className="flex flex-col items-center w-[50%] h-fit py-4">
               <div className="flex items-start w-[90%] h-fit">
                 <div className="w-full h-fit text-gray-500">Subtotal</div>
-                <div id="subtotal" className="w-full h-fit text-gray-500 text-end">{`$${total} ARS`}</div>
+                <div id="subtotal" className="w-full h-fit text-gray-500 text-end">{`$${totalPrice} ARS`}</div>
               </div>
               <div className="flex items-start w-[90%] h-fit py-2">
                 <div className="w-full h-fit text-gray-500 ">Descuento</div>

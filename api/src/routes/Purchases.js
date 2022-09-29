@@ -1,6 +1,7 @@
 const { Router, response } = require('express');
 const Purchase = require('../models/purchases');
 const User = require('../models/users');
+const stockController = require('../controllers/StockController')
 const axios = require('axios')
 const router = Router();
 
@@ -32,6 +33,10 @@ router.get('/last_purchase', async (req,res,next)=>{
         let setStatus = result[0].set({status: 'success'})
 
         let success = await setStatus.save()
+
+        //APPLYING STOCK MODS PROCESS
+
+        // stockController.applyStock(result[0].products)
 
         // SENDING EMAIL PROCESS
 

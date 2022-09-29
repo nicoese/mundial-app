@@ -27,7 +27,7 @@ function About() {
 
 function App() {
     const dispatch = useDispatch();
-    const { user} = useAuth0()
+    const {user} = useAuth0()
 
     user && dispatch(getFavorites(user.email))
 
@@ -46,7 +46,7 @@ function App() {
 
         <div >
             <Routes>
-                <Route exact path={"/"} element={<Landing/>}/>
+                <Route exact path={"/"} element={<Landing />}/>
                 <Route exact path={"/products"} element={<Products/>}/>
                 <Route path={"/about"} element={<About/>}/>
                 <Route path={"/products/:id"} element={<Details/>}/>

@@ -134,7 +134,7 @@ const NavBar = () => {
 
               </ul>
             </div>
-          </div>
+          </div>}
           <AiOutlineMenu size={28} className="navbar-icon" onClick={()=> toggleMenu()}/>
         </nav>
       </header>
@@ -148,4 +148,5 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+
+export default NavBar;
