@@ -57,14 +57,14 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
-router.get('/', async (req,res,next)=>{
-    try{
-        let result = await Favorites.find()
-        res.status(200).send(result)
-    }catch(err){
-        next(err)
-    }
-})
+// router.get('/', async (req,res,next)=>{
+//     try{
+//         let result = await Favorites.find()
+//         res.status(200).send(result)
+//     }catch(err){
+//         next(err)
+//     }
+// })
 
 
 
