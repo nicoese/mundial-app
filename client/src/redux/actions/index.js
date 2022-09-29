@@ -10,9 +10,8 @@ export const TEST_FILTERS = 'TEST_FILTERS'
 export const GET_DETAILS = "GET_DETAILS";
 export const FILTER = "FILTER";
 export const ADD_TO_CART = "ADD_TO_CART";
-export const GET_CART = "GET_CART";
 export const REMOVE_TO_CART = "REMOVE_TO_CART";
-export const CLEAR_CART = "CLEAR_CART";
+export const UPDATE_TO_CART = "UPDATE_TO_CART";
 export const RESET_DETAIL = "RESET_DETAIL"
 export const PRODUCTS_NOT_FOUND = "PRODUCTS_NOT_FOUND"
 export const DETAILS_ERROR = 'DETAILS_ERROR'
@@ -143,53 +142,29 @@ export const filter = (critearia) => {
     }
 }
 
-export const addToCart = ( userEmail, product) => {
-    return async (dispatch) => {
-        return axios.post(`${REACT_APP_API_URL}/carts/add_to_cart`, {
-            product: product,
-            userEmail: userEmail
-        }).then(res => {
-            return dispatch({
-                type: ADD_TO_CART,
-                payload: res.data
-            })
-        }).catch(err => {
-                console.log(err)
-            })
-    }
-}
-
-export const getProductsInCart = (userEmail) => {
-    return async (dispatch) => {
-        console.log('action', userEmail);
-        return axios.get(`${REACT_APP_API_URL}/carts?email=${userEmail}`)
-            .then(json => {
-                return dispatch({
-                    type: GET_CART,
-                    payload: json.data
-                })
-            })
-    }
-}
-
-export const removeToCart = (userEmail, productId) => {
-    return async (dispatch) => {
-        /* console.log("action", userEmail, productId) */
-        return axios.put(`${REACT_APP_API_URL}/carts/remove_from_cart`, {
-            userEmail,
-            productId
+export const addToCart = (product) => {
+    return (dispatch) => {
+        return dispatch({
+            type: ADD_TO_CART,
+            payload: product
         })
-            .then(json => {
-                return dispatch({
-                    type: REMOVE_TO_CART,
-                    payload: json.data
-                })
-            })
     }
 }
-export const cleanCart = () => {
-    return {
-        type: CLEAR_CART,
+
+export const removeToCart = (id) => {
+    return (dispatch) => {
+        return dispatch({
+            type: REMOVE_TO_CART,
+            payload: id
+        })
+    }
+}
+export const updateToCart = (id, price) => {
+    return (dispatch) => {
+        return dispatch({
+            type: UPDATE_TO_CART,
+            payload: [id, price]
+        })
     }
 }
 
