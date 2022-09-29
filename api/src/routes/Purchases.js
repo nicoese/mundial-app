@@ -1,6 +1,7 @@
 const { Router, response } = require('express');
 const Purchase = require('../models/purchases');
 const User = require('../models/users');
+const stockController = require('../controllers/StockController')
 const axios = require('axios')
 const router = Router();
 
@@ -11,8 +12,13 @@ const router = Router();
 //get all purchases with user info
 router.get('/', async (req,res,next)=>{
     try{
+        let {email} = req.query
+        if(email){
+            let result = await Purchase.find({email:email})
+            return res.status(200).json(result)
+        }
         let result = await Purchase.find({})
-        res.status(200).json(result)
+        return res.status(200).json(result)
     }catch(err){
         next(err)
     }
@@ -32,6 +38,10 @@ router.get('/last_purchase', async (req,res,next)=>{
         let setStatus = result[0].set({status: 'success'})
 
         let success = await setStatus.save()
+
+        //Applying stock changes PROCESS
+
+        stockController.applyStock(result[0].products)
 
         // SENDING EMAIL PROCESS
 

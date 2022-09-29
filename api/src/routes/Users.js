@@ -5,8 +5,13 @@ const User = require('../models/users');
 
 router.get('/', async (req,res,next)=>{
     try{
+        const {email} = req.query
+        if(email){
+            let result = await User.find({email:email})
+           return res.status(200).json(result)
+        }
         let result = await User.find()
-        res.status(200).json(result)
+        return res.status(200).json(result)
     }catch(err){
         next(err)
     }
