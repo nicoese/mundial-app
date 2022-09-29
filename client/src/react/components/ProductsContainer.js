@@ -25,7 +25,7 @@ export const ProductsContainer = (props) => {
         return () => {
         }
 
-    }, [dispatch, currentPage, isAuthenticated, user.email])
+    }, [dispatch, currentPage, isAuthenticated])
 
     function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
