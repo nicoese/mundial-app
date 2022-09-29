@@ -17,6 +17,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
 
     //traigo el estado de favoritos del usuario
     const favorites = useSelector(state => state.favorites)
+    const cart = useSelector(state => state.cart)
 
     //traigo el user de auth0
     const {user, isAuthenticated} = useAuth0()
@@ -25,7 +26,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
 
         //si el user esta logeado comparo el id de la card
         //con los favoritos del user
-        if (isAuthenticated){
+        if (isAuthenticated) {
 
             const liked = favorites.find(e => e.id === id)
             //si existe en la lista muestro el producto
@@ -33,29 +34,25 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
             if (liked) toggleLike()
         }
 
-    }, [favorites,id, isAuthenticated]);
-
+    }, [favorites, id, isAuthenticated]);
 
 
     const handleClick = () => {
 
-        if (!isAuthenticated){
+        if (!isAuthenticated) {
             return Swal('Para realizar una compra deberas registrarte primero')
-        } 
+        }
 
-        
-        dispatch(addToCart(user.email, {id, name, price, img, cantidad: 1} ))
+        dispatch(addToCart(user.email, {id, name, price, img, cantidad: 1}))
 
-        /* if (firstAdd === null) {
-            localStorage.setItem(`${id}`, JSON.stringify({id, name, price, img, cantidad: 1}))
+        if (!cart.find(e => e.id === id)) {
             Swal('Añadiste el Producto a tu carrito', '', 'success')
-
         } else {
             Swal({
                 title: "Este producto ya fue añadido. Echale un vistazo al carrito!",
                 icon: 'warning'
             })
-        } */
+        }
     }
 
 
@@ -73,7 +70,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     function handleLike(ev) {
 
         //si el user no esta logeado no puede likear
-        if (!isAuthenticated){
+        if (!isAuthenticated) {
             return Swal('logueate')
         }
 
@@ -96,7 +93,9 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     }
 
     return (
-        <div className="flex flex-col pb-2 max-w-sm hover:shadow-[#790729] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]" key={id}>
+        <div
+            className="flex flex-col pb-2 max-w-sm hover:shadow-[#790729] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
+            key={id}>
             {img ? (
                 <Link to={`${id}`} className="flex items-center justify-center w-full h-[15em] ">
                     <div className="flex items-center justify-center w-full h-[15em]">
