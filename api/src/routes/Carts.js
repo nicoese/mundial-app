@@ -37,8 +37,7 @@ router.post('/add_to_cart', async (req,res,next)=>{
         let newArr = arr.map(e=>{
             if(e.name === product.name){
                 if(e.cantidad !== product.cantidad){
-
-                 return {...e,cantidad: product.cantidad}
+                       return {...e,cantidad: product.cantidad}
                 }
             }
             return e
@@ -51,11 +50,14 @@ router.post('/add_to_cart', async (req,res,next)=>{
         
         let result = await setCart.save()
 
-        return res.status(200).json(setCart.products)
+        return res.status(200).json(setCart)
     }catch(err){
         next(err)
     }
+
+
 })
+
 
 router.put('/remove_from_cart', async (req,res,next)=>{
     try{
@@ -64,35 +66,19 @@ router.put('/remove_from_cart', async (req,res,next)=>{
         let user = await Cart.find({email: userEmail})
 
         if (user.length !== 0){
-            
-            /* console.log("back", user[0].products[0].id, productId ); */
-            let filtered = user[0].products.filter(e=>e.id !== productId)
+
+            let filtered = user[0].products.filter(e=>e._id !== productId)
 
             let setCart = user[0].set({products: filtered})
 
             let result = setCart.save();
 
-            return res.status(200).json(setCart.products)
+            return res.status(200).json(setCart)
         }
     }catch(err){
         next(err)
     }
-})
 
-router.get('/', async (req,res,next)=>{
-    try{
-        const {email}= req.query
-
-        console.log(email);
-        
-        let user = await Cart.find({email})
-
-        console.log(user);
-        return res.status(200).json(user[0].products)
-        
-    }catch(err){
-        next(err)
-    }
 })
 
 

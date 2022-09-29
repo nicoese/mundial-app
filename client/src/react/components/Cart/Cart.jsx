@@ -2,16 +2,17 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
-import {buyDetail, getProductsInCart, purchaseFailed, cleanCart} from "../../../redux/actions";
+import {buyDetail, purchaseFailed} from "../../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
 import Swal from "sweetalert";
 
 const Cart = () => {
   const [state, updateState] = useState(true);
-  let productsInCart = useSelector(state => state.cart);
+  let productsInStorage = [];
   let totalPrice = 0;
+  let storageKeys = Object.keys(localStorage);
   const dispatch = useDispatch()
-  const {user, isAuthenticated} = useAuth0()
+  const {user} = useAuth0()
   const {mp_link} = useSelector(state => state)
   const url = new URL(window.location)
 
@@ -33,10 +34,15 @@ const Cart = () => {
 
   }, [purchaseStatus, user]);
 
-  useEffect(()=>{
-    user && dispatch(getProductsInCart(user.email)) 
-  }, [user,dispatch])
-  
+
+  for (let i = 0; i < storageKeys.length; i++) {
+    if(storageKeys[i] !== 'products'){
+      productsInStorage.push(JSON.parse(localStorage[storageKeys[i]]))
+    }
+  }
+  for (let i = 0; i < productsInStorage.length; i++) {
+    totalPrice += productsInStorage[i].price * productsInStorage[i].cantidad 
+  }
 
   if (mp_link) window.location.replace(mp_link)
 
@@ -44,7 +50,7 @@ const Cart = () => {
 
     const purchase = {
       email: user.email,
-      products: productsInCart.products,
+      products: productsInStorage,
       totalPrice: totalPrice
     }
 
@@ -62,23 +68,21 @@ const Cart = () => {
 
   const deleteProduct = ()=>{
     updateState(!state)
-
   }
 
   return (
     <>
       <NavBar />
 
-
       {productsInStorage.length > 0 ?
-      
+
           <main className="flex flex-col items-center w-full h-fit mt-6 sm:mt-8 xl:mt-16 2xl:mt-40 bg-[#f6f6f6]">
             <div className="w-full h-[100px] mt-10">
               <h3 className="pl-2 text-3xl sm:pl-[90px] sm:text-4xl font-bold text-[#790729]">Revisa tu carrito.</h3>
               <p className="pl-[10px] sm:pl-[93px] sm:mt-2 text-gray-600">Envios y devoluciones gratis.</p>
             </div>
             <div className="flex flex-col items-center w-full h-fit p-4">
-              { productsInCart && productsInCart.map((p)=>{
+              { productsInStorage && productsInStorage.map((p)=>{
                 return(
                     <CartDetailCard
                         id={p.id}
@@ -86,6 +90,7 @@ const Cart = () => {
                         price={p.price}
                         img={p.img}
                         cantidad={p.cantidad}
+                        deleteProduct={deleteProduct}
                     />)
               })}
             </div>
@@ -93,7 +98,7 @@ const Cart = () => {
             <div className="flex flex-col items-center w-[50%] h-fit py-4">
               <div className="flex items-start w-[90%] h-fit">
                 <div className="w-full h-fit text-gray-500">Subtotal</div>
-                <div id="subtotal" className="w-full h-fit text-gray-500 text-end">{`$${total} ARS`}</div>
+                <div id="subtotal" className="w-full h-fit text-gray-500 text-end">{`$${totalPrice} ARS`}</div>
               </div>
               <div className="flex items-start w-[90%] h-fit py-2">
                 <div className="w-full h-fit text-gray-500 ">Descuento</div>
