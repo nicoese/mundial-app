@@ -33,7 +33,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
             if (liked) toggleLike()
         }
 
-    }, [favorites]);
+    }, [favorites,id, isAuthenticated]);
 
 
 
@@ -96,7 +96,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     }
 
     return (
-        <div className="flex flex-col pb-2 max-w-sm bg-white h-[400px] rounded-md" key={id}>
+        <div className="flex flex-col pb-2 max-w-sm hover:shadow-[#790729] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]" key={id}>
             {img ? (
                 <Link to={`${id}`} className="flex items-center justify-center w-full h-[15em] ">
                     <div className="flex items-center justify-center w-full h-[15em]">
@@ -106,14 +106,14 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
             ) : (
                 "no available image"
             )}
-            <div className="flex items-start w-full pl-[2em]">
-                <p className="text-2xl w-[90%] text-start font-extrabold font-[Lato] truncate tracking-wide">
+            <div className="flex items-start w-full pl-[0.5em] pr-[0.5em]">
+                <p className="text-[1.1rem] w-[100%] text-start font-semibold font-[Lato] truncate tracking-wide">
                     <Link className="rounded-md cursor-pointer" to={`${id}`}>{name}</Link>
                 </p>
             </div>
             <div className="mb-4 mt-1">
-                <p className="font-[Lato] text-xl w-full text-start pl-[1.75em] ">${new Intl.NumberFormat().format(price)}</p>
-                <p className="w-[4em] h-[1.5rem] ml-[1.7em] font-[Lato] text-md text-[#790729] font-semibold">{brand ? `${brand}` : stadium ? `${stadium}` : ""}</p>
+                <p className="font-[Lato] text-xl w-full text-start pl-[0.5em] ">${new Intl.NumberFormat().format(price)}</p>
+                <p className="w-[100%] h-[1.5rem] text-start pl-[0.5em] font-[Lato] text-md text-[#790729] font-semibold">{brand ? `${brand}` : stadium ? `${stadium}` : ""}</p>
             </div>
             <div className="w-full flex items-center justify-around">
                 <button onClick={() => handleClick()}

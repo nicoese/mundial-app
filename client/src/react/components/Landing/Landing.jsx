@@ -1,4 +1,5 @@
 import React from "react";
+
 import imgLanding from '../img/imgLanding.jpeg'
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -10,19 +11,21 @@ import ProfileWidget from "../ProfileWidget/ProfileWidget";
 
 
 const Landing = () => {
+  let click = false;
 
     let click = false
     const toggleMenu = () => {
         click = !click
 
-        if (click) {
-            let menuIcon = document.querySelector('.nav-ul-toggle')
-            menuIcon.setAttribute('class', 'active')
-        } else {
-            let menuIcon = document.querySelector('.active')
-            menuIcon.setAttribute('class', 'nav-ul-toggle')
-        }
+
+    if (click) {
+      let menuIcon = document.querySelector(".nav-ul-toggle");
+      menuIcon.setAttribute("class", "active");
+    } else {
+      let menuIcon = document.querySelector(".active");
+      menuIcon.setAttribute("class", "nav-ul-toggle");
     }
+
 /*     function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     } */

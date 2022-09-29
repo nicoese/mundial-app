@@ -4,19 +4,15 @@ import {Pagination} from "../elements/Pagination";
 import {SortBy} from "../elements/SortBy";
 import {FilterBy} from "../elements/FilterBy";
 import {useEffect} from "react";
-import {clearProductsError, getFavorites, setCurrentProducts} from "../../redux/actions";
-import {useLocation} from "react-router";
+import {getFavorites, setCurrentProducts} from "../../redux/actions";
 import Spinner from "./Spinner/Spinner";
-import {SearchBar} from "../elements/SearchBar";
 import {useAuth0} from "@auth0/auth0-react";
 
 export const ProductsContainer = (props) => {
 
     const dispatch = useDispatch()
-    const location = useLocation()
     const {user, isAuthenticated} = useAuth0()
     const {productsError, currentProducts, currentPage} = useSelector(state => state)
-
 
     useEffect(() => {
 
@@ -26,17 +22,14 @@ export const ProductsContainer = (props) => {
 
         isAuthenticated && dispatch(getFavorites(user.email))
 
-
         return () => {
         }
 
-    }, [dispatch])
-
+    }, [dispatch, currentPage, isAuthenticated, user.email])
 
     function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
-
 
     return <div key={'ajslkdfjalskdfja'}
                 className={'w-full text-center flex flex-col items-center justify-center bg-[#f6f6f6] mt-24'}>
@@ -64,8 +57,3 @@ export const ProductsContainer = (props) => {
         <Pagination/>
     </div>
 }
-
-{/* <div className="flex w-full items-center justify-center">
-            <img className="w-[300px] h-[300px]" src="https://bit.ly/3dmUbMK"></img>
-            </div> */
-} //viejo spinner de la copa que no lo tenemos como img incorporado.

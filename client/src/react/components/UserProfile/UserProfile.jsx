@@ -61,7 +61,6 @@ const UserProfile = () => {
     if(url) setImgURL(url) && console.log("image upload succesfully");
     else alert("no se pudo crack")
   }
-
   return (
     <div className="flex flex-col h-[100vh] w-full">
       <div className="w-full h-[150px] bg-gradient-to-r from-[#790729] to-[#f6f6f6]">

@@ -4,10 +4,12 @@ import { addToCart, removeToCart } from "../../../redux/actions/index.js";
 import {useAuth0} from "@auth0/auth0-react";
 import swal from "sweetalert";
 
+
 const CartDetailCard = ({ id, name, price, img, cantidad }) => {
   const { user } = useAuth0()
   const dispatch = useDispatch()
   const productsInCart = useSelector(state => state.cart)
+
 
   const handleAddition = (e)=>{
     let newAmount = productsInCart.filter( p => p.id === e.target.id )

@@ -3,14 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 import {
     getDetails,
-    addToCart,
     resetDetail,
     clearDetailsErr,
     addToFavorites,
     removeFromFavorites
 } from "../../../redux/actions/index.js";
 import NavBar from "../NavBar/NavBar.jsx";
-import Spinner from "../Spinner/Spinner.js";
 import {NotFound} from "../Not_Found/Not_Found";
 import {useAuth0} from "@auth0/auth0-react";
 import Swal from 'sweetalert'
@@ -39,11 +37,6 @@ const Details = (props) => {
         }
         
     }, [dispatch]);
-
-
-
-    //
-
 
     useEffect(() => {
 
@@ -100,14 +93,6 @@ const Details = (props) => {
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
     }
-
-    /* const handleClick = ()=>{
-      dispatch(addToCart({
-        name:details.name,
-        price: details.price,
-        img: details.img,
-      }))
-    } */
 
     const selectPic = (e) => {
         let principalPic = document.querySelector('#principal-pic')
