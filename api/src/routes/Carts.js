@@ -79,6 +79,24 @@ router.put('/remove_from_cart', async (req,res,next)=>{
     }
 })
 
+router.delete('/clear_cart', async (req, res, next) => {
+    try {
+
+
+        const {email} = req.query
+
+        const cart = await Cart.findOneAndDelete({email: email})
+
+        return res.json(cart)
+
+
+
+    }catch (err){
+        next(err)
+    }
+})
+
+
 router.get('/', async (req,res,next)=>{
     try{
         const {email}= req.query

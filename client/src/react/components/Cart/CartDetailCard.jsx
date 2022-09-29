@@ -5,7 +5,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import swal from "sweetalert";
 
 
-const CartDetailCard = ({ id, name, price, img, cantidad }) => {
+const CartDetailCard = ({ id, name, price, img, cantidad, isPurchase }) => {
   const { user } = useAuth0()
   const dispatch = useDispatch()
   const productsInCart = useSelector(state => state.cart)
@@ -52,18 +52,21 @@ const CartDetailCard = ({ id, name, price, img, cantidad }) => {
         </p>
         <div className="flex justify-between items-center mt-4 pr-4 pl-4 sm:pr-14">
           <div className="flex items-center justify-center">
-            <button onClick={(e)=> handleSubtraction(e)} id={id} className="flex items-center justify-center h-5 w-5 mx-2 rounded-md font-semibold text-xl text-white bg-[#790729] hover:bg-red-800">-</button>
+            {!isPurchase && <button onClick={(e) => handleSubtraction(e)} id={id}
+                     className="flex items-center justify-center h-5 w-5 mx-2 rounded-md font-semibold text-xl text-white bg-[#790729] hover:bg-red-800">-</button>}
             <div id='cantidad' className="flex items-center justify-center h-8 w-10 bg-transparent font-semibold rounded-md border-[1px] border-[#790729]cursor-pointer">
               {cantidad}
             </div>
-            <button onClick={(e)=> handleAddition(e)} id={id} className="flex items-center justify-center h-5 w-5 mx-2 rounded-md font-semibold text-xl text-white bg-[#790729] hover:bg-red-800">+</button>
+            {!isPurchase && <button onClick={(e) => handleAddition(e)} id={id}
+                     className="flex items-center justify-center h-5 w-5 mx-2 rounded-md font-semibold text-xl text-white bg-[#790729] hover:bg-red-800">+</button>}
           </div>
           <p className="mb-2 font-semibold text-2xl text-gray-700">${price*cantidad}</p>
         </div>
         <div className="hidden sm:flex sm:justify-end sm:w-full mt-2 pr-4 sm:pr-14">
-          <button onClick={(e)=>handleRemove(e)} id={id} className="sm:hover:font-semibold sm:text-sm sm:underline sm:text-[#790729]">
+          {!isPurchase && <button onClick={(e) => handleRemove(e)} id={id}
+                   className="sm:hover:font-semibold sm:text-sm sm:underline sm:text-[#790729]">
             Quitar producto
-          </button>
+          </button>}
         </div>
       </div>
     </div>

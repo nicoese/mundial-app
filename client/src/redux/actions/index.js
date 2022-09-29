@@ -171,6 +171,9 @@ export const getProductsInCart = (userEmail) => {
                     payload: json.data
                 })
             })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 
@@ -187,12 +190,24 @@ export const removeToCart = (userEmail, productId) => {
                     payload: json.data
                 })
             })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
-export const cleanCart = () => {
-    return {
-        type: CLEAR_CART,
+export const cleanCart = (userEmail) => {
+    return dispatch => {
+        return axios.delete(`${REACT_APP_API_URL}/carts/clear_cart?email=${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type: CLEAR_CART
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
+
 }
 
 export function buyDetail(buyDetail) {
@@ -235,6 +250,9 @@ export const getLastPurchase = (userEmail) => {
                     payload: json.data
                 })
             })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 
@@ -265,6 +283,9 @@ export const getFavorites = (userEmail) => {
                     payload: json.data
                 })
             })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 
@@ -281,6 +302,9 @@ export const removeFromFavorites = (productId, userEmail) => {
                     payload: json.data
                 })
             })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 
@@ -293,6 +317,9 @@ export const purchaseFailed = (userEmail) => {
                     payload: json.data
                 })
             })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 
@@ -304,6 +331,9 @@ export const getReviews = (productId) => {
                     type: GET_PRODUCT_REVIEWS,
                     payload: json.data
                 })
+            })
+            .catch(err => {
+                console.log(err)
             })
     }
 }
