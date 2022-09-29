@@ -16,13 +16,11 @@ import {
     CLEAR_DETAILS_ERROR,
     CLEAR_PRODUCTS_ERROR,
     DISPATCH_PURCHASE,
-    GET_LAST_PURCHASE,
-    ADD_TO_FAVORITES,
-    GET_FAVORITES,
-    REMOVE_FROM_FAVORITES,
-    PURCHASE_FAILED,
-    GET_PRODUCT_REVIEWS,
-    CLEAR_PRODUCT_REVIEWS
+    GET_LAST_PURCHASE, 
+    ADD_TO_FAVORITES, 
+    GET_FAVORITES, 
+    REMOVE_FROM_FAVORITES, 
+    PURCHASE_FAILED
 } from "../actions"
 
 
@@ -40,7 +38,6 @@ const initialState = {
     purchaseStatus: '',
     mp_link: '',
     favorites: [],
-    productReviews: [],
     cart: []
 }
 
@@ -179,16 +176,6 @@ export const rootReducer = (state = initialState, action) => {
         case PURCHASE_FAILED:
             return {
                 ...state
-            }
-        case GET_PRODUCT_REVIEWS:
-            return {
-                ...state,
-                productReviews: action.payload
-            }
-        case CLEAR_PRODUCT_REVIEWS:
-            return {
-                ...state,
-                productReviews: []
             }
         default:
             return state
