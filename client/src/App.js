@@ -17,7 +17,6 @@ import {Wishlist} from "./react/components/Wishlist/Wishlist";
 import UserProfile from "./react/components/UserProfile/UserProfile";
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
-import UserProfile from "./react/components/UserProfile/UserProfile";
 import InfoPersonal from "./react/components/InfoPersonal/InfoPersonal";
 
 
