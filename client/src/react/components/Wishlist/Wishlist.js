@@ -15,7 +15,7 @@ export const Wishlist = () => {
     return <>
         <NavBar />
         <h2 className={'mt-40 ml-[15%] font-bold text-3xl text-[#790729]'}>Tus Favoritos</h2>
-        <div className={'grid grid-cols-3 mt-12 self-center gap-6 mb-6'}>
+        <div className={'grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 mt-12 self-center gap-6 mb-6 ml-10 pl-40 pr-40'}>
             {favorites.length > 0 ? favorites.map(e => {
                 return <ProductCard
                     id={e.id}
