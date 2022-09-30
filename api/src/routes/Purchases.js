@@ -39,7 +39,7 @@ router.get('/last_purchase', async (req,res,next)=>{
 
         //APPLYING STOCK MODS PROCESS
 
-        // stockController.applyStock(result[0].products)
+        stockController.applyStock(result[0].products)
 
         // SENDING EMAIL PROCESS
 

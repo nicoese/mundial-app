@@ -173,7 +173,7 @@
       {
         "name": "Soporte/Apoya Celular Qatar 2022",
         "price": 2200,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "type": "accesory",
         "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_687790-MLA51494115928_092022-O.webp"
@@ -182,7 +182,7 @@
 
         "name": "Copa del mundo replica en Yeso",
         "price": 3600,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "type": "accesory",
         "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_946511-MLA50151925221_052022-O.webp"
@@ -191,7 +191,7 @@
 
         "name": "Pelota Al Rihla",
         "price": 19900,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "type": "accesory",
         "description": "Pelota oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_754652-MLA50927396729_072022-O.webp"
@@ -200,7 +200,7 @@
 
         "name": "Album de figuritas Panini Original",
         "price": 2499,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "type": "accesory",
         "description": "Album oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_765945-MLA51234412137_082022-O.webp"
@@ -209,7 +209,7 @@
 
         "name": "x10 Sobres figuritas Panini",
         "price": 2299,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "description": "figuritas oficiales del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_767629-MLA51277747160_082022-O.webp"
       },
@@ -217,7 +217,7 @@
 
         "name": "Taza ceramica mascota mundial",
         "price": 1299,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "type": "accesory",
         "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_847633-MLA49548585941_042022-O.webp"
@@ -226,7 +226,7 @@
 
         "name": "Vuvuzela celeste y blanca",
         "price": 1890,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "type": "accesory",
         "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_999908-MLA50775262031_072022-O.webp"
@@ -235,7 +235,7 @@
 
         "name": "Gorra Qatar 2022",
         "price": 3200,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "type": "accesory",
         "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://i0.wp.com/www.argensend.com/wp-content/uploads/2022/07/D_NQ_NP_2X_823981-MLA49581413345_042022-F.jpg?fit=1040%2C1071&ssl=1"
@@ -244,7 +244,7 @@
 
         "name": "Llavero Qatar 2022",
         "price": 700,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "type": "accesory",
         "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://cf.shopee.com.mx/file/048d57a58d7d0fe95c461d29c3afbdb9"
@@ -253,7 +253,7 @@
 
         "name": "Set de maquillaje celeste y blanco",
         "price": 999,
-        "stock": {"X":10},
+        "stock": {"Z":10},
         "type": "accesory",
         "description": "Accesorio oficial del Mundial Qatar 2022 ",
         "img": "https://http2.mlstatic.com/D_NQ_NP_753092-MLA51263570081_082022-V.jpg"
@@ -266,6 +266,7 @@
         "date": "20/11/22",
         "price": 130000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "sector": "Category 1",
         "img": "https://bit.ly/3ShL2UL"
@@ -277,6 +278,7 @@
         "date": "21/11/22",
         "price": 38800,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -288,6 +290,7 @@
         "date": "22/11/22",
         "price": 61000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 1"
@@ -299,6 +302,7 @@
         "date": "22/11/22",
         "price": 55000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -310,6 +314,7 @@
         "date": "24/11/22",
         "price": 52000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 2"
@@ -321,6 +326,7 @@
         "date": "24/11/22",
         "price": 47000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -332,6 +338,7 @@
         "date": "24/11/22",
         "price": 37000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -343,6 +350,7 @@
         "date": "25/11/22",
         "price": 38000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -354,6 +362,7 @@
         "date": "25/11/22",
         "price": 38000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -365,6 +374,7 @@
         "date": "26/11/22",
         "price": 55000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 1"
@@ -376,6 +386,7 @@
         "date": "26/11/22",
         "price": 42000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 2"
@@ -387,6 +398,7 @@
         "date": "27/11/22",
         "price": 62000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 1"
@@ -398,6 +410,7 @@
         "date": "27/11/22",
         "price": 32000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -409,6 +422,7 @@
         "date": "28/11/22",
         "price": 45000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -420,6 +434,7 @@
         "date": "28/11/22",
         "price": 44000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -431,6 +446,7 @@
         "date": "29/11/22",
         "price": 45000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -442,6 +458,7 @@
         "date": "29/11/22",
         "price": 33000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -453,6 +470,7 @@
         "date": "30/11/22",
         "price": 54000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 2"
@@ -464,6 +482,7 @@
         "date": "30/11/22",
         "price": 47000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -475,6 +494,7 @@
         "date": "01/12/22",
         "price": 46000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 2"
@@ -486,6 +506,7 @@
         "date": "01/12/22",
         "price": 40000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -497,6 +518,7 @@
         "date": "02/12/22",
         "price": 33000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"
@@ -508,6 +530,7 @@
         "date": "02/12/22",
         "price": 39000,
         "type": "ticket",
+        "stock": {"Z":10},
         "description": "Ticket oficial del Mundial Qatar 2022 ",
         "img": "https://bit.ly/3ShL2UL",
         "sector": "Category 3"

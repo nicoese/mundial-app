@@ -15,7 +15,7 @@ const productsSchema = new Schema({
         require:true
     },
     img: String,
-    stock: {S:Number,M:Number,L:Number,XL:Number,X:Number},
+    stock: {S:Number,M:Number,L:Number,XL:Number,Z:Number},
     size: String,
 //^^^^^MANDATORY FIELDS^^^^^
     brand: String ,

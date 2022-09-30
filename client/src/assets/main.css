@@ -886,9 +886,6 @@ input[type="range"]::-ms-fill-lower {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
-.mt-4 {
-  margin-top: 1rem;
-}
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -906,6 +903,9 @@ input[type="range"]::-ms-fill-lower {
 }
 .mr-1 {
   margin-right: 0.25rem;
+}
+.mt-4 {
+  margin-top: 1rem;
 }
 .mr-\[7\%\] {
   margin-right: 7%;
@@ -1070,9 +1070,6 @@ input[type="range"]::-ms-fill-lower {
 .h-\[70px\] {
   height: 70px;
 }
-.h-2 {
-  height: 0.5rem;
-}
 .w-full {
   width: 100%;
 }
@@ -1169,9 +1166,6 @@ input[type="range"]::-ms-fill-lower {
 }
 .w-\[60\%\] {
   width: 60%;
-}
-.w-2 {
-  width: 0.5rem;
 }
 .min-w-fit {
   min-width: -moz-fit-content;
@@ -1393,11 +1387,11 @@ input[type="range"]::-ms-fill-lower {
 .pr-2 {
   padding-right: 0.5rem;
 }
-.pr-4 {
-  padding-right: 1rem;
-}
 .pl-4 {
   padding-left: 1rem;
+}
+.pr-4 {
+  padding-right: 1rem;
 }
 .pl-16 {
   padding-left: 4rem;
@@ -1576,12 +1570,12 @@ input[type="range"]::-ms-fill-lower {
   line-height: 2.25rem;
 }
 
-.hover\:font-bold:hover {
-  font-weight: 700;
-}
-
 .hover\:font-semibold:hover {
   font-weight: 600;
+}
+
+.hover\:font-bold:hover {
+  font-weight: 700;
 }
 
 .hover\:text-white:hover {

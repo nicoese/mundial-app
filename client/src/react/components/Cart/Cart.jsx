@@ -54,8 +54,8 @@ const Cart = () => {
         let sizeValidation = productsInCart.map( p => p.hasOwnProperty('size')).includes(false)
         
         if (productsInCart.length !== 0 && !sizeValidation) {
-            console.log(`se envia:`, productsInCart);
-            /* dispatch(buyDetail(purchase)) */
+            // console.log(`se envia:`, productsInCart);
+            dispatch(buyDetail(purchase))
         } else {
             swal({
                 text: 'No olvides seleccionar el talle de tu producto',
