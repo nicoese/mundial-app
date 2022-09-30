@@ -18,6 +18,7 @@ import UserProfile from "./react/components/UserProfile/UserProfile";
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
 import InfoPersonal from "./react/components/InfoPersonal/InfoPersonal";
+import {UserBanner} from "./react/components/UserProfile/UserBanner";
 
 
 function About() {
@@ -59,13 +60,15 @@ function App() {
                     </ProtectedRoutes>
                 }/>
                 <Route path={'/purchases/failure'} element={<Cart/>}/>
-                <Route path={'/profile'} element={<ProtectedRoutes>
-                    <UserProfile />
-                </ProtectedRoutes>}/>
+                <Route path={'/profile'} element={<UserProfile />}>
+                    <Route path={''} element={<UserBanner />} />
+                    <Route path={'data'} element={<InfoPersonal />} />
+                    <Route path={'purchases'} element={<div className={'mt-48 text-3xl'}>Mis compras</div>} />
+                </Route>
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
                 </ProtectedRoutes>}/>
-                <Route path={'*'} element={<Landing />}/>
+                {/*<Route path={'*'} element={<Landing />}/>*/}
                 <Route path={'/infoPersonal'} element={<InfoPersonal/>}/>
             </Routes>
         </div>
