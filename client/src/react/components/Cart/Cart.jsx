@@ -4,7 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
 import {buyDetail, getProductsInCart, purchaseFailed, cleanCart} from "../../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
-import Swal from "sweetalert";
+import swal from "sweetalert";
 
 const Cart = () => {
     const [state, updateState] = useState(true);
@@ -20,7 +20,7 @@ const Cart = () => {
     useEffect(() => {
 
         if (purchaseStatus) {
-            Swal({
+            swal({
                 icon: 'error',
                 title: 'No se pudo realizar la compra :(',
                 button: 'Volver al carrito',
@@ -44,20 +44,26 @@ const Cart = () => {
         .reduce((a, b) => a + b)
 
     const handleClick = () => {
-
-
-
+        
         const purchase = {
             email: user.email,
             products: productsInCart,
             totalPrice: totalPrice
         }
-
-        if (productsInCart.length !== 0) {
-            dispatch(buyDetail(purchase))
+        
+        let sizeValidation = productsInCart.map( p => p.hasOwnProperty('size')).includes(false)
+        
+        if (productsInCart.length !== 0 && !sizeValidation) {
+            console.log(`se envia:`, productsInCart);
+            /* dispatch(buyDetail(purchase)) */
         } else {
-            alert("No tienes productos en tu carrito. Añade algunos!")
+            swal({
+                text: 'No olvides seleccionar el talle de tu producto',
+                icon: "warning",
+            });
         }
+
+
     }
 
     function delay(time) {
@@ -68,6 +74,7 @@ const Cart = () => {
         updateState(!state)
 
     }
+    
 
     return (
         <>
@@ -91,6 +98,7 @@ const Cart = () => {
                                     price={p.price}
                                     img={p.img}
                                     cantidad={p.cantidad}
+                                    stock={p.stock}
                                 />)
                         })}
                     </div>
@@ -118,7 +126,7 @@ const Cart = () => {
                         </div>
                     </div>
                 </main>
-                : <div className={'mt-48'}><h1 className={'text-2xl text-center mt-20'}>No tenes productos en el
+                : <div className={'mt-48'}><h1 className={'text-2xl text-center mt-20'}>No tienes productos en el
                     carrito</h1></div>}
         </>
     );

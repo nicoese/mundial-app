@@ -40,6 +40,10 @@ router.post('/add_to_cart', async (req,res,next)=>{
 
                  return {...e,cantidad: product.cantidad}
                 }
+                if(e.size !== product.size){
+
+                 return {...e,size: product.size}
+                }
             }
             return e
         })

@@ -7,7 +7,7 @@ import Swal from "sweetalert";
 import {useEffect, useState} from "react"; //solo para tomar las fuentes
 
 
-export const ProductCard = ({id, name, price, img, brand, stadium}) => {
+export const ProductCard = ({id, name, price, img, brand, stadium, stock}) => {
     const dispatch = useDispatch()
 
     //estado para el renderizado del corazon (like)
@@ -43,7 +43,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
             return Swal('Para realizar una compra deberas registrarte primero')
         }
 
-        dispatch(addToCart(user.email, {id, name, price, img, cantidad: 1}))
+        dispatch(addToCart(user.email, {id, name, price, img, cantidad: 1, stock}))
 
         if (!cart.find(e => e.id === id)) {
             Swal('Añadiste el Producto a tu carrito', '', 'success')

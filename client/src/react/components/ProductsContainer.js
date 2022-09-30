@@ -31,6 +31,8 @@ export const ProductsContainer = (props) => {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
 
+    console.log(currentProducts[0])
+
     return <div key={'ajslkdfjalskdfja'}
                 className={'w-full text-center flex flex-col items-center justify-center bg-[#f6f6f6] mt-24'}>
         {currentProducts.length > 0 ? <SortBy/> : <Spinner/>}
@@ -49,6 +51,7 @@ export const ProductsContainer = (props) => {
                             img={prod.img && prod.img}
                             brand={prod.brand}
                             stadium={prod.stadium}
+                            stock={prod.stock}
                         />
                     })}
                 </div> : null

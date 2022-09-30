@@ -1070,6 +1070,9 @@ input[type="range"]::-ms-fill-lower {
 .h-\[70px\] {
   height: 70px;
 }
+.h-2 {
+  height: 0.5rem;
+}
 .w-full {
   width: 100%;
 }
@@ -1166,6 +1169,9 @@ input[type="range"]::-ms-fill-lower {
 }
 .w-\[60\%\] {
   width: 60%;
+}
+.w-2 {
+  width: 0.5rem;
 }
 .min-w-fit {
   min-width: -moz-fit-content;

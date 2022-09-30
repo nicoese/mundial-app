@@ -3,23 +3,51 @@ import {useDispatch, useSelector} from "react-redux";
 import { addToCart, removeToCart } from "../../../redux/actions/index.js";
 import {useAuth0} from "@auth0/auth0-react";
 import swal from "sweetalert";
+import { useState } from "react";
 
 
-const CartDetailCard = ({ id, name, price, img, cantidad, isPurchase }) => {
+const CartDetailCard = ({ id, name, price, img, cantidad, stock, isPurchase }) => {
   const { user } = useAuth0()
   const dispatch = useDispatch()
   const productsInCart = useSelector(state => state.cart)
+  const [selectedSize, setSelectedSize] = useState('')
+  const [state, setState] = useState({id:'', active:false})
 
+  /* funcion para obtener el talle */
+  const sizes = Object.keys(stock)
+
+  const handleSize = (e)=>{
+    let buttonId =  e.target.id
+    let newSize = buttonId.slice(0,1) === 'X' ? 'XL': buttonId.slice(0,1);
+
+    let newAmount = productsInCart.filter( p => p.id === id )
+    let btn = document.getElementById(buttonId);
+    setSelectedSize(newSize)
+    setState({ id:buttonId, active:true })
+
+    dispatch(addToCart(user.email, { id: e.target.name, name, price, img, size: newSize, cantidad: newAmount[0].cantidad } ))
+
+    if((state.id === buttonId || state.id === '') && state.active === false){
+      btn.style.backgroundColor="#790729";
+      btn.style.color="#fff";
+    } else if(state.id !== buttonId && state.active === true){
+      let prevBtn = document.getElementById(state.id);
+      prevBtn.style.backgroundColor="#f6f6f6";
+      prevBtn.style.color="#790729";
+      btn.style.backgroundColor="#790729";
+      btn.style.color="#fff";
+    }
+  }
 
   const handleAddition = (e)=>{
     let newAmount = productsInCart.filter( p => p.id === e.target.id )
-    dispatch(addToCart(user.email, { id: e.target.id, name, price, img, cantidad: newAmount[0].cantidad + 1 } ))
+    dispatch(addToCart(user.email, { id: e.target.id, name, price, img, size:selectedSize, cantidad: newAmount[0].cantidad + 1 } ))
   }
 
   const handleSubtraction = (e)=>{
     let newAmount = productsInCart.filter( p => p.id === e.target.id )
     if(newAmount[0].cantidad !== 1){
-      dispatch(addToCart(user.email, { id: e.target.id, name, price, img, cantidad: newAmount[0].cantidad - 1 } ))
+      dispatch(addToCart(user.email, { id: e.target.id, name, price, img, size:selectedSize, cantidad: newAmount[0].cantidad - 1 } ))
     } else{
       swal({
         text: 'No puedes tener menos de un producto',
@@ -50,7 +78,14 @@ const CartDetailCard = ({ id, name, price, img, cantidad, isPurchase }) => {
         <p className="mb-2 px-3 text-xl sm:text-3xl font-bold sm:font-semibold text-[#790729]">
           {name}
         </p>
-        <div className="flex justify-between items-center mt-4 pr-4 pl-4 sm:pr-14">
+        <div id={id} className="flex w-full pl-4 items-center justify-start">
+          { sizes.map( size => {
+            return (
+              <button id={`${size}:${id}`} name={id} onClick={ e => handleSize(e)} className=" flex items-center justify-center h-5 w-5 px-3 mr-2 bg-transparent border-[1px] border-[#790729] text-[#790729] hover:font-semibold">{ size }</button>
+            )            
+          })}
+        </div>
+        <div className="flex justify-between items-center mt-2 pr-4 pl-4 sm:pr-14">
           <div className="flex items-center justify-center">
             {!isPurchase && <button onClick={(e) => handleSubtraction(e)} id={id}
                      className="flex items-center justify-center h-5 w-5 mx-2 rounded-md font-semibold text-xl text-white bg-[#790729] hover:bg-red-800">-</button>}
