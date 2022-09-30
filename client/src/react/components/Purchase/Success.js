@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useAuth0} from "@auth0/auth0-react";
 import {cleanCart, getLastPurchase} from "../../../redux/actions";
 import Confetti from "react-confetti";
-import CartDetailCard from "../Cart/CartDetailCard";
+import SuccessDetail from "../SuccessDetail/SuccessDetail";
 
 export const Success = () => {
 
@@ -55,7 +55,7 @@ export const Success = () => {
 
         {purchase && purchase.products.map(e => {
 
-            return <CartDetailCard
+            return <SuccessDetail
                 id={e.id}
                 name={e.name}
                 img={e.img}
@@ -63,7 +63,7 @@ export const Success = () => {
                 cantidad={e.cantidad}
                 isPurchase={true}
             >
-            </CartDetailCard>
+            </SuccessDetail>
         })
         }
             {purchase && <div className={'ml-[30%] font-bold text-2xl text-red-800 mb-[3%]'}>Precio Total :

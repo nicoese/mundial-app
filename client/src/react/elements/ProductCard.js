@@ -43,9 +43,9 @@ export const ProductCard = ({id, name, price, img, brand, stadium, stock}) => {
             return Swal('Para realizar una compra deberas registrarte primero')
         }
 
-        dispatch(addToCart(user.email, {id, name, price, img, cantidad: 1, stock}))
-
+        
         if (!cart.find(e => e.id === id)) {
+            dispatch(addToCart(user.email, {id, name, price, img, cantidad: 1, stock}))
             Swal('Añadiste el Producto a tu carrito', '', 'success')
         } else {
             Swal({

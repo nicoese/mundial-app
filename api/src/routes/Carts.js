@@ -21,7 +21,7 @@ router.post('/add_to_cart', async (req,res,next)=>{
                 products: [product]
             })
             let result = await cart.save()
-            return res.status(200).json(result)
+            return res.status(200).json(result.products)
         }
         
         // console.log(user[0].email)

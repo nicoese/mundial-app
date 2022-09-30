@@ -33,28 +33,30 @@ router.get('/last_purchase', async (req,res,next)=>{
         let result = await Purchase.find({email: email}).sort({"date": -1}).limit(1)
         // db.col.find().sort({"datetime": -1}).limit(1)
 
-        let setStatus = result[0].set({status: 'success'})
-
-        let success = await setStatus.save()
-
-        //APPLYING STOCK MODS PROCESS
-
-        stockController.applyStock(result[0].products)
-
-        // SENDING EMAIL PROCESS
-
-        let {products,totalPrice,_id} = result[0]
-
-        // console.log(result[0])
-
-        let mailed = await axios.post(`${process.env.API_URL}/mails/purchase_success`,
-        {
-            email: result[0].email,
-            products,
-            totalPrice,
-            id: _id
-        })
-
+        if(result[0].status !== "success"){
+            console.log('ENTRE TODO MAL')
+            let setStatus = result[0].set({status: 'success'})
+            let success = await setStatus.save()
+            
+            //APPLYING STOCK MODS PROCESS
+    
+            stockController.applyStock(result[0].products)
+    
+            // SENDING EMAIL PROCESS
+    
+            let {products,totalPrice,_id} = result[0]
+    
+            // console.log(result[0])
+    
+            let mailed = await axios.post(`${process.env.API_URL}/mails/purchase_success`,
+            {
+                email: result[0].email,
+                products,
+                totalPrice,
+                id: _id
+            })
+        }
+        
         return res.status(200).json(result);
 
     }catch(err){
