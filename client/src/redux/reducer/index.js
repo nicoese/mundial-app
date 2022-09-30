@@ -22,7 +22,8 @@ import {
     REMOVE_FROM_FAVORITES,
     PURCHASE_FAILED,
     GET_PRODUCT_REVIEWS,
-    CLEAR_PRODUCT_REVIEWS
+    CLEAR_PRODUCT_REVIEWS,
+    POST_NEWPRODUCT
 } from "../actions"
 
 
@@ -190,6 +191,10 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 productReviews: []
             }
+            case POST_NEWPRODUCT:
+                return {
+                    ...state
+                }
         default:
             return state
     }
