@@ -65,7 +65,7 @@ function App() {
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
                 </ProtectedRoutes>}/>
-                {/*<Route path={'*'} element={<NotFound/>}/>*/}
+                <Route path={'*'} element={<Landing />}/>
                 <Route path={'/infoPersonal'} element={<InfoPersonal/>}/>
             </Routes>
         </div>
