@@ -26,6 +26,7 @@ export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES"
 export const PURCHASE_FAILED = "PURCHASE_FAILED"
 export const GET_PRODUCT_REVIEWS = "GET_PRODUCT_REVIEWS"
 export const CLEAR_PRODUCT_REVIEWS = "CLEAR_PRODUCT_REVIEWS"
+export const POST_NEWPRODUCT = "POST_NEWPRODUCT"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -337,6 +338,13 @@ export const getReviews = (productId) => {
             })
     }
 }
+
+export const postNewProduct = (payload) => {
+    return async function () {
+        const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, payload)
+        return info
+    };
+};
 
 export const clearReviews = () => {
     return dispatch => {

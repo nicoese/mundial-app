@@ -43,10 +43,150 @@ async function detail (id) {
     }
 }
 
+const postProducts = async (produc) => {
+    let a = produc
+    if(a.type === 'jersey') {
+        if(!a.stock && !a.brand){
+            const product = new Products({
+             name: a.name,
+             price: a.price,
+             type: a.type,
+             img: a.img,
+             stock: {S:0,M:0,L:0,XL:0},
+             brand: 'Nike',
+             description: "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
+             stadium: a.stadium,
+             date: a.date,
+             sector: a.sector,
+            })
+            await product.save()
+        }
+        else if(!a.stock){
+         const product = new Products({
+          name: a.name,
+          price: a.price,
+          type: a.type,
+          img: a.img,
+          stock: {S:0,M:0,L:0,XL:0},
+          brand: a.brand,
+          description: "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
+          stadium: a.stadium,
+          date: a.date,
+          sector: a.sector,
+         })
+         await product.save()
+     } else if (!a.brand){
+             const product = new Products({
+              name: a.name,
+              price: a.price,
+              type: a.type,
+              img: a.img,
+              stock: a.stock,
+              brand: 'Nike',
+              description: "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
+              stadium: a.stadium,
+              date: a.date,
+              sector: a.sector,
+             })
+             await product.save()
+     } else {
+         const product = new Products({
+          name: a.name,
+          price: a.price,
+          type: a.type,
+          img: a.img,
+          stock: a.stock,
+          brand: a.brand,
+          description: "Camiseta del Mundial Qatar 2022. Millones de fanáticos alrededor del planeta ya empiezan a soñar con los partidos y pensar en cómo podría ser el camino de su equipo al máximo trofeo que existe en el plano futbolístico",
+          stadium: a.stadium,
+          date: a.date,
+          sector: a.sector,
+         })
+         await product.save()
+     }
+    } else if (a.type === 'accessory') {
+     if (!a.stock){
+             const product = new Products({
+              name: a.name,
+              price: a.price,
+              type: a.type,
+              img: a.img,
+              stock: {X:0},
+              brand: a.brand,
+              description: "Accesorio oficial del Mundial Qatar 2022",
+              stadium: a.stadium,
+              date: a.date,
+              sector: a.sector,
+             })
+             await product.save()
+     } else {
+         const product = new Products({
+             name: a.name,
+             price: a.price,
+             type: a.type,
+             img: a.img,
+             stock: a.stock,
+             brand: a.brand,
+             description: "Accesorio oficial del Mundial Qatar 2022",
+             stadium: a.stadium,
+             date: a.date,
+             sector: a.sector,
+            })
+            await product.save()
+     }
+    } else if (a.type === 'ticket'){
+     if (!a.sector) {
+         const product = new Products({
+             name: a.name,
+             price: a.price,
+             type: a.type,
+             img: a.img,
+             stock: a.stock,
+             brand: a.brand,
+             description: "Ticket oficial del Mundial Qatar 2022 ",
+             stadium: a.stadium,
+             date: a.date,
+             sector: "Category 3",
+            })
+            await product.save()
+     } else if (!a.stock){
+         const product = new Products({
+             name: a.name,
+             price: a.price,
+             type: a.type,
+             img: a.img,
+             stock: {X:0},
+             brand: a.brand,
+             description: "Ticket oficial del Mundial Qatar 2022 ",
+             stadium: a.stadium,
+             date: a.date,
+             sector: "Category 3",
+            })
+            await product.save()
+     } else {
+         const product = new Products({
+             name: a.name,
+             price: a.price,
+             type: a.type,
+             img: a.img,
+             stock: a.stock,
+             brand: a.brand,
+             description: "Ticket oficial del Mundial Qatar 2022 ",
+             stadium: a.stadium,
+             date: a.date,
+             sector: a.sector,
+            })
+            await product.save()
+     }
+    }
+
+}
+
 module.exports = {
     search,
     filter,
     detail,
+    postProducts,
 
 
 }
