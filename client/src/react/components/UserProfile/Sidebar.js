@@ -42,7 +42,7 @@ export const Sidebar = () => {
 
     return <>
 
-        <aside className="w-64 mt-24 border-2 min-w-[17%]" aria-label="Sidebar">
+        <aside className="w-64 mt-32 border-2 min-w-[17%]" aria-label="Sidebar">
             <div className="overflow-y-auto py-10 px-2 bg-gray-50 rounded dark:bg-gray-800">
                 <a className="flex items-center pl-2.5 mb-5 ml-3"
                     href={'/profile'}

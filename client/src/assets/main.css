@@ -1219,6 +1219,15 @@ input[type="range"]::-ms-fill-lower {
 .min-w-\[17\%\] {
   min-width: 17%;
 }
+.min-w-\[60\%\] {
+  min-width: 60%;
+}
+.min-w-\[80\%\] {
+  min-width: 80%;
+}
+.min-w-\[40\%\] {
+  min-width: 40%;
+}
 .max-w-sm {
   max-width: 24rem;
 }
@@ -1231,6 +1240,12 @@ input[type="range"]::-ms-fill-lower {
 .max-w-\[65\%\] {
   max-width: 65%;
 }
+.max-w-\[40\%\] {
+  max-width: 40%;
+}
+.max-w-\[60\%\] {
+  max-width: 60%;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1242,12 +1257,6 @@ input[type="range"]::-ms-fill-lower {
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -1307,6 +1316,9 @@ input[type="range"]::-ms-fill-lower {
 .divide-gray-100 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-divide-opacity));
+}
+.self-end {
+  align-self: flex-end;
 }
 .self-center {
   align-self: center;
@@ -1438,11 +1450,23 @@ input[type="range"]::-ms-fill-lower {
 .p-1 {
   padding: 0.25rem;
 }
+.p-20 {
+  padding: 5rem;
+}
 .p-6 {
   padding: 1.5rem;
 }
-.p-20 {
-  padding: 5rem;
+.p-32 {
+  padding: 8rem;
+}
+.p-40 {
+  padding: 10rem;
+}
+.p-28 {
+  padding: 7rem;
+}
+.p-24 {
+  padding: 6rem;
 }
 .py-1 {
   padding-top: 0.25rem;
@@ -1487,6 +1511,14 @@ input[type="range"]::-ms-fill-lower {
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
+}
+.px-28 {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
 }
 .pl-1 {
   padding-left: 0.25rem;
@@ -1643,6 +1675,10 @@ input[type="range"]::-ms-fill-lower {
   --tw-text-opacity: 1;
   color: rgb(155 28 28 / var(--tw-text-opacity));
 }
+.text-zinc-700 {
+  --tw-text-opacity: 1;
+  color: rgb(63 63 70 / var(--tw-text-opacity));
+}
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -1650,17 +1686,6 @@ input[type="range"]::-ms-fill-lower {
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
-}
-.text-zinc-800 {
-  --tw-text-opacity: 1;
-  color: rgb(39 39 42 / var(--tw-text-opacity));
-}
-.text-zinc-700 {
-  --tw-text-opacity: 1;
-  color: rgb(63 63 70 / var(--tw-text-opacity));
-}
-.underline {
-  text-decoration-line: underline;
 }
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
