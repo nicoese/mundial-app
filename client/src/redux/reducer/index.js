@@ -42,7 +42,9 @@ const initialState = {
     mp_link: '',
     favorites: [],
     productReviews: [],
-    cart: []
+    cart: [],
+    userPurchases: [],
+    userReviews: []
 }
 
 

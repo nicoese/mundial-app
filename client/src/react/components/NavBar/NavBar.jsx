@@ -42,7 +42,7 @@ const NavBar = () => {
         <nav className="navbar-ctn shadow-md">
           <h1 onClick={(ev) => navigate('/')} className="navbar-title">MundiApp</h1>
           <ul className="navbar-ul">
-            <Link to={"/products"} className="navbar-a"><li className="navbar-li">Productos</li></Link>
+            <Link to={"/products"} className="navbar-a"><li className="navbar-li">Inicio</li></Link>
             <Link to={"/cart"} className="navbar-a"><li className="navbar-li">Carrito</li></Link>
             <Link to={'/nosotros'} className="navbar-a"><li className="navbar-li">Nosotros</li></Link>
             <Link to={'/blogInfo'} className="navbar-a"><li className="navbar-li">Info</li></Link>

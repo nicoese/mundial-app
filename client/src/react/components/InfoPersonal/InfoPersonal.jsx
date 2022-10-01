@@ -40,7 +40,7 @@ export default function InfoPersonal(){
                  <div className={s.divTwo}>
                      <div className={s.divCorreo}>
                        <label htmlFor="mail">Correo</label>
-                       <input className={s.inpEmail} type="email" disabled  placeholder={user.email} />
+                       <input className={s.inpEmail} type="email" disabled  placeholder={user && user.email} />
                      </div>
                      <div className={s.divDepartment}>
                        <label htmlFor="departament">Departamento</label>

@@ -18,6 +18,11 @@ import UserProfile from "./react/components/UserProfile/UserProfile";
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
 import InfoPersonal from "./react/components/InfoPersonal/InfoPersonal";
+import {UserBanner} from "./react/components/UserProfile/UserBanner";
+import {Logout} from "./react/elements/Logout";
+import {PurchaseContainer} from "./react/components/Purchase/PurchaseContainer";
+import {ReviewSection} from "./react/components/ReviewSection/ReviewSection";
+import {UserReviews} from "./react/components/ReviewSection/UserReviews";
 
 
 function About() {
@@ -59,13 +64,17 @@ function App() {
                     </ProtectedRoutes>
                 }/>
                 <Route path={'/purchases/failure'} element={<Cart/>}/>
-                <Route path={'/profile'} element={<ProtectedRoutes>
-                    <UserProfile />
-                </ProtectedRoutes>}/>
+                <Route path={'/profile'} element={<UserProfile />}>
+                    <Route path={''} element={<UserBanner />} />
+                    <Route path={'data'} element={<InfoPersonal />} />
+                    <Route path={'purchases'} element={<PurchaseContainer />} />
+                    <Route path={'reviews'} element={<UserReviews />} />
+                </Route>
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
                 </ProtectedRoutes>}/>
-                {/*<Route path={'*'} element={<NotFound/>}/>*/}
+                <Route path={'/logout'} element={<Logout />}/>
+                <Route path={'*'} element={<Landing />}/>
                 <Route path={'/infoPersonal'} element={<InfoPersonal/>}/>
             </Routes>
         </div>
