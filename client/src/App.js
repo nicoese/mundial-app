@@ -23,6 +23,8 @@ import {Logout} from "./react/elements/Logout";
 import {PurchaseContainer} from "./react/components/Purchase/PurchaseContainer";
 import {ReviewSection} from "./react/components/ReviewSection/ReviewSection";
 import {UserReviews} from "./react/components/ReviewSection/UserReviews";
+import Board from "./react/components/AdminDash/Board";
+import Users from "./react/components/AdminDash/views/Users";
 
 
 function About() {
@@ -76,6 +78,9 @@ function App() {
                 <Route path={'/logout'} element={<Logout />}/>
                 <Route path={'*'} element={<Landing />}/>
                 <Route path={'/infoPersonal'} element={<InfoPersonal/>}/>
+                <Route path={'/admin'} element={<Board/>}>
+                    <Route path={'users'} element={<Users />} />
+                </Route>
             </Routes>
         </div>
     )
