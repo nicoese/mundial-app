@@ -13,6 +13,7 @@ const favoritesRoute = require('./Favorites')
 const cartsRoute = require('./Carts')
 const mailsRoute = require('./Mails')
 const info_usersRoute = require('./Info_user')
+const reviewsRoute = require('./Reviews')
 
 
 
@@ -28,6 +29,7 @@ router.use('/favorites',favoritesRoute)
 router.use('/carts',cartsRoute)
 router.use('/mails',mailsRoute)
 router.use('/info',info_usersRoute)
+router.use('/reviews',reviewsRoute)
 
 
 
