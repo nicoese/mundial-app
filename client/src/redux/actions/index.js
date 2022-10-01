@@ -27,6 +27,9 @@ export const PURCHASE_FAILED = "PURCHASE_FAILED"
 export const GET_PRODUCT_REVIEWS = "GET_PRODUCT_REVIEWS"
 export const CLEAR_PRODUCT_REVIEWS = "CLEAR_PRODUCT_REVIEWS"
 export const POST_NEWPRODUCT = "POST_NEWPRODUCT"
+export const GET_ALL_PURCHASES_BY_USER_EMAIL = "GET_ALL_PURCHASES_BY_USER_EMAIL"
+export const GET_ALL_REVIEWS_BY_USER_EMAIL = "GET_ALL_REVIEWS_BY_USER_EMAIL"
+export const GET_ALL_REVIEWS_BY_PRODUCT_ID = "GET_ALL_REVIEWS_BY_PRODUCT_ID"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -353,3 +356,45 @@ export const clearReviews = () => {
         })
     }
 }
+
+export const getAllPurchasesByUserEmail = (userEmail) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/purchases/all?userEmail=${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type: GET_ALL_PURCHASES_BY_USER_EMAIL,
+                    payload: json.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
+}
+
+export const getAllReviewsByUserEmail = (userEmail) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/reviews?email=${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type:GET_ALL_REVIEWS_BY_USER_EMAIL,
+                    payload: json.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
+}
+export const getAllReviewsByProductId = (productId) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/reviews?id=${productId}`)
+            .then(json => {
+                return dispatch({
+                    type:GET_ALL_REVIEWS_BY_PRODUCT_ID,
+                    payload: json.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
+}
+
+

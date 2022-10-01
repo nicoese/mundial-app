@@ -1,3 +1,4 @@
+import {Link} from "@material-ui/core";
 
 
 export const PurchaseCard = ({userEmail, purchaseId, products, totalPrice,}) => {
@@ -8,10 +9,13 @@ export const PurchaseCard = ({userEmail, purchaseId, products, totalPrice,}) => 
         <p>{purchaseId}</p>
         {
             products.map(e => {
-                return <p>{e.name}</p>
+                return <div className={'flex'}>
+                    <p className={'p-5'}>{e.name}</p>
+                    <Link className={'p-5'} to={'#'}>anadir resena</Link>
+                </div>
             })
         }
         <p>{totalPrice}</p>
-
+        ------------------
     </>
 }

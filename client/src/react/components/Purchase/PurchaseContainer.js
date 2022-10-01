@@ -2,6 +2,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {PurchaseCard} from "./PurchaseCard";
+import {getAllPurchasesByUserEmail} from "../../../redux/actions";
 
 
 export const PurchaseContainer = () => {
@@ -12,9 +13,9 @@ export const PurchaseContainer = () => {
 
     useEffect(() => {
 
-        // user && dispatch(getAllPurchasesByEmail(user.email))
+        user && dispatch(getAllPurchasesByUserEmail(user.email))
 
-    }, []);
+    }, [user]);
 
 
     return <>
