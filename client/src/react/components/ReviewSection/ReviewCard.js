@@ -48,8 +48,8 @@ export const ReviewCard = ({title, rating, content, img, username, date, likes, 
             <p className={'max-w-[55%] font-["Lato"] text-lg py-5'}>
                 {content}
             </p>
-            <img className={'self-center px-10 rounded-[50%] w-32'}
-                 src={img} alt={title}/>
+            {/*<img className={'self-center px-10 rounded-[50%] w-32'}*/}
+            {/*     src={img} alt={title}/>*/}
         </div>
         <p className={'font-semibold text-zinc-500'}>{username} | {new Date(date).toLocaleString()}</p>
         <div className={'flex justify-center'}>
