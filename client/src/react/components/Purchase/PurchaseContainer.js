@@ -7,7 +7,7 @@ import {PurchaseCard} from "./PurchaseCard";
 export const PurchaseContainer = () => {
 
     const {user} = useAuth0()
-    const {purchases} = useSelector(state => state)
+    const {userPurchases} = useSelector(state => state)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -18,15 +18,20 @@ export const PurchaseContainer = () => {
 
 
     return <>
-        <div className={'grid grid-cols-1'}>
-            {purchases.length > 0 && purchases.map(e => {
-                return <PurchaseCard
+        <div className={'flex flex-col'}>
+        <h2 className={'text-xl mt-32'}>Mis compras</h2>
+        {userPurchases.length > 0 ? userPurchases.map(e => {
+            return <div className={'grid grid-cols-1'}>
+                <PurchaseCard
                     userEmail={user && user.email}
                     purchaseId={e.id}
                     products={e.products}
                     totalPrice={e.totalPrice}
                 />
-            })}
+            </div>
+
+        }) : <div >No tenes compras realizadas</div>
+        }
         </div>
     </>
 }
