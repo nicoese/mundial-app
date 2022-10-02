@@ -1,17 +1,17 @@
 import React from "react";
 import ProfileWidget from "../ProfileWidget/ProfileWidget";
 import SideBar from "./SideBar";
-import Users from "./views/Users";
+import { Outlet } from "react-router";
 
 const Board = () => {
   return ( 
     <>
-      <div className="sticky top-0 z-100 w-full h-[50px] bg-[#f6f6f6] shadow-sm">
+      <div className="sticky top-0 z-100 w-full h-[70px] bg-[#f6f6f6] shadow-md">
         <div className="flex h-full px-[20px] items-center justify-between">
-          <div>
-            <h1>Mundiapp</h1>
+          <div className="ml-4">
+            <h1 className="text-4xl text-[#790729] font-semibold">Mundiapp</h1>
           </div>
-          <div>
+          <div className="mr-4">
             <ProfileWidget />
           </div>
         </div>
@@ -21,7 +21,7 @@ const Board = () => {
           <SideBar />
         {/* </div> */}
         <div className="flex flex-[4] bg-red-200 items-center justify-center">
-          <Users />
+          <Outlet />
         </div>
       </div>
     </>
