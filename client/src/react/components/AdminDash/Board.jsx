@@ -11,7 +11,7 @@ const Board = () => {
           <div className="ml-4">
             <h1 className="text-4xl text-[#790729] font-semibold">Mundiapp</h1>
           </div>
-          <div className="mr-4">
+          <div className="mr-6">
             <ProfileWidget />
           </div>
         </div>
