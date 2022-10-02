@@ -18,7 +18,7 @@ const Board = () => {
       </div>
       <div className="flex">
         <SideBar />
-        <div className="flex flex-[4] bg-red-200 items-center justify-center">
+        <div className="flex flex-[4] items-center justify-center">
           <Outlet />
         </div>
       </div>

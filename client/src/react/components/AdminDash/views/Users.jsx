@@ -42,15 +42,14 @@ const Users = () => {
 
   return (
     users ?
-    <div className='flex flex-4 items-center justify-center h-[100vh] bg-red-200 '>
+    <div className=''>
       <DataGrid className='w-[80vw]'
         rows={users}
         columns={newColumns}
-        pageSize={20}
-        rowsPerPageOptions={[10]}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
         // checkboxSelection 
       />
-      {/* Users */}
     </div>: null
   )
 }
