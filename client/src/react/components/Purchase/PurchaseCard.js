@@ -18,19 +18,28 @@ export const PurchaseCard = ({user, purchaseId, products, totalPrice, date}) => 
                 </div>
             </div>
 
+
+            <div className={'flex flex-col p-7'}>
+
             {
                 products.map(e => {
-                    return <div className={'flex'}>
+                    return <div className={'flex justify-between'}>
+                        <img src={e.img} className={'rounded-[50%] w-10 h-10 self-center'} alt=""/>
                         <p className={'p-5'}>{e.name}</p>
                         <p className={'p-5'}>x{e.cantidad}</p>
                         <Link className={'p-5'} to={'#'}>anadir resena</Link>
-                        <p className={'p-5'}>${e.price}</p>
-
+                        <p className={'p-5 flex self-end justify-end'}>${e.price}</p>
                     </div>
+
                 })
             }
+
+        </div>
+
             <p className={'self-end'}>Total: ${totalPrice}</p>
-            ------------------
+            <p className={'mb-14 mt-4'}>
+                ------------------------------------------------------------------------------
+            </p>
         </div>
 
     </>
