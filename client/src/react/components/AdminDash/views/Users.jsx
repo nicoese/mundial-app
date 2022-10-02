@@ -22,9 +22,8 @@ const Users = () => {
 
 
   const newColumns = [
-    { field: 'name', headerName: 'Name', width: 270 },
-    { field: 'email', headerName: 'Email', width: 100 },
-    { field: 'email_verified', headerName: 'Verified', width: 100},
+    // { field: 'name', headerName: 'Name', width: 270 },
+    { field: 'email', headerName: 'Email', width: 250 },
     { field: 'img', headerName: 'Image', width: 90, renderCell: (params) => {
           return (
             <>
@@ -34,6 +33,7 @@ const Users = () => {
           );
         }
     },
+    { field: 'email_verified', headerName: 'Verified', width: 80},
     {field: 'editar',headerName: 'Editar', width: 70, renderCell: ()=><EditIcon className='text-red-600 bg-gray-500 rounded-md' fontSize='large' />},
     {field: 'eliminar',headerName: 'Eliminar', width: 70, renderCell: ()=><DeleteRoundedIcon className='text-red-600 bg-gray-500 rounded-md' fontSize='large' />},
 
