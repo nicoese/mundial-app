@@ -37,7 +37,7 @@ export const PurchaseCard = ({user, purchaseId, products, totalPrice, date}) => 
         </div>
 
             <p className={'self-end'}>Total: ${totalPrice}</p>
-            <p className={'mb-14 mt-4'}>
+            <p className={'mb-14 mt-4 self-center'}>
                 ------------------------------------------------------------------------------
             </p>
         </div>
