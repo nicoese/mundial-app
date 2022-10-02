@@ -17,15 +17,12 @@ const Board = () => {
         </div>
       </div>
       <div className="flex">
-        {/* <div className="sticky top-[50px] flex flex-1 z-50 h-[10000px] bg-green-300"> */}
-          <SideBar />
-        {/* </div> */}
+        <SideBar />
         <div className="flex flex-[4] bg-red-200 items-center justify-center">
           <Outlet />
         </div>
       </div>
     </>
-
   );
 };
 
