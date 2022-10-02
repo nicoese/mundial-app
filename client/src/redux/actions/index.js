@@ -27,6 +27,7 @@ export const PURCHASE_FAILED = "PURCHASE_FAILED"
 export const GET_PRODUCT_REVIEWS = "GET_PRODUCT_REVIEWS"
 export const CLEAR_PRODUCT_REVIEWS = "CLEAR_PRODUCT_REVIEWS"
 export const POST_NEWPRODUCT = "POST_NEWPRODUCT"
+export const GET_ALL_USERS = "GET_ALL_USERS"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -351,5 +352,20 @@ export const clearReviews = () => {
         return dispatch({
             type: CLEAR_PRODUCT_REVIEWS
         })
+    }
+}
+
+export const getAllUsers = () =>{
+    try{
+        return async dispatch =>{
+            let response = await axios.get(`${REACT_APP_API_URL}/users`)
+            dispatch({
+                type: GET_ALL_USERS,
+                payload: response.data
+            })
+        }
+
+    }catch(err){
+        console.log(err)
     }
 }

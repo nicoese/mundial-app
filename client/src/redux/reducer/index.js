@@ -23,7 +23,8 @@ import {
     PURCHASE_FAILED,
     GET_PRODUCT_REVIEWS,
     CLEAR_PRODUCT_REVIEWS,
-    POST_NEWPRODUCT
+    POST_NEWPRODUCT,
+    GET_ALL_USERS
 } from "../actions"
 
 
@@ -44,7 +45,8 @@ const initialState = {
     productReviews: [],
     cart: [],
     userPurchases: [],
-    userReviews: []
+    userReviews: [],
+    users: []
 }
 
 
@@ -196,6 +198,11 @@ export const rootReducer = (state = initialState, action) => {
             case POST_NEWPRODUCT:
                 return {
                     ...state
+                }
+            case GET_ALL_USERS:
+                return{
+                    ...state,
+                    users: action.payload
                 }
         default:
             return state

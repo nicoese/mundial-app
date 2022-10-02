@@ -4,6 +4,9 @@ const Purchase = require('../models/purchases')
 const User = require('../models/users');
 
 router.get('/', async (req,res,next)=>{
+
+    //cuando me hago este get podria traerme la info de info_user?? y mando todo junto?
+    // tambien depende de si hay info ahi o no...
     try{
         let result = await User.find()
         res.status(200).json(result)
@@ -30,7 +33,6 @@ router.delete('/delete_user', async (req,res,next)=>{
     try {
         const {userId} = req.params
         let found = await User.findByIdAndDelete(userId)
-
         res.status(200).json(found)
     }catch(err){
         next(err)

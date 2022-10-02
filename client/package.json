@@ -10,6 +10,7 @@
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.7",
+    "@mui/x-data-grid": "^5.17.5",
     "@testing-library/jest-dom": "5.11.10",
     "@testing-library/react": "11.2.6",
     "@testing-library/user-event": "13.1.1",

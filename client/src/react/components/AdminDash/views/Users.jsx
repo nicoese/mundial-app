@@ -1,50 +1,57 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import EditIcon from '@mui/icons-material/Edit';
+import Avatar from '@mui/material/Avatar';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import {DataGrid} from '@mui/x-data-grid'
+import { getAllUsers } from '../../../../redux/actions';
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 90,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
-];
-
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
 
 const Users = () => {
+  
+  let users = useSelector(state => state.users)
+  let dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllUsers())
+  }, [])
+  
+  //deberia hacer un Use effect y me traigo todos los users
+  // ... cosa a tener en cuenta... los usuarios de google no estan.
+  // podria traeme la info personal tambien...
+
+
+  const newColumns = [
+    { field: 'name', headerName: 'Name', width: 270 },
+    { field: 'email', headerName: 'Email', width: 100 },
+    { field: 'email_verified', headerName: 'Verified', width: 100},
+    { field: 'img', headerName: 'Image', width: 90, renderCell: (params) => {
+          return (
+            <>
+              {/* {<img className='w-10' src={params.value}></img>} */}
+              <Avatar src={params.value}/>
+            </>
+          );
+        }
+    },
+    {field: 'editar',headerName: 'Editar', width: 70, renderCell: ()=><EditIcon className='text-red-600 bg-gray-500 rounded-md' fontSize='large' />},
+    {field: 'eliminar',headerName: 'Eliminar', width: 70, renderCell: ()=><DeleteRoundedIcon className='text-red-600 bg-gray-500 rounded-md' fontSize='large' />},
+
+
+  ];
+
   return (
+    users ?
     <div className='flex flex-4 items-center justify-center h-[100vh] bg-red-200 '>
-      {/* <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      /> */}
-      Users
-    </div>
+      <DataGrid className='w-[80vw]'
+        rows={users}
+        columns={newColumns}
+        pageSize={20}
+        rowsPerPageOptions={[10]}
+        // checkboxSelection 
+      />
+      {/* Users */}
+    </div>: null
   )
 }
 

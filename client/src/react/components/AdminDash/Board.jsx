@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileWidget from "../ProfileWidget/ProfileWidget";
 import SideBar from "./SideBar";
+import Products from "./views/Products";
 import Users from "./views/Users";
 
 const Board = () => {
@@ -22,6 +23,7 @@ const Board = () => {
         {/* </div> */}
         <div className="flex flex-[4] bg-red-200 items-center justify-center">
           <Users />
+          {/* <Products/> */}
         </div>
       </div>
     </>
