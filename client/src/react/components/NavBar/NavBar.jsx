@@ -95,42 +95,42 @@ const NavBar = () => {
                  className="hidden absolute z-10 w-28 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
               <ul className="py-1 text-sm text-gray-700 dark:text-gray-200"
                   aria-labelledby="dropdownDefault">
-                <li>
                   <Link to={'/profile'}>
+                <li>
                     <a className="block py-2 px-4 hover:bg-gray-100
                                         dark:hover:bg-gray-600 dark:hover:text-white">Perfil</a>
-                  </Link>
                 </li>
-                <li>
+                  </Link>
                   <Link to={'/infoPersonal'}>
+                <li>
                     <a className="block py-2 px-4 hover:bg-gray-100
                                         dark:hover:bg-gray-600 dark:hover:text-white">Datos Personales</a>
-                  </Link>
                 </li>
-                <li >
+                  </Link>
                   <Link to={'/cart'}>
+                <li >
                     <a className="block py-2 px-4 hover:bg-gray-100
                                         dark:hover:bg-gray-600 dark:hover:text-white">Mi carrito</a>
-                  </Link>
                 </li>
-                <li >
+                  </Link>
                   <Link to={'/wishlist'}>
+                <li >
                     <a className="block py-2 px-4 hover:bg-gray-100
                                         dark:hover:bg-gray-600 dark:hover:text-white">Favoritos</a>
-                  </Link>
                 </li>
+                  </Link>
 
+                  <Link>
                 <li onClick={() => {
                   logout()
                 }}>
 
-                  <Link>
                     <a onClick={() => {
                       logout()
                     }} className="block py-2 px-4 hover:bg-gray-100
                                         dark:hover:bg-gray-600 dark:hover:text-white">Salir</a>
-                  </Link>
                 </li>
+                  </Link>
 
               </ul>
             </div>
