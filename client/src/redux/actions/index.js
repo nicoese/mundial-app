@@ -426,6 +426,8 @@ export const addUserToDb = (user) =>{
         }catch(err){
             console.log(err)
         }
+    }
+}
 
 export const getAllPurchasesByUserEmail = (userEmail) => {
     return async dispatch => {

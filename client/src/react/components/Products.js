@@ -11,7 +11,7 @@ export const Products = () => {
     let dispatch = useDispatch()
     let dbUsers = useSelector(state=> state.users)
 
-    if(!dbUsers.find(u=>u.email === user.email)){
+    if(!dbUsers?.find(u=>u.email === user?.email)){
         dispatch(addUserToDb(user))
     }
 
