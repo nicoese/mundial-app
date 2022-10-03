@@ -39,6 +39,30 @@ router.delete('/delete_user', async (req,res,next)=>{
     }
 })
 
+router.post('/add_user_to_db', async (req,res,next)=>{
+    try{
+        const {name , email, role, picture, email_verified} = req.body.user
+
+        let found = await User.find({email})
+        if(found.length > 0 ) return res.status(400).send('user already in db')
+
+        let newUser = new User({
+            name,
+            email,
+            role,
+            picture,
+            email_verified
+        })
+
+        let saved = await newUser.save()
+
+        console.log(saved)
+
+        return res.send(saved)
+    }catch(err){
+        next(err)
+    }
+})
 
 
 

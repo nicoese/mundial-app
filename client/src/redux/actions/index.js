@@ -20,6 +20,7 @@ export const CLEAR_DETAILS_ERROR = 'CLEAR_DETAILS_ERROR'
 export const CLEAR_PRODUCTS_ERROR = 'CLEAR_PRODUCTS_ERROR'
 export const DISPATCH_PURCHASE = "DISPATCH_PURCHASE"
 export const GET_LAST_PURCHASE = "GET_LAST_PURCHASE"
+export const GET_ALL_PURCHASES = "GET_ALL_PURCHASES";
 export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES"
 export const GET_FAVORITES = "GET_FAVORITES"
 export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES"
@@ -28,7 +29,8 @@ export const GET_PRODUCT_REVIEWS = "GET_PRODUCT_REVIEWS"
 export const CLEAR_PRODUCT_REVIEWS = "CLEAR_PRODUCT_REVIEWS"
 export const POST_NEWPRODUCT = "POST_NEWPRODUCT"
 export const GET_ALL_USERS = "GET_ALL_USERS"
-export const DELETE_USER = "DELETE_USER"; 
+export const DELETE_USER = "DELETE_USER";
+export const ADD_USER_TO_DB =  "ADD_USER_TO_DB";
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -326,6 +328,20 @@ export const purchaseFailed = (userEmail) => {
     }
 }
 
+export const getAllPurchases = () =>{
+    try{
+        return async (dispatch) =>{
+            let result = await axios.get(`${REACT_APP_API_URL}/purchases`)
+            dispatch({
+                type: GET_ALL_PURCHASES,
+                payload: result.data
+            })
+        }
+    }catch(err){
+        console.log(err)
+    }
+}
+
 export const getReviews = (productId) => {
     return async dispatch => {
         return axios.get(`${REACT_APP_API_URL}/reviews?id=${productId}`)
@@ -342,10 +358,15 @@ export const getReviews = (productId) => {
 }
 
 export const postNewProduct = (payload) => {
-    return async function () {
-        const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, payload)
-        return info
-    };
+    try{
+        return async function () {
+            const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, payload)
+            return info
+        };
+    }catch(err){
+        console.log(err)
+    }
+   
 };
 
 export const clearReviews = () => {
@@ -374,7 +395,8 @@ export const getAllUsers = () =>{
 export const delete_user = (userEmail) =>{
     try{
         return async dispatch =>{
-            let response = await axios.delete(`http://localhost:3001/users/delete_user?email=${userEmail}`);
+            
+            await axios.delete(`${REACT_APP_API_URL}/users/delete_user?email=${userEmail}`);
 
             dispatch({
                 type: DELETE_USER,
@@ -384,4 +406,19 @@ export const delete_user = (userEmail) =>{
     }catch(err){
         console.log(err)
     }
+}
+
+export const addUserToDb = (user) =>{
+    try{
+        return async dispatch =>{
+            let response = await axios.post(`${REACT_APP_API_URL}/users/add_user_to_db`,{user});
+            dispatch({
+                type: ADD_USER_TO_DB,
+                payload: response.data
+            })
+        }
+    }catch(err){
+        console.log(err)
+    }
+
 }

@@ -14,6 +14,8 @@ export const ProductsContainer = (props) => {
     const {user, isAuthenticated} = useAuth0()
     const {productsError, currentProducts, currentPage} = useSelector(state => state)
 
+    // console.log(user)
+
     useEffect(() => {
 
         delay(1500).then(() => {

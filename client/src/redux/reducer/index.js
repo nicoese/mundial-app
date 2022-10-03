@@ -25,7 +25,9 @@ import {
     CLEAR_PRODUCT_REVIEWS,
     POST_NEWPRODUCT,
     GET_ALL_USERS,
-    DELETE_USER
+    DELETE_USER,
+    GET_ALL_PURCHASES,
+    ADD_USER_TO_DB
 } from "../actions"
 
 
@@ -41,6 +43,7 @@ const initialState = {
     detailsError: '',
     purchase: {},
     purchaseStatus: '',
+    allPurchases: [],
     mp_link: '',
     favorites: [],
     productReviews: [],
@@ -165,6 +168,11 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 purchase: action.payload
             }
+        case GET_ALL_PURCHASES:
+            return{
+                ...state,
+                allPurchases: action.payload
+            }
         case ADD_TO_FAVORITES:
             console.log(action.payload)
             return {
@@ -209,6 +217,11 @@ export const rootReducer = (state = initialState, action) => {
                 return{
                     ...state,
                     users: state.users.filter(u=> u.email !== action.payload)
+                }
+            case ADD_USER_TO_DB:
+                return{
+                    ...state,
+                    user: [...state.users , action.payload]
                 }
         default:
             return state

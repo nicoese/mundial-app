@@ -4,7 +4,7 @@ import "./assets/tailwind.css";
 import {Route, Routes} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {getAllProducts, getFavorites, setCurrentProducts} from "./redux/actions";
+import {getAllProducts, getAllUsers, getFavorites, setCurrentProducts} from "./redux/actions";
 import Landing from "./react/components/Landing/Landing.jsx";
 import {Products} from "./react/components/Products";
 import Details from "./react/components/Details/Details";
@@ -26,6 +26,7 @@ import {UserReviews} from "./react/components/ReviewSection/UserReviews";
 import Board from "./react/components/AdminDash/Board";
 import Users from "./react/components/AdminDash/views/Users";
 import AdminProducts from "./react/components/AdminDash/views/Products";
+import AdminPurchases from "./react/components/AdminDash/views/Purchases"
 
 
 function About() {
@@ -44,6 +45,7 @@ function App() {
         delay(2000).then((e) => {
             dispatch(setCurrentProducts());
         });
+        dispatch(getAllUsers())
     },[dispatch]);
 
     function delay(time) {
@@ -82,6 +84,8 @@ function App() {
                 <Route path={'/admin'} element={<Board/>}>
                     <Route path={'users'} element={<Users />} />
                     <Route path={'products'} element={<AdminProducts />} />
+                    <Route path={'purchases'} element={<AdminPurchases/>} />
+
                 </Route>
             </Routes>
         </div>

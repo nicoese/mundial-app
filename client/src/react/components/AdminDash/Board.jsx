@@ -3,7 +3,6 @@ import ProfileWidget from "../ProfileWidget/ProfileWidget";
 import SideBar from "./SideBar";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Outlet} from "react-router";
-import {Navigate} from 'react-router-dom'
 import MiniSpinner from "../MiniSpinner/MiniSpinner";
 
 const Board = () => {
