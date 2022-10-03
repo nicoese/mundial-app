@@ -111,6 +111,7 @@ export function getDetails(id) {
     return async function (dispatch) {
         try {
             const json = await axios.get(`${REACT_APP_API_URL}/products/` + id);
+
             dispatch({
                 type: GET_DETAILS,
                 payload: json.data,
