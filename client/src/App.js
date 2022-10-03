@@ -23,6 +23,7 @@ import {Logout} from "./react/elements/Logout";
 import {PurchaseContainer} from "./react/components/Purchase/PurchaseContainer";
 import {ReviewSection} from "./react/components/ReviewSection/ReviewSection";
 import {UserReviews} from "./react/components/ReviewSection/UserReviews";
+import {ReviewForm} from "./react/components/ReviewSection/ReviewForm";
 
 
 function About() {
@@ -69,6 +70,7 @@ function App() {
                     <Route path={'data'} element={<InfoPersonal />} />
                     <Route path={'purchases'} element={<PurchaseContainer />} />
                     <Route path={'reviews'} element={<UserReviews />} />
+                    <Route path={'add-review/:productId'} element={<ReviewForm />} />
                 </Route>
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
