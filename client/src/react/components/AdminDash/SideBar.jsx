@@ -4,7 +4,7 @@ import { FaUsers } from 'react-icons/fa'
 
 const SideBar = () => {
   return (
-    <div className='fixed top-[70px] z-0 w-[200px] h-[90vh] px-4 shadow-md'>
+    <div className='sticky top-[70px] z-0 w-[200px] h-[90vh] px-4 shadow-md'>
       <div className='flex items-center justify-center h-full w-full'>
         <div className='flex flex-col w-[80%] h-[150px]'>
           <h3 className='flex items-center h-[30px] pl-2 text-gray-400 font-bold'>Panel</h3>

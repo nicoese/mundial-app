@@ -35,12 +35,13 @@ const newColumns = [
     ];
 
     return (
-    <div className=''>
-        <DataGrid className='w-[80vw]'
+    <div className='w-[80%]'>
+        <DataGrid 
         rows={prods}
         columns={newColumns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={12}
+        rowsPerPageOptions={[12]}
+        autoHeight
         // checkboxSelection 
         />
         {/* Products */}

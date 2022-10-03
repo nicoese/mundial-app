@@ -13,7 +13,7 @@ const ProfileWidget = () => {
     <>
       {!isAuthenticated && (
         <div onClick={loginWithRedirect} className="li-inicioSesion">
-          Login
+          Ingresa
         </div>
       )}
 

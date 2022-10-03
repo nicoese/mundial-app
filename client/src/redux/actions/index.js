@@ -28,6 +28,7 @@ export const GET_PRODUCT_REVIEWS = "GET_PRODUCT_REVIEWS"
 export const CLEAR_PRODUCT_REVIEWS = "CLEAR_PRODUCT_REVIEWS"
 export const POST_NEWPRODUCT = "POST_NEWPRODUCT"
 export const GET_ALL_USERS = "GET_ALL_USERS"
+export const DELETE_USER = "DELETE_USER"; 
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -365,6 +366,21 @@ export const getAllUsers = () =>{
             })
         }
 
+    }catch(err){
+        console.log(err)
+    }
+}
+
+export const delete_user = (userEmail) =>{
+    try{
+        return async dispatch =>{
+            let response = await axios.delete(`http://localhost:3001/users/delete_user?email=${userEmail}`);
+
+            dispatch({
+                type: DELETE_USER,
+                payload: userEmail
+            })
+        }
     }catch(err){
         console.log(err)
     }

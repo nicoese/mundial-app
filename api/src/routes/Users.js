@@ -31,8 +31,8 @@ router.put('/:userId/modify_user', async (req,res,next)=>{
 
 router.delete('/delete_user', async (req,res,next)=>{
     try {
-        const {userId} = req.params
-        let found = await User.findByIdAndDelete(userId)
+        const {email} = req.query
+        let found = await User.findOneAndDelete({email})
         res.status(200).json(found)
     }catch(err){
         next(err)
