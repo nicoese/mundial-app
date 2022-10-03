@@ -27,6 +27,7 @@ import Board from "./react/components/AdminDash/Board";
 import Users from "./react/components/AdminDash/views/Users";
 import AdminProducts from "./react/components/AdminDash/views/Products";
 import AdminPurchases from "./react/components/AdminDash/views/Purchases"
+import {ReviewForm} from "./react/components/ReviewSection/ReviewForm";
 
 
 function About() {
@@ -74,6 +75,7 @@ function App() {
                     <Route path={'data'} element={<InfoPersonal />} />
                     <Route path={'purchases'} element={<PurchaseContainer />} />
                     <Route path={'reviews'} element={<UserReviews />} />
+                    <Route path={'add-review/:productId'} element={<ReviewForm />} />
                 </Route>
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
