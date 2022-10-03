@@ -5,11 +5,12 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {ReviewCard} from "./ReviewCard";
+import {getAllReviewsByProductId} from "../../../redux/actions";
 
 export const ReviewSection = () => {
 
     const dispatch = useDispatch()
-    const {reviews, ProductDetail} = useSelector(state => state)
+    const {productReviews, ProductDetail} = useSelector(state => state)
 
     const reviews0 = [
         {
@@ -59,7 +60,8 @@ export const ReviewSection = () => {
 
     useEffect(() => {
 
-        // dispatch(getProductReviews(details.id))
+        console.log(ProductDetail.id)
+        ProductDetail && dispatch(getAllReviewsByProductId(ProductDetail.id))
 
         return () => {
             // dispatch(clearProductReviews())
@@ -74,25 +76,25 @@ export const ReviewSection = () => {
         <div className={'flex flex-col px-20 mb-10'}>
             <div className={'flex justify-between max-w-[65%] mb-16'}>
                 <h2 className={"font-['Lato'] font-semibold text-2xl my-2 text-red-800"}>RESEÑAS <span
-                    className={'text-black font-thin'}>({reviews0.length})</span></h2>
+                    className={'text-black font-thin'}>({productReviews.length})</span></h2>
                 <div className={'flex self-center text-lg'}>
                     <Rating className={'self-center'} readOnly={true} value={
-                        reviews0.map((a) => a.rating).reduce((a,b) => a + b)/reviews0.length
+                       productReviews.length > 0 && productReviews.map((a) => a.rating).reduce((a,b) => a + b)/productReviews.length
                     } color={'black'}/>
                     <p className={'ml-1'}>({
-                        Math.round(reviews0.map((a) => a.rating)
-                            .reduce((a,b) => a + b)/reviews0.length)
+                        productReviews.length > 0 && Math.round(productReviews.map((a) => a.rating)
+                            .reduce((a,b) => a + b)/productReviews.length)
                     })</p>
                 </div>
             </div>
 
-            {reviews0.length > 0 ? reviews0.map(e => {
+            {productReviews.length > 0 ? productReviews.map(e => {
                     return <ReviewCard
                         title={e.title}
                         rating={e.rating}
                         content={e.content}
                         img={e.img}
-                        username={e.username}
+                        username={e.email.split('@')[0]}
                         date={e.date}
                         likes={e.likes}
                         dislikes={e.dislikes}

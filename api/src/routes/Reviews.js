@@ -10,7 +10,7 @@ router.get('/', async (req,res,next)=>{
         if(id){
             let result = await Review.find({productId: ObjectId(id)})
             if (result.length === 0){
-                return res.status(400).send('There are no reviews of this product');
+                return res.status(400).send([]);
             }
             
             return res.status(200).json(result) 
@@ -20,14 +20,14 @@ router.get('/', async (req,res,next)=>{
         if(email){
             let result = await Review.find({email: email}).populate('productId')
             if (result.length === 0){
-                return res.status(400).send('There are no reviews of this user');
+                return res.status(400).send(['There are no reviews of this user']);
             }
             return res.status(200).json(result) 
         }
 
         //no query get all revs in general
         let result = await Review.find()
-        res.status(200).json(result)
+        res.status(200).json(result.reverse())
     }catch(err){
         next(err)
     }

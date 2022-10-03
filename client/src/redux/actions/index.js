@@ -33,6 +33,10 @@ export const DELETE_USER = "DELETE_USER";
 export const ADD_USER_TO_DB =  "ADD_USER_TO_DB";
 export const DISABLE_USER = "DISABLE_USER";
 export const DISABLE_PRODUCT = "DISABLE_PRODUCT"
+export const GET_ALL_PURCHASES_BY_USER_EMAIL = "GET_ALL_PURCHASES_BY_USER_EMAIL"
+export const GET_ALL_REVIEWS_BY_USER_EMAIL = "GET_ALL_REVIEWS_BY_USER_EMAIL"
+export const GET_ALL_REVIEWS_BY_PRODUCT_ID = "GET_ALL_REVIEWS_BY_PRODUCT_ID"
+
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -114,6 +118,7 @@ export function getDetails(id) {
     return async function (dispatch) {
         try {
             const json = await axios.get(`${REACT_APP_API_URL}/products/` + id);
+
             dispatch({
                 type: GET_DETAILS,
                 payload: json.data,
@@ -421,9 +426,48 @@ export const addUserToDb = (user) =>{
         }catch(err){
             console.log(err)
         }
+
+export const getAllPurchasesByUserEmail = (userEmail) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/purchases/all?userEmail=${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type: GET_ALL_PURCHASES_BY_USER_EMAIL,
+                    payload: json.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
+}
+
+export const getAllReviewsByUserEmail = (userEmail) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/reviews?email=${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type:GET_ALL_REVIEWS_BY_USER_EMAIL,
+                    payload: json.data
+                })
+            })
+            .catch(err => console.log(err))
     }
 
 }
+export const getAllReviewsByProductId = (productId) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/reviews?id=${productId}`)
+            .then(json => {
+                return dispatch({
+                    type:GET_ALL_REVIEWS_BY_PRODUCT_ID,
+                    payload: json.data
+                })
+            })
+            .catch(err => console.log(err))
+
+    }
+
+}
+
 
 export const disableUser = (userEmail,active) =>{
     return async dispatch =>{
@@ -452,3 +496,5 @@ export const disableProduct = (productId,active) =>{
         }
     }
 }
+
+
