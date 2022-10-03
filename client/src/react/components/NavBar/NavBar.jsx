@@ -49,7 +49,9 @@ const NavBar = () => {
           </ul>
 
           <SearchBar />
+          
           <ProfileWidget/>
+
           <AiOutlineMenu size={28} className="navbar-icon" onClick={()=> toggleMenu()}/>
         </nav>
       </header>

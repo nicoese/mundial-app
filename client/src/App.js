@@ -23,6 +23,7 @@ import {Logout} from "./react/elements/Logout";
 import {PurchaseContainer} from "./react/components/Purchase/PurchaseContainer";
 import {ReviewSection} from "./react/components/ReviewSection/ReviewSection";
 import {UserReviews} from "./react/components/ReviewSection/UserReviews";
+import FormProducts from "./react/components/FormPost/FormPost.jsx";
 import Board from "./react/components/AdminDash/Board";
 import Users from "./react/components/AdminDash/views/Users";
 import AdminProducts from "./react/components/AdminDash/views/Products";
@@ -79,6 +80,9 @@ function App() {
                 </Route>
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
+                </ProtectedRoutes>}/>
+                <Route path={'/admin-post'} element={<ProtectedRoutes>
+                    <FormProducts/>
                 </ProtectedRoutes>}/>
                 <Route path={'/logout'} element={<Logout />}/>
                 <Route path={'*'} element={<Landing />}/>

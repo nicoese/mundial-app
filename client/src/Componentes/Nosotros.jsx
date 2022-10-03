@@ -45,8 +45,8 @@ export default function nosotros () {
             <p className={n.titleDev}>Nicolas Larrosa</p>
             <p className={n.pDevelop}>Full Stack Developers</p>
             <div className={n.divIconos}>
-               <a href='' ><img alt='icono linkedin' src={Linkedin}  className={n.imgLink} /></a>
-               <a href='' ><img alt='icono github' src={GitHub} className={n.imgGit} /></a>
+               <a href='www.linkedin.com/in/larrosanicolas' ><img alt='icono linkedin' src={Linkedin}  className={n.imgLink} /></a>
+               <a href='https://github.com/enzolarrosa' ><img alt='icono github' src={GitHub} className={n.imgGit} /></a>
             </div>
           </div>
           <div className={n.divDevelop}>
