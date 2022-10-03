@@ -4,10 +4,10 @@ import SideBar from "./SideBar";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Outlet} from "react-router";
 import MiniSpinner from "../MiniSpinner/MiniSpinner";
-
+import FormPost from '../FormPost/FormPost'
 const Board = () => {
 
-  let {isAuthenticated, user , isLoading} = useAuth0()
+  let {isLoading} = useAuth0()
   
 
   return (
@@ -24,6 +24,7 @@ const Board = () => {
       </div>
       <div className="flex">
         <SideBar />
+        {/* <FormPost/> */}
         <div className="flex flex-[4] items-center justify-center">
           <Outlet />
         </div>

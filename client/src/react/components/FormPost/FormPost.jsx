@@ -123,7 +123,7 @@ export default function FormProducts() {
 
   function handleAccessory(e) {
     e.preventDefault();
-    if (e.target.name === "X") {
+    if (e.target.name === "Z") {
       setAccessory({
         ...accessory,
         stock: {
@@ -147,7 +147,7 @@ export default function FormProducts() {
 
   function handleTicket(e) {
     e.preventDefault();
-    if (e.target.name === "X") {
+    if (e.target.name === "Z") {
       setTicket({
         ...ticket,
         stock: {
@@ -311,7 +311,7 @@ export default function FormProducts() {
             onChange={(e) => handleType(e)}
             className="text-[#790729] focus-visible:ring-0 w-full flex text-center border-t-0 border-x-0 border-b-[#a9a9a9] focus-visible:border-b-[#a9a9a9] "
           >
-            <option name="type"></option>
+            <option name="type">Seleccione un tipo de producto</option>
             <option name="type">jersey</option>
             <option name="type">accessory</option>
             <option name="type">ticket</option>
@@ -478,10 +478,10 @@ export default function FormProducts() {
               <div className=" w-[auto] flex flex-col">
                 <label>stock :</label>
                 <input
-                  placeholder="X"
+                  placeholder="Z"
                   className="w-[60px] h-[30px] rounded-[3px]"
                   type="number"
-                  name="X"
+                  name="Z"
                   onChange={(e) => handleAccessory(e)}
                 />
               </div>
@@ -550,10 +550,10 @@ export default function FormProducts() {
               <div className=" w-[auto] flex flex-col">
                 <label>stock :</label>
                 <input
-                  placeholder="X"
+                  placeholder="Z"
                   className="w-[60px] h-[30px] rounded-[3px]"
                   type="number"
-                  name="X"
+                  name="Z"
                   onChange={(e) => handleTicket(e)}
                 />
               </div>
@@ -620,7 +620,7 @@ export default function FormProducts() {
           ) : (
             <div className="flex flex-col w-full h-full justify-center gap-40 items-center text-center">
               {" "}
-              <h2>Selecctione un tipo arriba</h2>
+              <h2> </h2> {/* dejar este h2 */}
               <Link to="/admin">
                 <button
                   type="button"
