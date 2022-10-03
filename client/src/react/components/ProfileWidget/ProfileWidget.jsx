@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from "react-router-dom";
+import PersonIcon from '@mui/icons-material/Person';
 
 const ProfileWidget = () => {
   const navigate = useNavigate()
@@ -13,7 +14,7 @@ const ProfileWidget = () => {
     <>
       {!isAuthenticated && (
         <div onClick={loginWithRedirect} className="li-inicioSesion">
-          Login
+          Ingresa
         </div>
       )}
 
@@ -24,7 +25,7 @@ const ProfileWidget = () => {
             className={
               "w-[3.2em] h-[3.2em] rounded-full hover:shadow-[#790729] hover:shadow-sm hover:cursor-pointer"
             }
-            src={user.picture}
+            src={user.picture || <PersonIcon /> }
             alt="profile picture"
           />
         </div>

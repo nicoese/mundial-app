@@ -23,7 +23,11 @@ const productsSchema = new Schema({
     date: String,
     sector: String,
     rating: Number,
-    cantidad: Number
+    cantidad: Number,
+    active: {
+        type:Boolean,
+        default : true
+    }
 })
 
 

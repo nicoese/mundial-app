@@ -4,6 +4,9 @@ const Purchase = require('../models/purchases')
 const User = require('../models/users');
 
 router.get('/', async (req,res,next)=>{
+
+    //cuando me hago este get podria traerme la info de info_user?? y mando todo junto?
+    // tambien depende de si hay info ahi o no...
     try{
         let result = await User.find()
         res.status(200).json(result)
@@ -28,15 +31,50 @@ router.put('/:userId/modify_user', async (req,res,next)=>{
 
 router.delete('/delete_user', async (req,res,next)=>{
     try {
-        const {userId} = req.params
-        let found = await User.findByIdAndDelete(userId)
-
+        const {email} = req.query
+        let found = await User.findOneAndDelete({email})
         res.status(200).json(found)
     }catch(err){
         next(err)
     }
 })
 
+router.put('/disable', async (req,res,next)=>{
+    try {
+        const {email,active} = req.query
+        let found = await User.findOneAndUpdate({email},{active: active},{new: true}) //new returns in found the updated document
+        res.status(200).json(found)
+    }catch(err){
+        next(err)
+    }
+})
+
+// /users/disable
+
+router.post('/add_user_to_db', async (req,res,next)=>{
+    try{
+        const {name , email, role, picture, email_verified} = req.body.user
+
+        let found = await User.find({email})
+        if(found.length > 0 ) return res.status(400).send('user already in db')
+
+        let newUser = new User({
+            name,
+            email,
+            role,
+            picture,
+            email_verified
+        })
+
+        let saved = await newUser.save()
+
+        console.log(saved)
+
+        return res.send(saved)
+    }catch(err){
+        next(err)
+    }
+})
 
 
 
