@@ -39,6 +39,18 @@ router.delete('/delete_user', async (req,res,next)=>{
     }
 })
 
+router.put('/disable', async (req,res,next)=>{
+    try {
+        const {email,active} = req.query
+        let found = await User.findOneAndUpdate({email},{active: active},{new: true}) //new returns in found the updated document
+        res.status(200).json(found)
+    }catch(err){
+        next(err)
+    }
+})
+
+// /users/disable
+
 router.post('/add_user_to_db', async (req,res,next)=>{
     try{
         const {name , email, role, picture, email_verified} = req.body.user

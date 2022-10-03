@@ -31,6 +31,8 @@ export const POST_NEWPRODUCT = "POST_NEWPRODUCT"
 export const GET_ALL_USERS = "GET_ALL_USERS"
 export const DELETE_USER = "DELETE_USER";
 export const ADD_USER_TO_DB =  "ADD_USER_TO_DB";
+export const DISABLE_USER = "DISABLE_USER";
+export const DISABLE_PRODUCT = "DISABLE_PRODUCT"
 
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
@@ -329,17 +331,17 @@ export const purchaseFailed = (userEmail) => {
 }
 
 export const getAllPurchases = () =>{
-    try{
-        return async (dispatch) =>{
+    return async (dispatch) =>{
+            try{
             let result = await axios.get(`${REACT_APP_API_URL}/purchases`)
             dispatch({
                 type: GET_ALL_PURCHASES,
                 payload: result.data
             })
+        }catch(err){
+            console.log(err)
         }
-    }catch(err){
-        console.log(err)
-    }
+        }
 }
 
 export const getReviews = (productId) => {
@@ -358,14 +360,14 @@ export const getReviews = (productId) => {
 }
 
 export const postNewProduct = (payload) => {
-    try{
-        return async function () {
+    return async function () {
+            try{
             const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, payload)
             return info
-        };
-    }catch(err){
-        console.log(err)
-    }
+        }catch(err){
+            console.log(err)
+        }
+    };
    
 };
 
@@ -378,23 +380,23 @@ export const clearReviews = () => {
 }
 
 export const getAllUsers = () =>{
-    try{
-        return async dispatch =>{
+    return async dispatch =>{
+            try{
             let response = await axios.get(`${REACT_APP_API_URL}/users`)
             dispatch({
                 type: GET_ALL_USERS,
                 payload: response.data
             })
+        }catch(err){
+            console.log(err)
         }
-
-    }catch(err){
-        console.log(err)
     }
+
 }
 
 export const delete_user = (userEmail) =>{
-    try{
-        return async dispatch =>{
+    return async dispatch =>{
+            try{
             
             await axios.delete(`${REACT_APP_API_URL}/users/delete_user?email=${userEmail}`);
 
@@ -402,23 +404,51 @@ export const delete_user = (userEmail) =>{
                 type: DELETE_USER,
                 payload: userEmail
             })
+        }catch(err){
+            console.log(err)
         }
-    }catch(err){
-        console.log(err)
     }
 }
 
 export const addUserToDb = (user) =>{
-    try{
-        return async dispatch =>{
+    return async dispatch =>{
+            try{
             let response = await axios.post(`${REACT_APP_API_URL}/users/add_user_to_db`,{user});
             dispatch({
                 type: ADD_USER_TO_DB,
                 payload: response.data
             })
+        }catch(err){
+            console.log(err)
         }
-    }catch(err){
-        console.log(err)
     }
 
+}
+
+export const disableUser = (userEmail,active) =>{
+    return async dispatch =>{
+            try{
+            let response = await axios.put(`${REACT_APP_API_URL}/users/disable?email=${userEmail}&active=${active}`);
+            dispatch({
+                type: DISABLE_USER,
+                payload: response.data
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
+
+export const disableProduct = (productId,active) =>{
+    return async dispatch =>{
+            try{
+            let response = await axios.put(`${REACT_APP_API_URL}/products/disable?id=${productId}&active=${active}`);
+            dispatch({
+                type: DISABLE_PRODUCT,
+                payload: response.data
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
 }

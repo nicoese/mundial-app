@@ -55,6 +55,7 @@ const Purchases = () => {
     purchases ?
     <div className='w-[80%]'>
         <DataGrid
+        disableSelectionOnClick
         getRowHeight={() => 'auto'}
         rows={purchases}
         columns={newColumns}

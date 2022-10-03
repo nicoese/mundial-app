@@ -27,7 +27,9 @@ import {
     GET_ALL_USERS,
     DELETE_USER,
     GET_ALL_PURCHASES,
-    ADD_USER_TO_DB
+    ADD_USER_TO_DB,
+    DISABLE_USER,
+    DISABLE_PRODUCT
 } from "../actions"
 
 
@@ -218,11 +220,38 @@ export const rootReducer = (state = initialState, action) => {
                     ...state,
                     users: state.users.filter(u=> u.email !== action.payload)
                 }
+            case DISABLE_USER:
+                return{
+                    ...state,
+                    users: state.users.map(u=>{
+                        if(u.email === action.payload.email){
+                            return {
+                                ...u,
+                                active: action.payload.active
+                            }
+                        }
+                        return u
+                    })
+                }
+            case DISABLE_PRODUCT:
+                return{
+                    ...state,
+                    products: state.products.map(p=>{
+                        if(p._id == action.payload._id){
+                            return {
+                                ...p,
+                                active: action.payload.active
+                            }
+                        }
+                        return p
+                    })
+                }
             case ADD_USER_TO_DB:
                 return{
                     ...state,
                     user: [...state.users , action.payload]
                 }
+            
         default:
             return state
     }
