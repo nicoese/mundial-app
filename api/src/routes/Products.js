@@ -83,6 +83,17 @@ router.post('/filtroscombinados', async (req, res) => {
 })
 
 
+router.put('/disable', async (req, res, next) => {
+    try {
+        const {id,active} = req.query
+            let found = await Products.findByIdAndUpdate(id,{active: active},{new: true})
+        res.status(200).json(found)
+    }catch(err){
+        next(err)
+    }
+})
+
+
 
 //esta ruta existe solo con el proposito de insertar todos los datos en la BD, no utilizar
 router.post('/insert_products', async (req, res, next) => {
@@ -112,4 +123,7 @@ const insertProducts = async () => {
         console.log(err)
     }
 }
+
+
+
 module.exports = router;
