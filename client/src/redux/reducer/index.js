@@ -23,7 +23,7 @@ import {
     PURCHASE_FAILED,
     GET_PRODUCT_REVIEWS,
     CLEAR_PRODUCT_REVIEWS,
-    POST_NEWPRODUCT
+    POST_NEWPRODUCT, GET_ALL_PURCHASES_BY_USER_EMAIL, GET_ALL_REVIEWS_BY_USER_EMAIL, GET_ALL_REVIEWS_BY_PRODUCT_ID
 } from "../actions"
 
 
@@ -197,6 +197,22 @@ export const rootReducer = (state = initialState, action) => {
                 return {
                     ...state
                 }
+        case GET_ALL_PURCHASES_BY_USER_EMAIL:
+            return{
+                ...state,
+                userPurchases: action.payload
+            }
+            case GET_ALL_REVIEWS_BY_USER_EMAIL:
+            return{
+                ...state,
+                userReviews: action.payload
+            }
+        case GET_ALL_REVIEWS_BY_PRODUCT_ID:
+            return {
+                ...state,
+                productReviews: action.payload
+            }
+
         default:
             return state
     }

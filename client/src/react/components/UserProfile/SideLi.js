@@ -15,7 +15,7 @@ export const SideLi = ({link, name, svg}) => {
                 }
                 }>
                 {svg}
-                <span className="flex-1 ml-3 text-md whitespace-nowrap font-semibold">{name}</span>
+                <span className="flex-1 ml-3 text-md text-zinc-500 whitespace-nowrap font-semibold">{name}</span>
             </Link>
         </li>
 
