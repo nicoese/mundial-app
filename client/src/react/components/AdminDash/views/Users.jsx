@@ -65,7 +65,7 @@ const Users = () => {
           </div>
       );
     }},
-    {field: 'deshabilitar',headerName: 'Deshabilitar/ Habilitar', width: 180,  renderCell: (params)=>params.row.active?<div className='flex justify-center w-full'><CancelIcon onClick={()=>handleDisable(params.row.email,false)} className='text-red-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large' /></div>:<div className='flex justify-center w-full'><CheckCircleIcon onClick={()=>handleDisable(params.row.email, true)} className='text-green-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large'  /></div>},
+    {field: 'deshabilitar',headerName: 'Deshabilitar/ Habilitar', width: 120,  renderCell: (params)=>params.row.active?<div className='flex justify-center w-full'><CancelIcon onClick={()=>handleDisable(params.row.email,false)} className='text-red-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large' /></div>:<div className='flex justify-center w-full'><CheckCircleIcon onClick={()=>handleDisable(params.row.email, true)} className='text-green-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large'  /></div>},
   ];
 
   return (
