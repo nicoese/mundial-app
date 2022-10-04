@@ -169,7 +169,7 @@ export const FilterBy = () => {
                 <input onChange={handlePrice} className={'h-8 w-[5.2rem] focus:border-none focus:outline-none'}
                        value={filters.max.value} name={'max'} placeholder={'Max'} type="text"/>
             </div>
-            <button onClick={handleClick} className={'w-[5.2rem] h-[2.3rem] rounded-md bg-[#790729] text-white font-semibold'}>Aplicar</button>
+            <button onClick={handleClick} className={'w-[5.2rem] h-[2.3rem] rounded-md bg-[#790729] text-white font-semibold mb-[10%]'}>Aplicar</button>
         </div>
     </div>
     </div> 
