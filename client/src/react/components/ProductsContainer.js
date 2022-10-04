@@ -44,7 +44,7 @@ export const ProductsContainer = (props) => {
                 productsError ? <div className={'w-[80vw] h-[75vh] overflow-hidden font-["Lato"]' +
                 ' font-bold text-xl'}>{productsError}</div> : currentProducts.length > 0 ?
                     <div key={"laksjdflak"}
-                         className={'ml-20 w-[auto] gap-5 grid grid-cols-1 lg:grid-cols-4 bg-[#f6f6f6]'}>
+                         className={'ml-20 w-[auto] gap-5 grid sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 bg-[#f6f6f6]'}>
 
                         {currentProducts.map(prod => {
                             return <ProductCard

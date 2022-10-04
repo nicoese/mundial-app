@@ -71,7 +71,9 @@ function App() {
                     </ProtectedRoutes>
                 }/>
                 <Route path={'/purchases/failure'} element={<Cart/>}/>
-                <Route path={'/profile'} element={<UserProfile />}>
+                <Route path={'/profile'} element={<ProtectedRoutes>
+                    <UserProfile />
+                </ProtectedRoutes>}>
                     <Route path={''} element={<UserBanner />} />
                     <Route path={'data'} element={<InfoPersonal />} />
                     <Route path={'purchases'} element={<PurchaseContainer />} />
