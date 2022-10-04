@@ -68,7 +68,7 @@ router.post('/add_user_to_db', async (req,res,next)=>{
 
         let saved = await newUser.save()
 
-        console.log(saved)
+        // console.log(saved)
 
         return res.send(saved)
     }catch(err){

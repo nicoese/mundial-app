@@ -23,7 +23,9 @@ const infoSchema = new Schema({
     },
     name: String,
     phoneNumber: Number
-})
+    
+    })
+
 
     infoSchema.virtual('id').get(function(){
         return this._id.toHexString();

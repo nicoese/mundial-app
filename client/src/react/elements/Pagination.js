@@ -9,22 +9,10 @@ export const Pagination = () => {
         products
     } = useSelector(state => state)
 
-    useEffect(() => {
-
-        delay(4000).then(e => {
-                const url = new URL(window.location)
-                const page = url.searchParams.get('page')
-
-                if (page) {
-                    dispatch(setCurrentProducts(Number(page)))
-                }
-            }
-        )
+    useEffect(() => {    
+        dispatch(setCurrentProducts())
     }, [dispatch])
 
-    function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
-    }
 
     const pageNumbers = []
 
@@ -46,7 +34,7 @@ export const Pagination = () => {
         dispatch(setCurrentProducts(pageNumber))
     }
 
-    return <div className={'flex justify-end my-10'}>
+    return <div className={'flex justify-center my-10'}>
         {pageNumbers.map(number => <button className={'w-[2.7rem] h-[2.3rem] mx-1 rounded-md bg-[#790729] text-white font-semibold}'} key={number} onClick={handleClick}>{number + 1}</button>)}
     </div>
 }

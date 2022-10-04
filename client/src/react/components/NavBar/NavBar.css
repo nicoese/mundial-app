@@ -22,9 +22,11 @@ header {
   font-size: 2.2rem;
   font-weight: bold;
   font-family: "Mulish", sans-serif;
+  /* border: 1px solid red; */
   cursor: pointer;
 }
 .navbar-ul {
+  /* border: 1px solid red; */
   display: flex;
   align-items: center;
   margin: 0px 2em;
@@ -69,60 +71,37 @@ header {
 /* SEARCHBAR */
 .searchbar-ctn{
   display: flex;
-  justify-content: end;
   align-items: center;
   height: 100%;
-  width: 100px;
-  margin: 0px 1em 0px 8em;
+  width: fit-content;
+  margin-left: 0px;
+  /* border: 1px solid red; */
+  margin-right: 140px;
 }
-
-.searchBar_search {
-  position: relative;
-  padding: 5px;
-  margin-right:  5%;
-}
-.searchBar_search input {
-  width: 0;
-  height: 35px;
-  padding: 0 10px;
-  font-size: 15px;
-  color: #3E3636;
-  outline: none;
-  border: 1px solid #790729;
-  border-radius: 30px;
-  transition: all 0.6s ease;
-  background-color: #f6f6f6;
-  
-}
-.searchBar_btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #790729;
-  width: 43px;
-  font-size: 25px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.search_btn-submit {
+.nav-form{
+  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;
-  color: #f6f6f6;
-  width: 43px;
-  height: 43px;
-  font-size: 20px;
+  width: fit-content;
+}
+.nav-input{
+  width: 400px;
+  height: 60px;
+  background-color: transparent;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #790729;
+}
+.nav-icon{
+  color: white;
+  background-color: #790729;
+}
+.nav-icon:hover{
   cursor: pointer;
-  border: none;
+  color: #790729;
+  background-color: white;
 }
-.searchBar_search:hover input {
-  width: 240px;
-}
-.searchBar_search input:focus {
-  width: 240px;
-}
-
 /* WIDGET */
 .profile-ctn{
   display: flex;

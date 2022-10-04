@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import imgLanding from '../img/imgLanding.jpeg'
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import {AiOutlineMenu} from "react-icons/ai";
 import {BsCheck2Circle} from "react-icons/bs";
 import {useAuth0} from "@auth0/auth0-react";
 import "./Landing.css";
 import ProfileWidget from "../ProfileWidget/ProfileWidget";
+import MiniSpinner from "../MiniSpinner/MiniSpinner";
 
 
 const Landing = () => {
     let click = false;
+    const {isLoading, isAuthenticated} = useAuth0();
 
     const toggleMenu = () => {
         click = !click
-
 
         if (click) {
             let menuIcon = document.querySelector(".nav-ul-toggle");
@@ -23,15 +24,18 @@ const Landing = () => {
             let menuIcon = document.querySelector(".active");
             menuIcon.setAttribute("class", "nav-ul-toggle");
         }
+    }
 
         /*     function delay(time) {
-                return new Promise((resolve) => setTimeout(resolve, time));
-            } */
+            return new Promise((resolve) => setTimeout(resolve, time));
+        } */
 
-        // const {user} = useAuth0();
-    }
+        
+
+       
+
         return (
-            <>
+            <> {isAuthenticated ? <Navigate to="/products" replace={true}/>:null}
                 <header>
                     <nav className="nav-ctn">
                         <h1 className="nav-title">MundiApp</h1>
@@ -49,7 +53,7 @@ const Landing = () => {
                             {/*    !isAuthenticated && <li onClick={logout} className="li-inicioSesion">Cerrar Sesion</li> :*/}
                             {/*        <li onClick={loginWithRedirect} className="li-inicioSesion">Login</li>*/}
                             {/*}*/}
-                            <ProfileWidget/>
+                            {isLoading ? <MiniSpinner/> :<ProfileWidget/>}
                         </ul>
                         <AiOutlineMenu size={28} className="nav-icon" onClick={() => toggleMenu()}/>
                     </nav>
