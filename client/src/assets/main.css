@@ -1243,6 +1243,7 @@ input[type="range"]::-ms-fill-lower {
 
 .w-\[33\%\] {
   width: 33%;
+}
 
 .w-\[60px\] {
   width: 60px;
@@ -1512,8 +1513,6 @@ input[type="range"]::-ms-fill-lower {
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
-
-.border-gray-300 {
 
 .border-red-300 {
 

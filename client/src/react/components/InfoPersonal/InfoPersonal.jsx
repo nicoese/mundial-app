@@ -3,6 +3,7 @@ import s from './InfoPersonal.module.css'
 import {useAuth0} from "@auth0/auth0-react";
 import {Link} from 'react-router-dom'
 import {Form, Formik, Field, ErrorMessage} from "formik"
+import {IoMdReturnLeft} from 'react-icons/io'
 import {useDispatch} from "react-redux";
 
 export default function InfoPersonal() {
@@ -112,9 +113,6 @@ export default function InfoPersonal() {
                                         component={() => <div>{errors.country}</div>}
                                     />
                                 </div>
-                                {/*<Link to={'/products'}>*/}
-                                {/*    <button className={s.btnCancelar}>Cancelar</button>*/}
-                                {/*</Link>*/}
                             </div>
 
                             <div className={s.divTwo}>
@@ -171,10 +169,7 @@ export default function InfoPersonal() {
                         </Form>
                     )}
 
-
                 </Formik>
-
-
             </div>
         </div>
     )

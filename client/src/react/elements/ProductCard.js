@@ -94,7 +94,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
 
     return (
         <div
-            className="flex flex-col pb-2 max-w-sm hover:shadow-[#790729] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
+            className="flex flex-col pb-2 max-w-sm  shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
             key={id}>
             {img ? (
                 <Link to={`${id}`} className="flex items-center justify-center w-full h-[15em] ">

@@ -7,6 +7,7 @@ import {useEffect} from "react";
 import {getFavorites, setCurrentProducts} from "../../redux/actions";
 import Spinner from "./Spinner/Spinner";
 import {useAuth0} from "@auth0/auth0-react";
+import Footer from "./Footer/Footer";
 
 export const ProductsContainer = (props) => {
 
@@ -57,5 +58,6 @@ export const ProductsContainer = (props) => {
             }
         </div>
         <Pagination/>
+        <Footer/>
     </div>
 }
