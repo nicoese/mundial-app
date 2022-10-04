@@ -80,8 +80,8 @@ export const ReviewForm = () => {
                     }
                     if (!values.content) {
                         errors.content = 'Este campo es obligatorio'
-                    } else if (values.content.length > 100 || values.content.length < 10) {
-                        errors.content = 'El contenido de este campo no puede tener mas de 1000 caracteres o menos de 10'
+                    } else if (values.content.length > 500 || values.content.length < 10) {
+                        errors.content = 'El contenido de este campo no puede tener mas de 500 caracteres o menos de 10'
                     }
                     if (!values.rating) {
                         errors.rating = 'Este campo es obligatorio'

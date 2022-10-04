@@ -66,8 +66,11 @@ export const Success = () => {
             </CartDetailCard>
         })
         }
-            {purchase && <div className={'ml-[30%] font-bold text-2xl text-red-800 mb-[3%]'}>Precio Total :
-                <span className={'text-black font-thin'} >{`  $ ${purchase.totalPrice}`}</span></div>}
+            {purchase ? <div className={'ml-[30%] font-bold text-2xl text-red-800 mb-[3%]'}>Precio Total :
+                <span className={'text-black font-thin'} >{`  $ ${purchase.totalPrice}`}</span></div>
+            : <div className={'text-xl'}>cargando...</div>
+                //TODO: agregar spinner
+            }
         </div>
 
             </>

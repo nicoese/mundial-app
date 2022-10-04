@@ -134,7 +134,6 @@ export const rootReducer = (state = initialState, action) => {
                 cart: action.payload
             }
         case GET_CART:
-            console.log("reducer", action.payload)
             return {
                 ...state,
                 cart: action.payload

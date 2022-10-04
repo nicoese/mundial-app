@@ -182,7 +182,6 @@ export const addToCart = ( userEmail, product) => {
 
 export const getProductsInCart = (userEmail) => {
     return async (dispatch) => {
-        console.log('action', userEmail);
         return axios.get(`${REACT_APP_API_URL}/carts?email=${userEmail}`)
             .then(json => {
                 return dispatch({
