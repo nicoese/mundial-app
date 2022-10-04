@@ -27,23 +27,23 @@ export default function nosotros () {
           <h1 className={n.title}>Equipo de Desarrollores</h1>
           <div className={n.divDevelop}>
             <p className={n.titleDev}>Mariano Kuran</p>
-            <p className={n.pDevelop}>Full Stack Developers</p>
+            <p className={n.pDevelop}>Full Stack Developer</p>
             <div className={n.divIconos}>
-               <a href='' ><img alt='icono linkedin' src={Linkedin} className={n.imgLink}  /></a>
-               <a href='' ><img alt='icono github' src={GitHub} className={n.imgGit}  /></a>
+               <a href='https://www.linkedin.com/in/mariano-kuran-809642236/' ><img alt='icono linkedin' src={Linkedin} className={n.imgLink}  /></a>
+               <a href='https://github.com/MarianoKuran' ><img alt='icono github' src={GitHub} className={n.imgGit}  /></a>
             </div>
           </div>
           <div className={n.divDevelop}>
             <p className={n.titleDev}>Gaston Fernandez</p>
-            <p className={n.pDevelop}>Full Stack Developers</p>
+            <p className={n.pDevelop}>Full Stack Developer</p>
             <div className={n.divIconos}>
-               <a href='' ><img alt='icono linkedin' src={Linkedin} className={n.imgLink} /></a>
-               <a href='' ><img alt='icono github' src={GitHub} className={n.imgGit} /></a>
+               <a href='https://www.linkedin.com/in/gaston-fernandez-prataviera-93a4b21a2/' ><img alt='icono linkedin' src={Linkedin} className={n.imgLink} /></a>
+               <a href='https://github.com/GastyFP/GastyFP' ><img alt='icono github' src={GitHub} className={n.imgGit} /></a>
             </div>
           </div>
           <div className={n.divDevelop}>
             <p className={n.titleDev}>Nicolas Larrosa</p>
-            <p className={n.pDevelop}>Full Stack Developers</p>
+            <p className={n.pDevelop}>Full Stack Developer</p>
             <div className={n.divIconos}>
                <a href='www.linkedin.com/in/larrosanicolas' ><img alt='icono linkedin' src={Linkedin}  className={n.imgLink} /></a>
                <a href='https://github.com/enzolarrosa' ><img alt='icono github' src={GitHub} className={n.imgGit} /></a>
@@ -51,18 +51,18 @@ export default function nosotros () {
           </div>
           <div className={n.divDevelop}>
             <p className={n.titleDev}>Emiliano Larrosa</p>
-            <p className={n.pDevelop}>Full Stack Developers</p>
+            <p className={n.pDevelop}>Full Stack Developer</p>
             <div className={n.divIconos}>
-               <a href='' ><img alt='icono linkedin' src={Linkedin} className={n.imgLink} /></a>
-               <a href='' ><img alt='icono github' src={GitHub} className={n.imgGit} /></a>
+               <a href='https://www.linkedin.com/in/emilianonahuellarrosa/' ><img alt='icono linkedin' src={Linkedin} className={n.imgLink} /></a>
+               <a href='https://github.com/EmiiNahuel' ><img alt='icono github' src={GitHub} className={n.imgGit} /></a>
             </div>
           </div>
           <div className={n.divDevelop}>
             <p className={n.titleDev}>Nicolas Salinas</p>
-            <p className={n.pDevelop}>Full Stack Developers</p>
+            <p className={n.pDevelop}>Full Stack Developer</p>
             <div className={n.divIconos}>
-               <a href='' ><img alt='icono linkedin' src={Linkedin} className={n.imgLink} /></a>
-               <a href='' ><img alt='icono github' src={GitHub} className={n.imgGit} /></a>
+               <a href='https://www.linkedin.com/in/nicolas-salinas-5068211ba/' ><img alt='icono linkedin' src={Linkedin} className={n.imgLink} /></a>
+               <a href='https://github.com/nicoese' ><img alt='icono github' src={GitHub} className={n.imgGit} /></a>
             </div>
           </div>
         </div>

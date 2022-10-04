@@ -1199,6 +1199,10 @@ input[type="range"]::-ms-fill-lower {
 .w-\[33\%\] {
   width: 33%;
 }
+.w-\[60px\] {
+  width: 60px;
+
+}
 .w-\[5rem\] {
   width: 5rem;
 }
@@ -1443,6 +1447,10 @@ input[type="range"]::-ms-fill-lower {
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 .border-gray-300 {
+
+
+.border-red-300 {
+
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }

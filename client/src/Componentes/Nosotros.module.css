@@ -124,9 +124,19 @@
     height: 70px;
 }
 
+.imgLink:hover{
+    width: 72px;
+    height: 72px;
+}
+
 .imgGit {
     color: white;
     margin-top: 3px;
     width: 63px;
     height: 65px;
+}
+
+.imgGit:hover{
+    width: 65px;
+    height: 67px;
 }

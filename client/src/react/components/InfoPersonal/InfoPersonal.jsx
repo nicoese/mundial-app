@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {Form, Formik, Field, ErrorMessage} from "formik"
 import {useDispatch, useSelector} from "react-redux";
 import {getPersonalData, savePersonalData} from "../../../redux/actions";
+import {IoMdReturnLeft} from 'react-icons/io'
 
 export default function InfoPersonal() {
 
@@ -134,9 +135,6 @@ export default function InfoPersonal() {
                                         component={() => <div>{errors.country}</div>}
                                     />
                                 </div>
-                                {/*<Link to={'/products'}>*/}
-                                {/*    <button className={s.btnCancelar}>Cancelar</button>*/}
-                                {/*</Link>*/}
                             </div>
 
                             <div className={s.divTwo}>
@@ -193,7 +191,6 @@ export default function InfoPersonal() {
                         </Form>
                     )}
 
-
                 </Formik>
                 {userDataMessage && state.formSent && <div
                     className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
@@ -201,8 +198,6 @@ export default function InfoPersonal() {
                     <span className="font-medium"> Genial! </span>
                 {` ${userDataMessage}`}
                     </div>}
-
-
             </div>
         </div>
     )

@@ -59,7 +59,6 @@
 }
 
 .inpName{
-    border-color: #790722;
     border-style: dashed;
     border-radius: 10px;
 }
@@ -178,18 +177,12 @@ label{
     font-weight: 500;
 }
 
-.btnCancelar{
-    color: #f6f6f6;
-    background-color: #790729;
-    width: 7rem;
-    height: 3rem;
-    border-radius: 10px;
-}
-
 .btnGuardar{
     color: #f6f6f6;
     background-color: #790729;
     width: 7rem;
-    height: 3rem;
+    height: 2.5rem;
     border-radius: 10px;
+    margin-bottom: 3%;
 }
+
