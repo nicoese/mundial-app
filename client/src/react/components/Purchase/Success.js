@@ -5,6 +5,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import {cleanCart, getLastPurchase} from "../../../redux/actions";
 import Confetti from "react-confetti";
 import CartDetailCard from "../Cart/CartDetailCard";
+import MiniSpinner from "../MiniSpinner/MiniSpinner";
 
 export const Success = () => {
 
@@ -51,7 +52,7 @@ export const Success = () => {
             <p className={'py-5 text-xl mb-[5%] ml-[7%] font-semibold text-zinc-500'}>Revisa tu casilla en - {user.email}</p>
         </div>}
 
-        <div className={'flex flex-col-reverse min-w-fit items-center'}>
+        <div className={'flex flex-col-reverse min-w-fit items-center mb-14'}>
 
         {purchase && purchase.products.map(e => {
 
@@ -66,8 +67,11 @@ export const Success = () => {
             </CartDetailCard>
         })
         }
-            {purchase && <div className={'ml-[30%] font-bold text-2xl text-red-800 mb-[3%]'}>Precio Total :
-                <span className={'text-black font-thin'} >{`  $ ${purchase.totalPrice}`}</span></div>}
+            {purchase ? <div className={'ml-[30%] font-bold text-2xl text-red-800 mb-[3%]'}>Precio Total :
+                <span className={'text-black font-thin'} >{`  $ ${purchase.totalPrice}`}</span></div>
+            : <MiniSpinner />
+                //TODO: agregar spinner
+            }
         </div>
 
             </>

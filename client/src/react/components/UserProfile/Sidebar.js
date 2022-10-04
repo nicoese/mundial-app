@@ -1,5 +1,6 @@
 import {SideLi} from "./SideLi";
 import {useAuth0} from "@auth0/auth0-react";
+import MiniSpinner from "../MiniSpinner/MiniSpinner";
 
 
 export const Sidebar = () => {
@@ -42,14 +43,16 @@ export const Sidebar = () => {
 
     return <>
 
-        <aside className="w-64 mt-32 border-2 min-w-[17%]" aria-label="Sidebar">
+        <aside className="w-64 py-28 h-[100vh] border-2 min-w-[17%]" aria-label="Sidebar">
             <div className="overflow-y-auto py-10 px-2 bg-gray-50 rounded dark:bg-gray-800">
                 <a className="flex items-center pl-2.5 mb-5 ml-3"
                     href={'/profile'}
                 >
-                    <img src={user && user.picture} className="mr-3 h-6 sm:h-7 rounded-full"
-                         alt={user && user.name}
-                    />
+                    {user ? <img src={user && user.picture} className="mr-3 h-6 sm:h-7 rounded-full"
+                          alt={user && user.name}
+                    />: <div className={'flex ml-16 '}>
+                        <MiniSpinner />
+                    </div>}
                     <span
                         className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{user && user.name}</span>
                 </a>

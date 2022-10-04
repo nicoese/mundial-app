@@ -30,9 +30,14 @@ import {
     ADD_USER_TO_DB,
     DISABLE_USER,
     DISABLE_PRODUCT,
-    GET_ALL_PURCHASES_BY_USER_EMAIL, 
-    GET_ALL_REVIEWS_BY_USER_EMAIL, 
-    GET_ALL_REVIEWS_BY_PRODUCT_ID
+    GET_ALL_PURCHASES_BY_USER_EMAIL,
+    GET_ALL_REVIEWS_BY_USER_EMAIL,
+    GET_ALL_REVIEWS_BY_PRODUCT_ID,
+    SAVE_PERSONAL_DATA,
+    GET_PERSONAL_DATA,
+    SAVE_REVIEW,
+    REVIEW_ERROR,
+    CLEAR_REVIEW_MESSAGES
 
 } from "../actions"
 
@@ -56,7 +61,12 @@ const initialState = {
     cart: [],
     userPurchases: [],
     userReviews: [],
-    users: []
+    users: [],
+    userData: '',
+    userDataError: '',
+    userDataMessage: '',
+    reviewMessage: '',
+    reviewError: ''
 }
 
 
@@ -124,7 +134,6 @@ export const rootReducer = (state = initialState, action) => {
                 cart: action.payload
             }
         case GET_CART:
-            console.log( "reducer", action.payload)
             return {
                 ...state,
                 cart: action.payload
@@ -175,7 +184,7 @@ export const rootReducer = (state = initialState, action) => {
                 purchase: action.payload
             }
         case GET_ALL_PURCHASES:
-            return{
+            return {
                 ...state,
                 allPurchases: action.payload
             }
@@ -210,67 +219,96 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 productReviews: []
             }
-            case POST_NEWPRODUCT:
-                return {
-                    ...state
-                }
-            case GET_ALL_USERS:
-                return{
-                    ...state,
-                    users: action.payload
-                }
-            case DELETE_USER:
-                return{
-                    ...state,
-                    users: state.users.filter(u=> u.email !== action.payload)
-                }
-            case DISABLE_USER:
-                return{
-                    ...state,
-                    users: state.users.map(u=>{
-                        if(u.email === action.payload.email){
-                            return {
-                                ...u,
-                                active: action.payload.active
-                            }
+        case POST_NEWPRODUCT:
+            return {
+                ...state
+            }
+        case GET_ALL_USERS:
+            return {
+                ...state,
+                users: action.payload
+            }
+        case DELETE_USER:
+            return {
+                ...state,
+                users: state.users.filter(u => u.email !== action.payload)
+            }
+        case DISABLE_USER:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.email === action.payload.email) {
+                        return {
+                            ...u,
+                            active: action.payload.active
                         }
-                        return u
-                    })
-                }
-            case DISABLE_PRODUCT:
-                return{
-                    ...state,
-                    products: state.products.map(p=>{
-                        if(p._id == action.payload._id){
-                            return {
-                                ...p,
-                                active: action.payload.active
-                            }
+                    }
+                    return u
+                })
+            }
+        case DISABLE_PRODUCT:
+            return {
+                ...state,
+                products: state.products.map(p => {
+                    if (p._id == action.payload._id) {
+                        return {
+                            ...p,
+                            active: action.payload.active
                         }
-                        return p
-                    })
-                }
-            case ADD_USER_TO_DB:
-                return{
-                    ...state,
-                    user: [...state.users , action.payload]
-                }
+                    }
+                    return p
+                })
+            }
+        case ADD_USER_TO_DB:
+            return {
+                ...state,
+                user: [...state.users, action.payload]
+            }
 
-            case GET_ALL_PURCHASES_BY_USER_EMAIL:
-                return{
-                    ...state,
-                    userPurchases: action.payload
-                }
-                case GET_ALL_REVIEWS_BY_USER_EMAIL:
-                return{
-                    ...state,
-                    userReviews: action.payload
-                }
-            case GET_ALL_REVIEWS_BY_PRODUCT_ID:
-                return {
-                    ...state,
-                    productReviews: action.payload
-                }
+        case GET_ALL_PURCHASES_BY_USER_EMAIL:
+            return {
+                ...state,
+                userPurchases: action.payload
+            }
+        case GET_ALL_REVIEWS_BY_USER_EMAIL:
+            return {
+                ...state,
+                userReviews: action.payload
+            }
+        case GET_ALL_REVIEWS_BY_PRODUCT_ID:
+            return {
+                ...state,
+                productReviews: action.payload
+            }
+        case SAVE_PERSONAL_DATA:
+            return {
+                ...state,
+                userData: action.payload,
+
+            }
+        case GET_PERSONAL_DATA:
+            return {
+                ...state,
+                userData: action.payload,
+                userDataMessage: "Tus datos se guardaron satisfactoriamente!"
+            }
+        case SAVE_REVIEW:
+            return {
+                ...state,
+                reviewMessage: "Tu reseña fue añadida satisfactoriamente!"
+            }
+        case REVIEW_ERROR:
+            return {
+                ...state,
+                reviewError: "Solo podes añadir una reseña por producto"
+            }
+        case CLEAR_REVIEW_MESSAGES:
+            return {
+                ...state,
+                reviewMessage: '',
+                reviewError: ''
+            }
+
 
         default:
             return state

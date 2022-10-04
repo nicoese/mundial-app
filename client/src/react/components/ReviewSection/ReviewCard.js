@@ -51,7 +51,7 @@ export const ReviewCard = ({title, rating, content, img, username, date, likes, 
             {/*<img className={'self-center px-10 rounded-[50%] w-32'}*/}
             {/*     src={img} alt={title}/>*/}
         </div>
-        <p className={'font-semibold text-zinc-500'}>{username} | {new Date(date).toLocaleString()}</p>
+        <p className={'font-semibold text-zinc-500'}>{username} | {new Date(date).toLocaleDateString()}</p>
         <div className={'flex justify-center'}>
             { !state.disliked && <IconButton aria-label={'delete'}>
                 {state.liked ? <ThumbUpAlt onClick={(ev) => handleClick('subtract', false, 'liked', 'likes')}/> :

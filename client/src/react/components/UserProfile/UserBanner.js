@@ -3,6 +3,7 @@ import {HiLocationMarker} from "react-icons/hi";
 import {AiFillCloseCircle} from "react-icons/ai";
 import React, {useState} from "react";
 import {useAuth0} from "@auth0/auth0-react";
+import MiniSpinner from "../MiniSpinner/MiniSpinner";
 
 
 export const UserBanner = () => {
@@ -73,16 +74,22 @@ export const UserBanner = () => {
     return <div className="flex flex-col h-[100vh] w-full mt-12">
         {/*<div className="w-full h-[150px] bg-gradient-to-r from-[#790729] to-[#f6f6f6]">*/}
         <div className="relative bottom-[-80px] flex flex-col items-center w-full h-[150px] bg-transparent">
-            <div className="absolute z-10 flex flex-col items-center justify-center w-[160px] h-[160px] rounded-[50%] bg-gradient-to-l from-[#790729] to-[#f6f6f6]">
+            {
+                user ?
+                <div
+                className="absolute z-10 flex flex-col items-center justify-center w-[160px] h-[160px] rounded-[50%] bg-gradient-to-l from-[#790729] to-[#f6f6f6]">
                 <img
                     src={imgURL ? imgURL : user ? user.picture : ''}
                     alt="profile picture"
                     className="z-20 absolute w-[150px] h-[150px] rounded-[50%]"
                 />
-                <button onClick={handleOpenModalProfilPic} id='btn-profile-img' className="relative z-30 bottom-[-50px] left-[60px] flex items-center justify-center w-[35px] h-[35px] rounded-[50%] border-2 border-[#790729] bg-[#f6f6f6] hover:cursor-pointer">
+                <button onClick={handleOpenModalProfilPic} id='btn-profile-img'
+                        className="relative z-30 bottom-[-50px] left-[60px] flex items-center justify-center w-[35px] h-[35px] rounded-[50%] border-2 border-[#790729] bg-[#f6f6f6] hover:cursor-pointer">
                     <BsImageAlt onClick={handleOpenModalProfilPic} size={18} color='#790729'/>
                 </button>
             </div>
+            : <MiniSpinner />
+            }
             {/*</div>*/}
         </div>
 

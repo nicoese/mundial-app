@@ -1,15 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './InfoPersonal.module.css'
 import {useAuth0} from "@auth0/auth0-react";
 import {Link} from 'react-router-dom'
 import {Form, Formik, Field, ErrorMessage} from "formik"
+import {useDispatch, useSelector} from "react-redux";
+import {getPersonalData, savePersonalData} from "../../../redux/actions";
 import {IoMdReturnLeft} from 'react-icons/io'
-import {useDispatch} from "react-redux";
 
 export default function InfoPersonal() {
 
     const {user} = useAuth0()
     const dispatch = useDispatch()
+    const {userData, userDataMessage} = useSelector(state => state)
+    let [state, setState] = useState({
+        formSent: false
+    })
+
+    useEffect(() => {
+
+        user && dispatch(getPersonalData(user.email))
+
+        return () => {
+
+        };
+    }, []);
+
 
     return (
         <div className={s.king}>
@@ -23,13 +38,20 @@ export default function InfoPersonal() {
                         postalCode: '',
                         city: '',
                         country: '',
-                        telephone: '',
+                        phoneNumber: '',
                         apartment: ''
 
                     }}
                     onSubmit={(values, {resetForm}) => {
                         resetForm()
-                        // dispatch(savePersonalData(values))
+                        setState({
+                            formSent: true
+                        })
+                        if (user){
+                            values["email"] = user.email
+                            dispatch(savePersonalData(values))
+                            setTimeout(() => setState({formSent: false}), 8000)
+                        }
                     }}
                     validate={(values) => {
 
@@ -58,10 +80,10 @@ export default function InfoPersonal() {
                         }else if (!/^[a-zA-Z\s]*$/.test(values.country)){
                             errors.country = "El pais solo puede contener letras"
                         }
-                        if (!values.telephone) {
-                            errors.telephone = 'Por favor ingresa un telefono'
-                        }else if (!/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(values.telephone)){
-                            errors.telephone = "Ingresa un numero de telefono valido, no te olvides de incluir el Nro. de area"
+                        if (!values.phoneNumber) {
+                            errors.phoneNumber = 'Por favor ingresa un telefono'
+                        }else if (!/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(values.phoneNumber)){
+                            errors.phoneNumber = "Ingresa un numero de telefono valido, no te olvides de incluir el Nro. de area"
                         }
 
                         return errors
@@ -81,7 +103,7 @@ export default function InfoPersonal() {
                                     <Field
                                         className={s.inpUbi}
                                         type="text"
-                                        placeholder='Calle y número'
+                                        placeholder={userData ? userData.address : 'Calle y número'}
                                         name='address'
                                     />
                                     <ErrorMessage
@@ -93,7 +115,7 @@ export default function InfoPersonal() {
                                     <label htmlFor="city">Ciudad</label>
                                     <Field className={s.inpCity}
                                            type="text"
-                                           placeholder='Ciudad'
+                                           placeholder={userData ? userData.city : 'Ciudad'}
                                            name={'city'}
                                     />
                                     <ErrorMessage
@@ -105,7 +127,7 @@ export default function InfoPersonal() {
                                     <label htmlFor="country">País</label>
                                     <Field className={s.inpCountry}
                                            type="text"
-                                           placeholder='País'
+                                           placeholder={userData ? userData.country : 'País'}
                                            name={'country'}
                                     />
                                     <ErrorMessage
@@ -130,7 +152,7 @@ export default function InfoPersonal() {
                                     <Field
                                         className={s.inpDepartment}
                                         type="text"
-                                        placeholder='N° de departamento - Si vivis en casa -> 0'
+                                        placeholder={userData ? userData.apartment :'N° de departamento - Si vivis en casa -> 0'}
                                         name={'apartment'}
                                     />
                                     <ErrorMessage
@@ -143,7 +165,7 @@ export default function InfoPersonal() {
                                     <Field
                                         className={s.inpCp}
                                         type="text"
-                                        placeholder='Código Postal'
+                                        placeholder={userData ? userData.postalCode :'Código Postal'}
                                         name={'postalCode'}
                                     />
                                     <ErrorMessage
@@ -156,12 +178,12 @@ export default function InfoPersonal() {
                                     <Field
                                         className={s.inpPhone}
                                         type="number"
-                                        placeholder='Telefono'
-                                        name={'telephone'}
+                                        placeholder={userData ? userData.phoneNumber :'Telefono'}
+                                        name={'phoneNumber'}
                                     />
                                     <ErrorMessage
-                                        name={'telephone'}
-                                        component={() => <div>{errors.telephone}</div>}
+                                        name={'phoneNumber'}
+                                        component={() => <div>{errors.phoneNumber}</div>}
                                     />
                                 </div>
                                 <button type={'submit'} className={s.btnGuardar}>Guardar</button>
@@ -170,6 +192,12 @@ export default function InfoPersonal() {
                     )}
 
                 </Formik>
+                {userDataMessage && state.formSent && <div
+                    className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+                    role="alert">
+                    <span className="font-medium"> Genial! </span>
+                {` ${userDataMessage}`}
+                    </div>}
             </div>
         </div>
     )
