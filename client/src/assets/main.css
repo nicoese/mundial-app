@@ -999,6 +999,9 @@ input[type="range"]::-ms-fill-lower {
 .mt-28 {
   margin-top: 7rem;
 }
+.mb-14 {
+  margin-bottom: 3.5rem;
+}
 .block {
   display: block;
 }
@@ -1271,6 +1274,18 @@ input[type="range"]::-ms-fill-lower {
 }
 .max-w-\[65\%\] {
   max-width: 65%;
+}
+.max-w-full {
+  max-width: 100%;
+}
+.max-w-\[100vh\] {
+  max-width: 100vh;
+}
+.max-w-\[100wh\] {
+  max-width: 100wh;
+}
+.max-w-\[100hw\] {
+  max-width: 100hw;
 }
 .flex-\[4\] {
   flex: 4;
@@ -1599,6 +1614,14 @@ input[type="range"]::-ms-fill-lower {
 .py-20 {
   padding-top: 5rem;
   padding-bottom: 5rem;
+}
+.py-32 {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+.py-28 {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
 }
 .pl-1 {
   padding-left: 0.25rem;
