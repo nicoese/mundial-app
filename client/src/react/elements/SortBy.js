@@ -60,7 +60,7 @@ export const SortBy = () => {
     }
 
     // return <div className={'flex flex-col-reverse ml-[69%] mb-4 mt-6 justify-center w-[15%]'}>
-    return <div className={'flex mb-4 mt-6 w-[84%] flex-row-reverse'}>
+    return <div className={'flex mb-4 mt-6 w-[71%] flex-row-reverse'}>
         <select
             onChange={(event) => {
             handleChange(event)

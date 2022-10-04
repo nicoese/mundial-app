@@ -40,9 +40,11 @@ export const ProductsContainer = (props) => {
         <div className={'flex flex-row w-full'}>
             {currentProducts.length > 0 ? <FilterBy/> : null}
             {
-                productsError ? <div className={'w-[85vw] h-[75vh] py-[200px] px-[30%] font-["Lato"] font-bold text-xl'}>{productsError}</div> : currentProducts.length > 0 ?
+                // productsError ? <div className={'w-[80vw] h-[75vh] py-[200px] px-[30%] font-["Lato"]' +
+                productsError ? <div className={'w-[80vw] h-[75vh] overflow-hidden font-["Lato"]' +
+                ' font-bold text-xl'}>{productsError}</div> : currentProducts.length > 0 ?
                     <div key={"laksjdflak"}
-                         className={' ml-[10px] ml-20 w-[70%]  grid grid-cols-1 lg:grid-cols-4 bg-[#f6f6f6]'}>
+                         className={'ml-20 w-[auto] gap-5 grid grid-cols-1 lg:grid-cols-4 bg-[#f6f6f6]'}>
 
                         {currentProducts.map(prod => {
                             return <ProductCard

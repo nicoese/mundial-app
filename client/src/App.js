@@ -56,7 +56,7 @@ function App() {
 
     return (
 
-        <div >
+        <div className={'overflow-x-hidden'}>
             <Routes>
                 <Route exact path={"/"} element={<Landing />}/>
                 <Route exact path={"/products"} element={<Products/>}/>

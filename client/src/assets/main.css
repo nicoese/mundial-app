@@ -1354,6 +1354,15 @@ input[type="range"]::-ms-fill-lower {
 .w-\[84\%\] {
   width: 84%;
 }
+.w-\[280px\] {
+  width: 280px;
+}
+.w-\[74\%\] {
+  width: 74%;
+}
+.w-\[71\%\] {
+  width: 71%;
+}
 .min-w-\[55\%\] {
   min-width: 55%;
 }
@@ -1375,6 +1384,12 @@ input[type="range"]::-ms-fill-lower {
 }
 .min-w-\[95\%\] {
   min-width: 95%;
+}
+.min-w-\[250px\] {
+  min-width: 250px;
+}
+.min-w-\[280px\] {
+  min-width: 280px;
 }
 .max-w-sm {
   max-width: 24rem;
@@ -1405,6 +1420,12 @@ input[type="range"]::-ms-fill-lower {
 }
 .max-w-\[10\%\] {
   max-width: 10%;
+}
+.max-w-\[250px\] {
+  max-width: 250px;
+}
+.max-w-\[280px\] {
+  max-width: 280px;
 }
 .flex-\[4\] {
   flex: 4;
@@ -1501,8 +1522,17 @@ input[type="range"]::-ms-fill-lower {
 .justify-self-center {
   justify-self: center;
 }
+.overflow-hidden {
+  overflow: hidden;
+}
 .overflow-y-auto {
   overflow-y: auto;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+.overflow-y-hidden {
+  overflow-y: hidden;
 }
 .truncate {
   overflow: hidden;

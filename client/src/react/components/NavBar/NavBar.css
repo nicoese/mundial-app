@@ -12,7 +12,7 @@ header {
 .navbar-ctn {
   display: flex;
   align-items: center;
-  width: 100vw;
+  max-width: 93vw;
   height: 15vh;
   background-color: #f6f6f6;
   color: #790729;
