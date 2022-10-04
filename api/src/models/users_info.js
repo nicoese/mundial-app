@@ -9,12 +9,21 @@ const infoSchema = new Schema({
     address:{
         type:String
     },
-    gender:{
+    city:{
         type: String
     },
-    full_name: String,
-    phone_number: Number
-    })
+    country:{
+        type: String
+    },
+    apartment:{
+        type: String
+    },
+    postalCode:{
+        type: String
+    },
+    name: String,
+    phoneNumber: Number
+})
 
     infoSchema.virtual('id').get(function(){
         return this._id.toHexString();

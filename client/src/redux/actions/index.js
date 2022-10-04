@@ -36,6 +36,13 @@ export const DISABLE_PRODUCT = "DISABLE_PRODUCT"
 export const GET_ALL_PURCHASES_BY_USER_EMAIL = "GET_ALL_PURCHASES_BY_USER_EMAIL"
 export const GET_ALL_REVIEWS_BY_USER_EMAIL = "GET_ALL_REVIEWS_BY_USER_EMAIL"
 export const GET_ALL_REVIEWS_BY_PRODUCT_ID = "GET_ALL_REVIEWS_BY_PRODUCT_ID"
+export const SAVE_PERSONAL_DATA = 'SAVE_PERSONAL_DATA'
+export const GET_PERSONAL_DATA = 'GET_PERSONAL_DATA'
+export const SET_USER_DATA_ERROR = 'SET_USER_DATA_ERROR'
+export const CLEAR_USER_DATA_ERROR = 'CLEAR_USER_DATA_ERROR'
+export const SAVE_REVIEW = 'SAVE_REVIEW'
+export const REVIEW_ERROR = "REVIEW_ERROR"
+export const CLEAR_REVIEW_MESSAGES = "CLEAR_REVIEW_MESSAGES"
 
 
 
@@ -498,5 +505,66 @@ export const disableProduct = (productId,active) =>{
         }
     }
 }
+
+export const savePersonalData = (personalData) => {
+    return async dispatch => {
+        return axios.post(`${REACT_APP_API_URL}/info/update`, personalData)
+            .then(json => {
+                return dispatch({
+                    type: SAVE_PERSONAL_DATA,
+                    payload: json.data
+                })
+            })
+            .catch(err => {
+                dispatch({
+                    type: SET_USER_DATA_ERROR,
+                    payload: err.message
+                })
+            })
+    }
+}
+
+
+export const getPersonalData = (userEmail) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/info?email=${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type: GET_PERSONAL_DATA,
+                    payload: json.data
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+
+export const saveReview = (review) => {
+    return async dispatch => {
+        return axios.post(`${REACT_APP_API_URL}/reviews/add_review`, review)
+            .then(json => {
+                return dispatch({
+                    type: SAVE_REVIEW,
+                })
+            })
+            .catch(err => {
+                return dispatch({
+                    type: REVIEW_ERROR,
+                })
+            })
+    }
+}
+
+export const clearReviewMessages = () => {
+    return dispatch => {
+        return dispatch({
+            type: CLEAR_REVIEW_MESSAGES
+        })
+    }
+}
+
+
 
 

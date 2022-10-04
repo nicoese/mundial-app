@@ -1,9 +1,9 @@
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate, useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Formik, Field, Form, ErrorMessage} from "formik"
-import {getDetails, resetDetail} from "../../../redux/actions";
+import {clearReviewMessages, getDetails, resetDetail, saveReview} from "../../../redux/actions";
 
 
 export const ReviewForm = () => {
@@ -13,7 +13,11 @@ export const ReviewForm = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {productId} = useParams()
-    const {ProductDetail} = useSelector(state => state)
+    const {ProductDetail, reviewMessage, reviewError} = useSelector(state => state)
+    let [state, setState] = useState({
+        formSent: true,
+        formError: true
+    })
 
     useEffect(() => {
 
@@ -24,7 +28,7 @@ export const ReviewForm = () => {
             dispatch(resetDetail())
 
         };
-    }, [productId]);
+    }, [productId, state, reviewError, reviewMessage]);
 
 
     return (
@@ -36,10 +40,31 @@ export const ReviewForm = () => {
                     content: '',
                     rating: 0
                 }}
-                onSubmit={(values) => {
+                onSubmit={(values, {resetForm}) => {
+                    resetForm()
                     values["productId"] = productId
                     values["email"] = user.email
                     console.log(values)
+                    dispatch(saveReview(values))
+
+                    setTimeout(() => {
+                        setState({
+                            formSent: false
+                        })
+                    }, 8000)
+                    setTimeout(() => {
+                        setState({
+                            formError: false
+                        })
+                    }, 5000)
+
+                    setState({
+                        formError: true,
+                        formSent: true
+                    })
+
+                    dispatch(clearReviewMessages())
+
 
                 }}
                 validate={(values) => {
@@ -144,6 +169,27 @@ export const ReviewForm = () => {
                                 )}
                                 />
                             </div>
+
+                            {
+                                reviewMessage && state.formSent && <div
+                                    className="p-4 mb-4 text-sm text-center
+                                     text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+                                    role="alert">
+                                    <span className="font-medium text-md"> Genial! </span>
+                                    {` ${reviewMessage}`}
+                                </div>
+                            }
+                            {
+                                reviewError && state.formError && <div
+                                    className="p-4 mb-4 text-sm text-center
+                                    text-red-700 bg-red-100 rounded-lg dark:bg-red-200
+                                    dark:text-red-800"
+                                    role="alert">
+                                    <span className="font-medium">Ojo! </span>
+                                    {reviewError}
+                                </div>
+                            }
+
                             <button type="submit"
                                     className="text-white bg-gradient-to-br from-pink-500 to-orange-400
                                     hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200
@@ -153,6 +199,7 @@ export const ReviewForm = () => {
                                 Enviar
                             </button>
                         </Form>
+
                     }
                 }
 
