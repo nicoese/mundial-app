@@ -42,17 +42,30 @@ const Users = () => {
           return (
             <> 
               {/* {<img className='w-10' src={params.value}></img>} */}
-              <Avatar src={params.value}/>
+              <div className='flex justify-center w-full'>
+                <Avatar src={params.value}/>
+              </div>
             </>
           );
         }
     },
-    { field: 'email_verified', headerName: 'Verificado', width: 80},
-    { field: 'active', headerName: 'Active', width: 80},
-    {field: 'editar',headerName: 'Editar', width: 70, renderCell: (params)=><EditIcon onClick={()=>handleEdit(params.row.email)} className='text-gray-600 bg-transparent rounded-md hover: cursor-pointer' fontSize='large' />},
-    {field: 'deshabilitar',headerName: 'Deshabilitar/ Habilitar', width: 180,  renderCell: (params)=>params.row.active?<CancelIcon onClick={()=>handleDisable(params.row.email,false)} className='text-red-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large' />:<CheckCircleIcon onClick={()=>handleDisable(params.row.email, true)} className='text-green-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large'  />},
-
-
+    { field: 'email_verified', headerName: 'Verificado', width: 100, renderCell: (params) => {
+      /* console.log(params.row.email_verified
+        ) */
+      return (
+        <div className='flex justify-center w-full'> 
+         {params.row.email_verified ? <p className='bg-blue-200 text-blue-800 p-1 rounded-md'>Verificado</p> : <p className='bg-red-200 text-red-800 p-1 rounded-md'>No verificado</p>}
+        </div>
+      );
+    }},
+    { field: 'active', headerName: 'Active', width: 80, renderCell: (params) => {
+      return (
+          <div className='flex justify-center w-full'> 
+           {params.row.active ? <p className='bg-green-200 text-green-800 p-1 rounded-md'>Activo</p> : <p className='bg-red-200 text-red-800 p-1 rounded-md'>Inactivo</p>}
+          </div>
+      );
+    }},
+    {field: 'deshabilitar',headerName: 'Deshabilitar/ Habilitar', width: 180,  renderCell: (params)=>params.row.active?<div className='flex justify-center w-full'><CancelIcon onClick={()=>handleDisable(params.row.email,false)} className='text-red-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large' /></div>:<div className='flex justify-center w-full'><CheckCircleIcon onClick={()=>handleDisable(params.row.email, true)} className='text-green-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large'  /></div>},
   ];
 
   return (
