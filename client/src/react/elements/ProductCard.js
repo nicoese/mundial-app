@@ -56,6 +56,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     }
 
 
+
     //toggle like
     const toggleLike = () => {
         setState({liked: true})
