@@ -40,7 +40,7 @@ export const ProductsContainer = (props) => {
             {currentProducts.length > 0 ? <FilterBy/> : null}
             {
                productsError ? <div>{productsError}</div> : currentProducts.length > 0 ? <div key={"laksjdflak"}
-                                                  className={'grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-4 mx-5 bg-[#f6f6f6]'}>
+                                                  className={' ml-[10px] min-w-[90%]  grid grid-cols-1 lg:grid-cols-4 bg-[#f6f6f6]'}>
 
                     {currentProducts.map(prod => {
                         return <ProductCard

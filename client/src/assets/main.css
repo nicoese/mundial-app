@@ -829,6 +829,18 @@ input[type="range"]::-ms-fill-lower {
 .col-span-3 {
   grid-column: span 3 / span 3;
 }
+.m-\[50px\] {
+  margin: 50px;
+}
+.m-\[30px\] {
+  margin: 30px;
+}
+.m-\[18px\] {
+  margin: 18px;
+}
+.m-\[15px\] {
+  margin: 15px;
+}
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
@@ -1004,6 +1016,9 @@ input[type="range"]::-ms-fill-lower {
 }
 .mt-\[100px\] {
   margin-top: 100px;
+}
+.ml-\[10px\] {
+  margin-left: 10px;
 }
 .block {
   display: block;
@@ -1272,6 +1287,15 @@ input[type="range"]::-ms-fill-lower {
 .min-w-\[300px\] {
   min-width: 300px;
 }
+.min-w-\[100\%\] {
+  min-width: 100%;
+}
+.min-w-\[70\%\] {
+  min-width: 70%;
+}
+.min-w-\[90\%\] {
+  min-width: 90%;
+}
 .max-w-sm {
   max-width: 24rem;
 }
@@ -1289,6 +1313,9 @@ input[type="range"]::-ms-fill-lower {
 }
 .max-w-\[65\%\] {
   max-width: 65%;
+}
+.max-w-\[300px\] {
+  max-width: 300px;
 }
 .flex-\[4\] {
   flex: 4;
@@ -1359,6 +1386,12 @@ input[type="range"]::-ms-fill-lower {
 .gap-6 {
   gap: 1.5rem;
 }
+.gap-16 {
+  gap: 4rem;
+}
+.gap-8 {
+  gap: 2rem;
+}
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1427,6 +1460,9 @@ input[type="range"]::-ms-fill-lower {
 .border {
   border-width: 1px;
 }
+.border-8 {
+  border-width: 8px;
+}
 .border-x-0 {
   border-left-width: 0px;
   border-right-width: 0px;
@@ -1480,6 +1516,10 @@ input[type="range"]::-ms-fill-lower {
 .border-blue-700 {
   --tw-border-opacity: 1;
   border-color: rgb(26 86 219 / var(--tw-border-opacity));
+}
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(240 82 82 / var(--tw-border-opacity));
 }
 .border-b-\[\#a9a9a9\] {
   --tw-border-opacity: 1;
@@ -1839,6 +1879,10 @@ input[type="range"]::-ms-fill-lower {
   --tw-text-opacity: 1;
   color: rgb(5 122 85 / var(--tw-text-opacity));
 }
+.text-yellow-600 {
+  --tw-text-opacity: 1;
+  color: rgb(159 88 10 / var(--tw-text-opacity));
+}
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
@@ -2162,6 +2206,14 @@ input[type="range"]::-ms-fill-lower {
 
   .lg\:gap-5 {
     gap: 1.25rem;
+  }
+
+  .lg\:gap-16 {
+    gap: 4rem;
+  }
+
+  .lg\:gap-8 {
+    gap: 2rem;
   }
 }
 

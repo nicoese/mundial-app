@@ -1,7 +1,8 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import CancelIcon from '@mui/icons-material/Cancel';
+import PendingIcon from '@mui/icons-material/Pending';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {DataGrid} from '@mui/x-data-grid'
 import { useEffect } from 'react';
 import { getAllPurchases } from '../../../../redux/actions';
@@ -37,7 +38,6 @@ const Purchases = () => {
         // { field: 'id', headerName: 'ID', width: 220 },
         { field: 'date', headerName: 'Fecha', width: 220 },
         { field: 'email', headerName: 'Comprador', width: 220,  },
-        { field: 'status', headerName: 'Estado de Compra', width: 150, },
         { field: 'products', headerName: 'Productos', width: 270, /* valueGetter: getProducts, */ renderCell: (params) => {
             return (
                 <>
@@ -46,8 +46,9 @@ const Purchases = () => {
             );
         }},
         { field: 'totalPrice', headerName: 'Precio Total', width: 100,  },
-        {field: 'editar',headerName: 'Editar', width: 70, renderCell: (params)=><EditIcon onClick={()=>handleEdit(params.row.id)} className='text-red-600 bg-gray-500 rounded-md' fontSize='large' />},
-        {field: 'eliminar',headerName: 'Eliminar', width: 70,  renderCell: (params)=><DeleteRoundedIcon onClick={()=>handleDelete(params.row.id)} className='text-red-600 bg-gray-500 rounded-md' fontSize='large' />},
+        {field: 'status',headerName: 'Estado de Compra', width: 180,  renderCell: (params)=>params.row.status === "failed" ?<CancelIcon className='text-red-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large' />: params.row.status === "success" ?<CheckCircleIcon className='text-green-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large'  />: <PendingIcon className='text-yellow-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large'  /> },
+
+        
     
     
       ];
