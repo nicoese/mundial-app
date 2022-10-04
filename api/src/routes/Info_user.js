@@ -18,6 +18,21 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
+router.post('/update', async (req,res,next)=>{
+
+
+
+    try{
+        let {email,address,city,country,apartment,postalCode,phoneNumber} = req.body
+
+        let found = await Info_user.findOneAndUpdate({email},{address,city,country,apartment,postalCode,phoneNumber},{upsert: true, new: true})
+
+        res.status(200).json(found)
+    }catch(err){
+        next(err)
+    }
+})
+
 
 router.post('/update', async (req,res,next)=>{
     try{

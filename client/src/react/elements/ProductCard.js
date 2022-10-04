@@ -56,6 +56,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     }
 
 
+
     //toggle like
     const toggleLike = () => {
         setState({liked: true})
@@ -94,7 +95,9 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
 
     return (
         <div
-            className="flex flex-col m-[15px] pb-2 max-w-[300px] min-w-[300px] hover:shadow-[#790729] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
+
+            className="flex flex-col m-[15px] pb-2 max-w-[300px] min-w-[300px] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
+
             key={id}>
             {img ? (
                 <Link to={`${id}`} className="flex items-center justify-center w-full h-[15em] ">
