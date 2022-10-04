@@ -96,7 +96,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     return (
         <div
 
-            className="flex flex-col m-[15px] pb-2 max-w-[300px] min-w-[300px] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
+            className="flex flex-col mx-[7px] my-[14px] pb-2 max-w-[300px] min-w-[300px] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
 
             key={id}>
             {img ? (
@@ -108,13 +108,13 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
             ) : (
                 "no available image"
             )}
-            <div className="flex items-start w-full pl-[0.5em] pr-[0.5em]">
+            <div className="flex items-start w-full px-5">
                 <p className="text-[1.1rem] w-[100%] text-start font-semibold font-[Lato] truncate tracking-wide">
                     <Link className="rounded-md cursor-pointer" to={`${id}`}>{name}</Link>
                 </p>
             </div>
-            <div className="mb-4 mt-1">
-                <p className="font-[Lato] text-xl w-full text-start pl-[0.5em] ">${new Intl.NumberFormat().format(price)}</p>
+            <div className="mb-4 mt-1 px-3">
+                <p className="font-[Lato] text-xl w-full text-start pl-[0.5em] "><span className={'font-bold text-zinc-500'}>$ </span>{new Intl.NumberFormat().format(price)}</p>
                 <p className="w-[100%] h-[1.5rem] text-start pl-[0.5em] font-[Lato] text-md text-[#790729] font-semibold">{brand ? `${brand}` : stadium ? `${stadium}` : ""}</p>
             </div>
             <div className="w-full flex items-center justify-around">
