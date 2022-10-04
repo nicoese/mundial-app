@@ -48,19 +48,16 @@ export const SearchBar = () => {
         return new Promise(resolve => setTimeout(resolve, time));
     }
 
-    return <div className="searchBar_search">
-        <form onSubmit={handleSubmit}>
+    return <div className="searchbar-ctn">
+        <form onSubmit={handleSubmit} className='nav-form'>
             <input
                 type="text"
                 placeholder="Search..."
                 value={name}
                 onChange={handleInputChange}
+                className='nav-input'
             />
-            <div className="searchBar_btn">
-                <button className="search_btn-submit">
-                    <HiSearch size={23}/>
-                </button>
-            </div>
+            <HiSearch size={50} style={{background: "#790729", color: "white" , borderRadius: "50%", padding: "10px" , marginLeft: "15px"}}/>
         </form>
     </div>
 }

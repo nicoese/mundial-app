@@ -143,9 +143,11 @@ export function resetDetail() {
 }
 
 export const filter = (critearia) => {
+    console.log(critearia)
     return async dispatch => {
         try {
             const json = await axios.post(`${REACT_APP_API_URL}/products/filtroscombinados`, critearia)
+            console.log(json.data)
             return dispatch({
                 type: FILTER,
                 payload: json.data

@@ -18,16 +18,16 @@ export const ProductsContainer = (props) => {
 
     useEffect(() => {
 
-        delay(1500).then(() => {
-            dispatch(setCurrentProducts(currentPage))
-        })
+        // delay(1500).then(() => {
+            dispatch(setCurrentProducts())
+        // })
 
         isAuthenticated && dispatch(getFavorites(user.email))
 
         return () => {
         }
 
-    }, [dispatch, currentPage, isAuthenticated])
+    }, [dispatch, isAuthenticated])
 
     function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time));

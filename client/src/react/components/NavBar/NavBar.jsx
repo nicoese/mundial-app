@@ -7,11 +7,11 @@ import './NavBar.css'
 import {useNavigate} from "react-router";
 import {SearchBar} from "../../elements/SearchBar";
 import ProfileWidget from '../ProfileWidget/ProfileWidget';
+import MiniSpinner from '../MiniSpinner/MiniSpinner';
 
 const NavBar = () => {
 
-
-  const {user} = useAuth0()
+  const {user , isLoading} = useAuth0()
   const navigate = useNavigate()
 
   /* funcion para el menu desplegable */
@@ -28,13 +28,10 @@ const NavBar = () => {
     }
   }
 
-  
-  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
-
-  function delay(time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
+  // function delay(time) {
+  //   return new Promise((resolve) => setTimeout(resolve, time));
+  // }
 
   return (
     <>
@@ -50,7 +47,7 @@ const NavBar = () => {
 
           <SearchBar />
           
-          <ProfileWidget/>
+          {isLoading? <MiniSpinner/>:<ProfileWidget/>}
 
           <AiOutlineMenu size={28} className="navbar-icon" onClick={()=> toggleMenu()}/>
         </nav>
