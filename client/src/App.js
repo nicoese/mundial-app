@@ -1,7 +1,7 @@
 import "./App.css";
 import "./assets/main.css";
 import "./assets/tailwind.css";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {getAllProducts, getAllUsers, getFavorites, setCurrentProducts} from "./redux/actions";
@@ -30,7 +30,6 @@ import AdminProducts from "./react/components/AdminDash/views/Products";
 import AdminPurchases from "./react/components/AdminDash/views/Purchases"
 import {ReviewForm} from "./react/components/ReviewSection/ReviewForm";
 import Main from "./react/components/AdminDash/views/Main";
-
 
 function About() {
     return "about";
@@ -88,13 +87,14 @@ function App() {
                 <Route path={'/logout'} element={<Logout />}/>
                 <Route path={'*'} element={<Landing />}/>
                 <Route path={'/infoPersonal'} element={<InfoPersonal/>}/>
-                <Route path={'/admin'} element={<Board/>}>
+                
+                <Route exact path={'/admin'} element={<Board/>}>
                     <Route path={''} element={<Main />} />
                     <Route path={'users'} element={<Users />} />
                     <Route path={'products'} element={<AdminProducts />} />
                     <Route path={'purchases'} element={<AdminPurchases/>} />
-
                 </Route>
+                
             </Routes>
         </div>
     )
