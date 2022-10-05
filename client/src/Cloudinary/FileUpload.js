@@ -8,6 +8,7 @@ export const fileUpload = async (file) =>{
     formData.append('file', file);
     formData.append('upload_preset', preset)
 
+
     try {
         const res = await fetch(cloudinaryUrl, {
             method: 'POST',

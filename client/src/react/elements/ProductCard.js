@@ -7,7 +7,7 @@ import Swal from "sweetalert";
 import {useEffect, useState} from "react"; //solo para tomar las fuentes
 
 
-export const ProductCard = ({id, name, price, img, brand, stadium}) => {
+export const ProductCard = ({id, active, name, price, img, brand, stadium}) => {
     const dispatch = useDispatch()
 
     //estado para el renderizado del corazon (like)
@@ -72,7 +72,12 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
 
         //si el user no esta logeado no puede likear
         if (!isAuthenticated) {
-            return Swal('logueate')
+            return Swal({
+                title: 'Debes estar logeado para darle like!',
+                icon: 'info',
+                button: 'Aceptar',
+                closeOnClickOutside: true,
+              })
         }
 
         //manejo del boton de like
@@ -96,32 +101,40 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     return (
         <div
 
-            className="flex flex-col m-[15px] pb-2 max-w-[300px] min-w-[300px] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
+            // className="flex flex-col pb-2 w-[250px] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
+            className="flex flex-col pb-2 w-[250px] drop-shadow-2xl hover:shadow-sm
+            hover:shadow-black bg-white h-[400px] rounded-[15px]"
 
             key={id}>
             {img ? (
                 <Link to={`${id}`} className="flex items-center justify-center w-full h-[15em] ">
                     <div className="flex items-center justify-center w-full h-[15em]">
-                        <img className="h-[12em]" src={img} alt=""/>
+                        <img className="h-[12em] rounded-[3%]" src={img} alt=""/>
                     </div>
                 </Link>
             ) : (
                 "no available image"
             )}
-            <div className="flex items-start w-full pl-[0.5em] pr-[0.5em]">
+            <div className="flex items-start w-full px-5">
                 <p className="text-[1.1rem] w-[100%] text-start font-semibold font-[Lato] truncate tracking-wide">
                     <Link className="rounded-md cursor-pointer" to={`${id}`}>{name}</Link>
                 </p>
             </div>
-            <div className="mb-4 mt-1">
-                <p className="font-[Lato] text-xl w-full text-start pl-[0.5em] ">${new Intl.NumberFormat().format(price)}</p>
+            <div className="mb-4 mt-1 px-3">
+                <p className="font-[Lato] text-xl w-full text-start pl-[0.5em] "><span className={'font-bold text-zinc-500'}>$ </span>{new Intl.NumberFormat().format(price)}</p>
                 <p className="w-[100%] h-[1.5rem] text-start pl-[0.5em] font-[Lato] text-md text-[#790729] font-semibold">{brand ? `${brand}` : stadium ? `${stadium}` : ""}</p>
             </div>
-            <div className="w-full flex items-center justify-around">
+
+            <div className="w-full flex items-center justify-around px-5">
                 <button onClick={() => handleClick()}
                         className="w-[8em] h-[2.3em] mr-2 rounded-md bg-[#790729] hover:bg-red-800 text-white font-bold font-[Lato]"> Al
                     Carrito
-                </button>
+                </button> :
+                    <button disabled
+                    className=" w-[8em] h-[2.3em] mr-2 rounded-md bg-zinc-800 hover:bg-zinc-500 text-white font-bold font-[Lato]">
+                    No disponible
+                    </button>}
+
                 <button onClick={handleLike}
                         className=" flex items-center justify-center h-[2.3em] ml-[3em] rounded-md p-2 border-2
                   border-[#790729] text-[#790729] font-bold"

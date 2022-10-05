@@ -2,18 +2,21 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
-import {buyDetail, getProductsInCart, purchaseFailed, cleanCart} from "../../../redux/actions";
+import {buyDetail, getProductsInCart, purchaseFailed, cleanCart, findUserByEmail} from "../../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
 import Swal from "sweetalert";
+import {useNavigate} from "react-router";
 
 const Cart = () => {
     const [state, updateState] = useState(true);
     let productsInCart = useSelector(state => state.cart);
+    let userDb = useSelector(state => state.user);
     let totalPrice = 0;
     const dispatch = useDispatch()
     const {user, isAuthenticated} = useAuth0()
     const {mp_link} = useSelector(state => state)
     const url = new URL(window.location)
+    const navigate = useNavigate()
 
     let purchaseStatus = !!url.searchParams.get('status')
 
@@ -35,6 +38,8 @@ const Cart = () => {
 
     useEffect(() => {
         user && dispatch(getProductsInCart(user.email))
+        //si el usuario de auth0 existe busco sus datos
+        user && dispatch(findUserByEmail(user.email))
     }, [user, dispatch])
 
 
@@ -43,9 +48,21 @@ const Cart = () => {
     totalPrice = productsInCart.length > 0 && productsInCart.map((a) => a.price * a.cantidad)
         .reduce((a, b) => a + b)
 
-    const handleClick = () => {
+    const handleClick = async () => {
 
 
+        if (!userDb.active) {
+            return await Swal({
+                icon: 'danger',
+                title: 'No podes comprar :( Has sido baneado temporalmente, ' +
+                    'procura no volver a romper las reglas de la pagina la proxima vez ;)',
+                button: 'Volver al inicio',
+            })
+                .then(e => {
+                    dispatch(purchaseFailed(user.email))
+                    return navigate('/products')
+                })
+        }
 
         const purchase = {
             email: user.email,
@@ -58,10 +75,6 @@ const Cart = () => {
         } else {
             alert("No tienes productos en tu carrito. Añade algunos!")
         }
-    }
-
-    function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
     }
 
     const deleteProduct = () => {

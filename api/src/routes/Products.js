@@ -38,7 +38,8 @@ router.get('/', async (req, res, next) => {
 router.post('/newProduct', async (req,res) => {
     try {
         const produc = req.body
-        const saved= await postProducts(produc)
+        console.log('lo que llega',produc)
+        const saved= await postProducts({...produc.payload, img: produc.cloudImg})
         return res.status(200).send("producto guardado")   
     } catch (error) {
         return res.status(400).send(error.message)   
@@ -123,6 +124,18 @@ const insertProducts = async () => {
         console.log(err)
     }
 }
+
+router.put('/modify_product', async (req,res,next)=>{
+    try{
+        const{productId} = req.query
+        const{img_url} = req.body
+
+        let updated_user = await User.findByIdAndUpdate(productId,{img: img_url},{new: true})
+        res.status(200).json(updated_user)
+    }catch(err){
+        next(err);
+    }
+})
 
 
 

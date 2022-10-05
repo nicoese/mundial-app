@@ -1,10 +1,11 @@
 import {useAuth0} from "@auth0/auth0-react";
 import {Navigate} from "react-router";
+import {useEffect} from "react";
 
 
 export const ProtectedRoutes = ({children}) => {
 
-    const {isAuthenticated} = useAuth0()
+    const {isAuthenticated, isLoading} = useAuth0()
 
     delay(1000)
         .then(e => {
@@ -13,8 +14,14 @@ export const ProtectedRoutes = ({children}) => {
             }
         })
 
-    function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
+    useEffect(() => {
+        console.log(isAuthenticated)
+    }, [isAuthenticated])
+
+    if (!isLoading){
+        if (!isAuthenticated) {
+            return <Navigate to={'/products'}/>
+        }
     }
 
     return children

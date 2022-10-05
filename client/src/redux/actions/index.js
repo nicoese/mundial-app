@@ -44,6 +44,9 @@ export const SAVE_REVIEW = 'SAVE_REVIEW'
 export const REVIEW_ERROR = "REVIEW_ERROR"
 export const CLEAR_REVIEW_MESSAGES = "CLEAR_REVIEW_MESSAGES"
 export const SAVE_PROFILE_PICTURE = "SAVE_PROFILE_PICTURE"
+export const FIND_USER_BY_EMAIL = "FIND_USER_BY_EMAIL"
+export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
+export const DELETE_REVIEW = "DELETE_REVIEW"
 
 
 
@@ -373,10 +376,10 @@ export const getReviews = (productId) => {
     }
 }
 
-export const postNewProduct = (payload) => {
+export const postNewProduct = (payload, cloudImg) => {
     return async function () {
             try{
-            const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, payload)
+            const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, {payload,cloudImg} )
             return info
         }catch(err){
             console.log(err)
@@ -580,6 +583,48 @@ export const saveProfilePicture = (email, img) => {
     }
 }
 
+export const findUserByEmail = (email) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/users/${email}`)
+            .then(json => {
+                return dispatch({
+                    type: FIND_USER_BY_EMAIL,
+                    payload: json.data
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            }}
+            
+export const getAllReviews = () =>{
+    return async dispatch =>{
+        try{
+        let response = await axios.get(`${REACT_APP_API_URL}/reviews`);
+        dispatch({
+            type: GET_ALL_REVIEWS,
+            payload: response.data
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
+      
+}
+
+export const delete_review = (id) =>{
+    return async dispatch =>{
+            try{ 
+            await axios.delete(`${REACT_APP_API_URL}/reviews/delete?id=${id}`);
+            dispatch({
+                type: DELETE_REVIEW,
+                payload: id
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
 
 
 

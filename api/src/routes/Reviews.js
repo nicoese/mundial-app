@@ -26,7 +26,7 @@ router.get('/', async (req, res, next) => {
         }
 
         //no query get all revs in general
-        let result = await Review.find()
+        let result = await Review.find({}).populate('productId')
         res.status(200).json(result.reverse())
     } catch (err) {
         next(err)
@@ -85,6 +85,17 @@ router.post('/modify_review', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
+})
+
+
+router.delete('/delete', async (req, res, next) => {
+        try{
+            let {id} = req.query
+            let deleted = await Review.findByIdAndDelete(id)
+            res.status(200).json(deleted)
+        }catch(err){
+            next(err)
+        }
 })
 
 module.exports = router;

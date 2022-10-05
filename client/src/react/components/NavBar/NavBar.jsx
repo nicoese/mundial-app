@@ -8,7 +8,7 @@ import {SearchBar} from "../../elements/SearchBar";
 import ProfileWidget from '../ProfileWidget/ProfileWidget';
 import MiniSpinner from '../MiniSpinner/MiniSpinner';
 import { useDispatch, useSelector } from 'react-redux';
-import { getByName, setCurrentProducts } from '../../../redux/actions';
+import {clearProductsError, getByName, setCurrentProducts} from '../../../redux/actions';
 import { useEffect } from 'react';
 
 const NavBar = () => {
@@ -38,6 +38,9 @@ const NavBar = () => {
 
   const handleClick = ()=>{
     let name = ''
+
+    dispatch(clearProductsError())
+
     dispatch(getByName(name))
 
     delay(500).then(()=>{
@@ -55,7 +58,7 @@ const NavBar = () => {
     <>
       <header>
         <nav className="navbar-ctn shadow-md">
-          <h1 onClick={(ev) => handleClick()} className="navbar-title">MundiApp</h1>
+          <h1 onClick={handleClick} className="navbar-title">MundiApp</h1>
           <ul className="navbar-ul">
             <Link to={"/products"} onClick={handleClick} className="navbar-a"><li className="navbar-li">Inicio</li></Link>
             <Link to={"/cart"} className="navbar-a"><li className="navbar-li">Carrito</li></Link>
