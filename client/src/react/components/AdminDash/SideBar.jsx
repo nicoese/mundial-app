@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaUsers } from 'react-icons/fa'
 import InventoryIcon from '@mui/icons-material/Inventory';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ReviewsIcon from '@mui/icons-material/Reviews';
 
 const SideBar = () => {
   return (
@@ -27,6 +28,12 @@ const SideBar = () => {
               <Link to={'purchases'} className='rounded-lg flex'>
                 <ShoppingCartIcon size={30} className='mr-2'/>
                 Compras
+              </Link>
+            </div>
+            <div className='flex items-center ml-2 pl-4 w-full h-[50px] text-lg text-[#790729] duration-300 hover:bg-[#ececec] hover:font-semibold'>
+              <Link to={'reviews'} className='rounded-lg flex'>
+                <ReviewsIcon size={30} className='mr-2'/>
+                Reseñas
               </Link>
             </div>
           </ul>

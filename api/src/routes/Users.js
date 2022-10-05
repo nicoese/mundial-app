@@ -88,5 +88,17 @@ router.post('/add_user_to_db', async (req, res, next) => {
     }
 })
 
+router.put('/modify_user', async (req,res,next)=>{
+    try{
+        const{userId} = req.query
+        const{img_url} = req.body
+
+        let updated_user = await User.findByIdAndUpdate(userId,{picture: img_url},{new: true})
+        res.status(200).json(updated_user)
+    }catch(err){
+        next(err);
+    }
+})
+
 
 module.exports = router;

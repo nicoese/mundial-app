@@ -1,0 +1,33 @@
+.divMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: auto;
+    background-color: gray;
+}
+
+.divPF{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    width: 50%;
+    height: 15vh;
+    background-color: #790729;
+}
+
+.divPF h1{
+    color: #f6f6f6;
+    font-size: 2rem;
+}
+
+.accordion{
+    width: 50%;
+}
+
+.footer{
+    width: 100%;
+    margin-top: 5%;
+}

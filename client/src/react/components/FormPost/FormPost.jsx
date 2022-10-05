@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postNewProduct } from "../../../redux/actions";
+import { fileUpload } from "../../../Cloudinary/FileUpload";
 
 // Funcion para validar los inputs
 function validate(input) {
-  const vName = /^[a-zA-Z0-9\s]+$/;
+  const vName = /^[Á-ÿa-zA-Z0-9\s]+$/;
   const vDate = /^[0-9/]+$/;
   const vPrice = /^[0-9]+$/;
   let error = {};
@@ -58,8 +59,8 @@ export default function FormProducts() {
     name: "",
     price: 0,
     type: "",
-    img: "",
     brand: "",
+    img: "",
     stock: {
       S: 0,
       M: 0,
@@ -90,10 +91,18 @@ export default function FormProducts() {
     sector: "",
   });
   const [err, setErr] = useState({});
-  
+  const [cloudImg, setCloudImg ] = useState('')
+
+
   //Funciones handle para los input
-  function handleJersey(e) {
-    e.preventDefault();
+  async function handleJersey(e) {
+  
+    if(e.target.name === "img"){
+      // console.log(e.target.value)
+      let cloudImg =  await fileUpload(e.target.files[0])
+      // console.log('ENTRE IF HANDLE JER',cloudImg.url)
+      setCloudImg( cloudImg.url );
+    }
     if (
       e.target.name === "S" ||
       e.target.name === "M" ||
@@ -121,8 +130,11 @@ export default function FormProducts() {
     }
   }
 
-  function handleAccessory(e) {
-    e.preventDefault();
+  async function handleAccessory(e) {
+    if(e.target.name === "img"){
+      let cloudImg =  await fileUpload(e.target.files[0])
+      setCloudImg( cloudImg.url );
+    }
     if (e.target.name === "Z") {
       setAccessory({
         ...accessory,
@@ -145,8 +157,11 @@ export default function FormProducts() {
     }
   }
 
-  function handleTicket(e) {
-    e.preventDefault();
+  async function handleTicket(e) {
+    if(e.target.name === "img"){
+      let cloudImg =  await fileUpload(e.target.files[0])
+      setCloudImg( cloudImg.url );
+    }
     if (e.target.name === "Z") {
       setTicket({
         ...ticket,
@@ -275,24 +290,25 @@ export default function FormProducts() {
     if (err.img) {
       return alert(err.img);
     }
-    if (err.brand) {
+    if (err.brand && typee.type === "jersey") {
       return alert(err.brand);
     }
-    if (err.stadium) {
+    if (err.stadium  && typee.type === "ticket" ) {
       return alert(err.stadium);
     }
-    if (err.date) {
+    if (err.date && typee.type === "ticket") {
       return alert(err.date);
     }
-    if (err.sector) {
+    if (err.sector && typee.type === "ticket") {
       return alert(err.sector);
     }
     if (typee.type === "jersey") {
-      dispatch(postNewProduct(jersey));
+      console.log(jersey)
+      dispatch(postNewProduct(jersey, cloudImg));
     } else if (typee.type === "accessory") {
-      dispatch(postNewProduct(accessory));
-    } else if (typee.type === "jersey") {
-      dispatch(postNewProduct(ticket));
+      dispatch(postNewProduct(accessory,cloudImg));
+    } else if (typee.type === "ticket") {
+      dispatch(postNewProduct(ticket,cloudImg));
     }
   }
 
@@ -351,7 +367,7 @@ export default function FormProducts() {
                 <label>Imagen URL :</label>
                 <input
                   className="rounded-md"
-                  type="text"
+                  type="file"
                   name="img"
                   onChange={(e) => handleJersey(e)}
                 />
@@ -465,7 +481,7 @@ export default function FormProducts() {
                 <label>Imagen URL :</label>
                 <input
                   className="rounded-md"
-                  type="text"
+                  type="file"
                   name="img"
                   onChange={(e) => handleAccessory(e)}
                 />
@@ -537,7 +553,7 @@ export default function FormProducts() {
                 <label>Imagen URL :</label>
                 <input
                   className="rounded-md"
-                  type="text"
+                  type="file"
                   name="img"
                   onChange={(e) => handleTicket(e)}
                 />

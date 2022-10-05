@@ -20,7 +20,7 @@ export const ProductsContainer = (props) => {
     useEffect(() => {
 
         // delay(1500).then(() => {
-            dispatch(setCurrentProducts())
+        dispatch(setCurrentProducts())
         // })
 
         isAuthenticated && dispatch(getFavorites(user.email))
@@ -35,27 +35,29 @@ export const ProductsContainer = (props) => {
     }
 
     return <div key={'ajslkdfjalskdfja'}
-                className={'w-full text-center flex flex-col items-center justify-center bg-[#f6f6f6] mt-24'}>
+                className={'w-full flex flex-col items-center justify-center bg-[#f6f6f6] mt-24'}>
         {currentProducts.length > 0 ? <SortBy/> : <Spinner/>}
-        <div className={'flex flex-row'}>
+        <div className={'flex flex-row w-full'}>
             {currentProducts.length > 0 ? <FilterBy/> : null}
             {
-               productsError ? <div>{productsError}</div> : currentProducts.length > 0 ? <div key={"laksjdflak"}
-                                                  className={' ml-[10px] min-w-[90%]  grid grid-cols-1 lg:grid-cols-4 bg-[#f6f6f6]'}>
+                // productsError ? <div className={'w-[80vw] h-[75vh] py-[200px] px-[30%] font-["Lato"]' +
+                productsError ? <div className={'w-[80vw] h-[75vh] overflow-hidden font-["Lato"]' +
+                ' font-bold text-xl'}>{productsError}</div> : currentProducts.length > 0 ?
+                    <div key={"laksjdflak"}
+                         className={'ml-20 w-[auto] gap-5 grid sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 bg-[#f6f6f6]'}>
 
-                    {currentProducts.map(prod => {
-                        return <ProductCard
-                            key={prod.id}
-                            id={prod._id}
-                            active={prod.active}
-                            name={prod.name}
-                            price={prod.price}
-                            img={prod.img && prod.img}
-                            brand={prod.brand}
-                            stadium={prod.stadium}
-                        />
-                    })}
-                </div> : null
+                        {currentProducts.map(prod => {
+                            return <ProductCard
+                                key={prod.id}
+                                id={prod._id}
+                                name={prod.name}
+                                price={prod.price}
+                                img={prod.img && prod.img}
+                                brand={prod.brand}
+                                stadium={prod.stadium}
+                            />
+                        })}
+                    </div> : null
             }
         </div>
         <Pagination/>
