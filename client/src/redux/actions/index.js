@@ -37,6 +37,17 @@ export const GET_ALL_PURCHASES_BY_USER_EMAIL = "GET_ALL_PURCHASES_BY_USER_EMAIL"
 export const GET_ALL_REVIEWS_BY_USER_EMAIL = "GET_ALL_REVIEWS_BY_USER_EMAIL"
 export const GET_ALL_REVIEWS_BY_PRODUCT_ID = "GET_ALL_REVIEWS_BY_PRODUCT_ID"
 export const PUT_PRODUCT = 'PUT_PRODUCT'
+export const SAVE_PERSONAL_DATA = 'SAVE_PERSONAL_DATA'
+export const GET_PERSONAL_DATA = 'GET_PERSONAL_DATA'
+export const SET_USER_DATA_ERROR = 'SET_USER_DATA_ERROR'
+export const CLEAR_USER_DATA_ERROR = 'CLEAR_USER_DATA_ERROR'
+export const SAVE_REVIEW = 'SAVE_REVIEW'
+export const REVIEW_ERROR = "REVIEW_ERROR"
+export const CLEAR_REVIEW_MESSAGES = "CLEAR_REVIEW_MESSAGES"
+export const SAVE_PROFILE_PICTURE = "SAVE_PROFILE_PICTURE"
+export const FIND_USER_BY_EMAIL = "FIND_USER_BY_EMAIL"
+export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
+export const DELETE_REVIEW = "DELETE_REVIEW"
 
 
 
@@ -144,9 +155,11 @@ export function resetDetail() {
 }
 
 export const filter = (critearia) => {
+    console.log(critearia)
     return async dispatch => {
         try {
             const json = await axios.post(`${REACT_APP_API_URL}/products/filtroscombinados`, critearia)
+            console.log(json.data)
             return dispatch({
                 type: FILTER,
                 payload: json.data
@@ -176,7 +189,6 @@ export const addToCart = ( userEmail, product) => {
 
 export const getProductsInCart = (userEmail) => {
     return async (dispatch) => {
-        console.log('action', userEmail);
         return axios.get(`${REACT_APP_API_URL}/carts?email=${userEmail}`)
             .then(json => {
                 return dispatch({
@@ -372,10 +384,10 @@ export const getReviews = (productId) => {
     }
 }
 
-export const postNewProduct = (payload) => {
+export const postNewProduct = (payload, cloudImg) => {
     return async function () {
             try{
-            const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, payload)
+            const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, {payload,cloudImg} )
             return info
         }catch(err){
             console.log(err)
@@ -506,5 +518,121 @@ export const disableProduct = (productId,active) =>{
         }
     }
 }
+
+export const savePersonalData = (personalData) => {
+    return async dispatch => {
+        return axios.post(`${REACT_APP_API_URL}/info/update`, personalData)
+            .then(json => {
+                return dispatch({
+                    type: SAVE_PERSONAL_DATA,
+                    payload: json.data
+                })
+            })
+            .catch(err => {
+                dispatch({
+                    type: SET_USER_DATA_ERROR,
+                    payload: err.message
+                })
+            })
+    }
+}
+
+
+export const getPersonalData = (userEmail) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/info?email=${userEmail}`)
+            .then(json => {
+                return dispatch({
+                    type: GET_PERSONAL_DATA,
+                    payload: json.data
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+
+export const saveReview = (review) => {
+    return async dispatch => {
+        return axios.post(`${REACT_APP_API_URL}/reviews/add_review`, review)
+            .then(json => {
+                return dispatch({
+                    type: SAVE_REVIEW,
+                })
+            })
+            .catch(err => {
+                return dispatch({
+                    type: REVIEW_ERROR,
+                })
+            })
+    }
+}
+
+export const clearReviewMessages = () => {
+    return dispatch => {
+        return dispatch({
+            type: CLEAR_REVIEW_MESSAGES
+        })
+    }
+}
+
+export const saveProfilePicture = (email, img) => {
+    return async dispatch => {
+        return axios.put(`${REACT_APP_API_URL}/users/pic?email=${email}`, {img})
+            .then(json => {
+                return dispatch({
+                    type: SAVE_PROFILE_PICTURE,
+                    payload: json.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
+}
+
+export const findUserByEmail = (email) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/users/${email}`)
+            .then(json => {
+                return dispatch({
+                    type: FIND_USER_BY_EMAIL,
+                    payload: json.data
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            }}
+            
+export const getAllReviews = () =>{
+    return async dispatch =>{
+        try{
+        let response = await axios.get(`${REACT_APP_API_URL}/reviews`);
+        dispatch({
+            type: GET_ALL_REVIEWS,
+            payload: response.data
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
+      
+}
+
+export const delete_review = (id) =>{
+    return async dispatch =>{
+            try{ 
+            await axios.delete(`${REACT_APP_API_URL}/reviews/delete?id=${id}`);
+            dispatch({
+                type: DELETE_REVIEW,
+                payload: id
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
+
 
 

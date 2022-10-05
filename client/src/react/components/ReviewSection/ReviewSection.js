@@ -73,7 +73,7 @@ export const ReviewSection = () => {
 
     return <>
 
-        <div className={'flex flex-col px-20 mb-10'}>
+        <div className={'flex flex-col px-20 mb-10 max-w-[75%]'}>
             <div className={'flex justify-between max-w-[65%] mb-16'}>
                 <h2 className={"font-['Lato'] font-semibold text-2xl my-2 text-red-800"}>RESEÑAS <span
                     className={'text-black font-thin'}>({productReviews.length})</span></h2>

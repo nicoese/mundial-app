@@ -7,6 +7,7 @@ import {useEffect} from "react";
 import {getFavorites, setCurrentProducts} from "../../redux/actions";
 import Spinner from "./Spinner/Spinner";
 import {useAuth0} from "@auth0/auth0-react";
+import Footer from "./Footer/Footer";
 
 export const ProductsContainer = (props) => {
 
@@ -18,44 +19,48 @@ export const ProductsContainer = (props) => {
 
     useEffect(() => {
 
-        delay(1500).then(() => {
-            dispatch(setCurrentProducts(currentPage))
-        })
+        // delay(1500).then(() => {
+        dispatch(setCurrentProducts())
+        // })
 
         isAuthenticated && dispatch(getFavorites(user.email))
 
         return () => {
         }
 
-    }, [dispatch, currentPage, isAuthenticated])
+    }, [dispatch, isAuthenticated])
 
     function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
 
     return <div key={'ajslkdfjalskdfja'}
-                className={'w-full text-center flex flex-col items-center justify-center bg-[#f6f6f6] mt-24'}>
+                className={'w-full flex flex-col items-center justify-center bg-[#f6f6f6] mt-24'}>
         {currentProducts.length > 0 ? <SortBy/> : <Spinner/>}
-        <div className={'flex flex-row'}>
+        <div className={'flex flex-row w-full'}>
             {currentProducts.length > 0 ? <FilterBy/> : null}
             {
-               productsError ? <div>{productsError}</div> : currentProducts.length > 0 ? <div key={"laksjdflak"}
-                                                  className={'grid grid-cols-1 gap-4 lg:gap-5 lg:grid-cols-4 mx-5 bg-[#f6f6f6]'}>
+                // productsError ? <div className={'w-[80vw] h-[75vh] py-[200px] px-[30%] font-["Lato"]' +
+                productsError ? <div className={'w-[80vw] h-[75vh] overflow-hidden font-["Lato"]' +
+                ' font-bold text-xl'}>{productsError}</div> : currentProducts.length > 0 ?
+                    <div key={"laksjdflak"}
+                         className={'ml-20 w-[auto] gap-5 grid sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 bg-[#f6f6f6]'}>
 
-                    {currentProducts.map(prod => {
-                        return <ProductCard
-                            key={prod.id}
-                            id={prod._id}
-                            name={prod.name}
-                            price={prod.price}
-                            img={prod.img && prod.img}
-                            brand={prod.brand}
-                            stadium={prod.stadium}
-                        />
-                    })}
-                </div> : null
+                        {currentProducts.map(prod => {
+                            return <ProductCard
+                                key={prod.id}
+                                id={prod._id}
+                                name={prod.name}
+                                price={prod.price}
+                                img={prod.img && prod.img}
+                                brand={prod.brand}
+                                stadium={prod.stadium}
+                            />
+                        })}
+                    </div> : null
             }
         </div>
         <Pagination/>
+        <Footer/>
     </div>
 }

@@ -1,7 +1,7 @@
 .king{
     margin-top: 8%;
     display: flex;
-    background-color: #a9a9a9;
+    /*background-color: #a9a9a9;*/
     width: 70%;
     height: 90%;
     justify-content: center;
@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     width: 90%;
-    height: 90%;
+    height: 90vh;
     border: 3px solid #790722;
     border-radius: 10px;
     background-color: #f6f6f6;
@@ -67,7 +67,6 @@
 }
 
 .inpName{
-    border-color: #790722;
     border-style: dashed;
     border-radius: 10px;
 }
@@ -186,18 +185,12 @@ label{
     font-weight: 500;
 }
 
-.btnCancelar{
-    color: #f6f6f6;
-    background-color: #790729;
-    width: 7rem;
-    height: 3rem;
-    border-radius: 10px;
-}
-
 .btnGuardar{
     color: #f6f6f6;
     background-color: #790729;
     width: 7rem;
-    height: 3rem;
+    height: 2.5rem;
     border-radius: 10px;
+    margin-bottom: 3%;
 }
+

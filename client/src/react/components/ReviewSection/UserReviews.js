@@ -27,7 +27,8 @@ export const UserReviews = () => {
             <h2 className={"font-['Lato'] font-semibold text-2xl my-2 text-red-800"}>MIS RESEÑAS <span
                 className={'text-black font-thin'}>({userReviews.length})</span></h2>
 
-            { userReviews.length > 0 ? userReviews.map(e => {
+            {
+                userReviews.length > 0 ? userReviews.map(e => {
                 return <ReviewCard
 
                     title={e.title}
@@ -41,7 +42,7 @@ export const UserReviews = () => {
 
                 />
             })
-            : <div>No tenes reviews</div>
+            : <div className={'py-20'}>No tenes reviews</div>
             }
 
         </div>
