@@ -43,6 +43,7 @@ export const CLEAR_USER_DATA_ERROR = 'CLEAR_USER_DATA_ERROR'
 export const SAVE_REVIEW = 'SAVE_REVIEW'
 export const REVIEW_ERROR = "REVIEW_ERROR"
 export const CLEAR_REVIEW_MESSAGES = "CLEAR_REVIEW_MESSAGES"
+export const FIND_USER_BY_EMAIL = "FIND_USER_BY_EMAIL"
 
 
 
@@ -566,6 +567,20 @@ export const clearReviewMessages = () => {
     }
 }
 
+export const findUserByEmail = (email) => {
+    return async dispatch => {
+        return axios.get(`${REACT_APP_API_URL}/users/${email}`)
+            .then(json => {
+                return dispatch({
+                    type: FIND_USER_BY_EMAIL,
+                    payload: json.data
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
 
 
 

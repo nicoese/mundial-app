@@ -7,7 +7,7 @@ import Swal from "sweetalert";
 import {useEffect, useState} from "react"; //solo para tomar las fuentes
 
 
-export const ProductCard = ({id, name, price, img, brand, stadium}) => {
+export const ProductCard = ({id, active, name, price, img, brand, stadium}) => {
     const dispatch = useDispatch()
 
     //estado para el renderizado del corazon (like)
@@ -118,10 +118,16 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
                 <p className="w-[100%] h-[1.5rem] text-start pl-[0.5em] font-[Lato] text-md text-[#790729] font-semibold">{brand ? `${brand}` : stadium ? `${stadium}` : ""}</p>
             </div>
             <div className="w-full flex items-center justify-around">
-                <button onClick={() => handleClick()}
-                        className="w-[8em] h-[2.3em] mr-2 rounded-md bg-[#790729] hover:bg-red-800 text-white font-bold font-[Lato]"> Al
+                {
+                    active ? <button onClick={() => handleClick()}
+                         className="w-[8em] h-[2.3em] mr-2 rounded-md bg-[#790729] hover:bg-red-800 text-white font-bold font-[Lato]"> Al
                     Carrito
-                </button>
+                </button> :
+                    <button disabled
+                    className=" w-[8em] h-[2.3em] mr-2 rounded-md bg-zinc-800 hover:bg-zinc-500 text-white font-bold font-[Lato]">
+                    No disponible
+                    </button>}
+
                 <button onClick={handleLike}
                         className=" flex items-center justify-center h-[2.3em] ml-[3em] rounded-md p-2 border-2
                   border-[#790729] text-[#790729] font-bold"

@@ -47,6 +47,7 @@ export const ProductsContainer = (props) => {
                         return <ProductCard
                             key={prod.id}
                             id={prod._id}
+                            active={prod.active}
                             name={prod.name}
                             price={prod.price}
                             img={prod.img && prod.img}
