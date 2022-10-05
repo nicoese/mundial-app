@@ -3,8 +3,10 @@ import spinner from '../img/spin_dreaming.gif'
 
 const Spinner = () => {
   return (
-    <div>
-        <img src={spinner} alt='SPINNER'></img>
+    <div className={'h-[75vh] mt-20'}>
+        <img  src={spinner} alt='SPINNER'
+              className={'w-[80%]'}
+        />
     </div>
   )
 }
