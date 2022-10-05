@@ -131,3 +131,9 @@
     font-weight: 400;
     font-family: 'Lato';
 }
+
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 0 ;
+}

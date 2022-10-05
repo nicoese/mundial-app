@@ -29,6 +29,7 @@ import Users from "./react/components/AdminDash/views/Users";
 import AdminProducts from "./react/components/AdminDash/views/Products";
 import AdminPurchases from "./react/components/AdminDash/views/Purchases"
 import {ReviewForm} from "./react/components/ReviewSection/ReviewForm";
+import PFrecuentes from "./react/components/PreguntasFrecuentes/PFrecuentes";
 
 
 function About() {
@@ -65,6 +66,7 @@ function App() {
                 <Route path={'/blogInfo'} element={<Info/>}/>
                 <Route path={'/Cart'} element={<Cart/>}/>
                 <Route path={'/nosotros'} element={<Nosotros/>}/>
+                <Route path={'/frequentQuestions'} element={<PFrecuentes/>}/>
                 <Route path={'/purchases/success'} element={
                     <ProtectedRoutes>
                         <Success/>
