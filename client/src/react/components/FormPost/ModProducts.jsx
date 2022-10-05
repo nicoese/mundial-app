@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector,useDispatch} from 'react-redux' 
 import { getDetails, putProduct} from '../../../redux/actions';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function validate(nombre) {
     const vName = /^[a-zA-ZÁ-ÿ0-9\s]+$/;
@@ -29,7 +29,7 @@ export default function ModProduct () {
 
     const dispatch = useDispatch()
     const {id} = useParams()
-    const history = useHistory()
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(getDetails(id))
@@ -100,16 +100,16 @@ export default function ModProduct () {
         e.preventDefault();
         if(type.typee === 'Nombre'){
         dispatch(putProduct(nombre))
-        history.push('/admin/products')
+        navigate('/admin/products')
         } else if(type.typee === 'Precio'){
         dispatch(putProduct(precio))
-        history.push('/admin/products')
+        navigate('/admin/products')
        } else if(type.typee === 'Imagen'){
         dispatch(putProduct(imagen))
-        history.push('/admin/products')
+        navigate('/admin/products')
        } else if(type.typee === 'Stock'){
         dispatch(putProduct(stocked))
-        history.push('/admin/products')
+        navigate('/admin/products')
        }
     }
     
