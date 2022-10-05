@@ -27,7 +27,7 @@ export const UserBanner = () => {
 
     user && dispatch(findUserByEmail(user.email))
 
-    }, [file, userDb, user]);
+    }, [file, user]);
 
 
     const cloud_name = 'dakxsizpf';
