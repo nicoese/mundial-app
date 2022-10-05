@@ -124,6 +124,18 @@ const insertProducts = async () => {
     }
 }
 
+router.put('/modify_product', async (req,res,next)=>{
+    try{
+        const{productId} = req.query
+        const{img_url} = req.body
+
+        let updated_user = await User.findByIdAndUpdate(productId,{img: img_url},{new: true})
+        res.status(200).json(updated_user)
+    }catch(err){
+        next(err);
+    }
+})
+
 
 
 module.exports = router;

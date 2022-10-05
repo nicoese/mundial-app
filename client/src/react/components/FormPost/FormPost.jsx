@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postNewProduct } from "../../../redux/actions";
+import { fileUpload } from "../../../Cloudinary/FileUpload";
 
 // Funcion para validar los inputs
 function validate(input) {
@@ -90,10 +91,23 @@ export default function FormProducts() {
     sector: "",
   });
   const [err, setErr] = useState({});
-  
+
+
   //Funciones handle para los input
-  function handleJersey(e) {
-    e.preventDefault();
+  async function handleJersey(e) {
+    let cloudImg;
+    if(e.target.name === "img"){
+      console.log(e.target.value)
+      cloudImg = await fileUpload(e.target.value)
+      console.log(cloudImg)
+      setJersey({
+        ...jersey,
+        img: {
+          ...jersey.img,
+          [e.target.name]: cloudImg,
+        },
+      });
+    }
     if (
       e.target.name === "S" ||
       e.target.name === "M" ||
