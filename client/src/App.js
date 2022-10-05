@@ -23,12 +23,13 @@ import {Logout} from "./react/elements/Logout";
 import {PurchaseContainer} from "./react/components/Purchase/PurchaseContainer";
 import {ReviewSection} from "./react/components/ReviewSection/ReviewSection";
 import {UserReviews} from "./react/components/ReviewSection/UserReviews";
-import FormProducts from "./react/components/FormPost/FormPost.jsx";
+import FormProducts from "./react/components/FormPost/FormPost.jsx"
 import Board from "./react/components/AdminDash/Board";
 import Users from "./react/components/AdminDash/views/Users";
 import AdminProducts from "./react/components/AdminDash/views/Products";
 import AdminPurchases from "./react/components/AdminDash/views/Purchases"
 import {ReviewForm} from "./react/components/ReviewSection/ReviewForm";
+import ModProduct from "./react/components/FormPost/ModProducts.jsx"
 
 
 function About() {
@@ -81,15 +82,14 @@ function App() {
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
                 </ProtectedRoutes>}/>
-                <Route path={'/admin-post'} element={<ProtectedRoutes>
-                    <FormProducts/>
-                </ProtectedRoutes>}/>
                 <Route path={'/logout'} element={<Logout />}/>
                 <Route path={'*'} element={<Landing />}/>
                 <Route path={'/infoPersonal'} element={<InfoPersonal/>}/>
                 <Route path={'/admin'} element={<Board/>}>
                     <Route path={'users'} element={<Users />} />
                     <Route path={'products'} element={<AdminProducts />} />
+                    <Route path={'products/:id'} element={<ModProduct />}/>
+                    <Route path={'post'} element={<FormProducts />} />
                     <Route path={'purchases'} element={<AdminPurchases/>} />
 
                 </Route>

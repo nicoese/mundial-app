@@ -73,29 +73,29 @@ const ProfileWidget = () => {
             className="hidden absolute z-50 w-[7.2em] right-4 top-20 bg-white"
           >
             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
-              <li>
                 <Link to={"/profile"}>
+              <li>
                   <a className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">Perfil</a>
-                </Link>
               </li>
-              <li>
+                </Link>
                 <Link to={"/cart"}>
-                  <a className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">Mi carrito</a>
-                </Link>
-              </li>
               <li>
-                <Link to={"/wishlist"}>
-                  <a className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">Lista de deseos </a>
-                </Link>
+                  <a className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">Mi carrito</a>
               </li>
+                </Link>
+                <Link to={"/wishlist"}>
+              <li>
+                  <a className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">Lista de deseos </a>
+              </li>
+                </Link>
 
-              <li onClick={() => { logout(); }} >
                 <Link>
+              <li onClick={() => { logout(); }} >
                   <a onClick={() => { logout();}} className="block py-2 px-4 hover:bg-gray-10 hover:font-semibold hover:text-[#790729]">
                     Salir
                   </a>
-                </Link>
               </li>
+                </Link>
             </ul>
           </div>
         </div>

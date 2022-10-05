@@ -32,7 +32,8 @@ import {
     DISABLE_PRODUCT,
     GET_ALL_PURCHASES_BY_USER_EMAIL, 
     GET_ALL_REVIEWS_BY_USER_EMAIL, 
-    GET_ALL_REVIEWS_BY_PRODUCT_ID
+    GET_ALL_REVIEWS_BY_PRODUCT_ID,
+    PUT_PRODUCT
 
 } from "../actions"
 
@@ -271,7 +272,10 @@ export const rootReducer = (state = initialState, action) => {
                     ...state,
                     productReviews: action.payload
                 }
-
+            case PUT_PRODUCT:
+                return {
+                    ...state
+                }
         default:
             return state
     }
