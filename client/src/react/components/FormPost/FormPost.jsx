@@ -6,7 +6,7 @@ import { fileUpload } from "../../../Cloudinary/FileUpload";
 
 // Funcion para validar los inputs
 function validate(input) {
-  const vName = /^[a-zA-Z0-9\s]+$/;
+  const vName = /^[Á-ÿa-zA-Z0-9\s]+$/;
   const vDate = /^[0-9/]+$/;
   const vPrice = /^[0-9]+$/;
   let error = {};
@@ -135,8 +135,20 @@ export default function FormProducts() {
     }
   }
 
-  function handleAccessory(e) {
-    e.preventDefault();
+  async function handleAccessory(e) {
+    let cloudImg;
+    if(e.target.name === "img"){
+      console.log(e.target.value)
+      cloudImg = await fileUpload(e.target.value)
+      console.log(cloudImg)
+      setJersey({
+        ...jersey,
+        img: {
+          ...jersey.img,
+          [e.target.name]: cloudImg,
+        },
+      });
+    }
     if (e.target.name === "Z") {
       setAccessory({
         ...accessory,
@@ -159,8 +171,20 @@ export default function FormProducts() {
     }
   }
 
-  function handleTicket(e) {
-    e.preventDefault();
+  async function handleTicket(e) {
+    let cloudImg;
+    if(e.target.name === "img"){
+      console.log(e.target.value)
+      cloudImg = await fileUpload(e.target.value)
+      console.log(cloudImg)
+      setJersey({
+        ...jersey,
+        img: {
+          ...jersey.img,
+          [e.target.name]: cloudImg,
+        },
+      });
+    }
     if (e.target.name === "Z") {
       setTicket({
         ...ticket,
@@ -295,17 +319,18 @@ export default function FormProducts() {
     if (err.stadium) {
       return alert(err.stadium);
     }
-    if (err.date) {
+    if (err.date && typee.type === "ticket") {
       return alert(err.date);
     }
     if (err.sector) {
       return alert(err.sector);
     }
     if (typee.type === "jersey") {
+      console.log(jersey)
       dispatch(postNewProduct(jersey));
     } else if (typee.type === "accessory") {
       dispatch(postNewProduct(accessory));
-    } else if (typee.type === "jersey") {
+    } else if (typee.type === "ticket") {
       dispatch(postNewProduct(ticket));
     }
   }
