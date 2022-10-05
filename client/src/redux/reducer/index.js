@@ -37,7 +37,7 @@ import {
     GET_PERSONAL_DATA,
     SAVE_REVIEW,
     REVIEW_ERROR,
-    CLEAR_REVIEW_MESSAGES
+    CLEAR_REVIEW_MESSAGES, SAVE_PROFILE_PICTURE
 
 } from "../actions"
 
@@ -66,7 +66,8 @@ const initialState = {
     userDataError: '',
     userDataMessage: '',
     reviewMessage: '',
-    reviewError: ''
+    reviewError: '',
+    user: ''
 }
 
 
@@ -307,6 +308,11 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 reviewMessage: '',
                 reviewError: ''
+            }
+        case SAVE_PROFILE_PICTURE:
+            return {
+                ...state,
+                user: action.payload
             }
 
 

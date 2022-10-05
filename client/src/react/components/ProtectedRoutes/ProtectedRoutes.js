@@ -9,7 +9,7 @@ export const ProtectedRoutes = ({children}) => {
     delay(1000)
         .then(e => {
             if (!isAuthenticated) {
-                return <Navigate  to={'/products'}/>
+                return <Navigate to={'/products'}/>
             }
         })
 

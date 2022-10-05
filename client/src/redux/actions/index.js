@@ -43,6 +43,7 @@ export const CLEAR_USER_DATA_ERROR = 'CLEAR_USER_DATA_ERROR'
 export const SAVE_REVIEW = 'SAVE_REVIEW'
 export const REVIEW_ERROR = "REVIEW_ERROR"
 export const CLEAR_REVIEW_MESSAGES = "CLEAR_REVIEW_MESSAGES"
+export const SAVE_PROFILE_PICTURE = "SAVE_PROFILE_PICTURE"
 
 
 
@@ -563,6 +564,19 @@ export const clearReviewMessages = () => {
         return dispatch({
             type: CLEAR_REVIEW_MESSAGES
         })
+    }
+}
+
+export const saveProfilePicture = (email, img) => {
+    return async dispatch => {
+        return axios.put(`${REACT_APP_API_URL}/users/pic?email=${email}`, {img})
+            .then(json => {
+                return dispatch({
+                    type: SAVE_PROFILE_PICTURE,
+                    payload: json.data
+                })
+            })
+            .catch(err => console.log(err))
     }
 }
 
