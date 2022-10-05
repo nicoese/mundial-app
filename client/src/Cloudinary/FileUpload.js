@@ -1,12 +1,12 @@
-const cloud_name = 'dakxsizpf';
-const preset = 'lo8pmqjv';
+const cloud_name = 'dlngrgksf';
+const preset = 'mundiapp';
 
 export const fileUpload = async (file) =>{
-    console.log(file)
+    // console.log('ENTRE  FILE UPL',file)
     const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`
     const formData = new FormData();
-    formData.append('upload_preset', `${preset}`)
     formData.append('file', file);
+    formData.append('upload_preset', `${preset}`)
 
     try {
         const res = await fetch(cloudinaryUrl, {
@@ -17,7 +17,10 @@ export const fileUpload = async (file) =>{
         if (!res.ok) return null;
 
         const data = await res.json();
-        return data.secure_url;
+
+        // console.log('data',data)
+
+        return data
 
     } catch (error) {
         return null;

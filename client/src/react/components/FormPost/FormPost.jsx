@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postNewProduct } from "../../../redux/actions";
@@ -59,8 +59,8 @@ export default function FormProducts() {
     name: "",
     price: 0,
     type: "",
-    img: "",
     brand: "",
+    img: "",
     stock: {
       S: 0,
       M: 0,
@@ -91,22 +91,17 @@ export default function FormProducts() {
     sector: "",
   });
   const [err, setErr] = useState({});
+  const [cloudImg, setCloudImg ] = useState('')
 
 
   //Funciones handle para los input
   async function handleJersey(e) {
-    let cloudImg;
+  
     if(e.target.name === "img"){
-      console.log(e.target.value)
-      cloudImg = await fileUpload(e.target.value)
-      console.log(cloudImg)
-      setJersey({
-        ...jersey,
-        img: {
-          ...jersey.img,
-          [e.target.name]: cloudImg,
-        },
-      });
+      // console.log(e.target.value)
+      let cloudImg =  await fileUpload(e.target.files[0])
+      // console.log('ENTRE IF HANDLE JER',cloudImg.url)
+      setCloudImg( cloudImg.url );
     }
     if (
       e.target.name === "S" ||
@@ -136,18 +131,9 @@ export default function FormProducts() {
   }
 
   async function handleAccessory(e) {
-    let cloudImg;
     if(e.target.name === "img"){
-      console.log(e.target.value)
-      cloudImg = await fileUpload(e.target.value)
-      console.log(cloudImg)
-      setJersey({
-        ...jersey,
-        img: {
-          ...jersey.img,
-          [e.target.name]: cloudImg,
-        },
-      });
+      let cloudImg =  await fileUpload(e.target.files[0])
+      setCloudImg( cloudImg.url );
     }
     if (e.target.name === "Z") {
       setAccessory({
@@ -172,18 +158,9 @@ export default function FormProducts() {
   }
 
   async function handleTicket(e) {
-    let cloudImg;
     if(e.target.name === "img"){
-      console.log(e.target.value)
-      cloudImg = await fileUpload(e.target.value)
-      console.log(cloudImg)
-      setJersey({
-        ...jersey,
-        img: {
-          ...jersey.img,
-          [e.target.name]: cloudImg,
-        },
-      });
+      let cloudImg =  await fileUpload(e.target.files[0])
+      setCloudImg( cloudImg.url );
     }
     if (e.target.name === "Z") {
       setTicket({
@@ -313,25 +290,25 @@ export default function FormProducts() {
     if (err.img) {
       return alert(err.img);
     }
-    if (err.brand) {
+    if (err.brand && typee.type === "jersey") {
       return alert(err.brand);
     }
-    if (err.stadium) {
+    if (err.stadium  && typee.type === "ticket" ) {
       return alert(err.stadium);
     }
     if (err.date && typee.type === "ticket") {
       return alert(err.date);
     }
-    if (err.sector) {
+    if (err.sector && typee.type === "ticket") {
       return alert(err.sector);
     }
     if (typee.type === "jersey") {
       console.log(jersey)
-      dispatch(postNewProduct(jersey));
+      dispatch(postNewProduct(jersey, cloudImg));
     } else if (typee.type === "accessory") {
-      dispatch(postNewProduct(accessory));
+      dispatch(postNewProduct(accessory,cloudImg));
     } else if (typee.type === "ticket") {
-      dispatch(postNewProduct(ticket));
+      dispatch(postNewProduct(ticket,cloudImg));
     }
   }
 
@@ -390,7 +367,7 @@ export default function FormProducts() {
                 <label>Imagen URL :</label>
                 <input
                   className="rounded-md"
-                  type="text"
+                  type="file"
                   name="img"
                   onChange={(e) => handleJersey(e)}
                 />
@@ -504,7 +481,7 @@ export default function FormProducts() {
                 <label>Imagen URL :</label>
                 <input
                   className="rounded-md"
-                  type="text"
+                  type="file"
                   name="img"
                   onChange={(e) => handleAccessory(e)}
                 />
@@ -576,7 +553,7 @@ export default function FormProducts() {
                 <label>Imagen URL :</label>
                 <input
                   className="rounded-md"
-                  type="text"
+                  type="file"
                   name="img"
                   onChange={(e) => handleTicket(e)}
                 />

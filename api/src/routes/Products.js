@@ -38,7 +38,8 @@ router.get('/', async (req, res, next) => {
 router.post('/newProduct', async (req,res) => {
     try {
         const produc = req.body
-        const saved= await postProducts(produc)
+        console.log('lo que llega',produc)
+        const saved= await postProducts({...produc.payload, img: produc.cloudImg})
         return res.status(200).send("producto guardado")   
     } catch (error) {
         return res.status(400).send(error.message)   
