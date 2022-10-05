@@ -61,6 +61,20 @@ router.put('/disable', async (req, res, next) => {
     }
 })
 
+router.put('/pic', async (req, res, next) => {
+
+    try {
+        const {email} = req.query
+        const {img} = req.body
+        await User.findOneAndUpdate({email: email}, {picture: img})
+        console.log()
+        return res.json(await User.findOne({email: email}))
+
+    }catch (err){
+        return res.status(400).send(err)
+    }
+})
+
 // /users/disable
 
 router.post('/add_user_to_db', async (req, res, next) => {

@@ -43,6 +43,7 @@ export const CLEAR_USER_DATA_ERROR = 'CLEAR_USER_DATA_ERROR'
 export const SAVE_REVIEW = 'SAVE_REVIEW'
 export const REVIEW_ERROR = "REVIEW_ERROR"
 export const CLEAR_REVIEW_MESSAGES = "CLEAR_REVIEW_MESSAGES"
+export const SAVE_PROFILE_PICTURE = "SAVE_PROFILE_PICTURE"
 export const FIND_USER_BY_EMAIL = "FIND_USER_BY_EMAIL"
 export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
 export const DELETE_REVIEW = "DELETE_REVIEW"
@@ -569,6 +570,19 @@ export const clearReviewMessages = () => {
     }
 }
 
+export const saveProfilePicture = (email, img) => {
+    return async dispatch => {
+        return axios.put(`${REACT_APP_API_URL}/users/pic?email=${email}`, {img})
+            .then(json => {
+                return dispatch({
+                    type: SAVE_PROFILE_PICTURE,
+                    payload: json.data
+                })
+            })
+            .catch(err => console.log(err))
+    }
+}
+
 export const findUserByEmail = (email) => {
     return async dispatch => {
         return axios.get(`${REACT_APP_API_URL}/users/${email}`)
@@ -581,6 +595,8 @@ export const findUserByEmail = (email) => {
             .catch(err => {
                 console.log(err)
             })
+            }}
+            
 export const getAllReviews = () =>{
     return async dispatch =>{
         try{
