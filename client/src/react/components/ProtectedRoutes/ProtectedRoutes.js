@@ -7,12 +7,6 @@ export const ProtectedRoutes = ({children}) => {
 
     const {isAuthenticated, isLoading} = useAuth0()
 
-    delay(1000)
-        .then(e => {
-            if (!isAuthenticated) {
-                return <Navigate to={'/products'}/>
-            }
-        })
 
     useEffect(() => {
         console.log(isAuthenticated)

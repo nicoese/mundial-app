@@ -25,6 +25,12 @@ export default function InfoPersonal() {
         };
     }, []);
 
+    return (
+        <div className={s.king}>
+            <div className={s.divPrincipal}>
+                <h1 className={s.asd}>Datos Personales</h1>
+                <hr className={s.hr1}></hr>
+
                 <Formik
                     initialValues={{
                         address: '',
@@ -183,40 +189,7 @@ export default function InfoPersonal() {
                             </div>
                         </Form>
                     )}
-                  />
-                </div>
-                <div className={s.divCity}>
-                  <label htmlFor="city">Ciudad</label>
-                  <Field
-                    className={s.inpCity}
-                    type="text"
-                    placeholder="Ciudad"
-                    name={"city"}
-                  />
-                  <ErrorMessage
-                    name={"city"}
-                    component={() => <p className={s.pError}>{errors.city}</p>}
-                  />
-                </div>
-                <div className={s.divCountry}>
-                  <label htmlFor="country">País</label>
-                  <Field
-                    className={s.inpCountry}
-                    type="text"
-                    placeholder="País"
-                    name={"country"}
-                  />
-                  <ErrorMessage
-                    name={"country"}
-                    component={() => (
-                      <p className={s.pError}>{errors.country}</p>
-                    )}
-                  />
-                </div>
-                {/*<Link to={'/products'}>*/}
-                {/*    <button className={s.btnCancelar}>Cancelar</button>*/}
-                {/*</Link>*/}
-              </div>
+
                 </Formik>
                 {userDataMessage && state.formSent && <div
                     className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
