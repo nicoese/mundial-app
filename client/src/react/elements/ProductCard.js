@@ -126,7 +126,7 @@ export const ProductCard = ({id, active, name, price, img, brand, stadium}) => {
             </div>
 
             <div className="w-full flex items-center justify-around px-5">
-                <button onClick={() => handleClick()}
+                {active ? <button onClick={() => handleClick()}
                         className="w-[8em] h-[2.3em] mr-2 rounded-md bg-[#790729] hover:bg-red-800 text-white font-bold font-[Lato]"> Al
                     Carrito
                 </button> :
