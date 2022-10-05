@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import {FaFacebook} from 'react-icons/fa'
 import {AiFillInstagram, AiFillGithub, AiFillYoutube, AiFillLinkedin} from 'react-icons/ai'
@@ -6,6 +6,7 @@ import s from './Footer.module.css'
 import pic1 from '../../../img/fondo-world-cup.jpg'
 
 export default function Footer(){
+
     return(
         <div className={s.divFooter}>
             
@@ -24,6 +25,10 @@ export default function Footer(){
                     <Link to={'/nosotros'}><li>Nosotros</li></Link>
                     <Link to={'/blogInfo'}><li>Sobre el mundial</li></Link>
                     <Link to={'/FaQ'}><li>Preguntas frecuentes</li></Link>
+                   // <Link to={'/profile'}><li>Perfil</li></Link>
+                   // <Link to={'/profile/data'}><li>Datos Personales</li></Link>
+                   // <Link to={'/wishlist'}><li>Favoritos</li></Link>
+                   // <Link to={'/frequentQuestions'}><li>Preguntas frecuentes</li></Link> 
                  </ul>
                 </div>
 

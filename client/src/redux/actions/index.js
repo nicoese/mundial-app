@@ -43,6 +43,8 @@ export const CLEAR_USER_DATA_ERROR = 'CLEAR_USER_DATA_ERROR'
 export const SAVE_REVIEW = 'SAVE_REVIEW'
 export const REVIEW_ERROR = "REVIEW_ERROR"
 export const CLEAR_REVIEW_MESSAGES = "CLEAR_REVIEW_MESSAGES"
+export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
+export const DELETE_REVIEW = "DELETE_REVIEW"
 
 
 
@@ -566,6 +568,34 @@ export const clearReviewMessages = () => {
     }
 }
 
+export const getAllReviews = () =>{
+    return async dispatch =>{
+        try{
+        let response = await axios.get(`${REACT_APP_API_URL}/reviews`);
+        dispatch({
+            type: GET_ALL_REVIEWS,
+            payload: response.data
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
+      
+}
+
+export const delete_review = (id) =>{
+    return async dispatch =>{
+            try{ 
+            await axios.delete(`${REACT_APP_API_URL}/reviews/delete?id=${id}`);
+            dispatch({
+                type: DELETE_REVIEW,
+                payload: id
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
 
 
 

@@ -28,8 +28,11 @@ import Board from "./react/components/AdminDash/Board";
 import Users from "./react/components/AdminDash/views/Users";
 import AdminProducts from "./react/components/AdminDash/views/Products";
 import AdminPurchases from "./react/components/AdminDash/views/Purchases"
+import AdminReviews from "./react/components/AdminDash/views/Reviews"
 import {ReviewForm} from "./react/components/ReviewSection/ReviewForm";
 import Main from "./react/components/AdminDash/views/Main";
+import PFrecuentes from "./react/components/PreguntasFrecuentes/PFrecuentes";
+
 
 function About() {
     return "about";
@@ -56,7 +59,7 @@ function App() {
 
     return (
 
-        <div >
+        <div className={'overflow-x-hidden'}>
             <Routes>
                 <Route exact path={"/"} element={<Landing />}/>
                 <Route exact path={"/products"} element={<Products/>}/>
@@ -65,13 +68,16 @@ function App() {
                 <Route path={'/blogInfo'} element={<Info/>}/>
                 <Route path={'/Cart'} element={<Cart/>}/>
                 <Route path={'/nosotros'} element={<Nosotros/>}/>
+                <Route path={'/frequentQuestions'} element={<PFrecuentes/>}/>
                 <Route path={'/purchases/success'} element={
                     <ProtectedRoutes>
                         <Success/>
                     </ProtectedRoutes>
                 }/>
                 <Route path={'/purchases/failure'} element={<Cart/>}/>
-                <Route path={'/profile'} element={<UserProfile />}>
+                <Route path={'/profile'} element={<ProtectedRoutes>
+                    <UserProfile />
+                </ProtectedRoutes>}>
                     <Route path={''} element={<UserBanner />} />
                     <Route path={'data'} element={<InfoPersonal />} />
                     <Route path={'purchases'} element={<PurchaseContainer />} />
@@ -93,6 +99,7 @@ function App() {
                     <Route path={'users'} element={<Users />} />
                     <Route path={'products'} element={<AdminProducts />} />
                     <Route path={'purchases'} element={<AdminPurchases/>} />
+                    <Route path={'reviews'} element={<AdminReviews/>} />
                 </Route>
                 
             </Routes>

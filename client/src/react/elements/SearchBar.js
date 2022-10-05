@@ -34,10 +34,9 @@ export const SearchBar = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         dispatch(clearProductsError())
         dispatch(getByName(name));
-        delay(1500).then(r => {
+        delay(500).then(r => {
             dispatch(setCurrentProducts(1))
             setName("");
             navigate('/products')
@@ -55,7 +54,7 @@ export const SearchBar = () => {
                 placeholder="Search..."
                 value={name}
                 onChange={handleInputChange}
-                className='nav-input'
+                className='nav-input font-semibold'
             />
             <button><HiSearch size={50} style={{background: "#790729", color: "white" , borderRadius: "50%", padding: "10px" , marginLeft: "15px"}}/></button>
         </form>
