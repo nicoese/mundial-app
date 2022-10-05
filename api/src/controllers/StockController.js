@@ -40,10 +40,11 @@ const applyStock = async (products)=>{
                     let save = await res.save()
                     return prod
                 }
-                case "X":{
+                case "Z":{
+                    console.log('entre a case stock')
                     let prod = await Product.findById(e.id)
-                    console.log('PREVIOUS STOCK',prod.stock.X)
-                    let res =  prod.set({stock:{X:(prod.stock.X-e.cantidad)}})
+                    console.log('PREVIOUS STOCK',prod.stock.Z)
+                    let res =  prod.set({stock:{Z:(prod.stock.Z-e.cantidad)}})
                     let save = await res.save()
                     return prod
                 }

@@ -5,6 +5,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {DataGrid} from '@mui/x-data-grid'
 import { disableProduct } from '../../../../redux/actions';
+import { Navigate } from 'react-router-dom';
 
 
 const Products = () => {
@@ -21,8 +22,9 @@ const Products = () => {
         dispatch (disableProduct(productId,active))
     }
 
-    const handleEdit = (email)=>{
-        console.log('ENTRE HANDLE EDIT',email)
+    const handleEdit = (id)=>{
+        console.log(id) &&
+        <Navigate to={`products/${id}`} replace={true} />
     }
 
     let stock = (params)=>{
@@ -47,7 +49,7 @@ const Products = () => {
         }
     },
     { field: 'active', headerName: 'Active', width: 80},
-    {field: 'editar',headerName: 'Editar', width: 70, renderCell: (params)=><EditIcon onClick={()=>handleEdit(params.row.email)} className='text-gray-500 bg-transparent rounded-md hover: cursor-pointer' fontSize='large' />},
+    {field: 'editar',headerName: 'Editar', width: 70, renderCell: (params)=><EditIcon onClick={()=>handleEdit(params.row.id)} className='text-gray-500 bg-transparent rounded-md hover: cursor-pointer' fontSize='large' />},
     {field: 'deshabilitar',headerName: 'Deshabilitar/ Habilitar', width: 180,  renderCell: (params)=>params.row.active?<CancelIcon onClick={()=>handleDisable(params.row._id,false)} className='text-red-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large' />:<CheckCircleIcon onClick={()=>handleDisable(params.row._id, true)} className='text-green-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large'  />},
 
     ];

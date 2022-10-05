@@ -15,21 +15,20 @@ export const ProductsContainer = (props) => {
     const {user, isAuthenticated} = useAuth0()
     const {productsError, currentProducts, currentPage} = useSelector(state => state)
 
-    // console.log(user)
-
+    
     useEffect(() => {
-
+        
         // delay(1500).then(() => {
-        dispatch(setCurrentProducts())
-        // })
+            dispatch(setCurrentProducts())
+            // })
+            
+            isAuthenticated && dispatch(getFavorites(user.email))
+            
+            return () => {
+            }
 
-        isAuthenticated && dispatch(getFavorites(user.email))
-
-        return () => {
-        }
-
-    }, [dispatch, isAuthenticated])
-
+        }, [dispatch, isAuthenticated])
+        
     function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
@@ -54,6 +53,7 @@ export const ProductsContainer = (props) => {
                                 price={prod.price}
                                 img={prod.img && prod.img}
                                 brand={prod.brand}
+                                stock={prod.stock}
                                 stadium={prod.stadium}
                                 active={prod.active}
                             />
