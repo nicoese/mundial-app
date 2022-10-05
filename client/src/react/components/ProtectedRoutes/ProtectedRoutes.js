@@ -5,7 +5,7 @@ import {useEffect} from "react";
 
 export const ProtectedRoutes = ({children}) => {
 
-    const {isAuthenticated} = useAuth0()
+    const {isAuthenticated, isLoading} = useAuth0()
 
 
 
@@ -13,8 +13,10 @@ export const ProtectedRoutes = ({children}) => {
         console.log(isAuthenticated)
     }, [isAuthenticated])
 
-    if (!isAuthenticated) {
-        return <Navigate to={'/products'}/>
+    if (!isLoading){
+        if (!isAuthenticated) {
+            return <Navigate to={'/products'}/>
+        }
     }
 
     return children
