@@ -86,7 +86,7 @@ export const ProductCard = ({id, active, name, price, img, brand, stadium}) => {
         //agrego el prod a favoritos
         if (ev.target.innerText === "🤍") {
             //envio el id del producto y el mail del user a la api
-            dispatch(addToFavorites({id, name, price, img, brand, stadium}, user.email))
+            dispatch(addToFavorites({id, name, price, img, brand, stadium, active}, user.email))
         }
 
         //si la tarjeta tiene el corazon rojo elimino el prod de favoritos
