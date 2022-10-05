@@ -55,6 +55,7 @@ export const ProductsContainer = (props) => {
                                 img={prod.img && prod.img}
                                 brand={prod.brand}
                                 stadium={prod.stadium}
+                                active={prod.active}
                             />
                         })}
                     </div> : null
