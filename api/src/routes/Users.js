@@ -17,17 +17,18 @@ router.get('/', async (req,res,next)=>{
 
 //this route modifies user, you can modify your name or the img in your profile
 //we can add more params in body for mods
-router.put('/:userId/modify_user', async (req,res,next)=>{
-    try{
-        const{userId} = req.params
-        const{first_name,last_name,img} = req.body
 
-        let updated_user = await User.findByIdAndUpdate(userId,{first_name,last_name,img})
-        res.status(200).json(updated_user)
-    }catch(err){
-        next(err);
-    }
-})
+// router.put('/:userId/modify_user', async (req,res,next)=>{
+//     try{
+//         const{userId} = req.params
+//         const{first_name,last_name,img} = req.body
+
+//         let updated_user = await User.findByIdAndUpdate(userId,{first_name,last_name,img})
+//         res.status(200).json(updated_user)
+//     }catch(err){
+//         next(err);
+//     }
+// })
 
 router.delete('/delete_user', async (req,res,next)=>{
     try {
@@ -73,6 +74,18 @@ router.post('/add_user_to_db', async (req,res,next)=>{
         return res.send(saved)
     }catch(err){
         next(err)
+    }
+})
+
+router.put('/modify_user', async (req,res,next)=>{
+    try{
+        const{userId} = req.query
+        const{img_url} = req.body
+
+        let updated_user = await User.findByIdAndUpdate(userId,{picture: img_url},{new: true})
+        res.status(200).json(updated_user)
+    }catch(err){
+        next(err);
     }
 })
 

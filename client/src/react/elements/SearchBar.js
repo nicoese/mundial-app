@@ -56,7 +56,7 @@ export const SearchBar = () => {
                 onChange={handleInputChange}
                 className='nav-input font-semibold'
             />
-            <HiSearch size={50} style={{background: "#790729", color: "white" , borderRadius: "50%", padding: "10px" , marginLeft: "15px"}}/>
+            <button><HiSearch size={50} style={{background: "#790729", color: "white" , borderRadius: "50%", padding: "10px" , marginLeft: "15px"}}/></button>
         </form>
     </div>
 }

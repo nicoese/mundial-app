@@ -374,10 +374,10 @@ export const getReviews = (productId) => {
     }
 }
 
-export const postNewProduct = (payload) => {
+export const postNewProduct = (payload, cloudImg) => {
     return async function () {
             try{
-            const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, payload)
+            const info = await axios.post(`${REACT_APP_API_URL}/products/newProduct`, {payload,cloudImg} )
             return info
         }catch(err){
             console.log(err)

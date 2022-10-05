@@ -72,7 +72,12 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
 
         //si el user no esta logeado no puede likear
         if (!isAuthenticated) {
-            return Swal('logueate')
+            return Swal({
+                title: 'Debes estar logeado para darle like!',
+                icon: 'info',
+                button: 'Aceptar',
+                closeOnClickOutside: true,
+              })
         }
 
         //manejo del boton de like
