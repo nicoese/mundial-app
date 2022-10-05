@@ -11,6 +11,8 @@ router.post('/add_to_cart', async (req,res,next)=>{
     try{
         const {userEmail,product} = req.body
 
+        console.log(product)
+
         //get document with email and array products
         let user = await Cart.find({email: userEmail})
 
@@ -21,10 +23,10 @@ router.post('/add_to_cart', async (req,res,next)=>{
                 products: [product]
             })
             let result = await cart.save()
-            return res.status(200).json(result)
+            
+            return res.status(200).json(result.products)
         }
         
-        // console.log(user[0].email)
 
         //get the products already added
         let arr = user[0].products
@@ -37,8 +39,12 @@ router.post('/add_to_cart', async (req,res,next)=>{
         let newArr = arr.map(e=>{
             if(e.name === product.name){
                 if(e.cantidad !== product.cantidad){
+                    return {...e,cantidad: product.cantidad}
+                }
 
-                 return {...e,cantidad: product.cantidad}
+                if(e.size !== product.size){
+
+                    return {...e,size: product.size}
                 }
             }
             return e

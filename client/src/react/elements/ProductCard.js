@@ -7,7 +7,7 @@ import Swal from "sweetalert";
 import {useEffect, useState} from "react"; //solo para tomar las fuentes
 
 
-export const ProductCard = ({id, active, name, price, img, brand, stadium}) => {
+export const ProductCard = ({id, active, name, price, img, brand, stock, stadium}) => {
     const dispatch = useDispatch()
 
     //estado para el renderizado del corazon (like)
@@ -42,8 +42,8 @@ export const ProductCard = ({id, active, name, price, img, brand, stadium}) => {
         if (!isAuthenticated) {
             return Swal('Para realizar una compra deberas registrarte primero')
         }
-
-        dispatch(addToCart(user.email, {id, name, price, img, cantidad: 1}))
+        console.log('HANDLE CLICK',stock)
+        dispatch(addToCart(user.email, {id, name, price, img, stock, cantidad: 1}))
 
         if (!cart.find(e => e.id === id)) {
             Swal('Añadiste el Producto a tu carrito', '', 'success')
@@ -86,7 +86,7 @@ export const ProductCard = ({id, active, name, price, img, brand, stadium}) => {
         //agrego el prod a favoritos
         if (ev.target.innerText === "🤍") {
             //envio el id del producto y el mail del user a la api
-            dispatch(addToFavorites({id, name, price, img, brand, stadium}, user.email))
+            dispatch(addToFavorites({id, name, price, img, brand, stock, stadium}, user.email))
         }
 
         //si la tarjeta tiene el corazon rojo elimino el prod de favoritos

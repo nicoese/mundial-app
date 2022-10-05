@@ -172,6 +172,7 @@ export const filter = (critearia) => {
 }
 
 export const addToCart = ( userEmail, product) => {
+    console.log(product)
     return async (dispatch) => {
         return axios.post(`${REACT_APP_API_URL}/carts/add_to_cart`, {
             product: product,
