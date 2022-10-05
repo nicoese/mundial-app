@@ -217,10 +217,23 @@ const Details = (props) => {
                                     {details.description}
                                 </p>
 
-                                <button onClick={handleClick}
-                                        className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-[#790729] shadow-md duration-300 hover:bg-[#790729] hover:text-white font-bold font-[Lato]"> Al
-                                    Carrito
-                                </button>
+                                {!details.active && <div
+                                    className="p-5 my-10 text-md text-gray-900 bg-gray-300 rounded-lg dark:bg-gray-700 dark:text-gray-300"
+                                    role="alert">
+                                    <span className="font-medium">
+                                        Lo Sentimos! </span>
+                                    Este producto no esta disponible temporalmente.
+                                </div>}
+
+                                {details.active ? <button onClick={handleClick}
+                                         className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-[#790729] shadow-md duration-300 hover:bg-[#790729] hover:text-white font-bold font-[Lato]">
+                                    Al Carrito
+                                </button> :
+                                    <button disabled
+                                    className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-zinc-800 shadow-md duration-300 hover:bg-zinc-500 hover:text-white font-bold font-[Lato]">
+                                    No Disponible
+                                    </button>}
+
                             </div>
                         </div>
                     </section>

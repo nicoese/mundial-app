@@ -38,6 +38,7 @@ import {
     SAVE_REVIEW,
     REVIEW_ERROR,
     CLEAR_REVIEW_MESSAGES,
+    FIND_USER_BY_EMAIL,
     GET_ALL_REVIEWS,
     DELETE_REVIEW
 
@@ -69,6 +70,7 @@ const initialState = {
     userDataMessage: '',
     reviewMessage: '',
     reviewError: '',
+    user: {}
     allReviews: []
 }
 
@@ -311,6 +313,12 @@ export const rootReducer = (state = initialState, action) => {
                 reviewMessage: '',
                 reviewError: ''
             }
+        case FIND_USER_BY_EMAIL:
+            return {
+                ...state,
+                user: action.payload
+            }
+
         case GET_ALL_REVIEWS:
             return{
                 ...state,
