@@ -36,6 +36,7 @@ export const DISABLE_PRODUCT = "DISABLE_PRODUCT"
 export const GET_ALL_PURCHASES_BY_USER_EMAIL = "GET_ALL_PURCHASES_BY_USER_EMAIL"
 export const GET_ALL_REVIEWS_BY_USER_EMAIL = "GET_ALL_REVIEWS_BY_USER_EMAIL"
 export const GET_ALL_REVIEWS_BY_PRODUCT_ID = "GET_ALL_REVIEWS_BY_PRODUCT_ID"
+export const PUT_PRODUCT = 'PUT_PRODUCT'
 export const SAVE_PERSONAL_DATA = 'SAVE_PERSONAL_DATA'
 export const GET_PERSONAL_DATA = 'GET_PERSONAL_DATA'
 export const SET_USER_DATA_ERROR = 'SET_USER_DATA_ERROR'
@@ -310,6 +311,13 @@ export const getFavorites = (userEmail) => {
             .catch(err => {
                 console.log(err)
             })
+    }
+}
+
+export const putProduct = (product) => {
+    return async () => {
+        const put = await axios.put(`${REACT_APP_API_URL}/products/updateProduct`, product);
+        return put
     }
 }
 

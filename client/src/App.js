@@ -23,13 +23,14 @@ import {Logout} from "./react/elements/Logout";
 import {PurchaseContainer} from "./react/components/Purchase/PurchaseContainer";
 import {ReviewSection} from "./react/components/ReviewSection/ReviewSection";
 import {UserReviews} from "./react/components/ReviewSection/UserReviews";
-import FormProducts from "./react/components/FormPost/FormPost.jsx";
+import FormProducts from "./react/components/FormPost/FormPost.jsx"
 import Board from "./react/components/AdminDash/Board";
 import Users from "./react/components/AdminDash/views/Users";
 import AdminProducts from "./react/components/AdminDash/views/Products";
 import AdminPurchases from "./react/components/AdminDash/views/Purchases"
 import AdminReviews from "./react/components/AdminDash/views/Reviews"
 import {ReviewForm} from "./react/components/ReviewSection/ReviewForm";
+import ModProduct from "./react/components/FormPost/ModProducts.jsx"
 import Main from "./react/components/AdminDash/views/Main";
 import PFrecuentes from "./react/components/PreguntasFrecuentes/PFrecuentes";
 
@@ -87,9 +88,6 @@ function App() {
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
                 </ProtectedRoutes>}/>
-                <Route path={'/admin-post'} element={<ProtectedRoutes>
-                    <FormProducts/>
-                </ProtectedRoutes>}/>
                 <Route path={'/logout'} element={<Logout />}/>
                 <Route path={'*'} element={<Landing />}/>
                 <Route path={'/infoPersonal'} element={<InfoPersonal/>}/>
@@ -98,6 +96,8 @@ function App() {
                     <Route path={''} element={<Main />} />
                     <Route path={'users'} element={<Users />} />
                     <Route path={'products'} element={<AdminProducts />} />
+                    <Route path={'products/:id'} element={<ModProduct />}/>
+                    <Route path={'post'} element={<FormProducts />} />
                     <Route path={'purchases'} element={<AdminPurchases/>} />
                     <Route path={'reviews'} element={<AdminReviews/>} />
                 </Route>

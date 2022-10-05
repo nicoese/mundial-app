@@ -19,6 +19,14 @@
     background-color: #f6f6f6;
 }
 
+.pError {
+    text-align: left;
+    margin-bottom: -10px;
+    color: rgb(188, 0, 0);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
 .divPrincipal h1{
     display: flex;
     margin-top: 2%;

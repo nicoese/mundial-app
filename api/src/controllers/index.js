@@ -1,7 +1,8 @@
 require('../app')
-// const Jerseys = require ('../models/jerseys');
-// const Accesories = require ('../models/accesories');
-// const Tickets = require ('../models/tickets')
+const Jerseys = require ('../models/jerseys');
+const Accesories = require ('../models/accesories');
+const Tickets = require ('../models/tickets')
+
 const Products = require ('../models/products')
 
 async function search(name){
@@ -43,6 +44,199 @@ async function detail (id) {
         console.log(error)
     }
 }
+
+const putProducts = async (id,name,price,img,stock) => {
+    const obj = await Products.findById(id)
+    if(name){
+        let mod = await Products.findByIdAndUpdate(id , {
+        name: name
+        })
+    return mod
+    }
+    if(price){
+        let mod = await Products.findByIdAndUpdate(id , {
+            price: price
+        })
+        return mod
+    }
+    if(img){
+        let mod = await Products.findByIdAndUpdate(id , {
+            img: img
+        })
+        return mod
+    }
+    if(stock) {
+        if(stock.S && stock.M && stock.L && stock.XL ){
+            let mod = await Products.findByIdAndUpdate(id , {
+                stock: stock
+            })
+        return mod
+        }
+         else if(stock.S &&  stock.M && stock.L ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                       S: stock.S,
+                       M: stock.M,
+                       L: stock.L,
+                       XL: obj.stock.XL
+                    }
+                })
+            return mod
+        }
+         else if(stock.S &&  stock.M && stock.XL ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: stock.S,
+                        M: stock.M,
+                        L: obj.stock.L,
+                        XL: stock.XL
+                        }
+                })
+            return mod
+            }
+         else if(stock.S &&  stock.L && stock.XL ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: stock.S,
+                        M: obj.stock.M,
+                        L: stock.L,
+                        XL: stock.XL
+                        }
+                    })
+                return mod
+                }
+         else if(stock.M &&  stock.L && stock.XL ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: obj.stock.S,
+                        M: stock.M,
+                        L: stock.L,
+                        XL: stock.XL
+                        }
+                    })
+                return mod
+                }
+         else if(stock.S &&  stock.M ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: stock.S,
+                        M: stock.M,
+                        L: obj.stock.L,
+                        XL: obj.stock.XL
+                        }
+                    })
+                return mod
+                }
+         else if(stock.S &&  stock.L ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: stock.S,
+                        M: obj.stock.M,
+                        L: stock.L,
+                        XL: obj.stock.XL
+                        }
+                    })
+                return mod
+         }
+         else if(stock.S &&  stock.XL ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: stock.S,
+                        M: obj.stock.M,
+                        L: obj.stock.L,
+                        XL: stock.XL
+                        }
+                    })
+                return mod
+         }
+         else if(stock.M &&  stock.L ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: obj.stock.S,
+                        M: stock.M,
+                        L: stock.L,
+                        XL: obj.stock.XL
+                        }
+                    })
+                return mod
+         }
+         else if(stock.M &&  stock.XL ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: obj.stock.S,
+                        M: stock.M,
+                        L: obj.stock.L,
+                        XL: stock.XL
+                        }
+                    })
+                return mod
+                }
+         else if(stock.L &&  stock.XL ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: obj.stock.S,
+                        M: obj.stock.M,
+                        L: stock.L,
+                        XL: stock.XL
+                        }
+                    })
+                return mod
+                }
+         else if(stock.S ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: stock.S,
+                        M: obj.stock.M,
+                        L: obj.stock.L,
+                        XL: obj.stock.XL
+                        }
+                    })
+                return mod
+                }
+         else if(stock.M ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: obj.stock.S,
+                        M: stock.M,
+                        L: obj.stock.L,
+                        XL: obj.stock.XL
+                        }
+                    })
+                return mod
+         }
+         else if(stock.L ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: obj.stock.S,
+                        M: obj.stock.M,
+                        L: stock.L,
+                        XL: obj.stock.XL
+                        }
+                    })
+                return mod
+                }
+         else if(stock.XL ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        S: obj.stock.S,
+                        M: obj.stock.M,
+                        L: obj.stock.L,
+                        XL: stock.XL
+                        }
+                    })
+                return mod
+                }
+         else if(stock.Z ){
+                let mod = await Products.findByIdAndUpdate(id , {
+                    stock: {
+                        Z: stock.Z
+                        }
+                    })
+                return mod
+                }
+    }
+    }
+
 
 const postProducts = async (produc) => {
     let a = produc
@@ -188,6 +382,6 @@ module.exports = {
     filter,
     detail,
     postProducts,
-
+    putProducts
 
 }

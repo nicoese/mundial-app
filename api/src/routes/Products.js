@@ -2,7 +2,7 @@ const {Router, response} = require('express');
 const router = Router();
 const Products = require('../models/products');
 const db = require('../../db.json')
-const {postProducts} = require ('../controllers/index')
+const {postProducts, putProducts} = require ('../controllers/index')
 
 
 //FIND PROD BY NAME
@@ -43,6 +43,17 @@ router.post('/newProduct', async (req,res) => {
         return res.status(200).send("producto guardado")   
     } catch (error) {
         return res.status(400).send(error.message)   
+    }
+})
+
+//UPDATE PRODUCT 
+router.put('/updateProduct', async (req,res) => {
+    try {
+        const {id,name,price,img,stock} = req.body
+        const mod = await putProducts(id,name,price,img,stock)
+        res.status(200).json(mod)
+    } catch (error) {
+        res.status(400).send(error.message)
     }
 })
 
