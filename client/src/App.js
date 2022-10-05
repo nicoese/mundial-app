@@ -58,7 +58,7 @@ function App() {
 
     return (
 
-        <div >
+        <div className={'overflow-x-hidden'}>
             <Routes>
                 <Route exact path={"/"} element={<Landing />}/>
                 <Route exact path={"/products"} element={<Products/>}/>
@@ -74,7 +74,9 @@ function App() {
                     </ProtectedRoutes>
                 }/>
                 <Route path={'/purchases/failure'} element={<Cart/>}/>
-                <Route path={'/profile'} element={<UserProfile />}>
+                <Route path={'/profile'} element={<ProtectedRoutes>
+                    <UserProfile />
+                </ProtectedRoutes>}>
                     <Route path={''} element={<UserBanner />} />
                     <Route path={'data'} element={<InfoPersonal />} />
                     <Route path={'purchases'} element={<PurchaseContainer />} />

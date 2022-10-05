@@ -130,7 +130,7 @@ export const FilterBy = () => {
     }
 
     // return <div className="flex items-start h-[10vh] w-[25%] sticky top-[20vh]">
-    return <div className="flex h-[10vh] max-w-[25%] px-16 py-10 sticky top-[20vh]">
+    return <div className="flex h-[10vh] max-w-[25%] px-16 py-10 sticky top-[20vh] hidden sm:hidden md:flex">
 
         <div className={'flex flex-col mt-[-40px] pl-1 h-[50%] w-[100%] '}>
             <h2 className={'text-start p-5 text-3xl font-semibold text-zinc-500'}>Filtros</h2>

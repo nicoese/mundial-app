@@ -96,13 +96,15 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
     return (
         <div
 
-            className="flex flex-col mx-[7px] my-[14px] pb-2 max-w-[300px] min-w-[300px] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
+            // className="flex flex-col pb-2 w-[250px] shadow-lg shadow-black bg-white h-[400px] rounded-[15px]"
+            className="flex flex-col pb-2 w-[250px] drop-shadow-2xl hover:shadow-sm
+            hover:shadow-black bg-white h-[400px] rounded-[15px]"
 
             key={id}>
             {img ? (
                 <Link to={`${id}`} className="flex items-center justify-center w-full h-[15em] ">
                     <div className="flex items-center justify-center w-full h-[15em]">
-                        <img className="h-[12em]" src={img} alt=""/>
+                        <img className="h-[12em] rounded-[3%]" src={img} alt=""/>
                     </div>
                 </Link>
             ) : (
@@ -117,7 +119,7 @@ export const ProductCard = ({id, name, price, img, brand, stadium}) => {
                 <p className="font-[Lato] text-xl w-full text-start pl-[0.5em] "><span className={'font-bold text-zinc-500'}>$ </span>{new Intl.NumberFormat().format(price)}</p>
                 <p className="w-[100%] h-[1.5rem] text-start pl-[0.5em] font-[Lato] text-md text-[#790729] font-semibold">{brand ? `${brand}` : stadium ? `${stadium}` : ""}</p>
             </div>
-            <div className="w-full flex items-center justify-around">
+            <div className="w-full flex items-center justify-around px-5">
                 <button onClick={() => handleClick()}
                         className="w-[8em] h-[2.3em] mr-2 rounded-md bg-[#790729] hover:bg-red-800 text-white font-bold font-[Lato]"> Al
                     Carrito
