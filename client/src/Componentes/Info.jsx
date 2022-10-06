@@ -6,7 +6,7 @@ export default function Info() {
 
     return (
         <div className={s.containerPrincipal}>
-            <h1>Copa Mundial de la Fifa</h1>
+            <h1>COPA MUNDIAL DE LA FIFA</h1>
             
             <nav className={s.navbar}>
                 <ul>
