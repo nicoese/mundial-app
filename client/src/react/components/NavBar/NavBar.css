@@ -14,7 +14,7 @@ header {
   display: flex;
   align-items: center;
   /*margin-left: 15%;*/
-  padding-left: 8%;
+  padding-left: 7%;
   padding-right: 8%;
   max-width: 100vw;
   height: 15vh;
@@ -80,7 +80,7 @@ header {
   width: fit-content;
   margin-left: 0px;
    /*border: 1px solid red;*/
-    margin-right: 140px;
+    margin-right: 70px;
 }
 .nav-form{
    /*border: 1px solid red;*/
@@ -113,6 +113,9 @@ header {
   align-items: center;
   height: 100%;
   width: 180px;
+  /*border: 1px solid red;*/
+
+
 }
 
 @media (max-width: 1700px) {
@@ -127,21 +130,29 @@ header {
 @media (max-width: 1530px) {
 
   .navbar-title{
-    padding-right: 10%;
+    padding-right: 7%;
   }
 
   .searchbar-ctn{
-    margin-right: 80px;
+    margin-right: 40px;
   }
 }
 @media (max-width: 1190px) {
+
+  .navbar-ctn {
+    padding-left: 5%;
+  }
 
   .navbar-title{
     padding-right: 2%;
   }
 
   .searchbar-ctn{
-    margin-right: 15px;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+  input{
+    max-width: 250px;
   }
 }
 @media (max-width: 1020px) {
@@ -160,7 +171,7 @@ header {
 }
 @media (max-width: 870px) {
   .navbar-title{
-    padding-right: 50%;
+    padding-right: 35%;
   }
 
   .searchbar-ctn{
@@ -171,7 +182,7 @@ header {
 }
 @media (max-width: 770px) {
   .navbar-title{
-    padding-right: 40%;
+    padding-right: 10%;
   }
 
   .searchbar-ctn{
@@ -185,7 +196,21 @@ header {
 }
 @media (max-width: 615px) {
   .navbar-title{
-    padding-right: 10%;
+    padding-right: 0%;
+  }
+  .navbar-ctn{
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .navbar-title{
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .navbar-ctn{
+    height: 165px;
   }
 
   .searchbar-ctn{

@@ -24,6 +24,7 @@ export const Wishlist = () => {
                     price={e.price}
                     img={e.img}
                     stadium={e.stadium && e.stadium}
+                    active={e.active}
                 />
             })
                 : <h2 className={'col-span-3 text-xl mt-28'} >No has seleccionado ningun producto aun!</h2>
