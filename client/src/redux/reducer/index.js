@@ -42,7 +42,7 @@ import {
     SAVE_PROFILE_PICTURE,
     FIND_USER_BY_EMAIL,
     GET_ALL_REVIEWS,
-    DELETE_REVIEW,
+    DELETE_REVIEW, CLEAR_CURRENT_PRODUCTS,
 
 } from "../actions"
 
@@ -354,6 +354,11 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allReviews: state.allReviews.filter(r => r.id !== action.payload)
+            }
+        case CLEAR_CURRENT_PRODUCTS:
+            return {
+                ...state,
+                currentProducts: []
             }
         
 

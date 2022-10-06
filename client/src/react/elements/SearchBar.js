@@ -1,14 +1,16 @@
 import {useNavigate} from "react-router";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from "react";
-import {clearProductsError, getByName, setCurrentProducts} from "../../redux/actions";
+import {clearCurrentProducts, clearProductsError, getByName, setCurrentProducts} from "../../redux/actions";
 import {HiSearch} from "react-icons/hi";
+import {forEach} from "react-bootstrap/ElementChildren";
 
 export const SearchBar = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [name, setName] = useState("");
+    const {currentProducts} = useSelector(state => state)
 
     useEffect(() => {
         const url = new URL(window.location)
@@ -35,10 +37,13 @@ export const SearchBar = () => {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(clearProductsError())
+        dispatch(clearCurrentProducts())
         dispatch(getByName(name));
-        delay(500).then(r => {
+        delay(1000).then(r => {
             dispatch(setCurrentProducts(1))
             setName("");
+            const select = document.getElementById('sort-select')
+            select[0].innerText = "Seleccione un Ordenamiento"
             navigate('/products')
         })
     }

@@ -48,6 +48,7 @@ export const SAVE_PROFILE_PICTURE = "SAVE_PROFILE_PICTURE"
 export const FIND_USER_BY_EMAIL = "FIND_USER_BY_EMAIL"
 export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
 export const DELETE_REVIEW = "DELETE_REVIEW"
+export const CLEAR_CURRENT_PRODUCTS = "CLEAR_CURRENT_PRODUCTS"
 
 
 
@@ -635,5 +636,11 @@ export const delete_review = (id) =>{
     }
 }
 
-
+export const clearCurrentProducts = () => {
+    return dispatch => {
+        return dispatch({
+            type: CLEAR_CURRENT_PRODUCTS
+        })
+    }
+}
 

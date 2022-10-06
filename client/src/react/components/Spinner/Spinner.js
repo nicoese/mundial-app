@@ -3,9 +3,9 @@ import spinner from '../img/spin_dreaming.gif'
 
 const Spinner = () => {
   return (
-    <div className={'h-[75vh] mt-20'}>
+    <div className={'h-[40vh] ml-[23%] mt-10 mb-40 '}>
         <img  src={spinner} alt='SPINNER'
-              className={'w-[80%]'}
+              className={'w-[60%]'}
         />
     </div>
   )
