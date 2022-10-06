@@ -6,11 +6,11 @@ const controller = require('../controllers/MailController')
 //recibo el userEmail, Products
 router.post('/purchase_success', async(req,res,next)=>{
     try{
-        let {email,products,totalPrice,id} = req.body
+        let {email,products,totalPrice,id,personalData} = req.body
 
         let transporter = await controller.create_transport()
 
-        let body =  await controller.create_body(products,totalPrice,id)
+        let body =  await controller.create_body(products,totalPrice,id,personalData)
 
         let mailOptions = await controller.mailOptions(email,body) //userEmail,subject,body
 

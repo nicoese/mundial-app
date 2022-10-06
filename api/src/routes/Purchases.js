@@ -1,5 +1,6 @@
 const {Router, response} = require('express');
 const Purchase = require('../models/purchases');
+const PersonalData = require('../models/users_info');
 const User = require('../models/users');
 const stockController = require('../controllers/StockController')
 const axios = require('axios')
@@ -30,6 +31,9 @@ router.get('/last_purchase', async (req, res, next) => {
         const {email} = req.query;
 
         let result = await Purchase.find({email: email}).sort({"date": -1}).limit(1)
+        let personalData = await PersonalData.findOne({email})
+
+        if(personalData === null) throw new Error('NO PERSONAL DATA FOUND')
         // db.col.find().sort({"datetime": -1}).limit(1)
 
         let setStatus = result[0].set({status: 'success'})
@@ -51,7 +55,8 @@ router.get('/last_purchase', async (req, res, next) => {
                 email: result[0].email,
                 products,
                 totalPrice,
-                id: _id
+                id: _id,
+                personalData
             })
 
         return res.status(200).json(result);

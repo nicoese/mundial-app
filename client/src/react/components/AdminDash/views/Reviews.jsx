@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { delete_review, getAllReviews } from '../../../../redux/actions';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {DataGrid} from '@mui/x-data-grid'
+import swal from 'sweetalert'
 
 
 
@@ -21,15 +22,46 @@ const Reviews = ()=>{
     },[reviews])
 
     const handleDelete = (id) =>{
-        console.log(id)
-        dispatch(delete_review(id))
+        // console.log(id)
+        swal({
+            title: 'Estas seguro?',
+            text: 'Esta accion eliminara el comentario, no se puede deshacer',
+            icon: 'warning',
+            buttons: {
+                cancel: {
+                    text: "Cancelar",
+                    value: false,
+                    visible: true,
+                    className: "",
+                    closeModal: true,
+                    },
+                confirm: {
+                    dangerMode: true,
+                    text: "Aceptar",
+                    value: true,
+                    visible: true,
+                    className: "",
+                    closeModal: true
+                    }
+                }
+        }).then(response => {
+            if(response){
+                dispatch(delete_review(id)) 
+            }
+        })
     }
 
 
 
     const newColumns = [
         // { field: 'name', headerName: 'Name', width: 270 },
-        { field: 'date', headerName: 'Fecha', width: 220 },
+        { field: 'date', headerName: 'Fecha', width: 220 , renderCell: (params) => {
+            return (
+                <>
+                    <div className='flex pl-4 w-full'>{params.value.slice(0,10)}</div>
+                </>
+            ); 
+        } },
         { field: 'email', headerName: 'Usuario', width: 220,  },
         { field: 'product', headerName: 'Producto', width: 250, renderCell: (params)=>{
             return (

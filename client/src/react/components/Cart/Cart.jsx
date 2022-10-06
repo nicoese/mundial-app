@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
-import {buyDetail, getProductsInCart, purchaseFailed, findUserByEmail} from "../../../redux/actions";
+import {buyDetail, getProductsInCart, purchaseFailed, findUserByEmail, getPersonalData} from "../../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
 import Swal from "sweetalert";
 import {useNavigate} from "react-router";
@@ -11,6 +11,7 @@ const Cart = () => {
     const [state, updateState] = useState(true);
     let productsInCart = useSelector(state => state.cart);
     let userDb = useSelector(state => state.user);
+    let userData = useSelector(state => state.userData);
     let totalPrice = 0;
     const dispatch = useDispatch()
     const {user, isAuthenticated} = useAuth0()
@@ -40,6 +41,7 @@ const Cart = () => {
         user && dispatch(getProductsInCart(user.email))
         //si el usuario de auth0 existe busco sus datos
         user && dispatch(findUserByEmail(user.email))
+        user && dispatch(getPersonalData(user.email))
     }, [user, dispatch])
 
 
@@ -69,18 +71,24 @@ const Cart = () => {
             products: productsInCart,
             totalPrice: totalPrice
         }
-
-        let sizeValidation = productsInCart.map( p => p.hasOwnProperty('size')).includes(false)
         
-        if (productsInCart.length !== 0 && !sizeValidation) {
+        let sizeValidation = productsInCart.map( p => p.hasOwnProperty('size')).includes(false)
+        // console.log('HOLA ACA USER DATA',userData)
+        if (productsInCart.length !== 0 && !sizeValidation && userData) {
             // console.log(`se envia:`, productsInCart);
             dispatch(buyDetail(purchase))
-        } else {
-            Swal({
-                text: 'No olvides seleccionar el talle de tu producto',
-                icon: "warning",
-            });
-        }
+        } else if (!userData){ 
+                Swal({
+                    title: 'Debes Completar tu informacion personal',
+                    text: 'Modifica tus datos a traves de tu perfil para que podamos enviarte tus productos! :)',
+                    icon: "warning",
+                });
+            } else{
+                Swal({
+                    text: 'No olvides seleccionar el talle de tu producto',
+                    icon: "warning",
+                });
+            }
 
         /* if (productsInCart.length !== 0) {
             dispatch(buyDetail(purchase))
