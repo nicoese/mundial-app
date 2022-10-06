@@ -13,22 +13,23 @@ export const ProductsContainer = (props) => {
 
     const dispatch = useDispatch()
     const {user, isAuthenticated} = useAuth0()
-    const {productsError, currentProducts, currentPage} = useSelector(state => state)
+    const {productsError, currentProducts, currentPage, products} = useSelector(state => state)
 
-    
+
     useEffect(() => {
-        
         // delay(1500).then(() => {
-            dispatch(setCurrentProducts())
             // })
-            
+
+        // dispatch(setCurrentProducts())
+
             isAuthenticated && dispatch(getFavorites(user.email))
-            
+
             return () => {
             }
 
-        }, [dispatch, isAuthenticated])
-        
+        }, [dispatch, isAuthenticated, currentProducts, products])
+
+
     function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
