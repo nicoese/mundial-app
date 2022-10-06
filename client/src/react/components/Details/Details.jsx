@@ -16,6 +16,8 @@ import {useAuth0} from "@auth0/auth0-react";
 import Swal from 'sweetalert'
 import {Link} from "react-router-dom";
 import {ReviewSection} from "../ReviewSection/ReviewSection";
+import Spinner from "../Spinner/Spinner";
+import MiniSpinner from "../MiniSpinner/MiniSpinner";
 
 const Details = (props) => {
     const dispatch = useDispatch();
@@ -159,7 +161,7 @@ const Details = (props) => {
             {details === {} ? <div className={'mt-48'}>cargando</div> : error ? <NotFound/> :
                 <div>
                     <NavBar/>
-                    <section className="flex flex-col w-full h-[100vh] py-8 mt-[60px] pl-16">
+                    {details.id ? <section className="flex flex-col w-full h-[100vh] py-8 mt-[60px] pl-16">
                         <div className="flex items-center w-[95%] h-[45px] my-8">
                             <Link to={'/'}>
                                 <p className="text-xl ml-2 text-[#790729]"> {`Inicio >`} </p>
@@ -238,7 +240,7 @@ const Details = (props) => {
 
                             </div>
                         </div>
-                    </section>
+                    </section> : <div className={'py-[25%] px-[50%]'}><MiniSpinner /></div>}
 
 
                     <ReviewSection/>

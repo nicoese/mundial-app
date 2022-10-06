@@ -61,12 +61,12 @@ export const SortBy = () => {
 
     // return <div className={'flex flex-col-reverse ml-[69%] mb-4 mt-6 justify-center w-[15%]'}>
     return <div className={'flex mb-4 mt-6 w-[59%] flex-row-reverse'}>
-        <select
+        <select id={'sort-select'}
             onChange={(event) => {
             handleChange(event)
         }} className={'flex outline-transparent focus:border-none focus:outline-none ' +
         'rounded-full text-[#790729] font-semibold'}
-            value={sort_criteria} name="select-sort" id="">
+            value={sort_criteria} name="select-sort" >
             
             <option>{!sort_criteria?"Seleccione un Ordenamiento": "Orden: " + sort_criteria}</option>
             {options.map(op => {

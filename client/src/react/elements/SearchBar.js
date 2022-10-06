@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from "react";
 import {clearCurrentProducts, clearProductsError, getByName, setCurrentProducts} from "../../redux/actions";
 import {HiSearch} from "react-icons/hi";
+import {forEach} from "react-bootstrap/ElementChildren";
 
 export const SearchBar = () => {
 
@@ -41,6 +42,8 @@ export const SearchBar = () => {
         delay(1000).then(r => {
             dispatch(setCurrentProducts(1))
             setName("");
+            const select = document.getElementById('sort-select')
+            select[0].innerText = "Seleccione un Ordenamiento"
             navigate('/products')
         })
     }
