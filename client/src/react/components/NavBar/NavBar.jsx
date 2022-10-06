@@ -8,7 +8,7 @@ import {SearchBar} from "../../elements/SearchBar";
 import ProfileWidget from '../ProfileWidget/ProfileWidget';
 import MiniSpinner from '../MiniSpinner/MiniSpinner';
 import { useDispatch, useSelector } from 'react-redux';
-import {clearProductsError, getByName, setCurrentProducts} from '../../../redux/actions';
+import {clearCurrentProducts, clearProductsError, getByName, setCurrentProducts} from '../../../redux/actions';
 import { useEffect } from 'react';
 
 const NavBar = () => {
@@ -42,6 +42,8 @@ const NavBar = () => {
     dispatch(clearProductsError())
 
     dispatch(getByName(name))
+
+    dispatch(clearCurrentProducts())
 
     delay(500).then(()=>{
       dispatch(setCurrentProducts())

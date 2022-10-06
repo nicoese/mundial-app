@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {clearProductsError, filter, setCurrentProducts} from "../../redux/actions";
+import {clearCurrentProducts, clearProductsError, filter, setCurrentProducts} from "../../redux/actions";
 
 import {useDispatch} from "react-redux";
 
@@ -109,11 +109,17 @@ export const FilterBy = () => {
 
         dispatch(filter(filter_dispatch))
 
+        dispatch(clearCurrentProducts())
+
         delay(1000).then(() => {
             dispatch(setCurrentProducts(1))
         })
 
         dispatch(clearProductsError())
+
+        const select = document.getElementById('sort-select')
+        select[0].innerText = "Seleccione un Ordenamiento"
+
     }
 
     const handlePrice = (ev) => {

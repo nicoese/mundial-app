@@ -16,6 +16,8 @@ import {useAuth0} from "@auth0/auth0-react";
 import Swal from 'sweetalert'
 import {Link} from "react-router-dom";
 import {ReviewSection} from "../ReviewSection/ReviewSection";
+import Spinner from "../Spinner/Spinner";
+import MiniSpinner from "../MiniSpinner/MiniSpinner";
 
 const Details = (props) => {
     const dispatch = useDispatch();
@@ -116,11 +118,12 @@ const Details = (props) => {
         }
 
         dispatch(addToCart(user.email, {
-           id : details.id,
-           name : details.name,
-           price : details.price,
-           img : details.img,
-           cantidad : 1
+            id: details.id,
+            name: details.name,
+            price: details.price,
+            img: details.img,
+            cantidad: 1,
+            stock: details.stock
         }))
 
 
@@ -158,7 +161,7 @@ const Details = (props) => {
             {details === {} ? <div className={'mt-48'}>cargando</div> : error ? <NotFound/> :
                 <div>
                     <NavBar/>
-                    <section className="flex flex-col w-full h-[100vh] py-8 mt-[60px] pl-16">
+                    {details.id ? <section className="flex flex-col w-full h-[100vh] py-8 mt-[60px] pl-16">
                         <div className="flex items-center w-[95%] h-[45px] my-8">
                             <Link to={'/'}>
                                 <p className="text-xl ml-2 text-[#790729]"> {`Inicio >`} </p>
@@ -227,17 +230,17 @@ const Details = (props) => {
                                 </div>}
 
                                 {details.active ? <button onClick={handleClick}
-                                         className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-[#790729] shadow-md duration-300 hover:bg-[#790729] hover:text-white font-bold font-[Lato]">
-                                    Al Carrito
-                                </button> :
+                                                          className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-[#790729] shadow-md duration-300 hover:bg-[#790729] hover:text-white font-bold font-[Lato]">
+                                        Al Carrito
+                                    </button> :
                                     <button disabled
-                                    className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-zinc-800 shadow-md duration-300 hover:bg-zinc-500 hover:text-white font-bold font-[Lato]">
-                                    No Disponible
+                                            className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-zinc-800 shadow-md duration-300 hover:bg-zinc-500 hover:text-white font-bold font-[Lato]">
+                                        No Disponible
                                     </button>}
 
                             </div>
                         </div>
-                    </section>
+                    </section> : <div className={'py-[25%] px-[50%]'}><MiniSpinner /></div>}
 
 
                     <ReviewSection/>
