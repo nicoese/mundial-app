@@ -315,9 +315,9 @@ export const getFavorites = (userEmail) => {
     }
 }
 
-export const putProduct = (product) => {
+export const putProduct = (product, cloudImg ) => {
     return async () => {
-        const put = await axios.put(`${REACT_APP_API_URL}/products/updateProduct`, product);
+        const put = await axios.put(`${REACT_APP_API_URL}/products/updateProduct`, {product, cloudImg});
         return put
     }
 }

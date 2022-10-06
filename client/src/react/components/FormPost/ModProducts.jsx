@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useSelector,useDispatch} from 'react-redux' 
 import { getDetails, putProduct} from '../../../redux/actions';
 import { useParams, useNavigate } from 'react-router-dom';
+import { fileUpload } from "../../../Cloudinary/FileUpload";
 import swal from 'sweetalert';
 
 function validate(nombre) {
@@ -57,8 +58,9 @@ export default function ModProduct () {
     const [type, setType] = useState({
         typee: ''
     })
+    const [cloudImg, setCloudImg ] = useState('')
 
-    function handleChange (e){
+   async function handleChange (e){
      e.preventDefault();
      if(type.typee === 'Nombre'){
          setNombre({
@@ -79,6 +81,8 @@ export default function ModProduct () {
             [e.target.name]: e.target.value
          }))
     } else if(type.typee === 'Imagen'){
+        let cloudImg =  await fileUpload(e.target.files[0])
+        setCloudImg(cloudImg)
         setImagen({
            ...imagen,
            [e.target.name]: e.target.value
@@ -119,7 +123,7 @@ export default function ModProduct () {
           }).then(()=> navigate('/admin/products',{replace: true}))
 
        } else if(type.typee === 'Imagen'){
-        dispatch(putProduct(imagen))
+        dispatch(putProduct(imagen , cloudImg))
 
         swal({
             title: 'Producto Editado!',
