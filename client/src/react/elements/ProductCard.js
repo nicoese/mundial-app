@@ -78,6 +78,7 @@ export const ProductCard = ({id, active, name, price, img, brand, stock, stadium
                 button: 'Aceptar',
                 closeOnClickOutside: true,
               })
+
         }
 
         //manejo del boton de like
