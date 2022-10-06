@@ -43,7 +43,9 @@ export const SearchBar = () => {
             dispatch(setCurrentProducts(1))
             setName("");
             const select = document.getElementById('sort-select')
-            select[0].innerText = "Seleccione un Ordenamiento"
+            if (select){
+                select[0].innerText = "Seleccione un Ordenamiento"
+            }
             navigate('/products')
         })
     }
