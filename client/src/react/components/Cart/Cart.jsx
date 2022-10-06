@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import CartDetailCard from "./CartDetailCard"
-import {buyDetail, getProductsInCart, purchaseFailed, cleanCart, findUserByEmail} from "../../../redux/actions";
+import {buyDetail, getProductsInCart, purchaseFailed, findUserByEmail} from "../../../redux/actions";
 import {useAuth0} from "@auth0/auth0-react";
 import Swal from "sweetalert";
 import {useNavigate} from "react-router";
@@ -70,16 +70,27 @@ const Cart = () => {
             totalPrice: totalPrice
         }
 
-        if (productsInCart.length !== 0) {
+        let sizeValidation = productsInCart.map( p => p.hasOwnProperty('size')).includes(false)
+        
+        if (productsInCart.length !== 0 && !sizeValidation) {
+            // console.log(`se envia:`, productsInCart);
+            dispatch(buyDetail(purchase))
+        } else {
+            Swal({
+                text: 'No olvides seleccionar el talle de tu producto',
+                icon: "warning",
+            });
+        }
+
+        /* if (productsInCart.length !== 0) {
             dispatch(buyDetail(purchase))
         } else {
             alert("No tienes productos en tu carrito. Añade algunos!")
-        }
+        } */
     }
 
     const deleteProduct = () => {
         updateState(!state)
-
     }
 
     return (
@@ -104,6 +115,7 @@ const Cart = () => {
                                     price={p.price}
                                     img={p.img}
                                     cantidad={p.cantidad}
+                                    stock={p.stock}
                                 />)
                         })}
                     </div>

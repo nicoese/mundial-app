@@ -71,6 +71,7 @@ const Details = (props) => {
         //si el user no esta logeado no puede likear
         if (!isAuthenticated) {
             return Swal('logueate')
+
         }
 
         //manejo del boton de like
@@ -248,5 +249,5 @@ const Details = (props) => {
 
 }
 
-
 export default Details
+
