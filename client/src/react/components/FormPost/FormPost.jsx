@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postNewProduct } from "../../../redux/actions";
 import { fileUpload } from "../../../Cloudinary/FileUpload";
+import swal from "sweetalert";
 
 // Funcion para validar los inputs
 function validate(input) {
@@ -51,6 +52,9 @@ function validate(input) {
 
 export default function FormProducts() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+
   //Creo estados para el type , y cada uno de los tipos
   const [typee, setTypee] = useState({
     type: "",
@@ -92,7 +96,8 @@ export default function FormProducts() {
   });
   const [err, setErr] = useState({});
   const [cloudImg, setCloudImg ] = useState('')
-
+  
+  useEffect(()=>{}, [jersey, accessory, ticket ])
 
   //Funciones handle para los input
   async function handleJersey(e) {
@@ -305,10 +310,66 @@ export default function FormProducts() {
     if (typee.type === "jersey") {
       console.log(jersey)
       dispatch(postNewProduct(jersey, cloudImg));
+      setJersey({
+        name: "",
+        price: 0,
+        type: "",
+        brand: "",
+        img: "",
+        stock: {
+          S: 0,
+          M: 0,
+          L: 0,
+          XL: 0,
+        },
+      })
+
+      swal({
+        title: 'Producto Creado!',
+        text: 'volveras al panel principal',
+        icon: 'success'
+      }).then(()=> navigate('/admin',{replace: true}))
+      
+
     } else if (typee.type === "accessory") {
       dispatch(postNewProduct(accessory,cloudImg));
+      setAccessory({
+        name: "",
+        price: 0,
+        type: "",
+        img: "",
+        stock: {
+          X: 0,
+        },
+      })
+
+      swal({
+        title: 'Producto Creado!',
+        text: 'volveras al panel principal',
+        icon: 'success'
+      }).then(()=> navigate('/admin',{replace: true}))
+
     } else if (typee.type === "ticket") {
       dispatch(postNewProduct(ticket,cloudImg));
+      setTicket({
+        name: "",
+        price: 0,
+        type: "",
+        img: "",
+        brand: "",
+        stock: {
+          X: 0,
+        },
+        date: "",
+        stadium: "",
+        sector: "",
+      })
+
+      swal({
+        title: 'Producto Creado!',
+        text: 'volveras al panel principal',
+        icon: 'success'
+      }).then(()=> navigate('/admin',{replace: true}))
     }
   }
 

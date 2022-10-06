@@ -4,27 +4,31 @@ import EditIcon from '@mui/icons-material/Edit';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {DataGrid} from '@mui/x-data-grid'
-import { disableProduct } from '../../../../redux/actions';
-import { Navigate } from 'react-router-dom';
+import { disableProduct, getAllProducts } from '../../../../redux/actions';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 const Products = () => {
-
     let prods = useSelector(state => state.products)
+    let dispatch = useDispatch()
+    let navigate = useNavigate()
 
     useEffect(() => {
-    
-    }, [prods])
+        dispatch(getAllProducts())
+    }, [dispatch])
 
-    let dispatch = useDispatch()
+    useEffect(() => {
+        
+    }, [prods])
 
     const handleDisable = (productId,active)=>{
         dispatch (disableProduct(productId,active))
     }
-
+    
     const handleEdit = (id)=>{
         console.log(id) &&
-        <Navigate to={`products/${id}`} replace={true} />
+        navigate(`products/${id}`,{replace:true})
     }
 
     let stock = (params)=>{
@@ -48,9 +52,11 @@ const Products = () => {
             );
         }
     },
-    { field: 'active', headerName: 'Active', width: 80},
-    {field: 'editar',headerName: 'Editar', width: 70, renderCell: (params)=><EditIcon onClick={()=>handleEdit(params.row.id)} className='text-gray-500 bg-transparent rounded-md hover: cursor-pointer' fontSize='large' />},
-    {field: 'deshabilitar',headerName: 'Deshabilitar/ Habilitar', width: 180,  renderCell: (params)=>params.row.active?<CancelIcon onClick={()=>handleDisable(params.row._id,false)} className='text-red-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large' />:<CheckCircleIcon onClick={()=>handleDisable(params.row._id, true)} className='text-green-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large'  />},
+    { field: 'active', headerName: 'Active', width: 120,  renderCell: (params)=> <div className='flex justify-center w-full'> 
+    {params.row.active ? <p className='bg-blue-200 text-blue-800 p-1 rounded-md'>Disponible</p> : <p className='bg-red-200 text-red-800 p-1 rounded-md'>No disponible</p>}
+   </div>},
+    {field: 'editar',headerName: 'Editar', width: 70, renderCell: (params)=><div className='flex justify-center w-full'><Link to={`${params.row.id}`}><EditIcon className='text-gray-500 bg-transparent rounded-md hover: cursor-pointer' fontSize='large' /></Link></div>},
+    {field: 'deshabilitar',headerName: 'Deshabilitar/ Habilitar', width: 180,  renderCell: (params)=>params.row.active ? <div className='flex justify-center w-full'><CancelIcon className='text-red-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large' /></div>:<div className='flex justify-center w-full'><CheckCircleIcon onClick={()=>handleDisable(params.row._id, true)} className='text-green-600 bg-transparent hover: cursor-pointer rounded-md' fontSize='large'  /></div>},
 
     ];
 
