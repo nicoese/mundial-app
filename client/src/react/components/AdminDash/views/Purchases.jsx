@@ -36,7 +36,13 @@ const Purchases = () => {
 
     const newColumns = [
         // { field: 'id', headerName: 'ID', width: 220 },
-        { field: 'date', headerName: 'Fecha', width: 220 },
+        { field: 'date', headerName: 'Fecha', width: 220, renderCell: (params) => {
+            return (
+                <>
+                    <div className='flex pl-4 w-full'>{params.value.slice(0,10)}</div>
+                </>
+            ); 
+        }},
         { field: 'email', headerName: 'Comprador', width: 220,  },
         { field: 'products', headerName: 'Productos', width: 270, /* valueGetter: getProducts, */ renderCell: (params) => {
             return (
