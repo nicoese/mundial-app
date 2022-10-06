@@ -108,7 +108,7 @@ export const ProductCard = ({id, active, name, price, img, brand, stock, stadium
 
             key={id}>
             {img ? (
-                <Link to={`${id}`} className="flex items-center justify-center w-full h-[15em] ">
+                <Link to={`/products/${id}`} replace={true} className="flex items-center justify-center w-full h-[15em] ">
                     <div className="flex items-center justify-center w-full h-[15em]">
                         <img className="h-[12em] rounded-[3%]" src={img} alt=""/>
                     </div>
