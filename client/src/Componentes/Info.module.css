@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Mulish:wght@200;300;400;700&display=swap');
 
 section[id]{
-    scroll-margin-top: 100px;
+    scroll-margin-top: 200px;
     scroll-behavior:smooth
 }
 
