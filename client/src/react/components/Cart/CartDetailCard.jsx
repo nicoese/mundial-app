@@ -19,7 +19,7 @@ const CartDetailCard = ({ id, name, price, img, cantidad, stock, isPurchase }) =
   const handleSize = (e)=>{
     let buttonId =  e.target.id
     let newSize = buttonId.slice(0,1) === 'X' ? 'XL': buttonId.slice(0,1);
-    console.log(newSize)
+    // console.log(newSize)
     let newAmount = productsInCart.filter( p => p.id === id )
     let btn = document.getElementById(buttonId);
     setSelectedSize(newSize)
