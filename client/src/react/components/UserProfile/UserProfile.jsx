@@ -12,8 +12,8 @@ const UserProfile = () => {
     return <>
         <NavBar/>
         <div className={'flex'}>
-            <Sidebar/>
-            <Outlet/>
+            <Sidebar />
+            <Outlet />
         </div>
     </>
 };

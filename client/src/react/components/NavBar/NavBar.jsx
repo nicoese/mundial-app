@@ -68,7 +68,7 @@ const NavBar = () => {
 
           <SearchBar />
           
-          {isLoading? <MiniSpinner/>:<ProfileWidget/>}
+          {isLoading? <MiniSpinner/> : <ProfileWidget/>}
 
           <AiOutlineMenu size={28} className="navbar-icon" onClick={()=> toggleMenu()}/>
         </nav>

@@ -5,7 +5,7 @@ import React, {useEffect, useState} from "react";
 import {useAuth0} from "@auth0/auth0-react";
 import MiniSpinner from "../MiniSpinner/MiniSpinner";
 import {fileUpload} from "../../../Cloudinary/FileUpload";
-import {saveProfilePicture} from "../../../redux/actions";
+import {findUserByEmail, saveProfilePicture} from "../../../redux/actions";
 import {useDispatch, useSelector} from "react-redux";
 
 
@@ -25,9 +25,9 @@ export const UserBanner = () => {
 
     useEffect(() => {
 
+    user && dispatch(findUserByEmail(user.email))
 
-
-    }, [file, userDb]);
+    }, [file, user]);
 
 
     const cloud_name = 'dakxsizpf';
