@@ -5,7 +5,7 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {ReviewCard} from "./ReviewCard";
-import {getAllReviewsByProductId} from "../../../redux/actions";
+import {clearReviews, getAllReviewsByProductId} from "../../../redux/actions";
 
 export const ReviewSection = () => {
 
@@ -61,14 +61,18 @@ export const ReviewSection = () => {
     useEffect(() => {
 
         console.log(ProductDetail.id)
-        ProductDetail && dispatch(getAllReviewsByProductId(ProductDetail.id))
+        ProductDetail.id &&  dispatch(getAllReviewsByProductId(ProductDetail.id))
 
         return () => {
-            // dispatch(clearProductReviews())
+            dispatch(clearReviews())
         };
     }, [ProductDetail]);
 
     console.log()
+
+    //    function delay(time) {
+    //         return new Promise((resolve) => setTimeout(resolve, time));
+    //     } 
 
 
     return <>
