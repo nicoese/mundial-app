@@ -45,7 +45,7 @@ const NavBar = () => {
 
     dispatch(clearCurrentProducts())
 
-    delay(500).then(()=>{
+    delay(1000).then(()=>{
       dispatch(setCurrentProducts())
     })
     
