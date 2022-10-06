@@ -116,11 +116,12 @@ const Details = (props) => {
         }
 
         dispatch(addToCart(user.email, {
-           id : details.id,
-           name : details.name,
-           price : details.price,
-           img : details.img,
-           cantidad : 1
+            id: details.id,
+            name: details.name,
+            price: details.price,
+            img: details.img,
+            cantidad: 1,
+            stock: details.stock
         }))
 
 
@@ -227,12 +228,12 @@ const Details = (props) => {
                                 </div>}
 
                                 {details.active ? <button onClick={handleClick}
-                                         className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-[#790729] shadow-md duration-300 hover:bg-[#790729] hover:text-white font-bold font-[Lato]">
-                                    Al Carrito
-                                </button> :
+                                                          className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-[#790729] shadow-md duration-300 hover:bg-[#790729] hover:text-white font-bold font-[Lato]">
+                                        Al Carrito
+                                    </button> :
                                     <button disabled
-                                    className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-zinc-800 shadow-md duration-300 hover:bg-zinc-500 hover:text-white font-bold font-[Lato]">
-                                    No Disponible
+                                            className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-zinc-800 shadow-md duration-300 hover:bg-zinc-500 hover:text-white font-bold font-[Lato]">
+                                        No Disponible
                                     </button>}
 
                             </div>
