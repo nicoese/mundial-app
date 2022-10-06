@@ -4,7 +4,6 @@ import React, {useEffect, useState} from "react";
 import {clearProductsError, getByName, setCurrentProducts} from "../../redux/actions";
 import {HiSearch} from "react-icons/hi";
 
-
 export const SearchBar = () => {
 
     const navigate = useNavigate()
@@ -15,10 +14,7 @@ export const SearchBar = () => {
         const url = new URL(window.location)
         const search = url.searchParams.get('search')
 
-
-
         if (search) {
-
             delay(1600)
                 .then(() => {
                     dispatch(getByName(search))
@@ -30,8 +26,7 @@ export const SearchBar = () => {
                 })
 
         }
-    }, []);
-
+    }, [dispatch, navigate]);
 
     function handleInputChange(e) {
         setName(e.target.value);
@@ -39,35 +34,29 @@ export const SearchBar = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         dispatch(clearProductsError())
         dispatch(getByName(name));
-        delay(1500).then(r => {
+        delay(500).then(r => {
             dispatch(setCurrentProducts(1))
             setName("");
-            // if (name) return navigate(`/products?search=${name}`)
             navigate('/products')
         })
-
     }
 
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
     }
 
-    return <div className="searchBar_search">
-        <form onSubmit={handleSubmit}>
+    return <div className="searchbar-ctn">
+        <form onSubmit={handleSubmit} className='nav-form'>
             <input
                 type="text"
                 placeholder="Search..."
                 value={name}
                 onChange={handleInputChange}
+                className='nav-input font-semibold'
             />
-            <div className="searchBar_btn">
-                <button className="search_btn-submit">
-                    <HiSearch size={23}/>
-                </button>
-            </div>
+            <button><HiSearch size={50} style={{background: "#790729", color: "white" , borderRadius: "50%", padding: "10px" , marginLeft: "15px"}}/></button>
         </form>
     </div>
 }

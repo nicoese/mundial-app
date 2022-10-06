@@ -36,7 +36,7 @@ router.post('/add',async (req,res,next)=>{
 
         let setFav = user[0].set({products: arr})
         
-        let result = setFav.save()
+        let result = setFav.save() //deberia haber un await???? 
 
         return res.status(200).json(setFav)
     }catch(err){
@@ -57,14 +57,14 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
-router.get('/', async (req,res,next)=>{
-    try{
-        let result = await Favorites.find()
-        res.status(200).send(result)
-    }catch(err){
-        next(err)
-    }
-})
+// router.get('/', async (req,res,next)=>{
+//     try{
+//         let result = await Favorites.find()
+//         res.status(200).send(result)
+//     }catch(err){
+//         next(err)
+//     }
+// })
 
 
 

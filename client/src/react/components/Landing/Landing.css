@@ -77,7 +77,7 @@ header{
     border-radius: 10px;
     padding: 5px;
     cursor: pointer;
-    transition: 500ms;
+    transition: 800ms;
 }
 
 .li-inicioSesion:hover{

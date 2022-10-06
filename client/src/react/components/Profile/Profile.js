@@ -5,8 +5,6 @@ export const Profile = () => {
 
     const {user} = useAuth0()
 
-    console.log(user)
-
     return <div>
         <p>{user.name}</p>
         <p>{user.email}</p>

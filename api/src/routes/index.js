@@ -10,6 +10,10 @@ const productsRoute = require('./Products')
 const usersRoute = require('./Users')
 const purchasesRoute = require('./Purchases')
 const favoritesRoute = require('./Favorites')
+const cartsRoute = require('./Carts')
+const mailsRoute = require('./Mails')
+const info_usersRoute = require('./Info_user')
+const reviewsRoute = require('./Reviews')
 
 
 
@@ -22,6 +26,13 @@ router.use('/products', productsRoute);
 router.use('/users', usersRoute);
 router.use('/purchases',purchasesRoute)
 router.use('/favorites',favoritesRoute)
+router.use('/carts',cartsRoute)
+router.use('/mails',mailsRoute)
+router.use('/info',info_usersRoute)
+router.use('/reviews',reviewsRoute)
+
+
+
 
 
 router.use('/mp', routeMP)

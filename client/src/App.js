@@ -1,10 +1,10 @@
 import "./App.css";
 import "./assets/main.css";
 import "./assets/tailwind.css";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {getAllProducts, getFavorites, setCurrentProducts} from "./redux/actions";
+import {getAllProducts, getAllUsers, getFavorites, setCurrentProducts} from "./redux/actions";
 import Landing from "./react/components/Landing/Landing.jsx";
 import {Products} from "./react/components/Products";
 import Details from "./react/components/Details/Details";
@@ -12,12 +12,27 @@ import Cart from "./react/components/Cart/Cart";
 import Info from "./Componentes/Info"
 import Nosotros from "./Componentes/Nosotros"
 import {useAuth0} from "@auth0/auth0-react";
-import {useNavigate} from "react-router";
 import {NotFound} from "./react/components/Not_Found/Not_Found";
-import {Profile} from "./react/components/Profile/Profile";
 import {Wishlist} from "./react/components/Wishlist/Wishlist";
+import UserProfile from "./react/components/UserProfile/UserProfile";
 import {ProtectedRoutes} from "./react/components/ProtectedRoutes/ProtectedRoutes";
 import {Success} from "./react/components/Purchase/Success";
+import InfoPersonal from "./react/components/InfoPersonal/InfoPersonal";
+import {UserBanner} from "./react/components/UserProfile/UserBanner";
+import {Logout} from "./react/elements/Logout";
+import {PurchaseContainer} from "./react/components/Purchase/PurchaseContainer";
+import {ReviewSection} from "./react/components/ReviewSection/ReviewSection";
+import {UserReviews} from "./react/components/ReviewSection/UserReviews";
+import FormProducts from "./react/components/FormPost/FormPost.jsx"
+import Board from "./react/components/AdminDash/Board";
+import Users from "./react/components/AdminDash/views/Users";
+import AdminProducts from "./react/components/AdminDash/views/Products";
+import AdminPurchases from "./react/components/AdminDash/views/Purchases"
+import AdminReviews from "./react/components/AdminDash/views/Reviews"
+import {ReviewForm} from "./react/components/ReviewSection/ReviewForm";
+import ModProduct from "./react/components/FormPost/ModProducts.jsx"
+import Main from "./react/components/AdminDash/views/Main";
+import PFrecuentes from "./react/components/PreguntasFrecuentes/PFrecuentes";
 
 
 function About() {
@@ -27,8 +42,7 @@ function About() {
 
 function App() {
     const dispatch = useDispatch();
-    const {isAuthenticated, user} = useAuth0()
-    const navigate = useNavigate()
+    const {user} = useAuth0()
 
     user && dispatch(getFavorites(user.email))
 
@@ -37,7 +51,8 @@ function App() {
         delay(2000).then((e) => {
             dispatch(setCurrentProducts());
         });
-    }, [isAuthenticated]);
+        dispatch(getAllUsers())
+    },[dispatch]);
 
     function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
@@ -45,15 +60,16 @@ function App() {
 
     return (
 
-        <div className="flex flex-col justify-center">
+        <div className={'overflow-x-hidden'}>
             <Routes>
-                <Route exact path={"/"} element={<Landing/>}/>
+                <Route exact path={"/"} element={<Landing />}/>
                 <Route exact path={"/products"} element={<Products/>}/>
                 <Route path={"/about"} element={<About/>}/>
                 <Route path={"/products/:id"} element={<Details/>}/>
                 <Route path={'/blogInfo'} element={<Info/>}/>
                 <Route path={'/Cart'} element={<Cart/>}/>
                 <Route path={'/nosotros'} element={<Nosotros/>}/>
+                <Route path={'/frequentQuestions'} element={<PFrecuentes/>}/>
                 <Route path={'/purchases/success'} element={
                     <ProtectedRoutes>
                         <Success/>
@@ -61,12 +77,31 @@ function App() {
                 }/>
                 <Route path={'/purchases/failure'} element={<Cart/>}/>
                 <Route path={'/profile'} element={<ProtectedRoutes>
-                    <Profile/>
-                </ProtectedRoutes>}/>
+                    <UserProfile />
+                </ProtectedRoutes>}>
+                    <Route path={''} element={<UserBanner />} />
+                    <Route path={'data'} element={<InfoPersonal />} />
+                    <Route path={'purchases'} element={<PurchaseContainer />} />
+                    <Route path={'reviews'} element={<UserReviews />} />
+                    <Route path={'add-review/:productId'} element={<ReviewForm />} />
+                </Route>
                 <Route path={'/wishlist'} element={<ProtectedRoutes>
                     <Wishlist/>
                 </ProtectedRoutes>}/>
-                <Route path={'*'} element={<NotFound/>}/>
+                <Route path={'/logout'} element={<Logout />}/>
+                <Route path={'*'} element={<Landing />}/>
+                <Route path={'/infoPersonal'} element={<InfoPersonal/>}/>
+                
+                <Route exact path={'/admin'} element={<Board/>}>
+                    <Route path={''} element={<Main />} />
+                    <Route path={'users'} element={<Users />} />
+                    <Route path={'products'} element={<AdminProducts />} />
+                    <Route path={'products/:id'} element={<ModProduct />}/>
+                    <Route path={'post'} element={<FormProducts />} />
+                    <Route path={'purchases'} element={<AdminPurchases/>} />
+                    <Route path={'reviews'} element={<AdminReviews/>} />
+                </Route>
+                
             </Routes>
         </div>
     )

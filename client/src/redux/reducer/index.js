@@ -6,17 +6,44 @@ import {
     SET_CURRENT_PRODUCTS,
     SET_SORT_CRITERIA,
     SHUFFLE_PRODUCTS,
-    TEST_FILTERS,
     ADD_TO_CART,
     REMOVE_TO_CART,
-    UPDATE_TO_CART,
+    CLEAR_CART,
+    GET_CART,
     RESET_DETAIL,
     PRODUCTS_NOT_FOUND,
     DETAILS_ERROR,
     CLEAR_DETAILS_ERROR,
     CLEAR_PRODUCTS_ERROR,
     DISPATCH_PURCHASE,
-    GET_LAST_PURCHASE, ADD_TO_FAVORITES, GET_FAVORITES, REMOVE_FROM_FAVORITES, PURCHASE_FAILED
+    GET_LAST_PURCHASE,
+    ADD_TO_FAVORITES,
+    GET_FAVORITES,
+    REMOVE_FROM_FAVORITES,
+    PURCHASE_FAILED,
+    GET_PRODUCT_REVIEWS,
+    CLEAR_PRODUCT_REVIEWS,
+    POST_NEWPRODUCT,
+    GET_ALL_USERS,
+    DELETE_USER,
+    GET_ALL_PURCHASES,
+    ADD_USER_TO_DB,
+    DISABLE_USER,
+    DISABLE_PRODUCT,
+    PUT_PRODUCT,
+    GET_ALL_PURCHASES_BY_USER_EMAIL,
+    GET_ALL_REVIEWS_BY_USER_EMAIL,
+    GET_ALL_REVIEWS_BY_PRODUCT_ID,
+    SAVE_PERSONAL_DATA,
+    GET_PERSONAL_DATA,
+    SAVE_REVIEW,
+    REVIEW_ERROR,
+    CLEAR_REVIEW_MESSAGES,
+    SAVE_PROFILE_PICTURE,
+    FIND_USER_BY_EMAIL,
+    GET_ALL_REVIEWS,
+    DELETE_REVIEW,
+
 } from "../actions"
 
 
@@ -32,9 +59,21 @@ const initialState = {
     detailsError: '',
     purchase: {},
     purchaseStatus: '',
+    allPurchases: [],
     mp_link: '',
     favorites: [],
-    cart: []
+    productReviews: [],
+    cart: [],
+    userPurchases: [],
+    userReviews: [],
+    users: [],
+    userData: '',
+    userDataError: '',
+    userDataMessage: '',
+    reviewMessage: '',
+    reviewError: '',
+    user: '',
+    allReviews: [],
 }
 
 
@@ -96,24 +135,27 @@ export const rootReducer = (state = initialState, action) => {
             }
 
         case ADD_TO_CART:
+            /* console.log( "reducer", action.payload.products) */
             return {
                 ...state,
-                cart: [...state.cart, action.payload]
+                cart: action.payload
+            }
+        case GET_CART:
+            return {
+                ...state,
+                cart: action.payload
             }
         case REMOVE_TO_CART:
+            /* console.log("reducer", action.payload) */
             return {
                 ...state,
-                cart: state.cart.filter((p) => p.id !== action.payload)
+                cart: action.payload
             }
-        case UPDATE_TO_CART:
-            console.log(action.payload[0]);
+        case CLEAR_CART:
+            /* console.log("reducer", action.payload) */
             return {
                 ...state,
-                cart: state.cart.map((p) => {
-                    if(p.id === action.payload[0]){
-                        p.price = action.payload[1]
-                    }
-                })
+                cart: []
             }
         case PRODUCTS_NOT_FOUND:
             return {
@@ -148,6 +190,11 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 purchase: action.payload
             }
+        case GET_ALL_PURCHASES:
+            return {
+                ...state,
+                allPurchases: action.payload
+            }
         case ADD_TO_FAVORITES:
             console.log(action.payload)
             return {
@@ -169,6 +216,147 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state
             }
+        case GET_PRODUCT_REVIEWS:
+            return {
+                ...state,
+                productReviews: action.payload
+            }
+        case CLEAR_PRODUCT_REVIEWS:
+            return {
+                ...state,
+                productReviews: []
+            }
+        case POST_NEWPRODUCT:
+            return {
+                ...state
+            }
+        case GET_ALL_USERS:
+            return {
+                ...state,
+                users: action.payload
+            }
+        case DELETE_USER:
+            return {
+                ...state,
+                users: state.users.filter(u => u.email !== action.payload)
+            }
+        case DISABLE_USER:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.email === action.payload.email) {
+                        return {
+                            ...u,
+                            active: action.payload.active
+                        }
+                    }
+                    return u
+                })
+            }
+        case DISABLE_PRODUCT:
+            return {
+                ...state,
+                products: state.products.map(p => {
+                    if (p._id == action.payload._id) {
+                        return {
+                            ...p,
+                            active: action.payload.active
+                        }
+                    }
+                    return p
+                })
+            }
+        case ADD_USER_TO_DB:
+            return {
+                ...state,
+                user: [...state.users, action.payload]
+            }
+
+        case GET_ALL_PURCHASES_BY_USER_EMAIL:
+            return {
+                ...state,
+                userPurchases: action.payload
+            }
+        case GET_ALL_REVIEWS_BY_USER_EMAIL:
+            return {
+                ...state,
+                userReviews: action.payload
+            }
+        case GET_ALL_REVIEWS_BY_PRODUCT_ID:
+            return {
+                ...state,
+                productReviews: action.payload
+            }
+        case SAVE_PERSONAL_DATA:
+            return {
+                ...state,
+                userData: action.payload,
+
+            }
+        case GET_PERSONAL_DATA:
+            return {
+                ...state,
+                userData: action.payload,
+                userDataMessage: "Tus datos se guardaron satisfactoriamente!"
+            }
+        case SAVE_REVIEW:
+            return {
+                ...state,
+                reviewMessage: "Tu reseña fue añadida satisfactoriamente!"
+            }
+        case REVIEW_ERROR:
+            return {
+                ...state,
+                reviewError: "Solo podes añadir una reseña por producto"
+            }
+        case CLEAR_REVIEW_MESSAGES:
+            return {
+                ...state,
+                reviewMessage: '',
+                reviewError: ''
+            }
+        case SAVE_PROFILE_PICTURE:
+        return {
+                ...state,
+                user: action.payload
+            }
+        case FIND_USER_BY_EMAIL:
+            return {
+                ...state,
+                user: action.payload
+            }
+
+            case GET_ALL_PURCHASES_BY_USER_EMAIL:
+                return{
+                    ...state,
+                    userPurchases: action.payload
+                }
+                case GET_ALL_REVIEWS_BY_USER_EMAIL:
+                return{
+                    ...state,
+                    userReviews: action.payload
+                }
+            case GET_ALL_REVIEWS_BY_PRODUCT_ID:
+                return {
+                    ...state,
+                    productReviews: action.payload
+                }
+            case PUT_PRODUCT:
+                return {
+                    ...state
+                }
+        case GET_ALL_REVIEWS:
+            return{
+                ...state,
+                allReviews: action.payload
+            }
+        case DELETE_REVIEW:
+            return {
+                ...state,
+                allReviews: state.allReviews.filter(r => r.id !== action.payload)
+            }
+        
+
         default:
             return state
     }

@@ -14,8 +14,11 @@ const productsSchema = new Schema({
         type: String,
         require:true
     },
-    img: String,
-    stock: {S:Number,M:Number,L:Number,XL:Number,X:Number},
+    img: {
+        type: String,
+        default: "https://www.escribir.com.ar/wp-content/plugins/nimble-builder/assets/img/default-img.png" 
+    },
+    stock: {S:Number,M:Number,L:Number,XL:Number,Z:Number},
 //^^^^^MANDATORY FIELDS^^^^^
     brand: String ,
     description: String,
@@ -23,7 +26,11 @@ const productsSchema = new Schema({
     date: String,
     sector: String,
     rating: Number,
-    cantidad: Number
+    cantidad: Number,
+    active: {
+        type:Boolean,
+        default : true
+    }
 })
 
 

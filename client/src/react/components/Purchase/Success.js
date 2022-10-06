@@ -2,8 +2,11 @@ import NavBar from "../NavBar/NavBar";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useAuth0} from "@auth0/auth0-react";
-import {getLastPurchase} from "../../../redux/actions";
+import {cleanCart, getLastPurchase} from "../../../redux/actions";
 import Confetti from "react-confetti";
+import CartDetailCard from "../Cart/CartDetailCard";
+import MiniSpinner from "../MiniSpinner/MiniSpinner";
+import SuccessDetail from "./SuccesDetail";
 
 export const Success = () => {
 
@@ -24,33 +27,54 @@ export const Success = () => {
         setTimeout(() => {
             toggleConfetti();
         }, 8000);
-        localStorage.clear()
 
-    }, [user]);
+       user && dispatch(cleanCart(user.email))
+
+    }, [user, dispatch]);
 
     const toggleConfetti = () => {
-        setState({ animationDone: !state.animationDone });
+        setState({animationDone: !state.animationDone});
     };
 
-    return <div>
+    return <>
         {state.animationDone && <Confetti numberOfPieces={200}/>}
+
         <NavBar/>
 
-        {user && <div className={'mt-24'}>
-            <div>{user.name}</div>
-            <div>{user.email}</div>
-            <img src={user.picture} alt={user.name}/>
+
+        {user && <div className={'mt-32 ml-[15%]'}>
+
+            <h2 className={'text-3xl font-semibold text-red-700 mb-[4%]'}>Detalle </h2>
+
+            <div className={'flex ml-[7%]'}>
+                <img className={'rounded-[50%] py-5 mr-[5%] '} src={user.picture} alt={user.name}/>
+                <p className={'py-5 text-xl font-semibold self-center'}>{user.name}</p>
+            </div>
+            <p className={'py-5 text-xl mb-[5%] ml-[7%] font-semibold text-zinc-500'}>Revisa tu casilla en - {user.email}</p>
         </div>}
 
-        <div className={'grid grid-cols-1'}></div>
+        <div className={'flex flex-col-reverse min-w-fit items-center mb-14'}>
+
         {purchase && purchase.products.map(e => {
-            return <div className={'flex '}>
-                <p className={'p-10'}>{e.name}</p>
-                <p className={'p-10'}>{e.price}</p>
-                <p className={'p-10'}>{e.cantidad}</p>
-                <img className={'w-24 h-[auto]'} src={e.img} alt={e.name}/>
-            </div>
-        })}
-        {purchase && <div>{purchase.totalPrice}</div>}
-    </div>
-}
+
+            return <SuccessDetail
+                id={e.id}
+                name={e.name}
+                img={e.img}
+                price={e.price}
+                cantidad={e.cantidad}
+                isPurchase={true}
+            >
+            </SuccessDetail>
+        })
+        }
+            {purchase ? <div className={'ml-[30%] font-bold text-2xl text-red-800 mb-[3%]'}>Precio Total :
+                <span className={'text-black font-thin'} >{`  $ ${purchase.totalPrice}`}</span></div>
+            : <MiniSpinner />
+                //TODO: agregar spinner
+            }
+        </div>
+
+            </>
+        }
+

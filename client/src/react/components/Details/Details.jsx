@@ -1,24 +1,27 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import {
     getDetails,
-    addToCart,
     resetDetail,
     clearDetailsErr,
     addToFavorites,
-    removeFromFavorites
+    removeFromFavorites, addToCart
 } from "../../../redux/actions/index.js";
 import NavBar from "../NavBar/NavBar.jsx";
-import Spinner from "../Spinner/Spinner.js";
 import {NotFound} from "../Not_Found/Not_Found";
 import {useAuth0} from "@auth0/auth0-react";
 import Swal from 'sweetalert'
+import {Link} from "react-router-dom";
+import {ReviewSection} from "../ReviewSection/ReviewSection";
 
 const Details = (props) => {
     const dispatch = useDispatch();
     const details = useSelector((state) => state.ProductDetail);
     const error = useSelector((state) => state.detailsError);
+    const cart = useSelector((state) => state.cart);
     const favorites = useSelector((state) => state.favorites);
     const {user, isAuthenticated} = useAuth0()
     let params = useParams()
@@ -31,29 +34,21 @@ const Details = (props) => {
         dispatch(clearDetailsErr())
 
         delay(100).then(() => {
-                dispatch(getDetails(params.id));
-            })
-            
+            dispatch(getDetails(params.id));
+        })
+
         return () => {
             dispatch(resetDetail());
         }
-        
-    }, [dispatch]);
-
-
-
-    //
-
+    }, [])
 
     useEffect(() => {
 
         //si el user esta logeado comparo el id de la card
         //con los favoritos del use
-        if (isAuthenticated){
+        if (isAuthenticated) {
 
             const liked = favorites.find(e => e.id === details.id || e.id === details._id)
-
-            console.log(details.id)
 
             //si existe en la lista muestro el producto
             //como likeado
@@ -71,12 +66,12 @@ const Details = (props) => {
         setState({liked: false})
     };
 
-
     function handleLike(ev) {
 
         //si el user no esta logeado no puede likear
-        if (!isAuthenticated){
-            return Swal('Para realizar esta accion debes estar logeado!')
+        if (!isAuthenticated) {
+            return Swal('logueate')
+
         }
 
         //manejo del boton de like
@@ -101,14 +96,6 @@ const Details = (props) => {
         return new Promise(resolve => setTimeout(resolve, time));
     }
 
-    /* const handleClick = ()=>{
-      dispatch(addToCart({
-        name:details.name,
-        price: details.price,
-        img: details.img,
-      }))
-    } */
-
     const selectPic = (e) => {
         let principalPic = document.querySelector('#principal-pic')
 
@@ -119,26 +106,49 @@ const Details = (props) => {
 
     const handleClick = () => {
 
-        if (details._id){
-            details["id"] = details._id
-            delete details["_id"]
+        // if (details._id) {
+        //     details["id"] = details._id
+        //     delete details["_id"]
+        // }
+
+        if (!isAuthenticated) {
+            return Swal('Para realizar una compra deberas registrarte primero')
         }
 
-        console.log(details.id)
+        dispatch(addToCart(user.email, {
+           id : details.id,
+           name : details.name,
+           price : details.price,
+           img : details.img,
+           cantidad : 1
+        }))
 
-        const firstAdd = localStorage.getItem(details.id)
 
-        if (!firstAdd) {
-            details["cantidad"] = 1
-            localStorage.setItem(`${details.id}`, JSON.stringify(details))
+        // const firstAdd = localStorage.getItem(details.id)
+
+        //     if (!firstAdd) {
+        //         details["cantidad"] = 1
+        //         // localStorage.setItem(`${details.id}`, JSON.stringify(details))
+        //         Swal('Añadiste el Producto a tu carrito', '', 'success')
+        //             .catch(err => console.log(err))
+        //
+        //     } else {
+        //         Swal({
+        //             title: "Este producto ya fue añadido. Echale un vistazo al carrito!",
+        //             icon: 'warning'
+        //         })
+        //             .catch(err => console.log(err))
+        //
+        //     }
+        // }
+
+        if (!cart.find(e => e.id === details.id)) {
             Swal('Añadiste el Producto a tu carrito', '', 'success')
-
         } else {
             Swal({
                 title: "Este producto ya fue añadido. Echale un vistazo al carrito!",
                 icon: 'warning'
             })
-
         }
     }
 
@@ -148,33 +158,34 @@ const Details = (props) => {
             {details === {} ? <div className={'mt-48'}>cargando</div> : error ? <NotFound/> :
                 <div>
                     <NavBar/>
-                    <section className="relative flex flex-col w-full h-[100vh] py-8 mt-[60px]">
+                    <section className="flex flex-col w-full h-[100vh] py-8 mt-[60px] pl-16">
                         <div className="flex items-center w-[95%] h-[45px] my-8">
-                            <p className="text-xl ml-2 text-[#790729]"> {`Category >`} </p>
-                            <p className="text-xl ml-2 text-[#790729] font-semibold"> Product </p>
+                            <Link to={'/'}>
+                                <p className="text-xl ml-2 text-[#790729]"> {`Inicio >`} </p>
+                            </Link>
+
+                            <Link to={'/products'}>
+                                <p className="text-xl ml-2 text-[#790729] font-semibold"> Productos > </p>
+                            </Link>
+
+                            <p className="text-xl ml-2 text-black text-[#790729]"> {details.name} </p>
+
                         </div>
-                        <div className="sticky top-40 flex items-center justify-between w-[95%] h-[95%]">
-                            <div className="flex flex-col items-center justify-between w-[15%] h-[550px]">
-                                <img src='https://bit.ly/3eXgVU4' alt="product-pic1"
-                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-[#790729]shadow-md"
-                                     onClick={selectPic}/>
-                                <img src='https://bit.ly/3eXgVU4' alt="product-pic2"
-                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-[#790729] shadow-md"
-                                     onClick={selectPic}/>
-                                <img src='https://bit.ly/3eXgVU4' alt="product-pic3"
-                                     className="w-full h-[32%] cursor-pointer hover:border-[1px] border-[#790729] shadow-md"
-                                     onClick={selectPic}/>
-                            </div>
-                            <div
-                                className="relative flex items-center justify-center w-[50%] h-[550px] shadow-lg bg-white">
+                        <div className="flex items-center w-[95%] h-[95%]">
+                            <div className="flex items-center justify-center w-[50%] h-[550px] shadow-lg bg-white">
                                 <div className="flex items-center w-[auto] h-[550px]">
                                     <img src={details.img} alt="product-pic" id="principal-pic"
                                          className="w-full h-full"/>
+                                </div>
+                            </div>
+                            <div className="flex flex-col items-start w-[30%] h-[580px] mt-[50px] ml-16">
+                                <div className="flex items-center h-fit w-fit">
+                                    <h1 className="mb-4 text-4xl font-bold  text-[#790729]">{details.name}</h1>
                                     <button
                                         onClick={handleLike}
-                                        className="absolute top-6 right-9 flex items-center justify-center
-                                        h-[50px] w-[50px] rounded-md border-2 border-[#790729] duration-300
-                                        hover:text-2xl text-gray-400 font-bold">
+                                        className="flex items-center justify-center text-2xl
+                                        h-[50px] w-[70px] rounded-md shadow-md duration-300
+                                        hover:text-3xl hover:shadow-inner font-bold">
                                         {/*busco el producto en el arreglo de favoritos del user
                                         en el estado global si lo encuentro el corazon que muestro es
                                         el rojo */}
@@ -182,9 +193,6 @@ const Details = (props) => {
                                         {state.liked ? "❤" : "🤍"}
                                     </button>
                                 </div>
-                            </div>
-                            <div className="flex flex-col items-start w-[30%] h-[580px] mt-[50px]">
-                                <h1 className="mb-4 text-4xl font-bold  text-[#790729]">{details.name}</h1>
                                 <p className="mb-4 text-2xl font-semibold">$ {new Intl.NumberFormat().format(details.price)}</p>
                                 {details.type === "jersey" ?
                                     <div className="flex justify-around items-center w-[80%] h-[50px]">
@@ -210,17 +218,36 @@ const Details = (props) => {
                                     {details.description}
                                 </p>
 
-                                <button onClick={handleClick}
-                                    className="w-[8em] h-[3em] mt-4 rounded-md bg-[#790729] text-white font-bold font-[Lato]"> Al
-                                    Carrito
-                                </button>
+                                {!details.active && <div
+                                    className="p-5 my-10 text-md text-gray-900 bg-gray-300 rounded-lg dark:bg-gray-700 dark:text-gray-300"
+                                    role="alert">
+                                    <span className="font-medium">
+                                        Lo Sentimos! </span>
+                                    Este producto no esta disponible temporalmente.
+                                </div>}
+
+                                {details.active ? <button onClick={handleClick}
+                                         className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-[#790729] shadow-md duration-300 hover:bg-[#790729] hover:text-white font-bold font-[Lato]">
+                                    Al Carrito
+                                </button> :
+                                    <button disabled
+                                    className="w-[8.5em] h-[3.5em] mt-4 rounded-md text-zinc-800 shadow-md duration-300 hover:bg-zinc-500 hover:text-white font-bold font-[Lato]">
+                                    No Disponible
+                                    </button>}
+
                             </div>
                         </div>
                     </section>
+
+
+                    <ReviewSection/>
+
                 </div>
             }
         </div>
     )
+
 }
 
 export default Details
+
