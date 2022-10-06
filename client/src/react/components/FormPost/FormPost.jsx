@@ -78,7 +78,7 @@ export default function FormProducts() {
     type: "",
     img: "",
     stock: {
-      X: 0,
+      Z: 0,
     },
   });
   const [ticket, setTicket] = useState({
@@ -88,7 +88,7 @@ export default function FormProducts() {
     img: "",
     brand: "",
     stock: {
-      X: 0,
+      Z: 0,
     },
     date: "",
     stadium: "",
@@ -205,7 +205,7 @@ export default function FormProducts() {
         type: "",
         img: "",
         stock: {
-          X: 0,
+          Z: 0,
         },
       });
       setTicket({
@@ -215,7 +215,7 @@ export default function FormProducts() {
         img: "",
         brand: "",
         stock: {
-          X: 0,
+          Z: 0,
         },
         stadium: "",
         sector: "",
@@ -246,7 +246,7 @@ export default function FormProducts() {
         img: "",
         brand: "",
         stock: {
-          X: 0,
+          Z: 0,
         },
         stadium: "",
         sector: "",
@@ -263,7 +263,7 @@ export default function FormProducts() {
         type: "",
         img: "",
         stock: {
-          X: 0,
+          Z: 0,
         },
       });
       setJersey({
@@ -339,7 +339,7 @@ export default function FormProducts() {
         type: "",
         img: "",
         stock: {
-          X: 0,
+          Z: 0,
         },
       })
 
@@ -358,7 +358,7 @@ export default function FormProducts() {
         img: "",
         brand: "",
         stock: {
-          X: 0,
+          Z: 0,
         },
         date: "",
         stadium: "",
