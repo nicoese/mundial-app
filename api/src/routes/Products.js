@@ -49,8 +49,10 @@ router.post('/newProduct', async (req,res) => {
 //UPDATE PRODUCT 
 router.put('/updateProduct', async (req,res) => {
     try {
-        const {id,name,price,img,stock} = req.body
-        const mod = await putProducts(id,name,price,img,stock)
+        const {id,name,price,stock} = req.body.product
+        const {secure_url} = req.body.cloudImg
+
+        const mod = await putProducts(id,name,price,secure_url,stock)
         res.status(200).json(mod)
     } catch (error) {
         res.status(400).send(error.message)

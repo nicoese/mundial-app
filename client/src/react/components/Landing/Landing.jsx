@@ -12,7 +12,7 @@ import MiniSpinner from "../MiniSpinner/MiniSpinner";
 
 const Landing = () => {
     let click = false;
-    const {isLoading, isAuthenticated} = useAuth0();
+    const {isLoading, isAuthenticated , loginWithRedirect} = useAuth0();
 
     const toggleMenu = () => {
         click = !click
@@ -83,7 +83,7 @@ const Landing = () => {
                                 click!</p>
                             <div className="btns-ctn">
                                 <Link>
-                                    <button className="hero-btn">Registrarse</button>
+                                    <button onClick={loginWithRedirect} className="hero-btn">Registrarse</button>
                                 </Link>
                                 <Link to={'products'}>
                                     <button className="hero-btn btn-s">Ver Productos</button>
