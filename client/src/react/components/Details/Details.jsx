@@ -164,7 +164,7 @@ const Details = (props) => {
                             </Link>
 
                             <Link to={'/products'}>
-                                <p className="text-xl ml-2 text-[#790729] font-semibold"> Productos </p>
+                                <p className="text-xl ml-2 text-[#790729] font-semibold">{` Productos >`} </p>
                             </Link>
 
                             <p className="text-xl ml-2 text-black text-[#790729]"> {details.name} </p>
